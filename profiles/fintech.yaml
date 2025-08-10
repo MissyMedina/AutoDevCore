@@ -1,0 +1,82 @@
+name: "FinTech Enterprise Scoring Template"
+description: "Comprehensive evaluation template for FinTech applications"
+version: "1.0.0"
+
+categories:
+  Security:
+    - name: "Authentication & Authorization"
+      type: "scale"
+      max_score: 5
+      description: "Robust user authentication and role-based access control"
+    - name: "Data Encryption"
+      type: "scale"
+      max_score: 5
+      description: "Encryption at rest and in transit"
+    - name: "API Security"
+      type: "scale"
+      max_score: 5
+      description: "Secure API endpoints with proper validation"
+    - name: "Compliance"
+      type: "boolean"
+      description: "GDPR, PCI-DSS, or other relevant compliance"
+
+  Performance:
+    - name: "Response Time"
+      type: "scale"
+      max_score: 5
+      description: "API response time under 200ms"
+    - name: "Scalability"
+      type: "scale"
+      max_score: 5
+      description: "Horizontal scaling capability"
+    - name: "Database Optimization"
+      type: "scale"
+      max_score: 5
+      description: "Efficient database queries and indexing"
+
+  Code Quality:
+    - name: "Test Coverage"
+      type: "scale"
+      max_score: 5
+      description: "Unit and integration test coverage > 80%"
+    - name: "Code Documentation"
+      type: "scale"
+      max_score: 5
+      description: "Comprehensive code documentation"
+    - name: "Error Handling"
+      type: "scale"
+      max_score: 5
+      description: "Proper error handling and logging"
+
+  Architecture:
+    - name: "Microservices"
+      type: "boolean"
+      description: "Microservices architecture or modular design"
+    - name: "API Design"
+      type: "scale"
+      max_score: 5
+      description: "RESTful API design with proper status codes"
+    - name: "Database Design"
+      type: "scale"
+      max_score: 5
+      description: "Normalized database schema"
+
+  DevOps:
+    - name: "CI/CD Pipeline"
+      type: "boolean"
+      description: "Automated testing and deployment"
+    - name: "Monitoring"
+      type: "scale"
+      max_score: 5
+      description: "Application monitoring and alerting"
+    - name: "Logging"
+      type: "scale"
+      max_score: 5
+      description: "Structured logging and log aggregation"
+
+weights:
+  Security: 0.3
+  Performance: 0.2
+  Code Quality: 0.2
+  Architecture: 0.2
+  DevOps: 0.1
