@@ -33,7 +33,7 @@ Examples:
   ./autodevcore --mode compose --idea "restaurant inventory manager"
   ./autodevcore --mode journal
   ./autodevcore --mode blueprint --path ./legacy_codebase
-  ./autodevcore --mode score --template profiles/fintech.yaml
+  ./autodevcore --mode score --app-dir ./myapp --template profiles/fintech.yaml
   ./autodevcore --mode plugin --name ascii_weather
         """
     )
@@ -61,6 +61,12 @@ Examples:
         "--template",
         type=str,
         help="Scoring template profile (for score mode)"
+    )
+    
+    parser.add_argument(
+        "--app-dir",
+        type=str,
+        help="App directory to score (for score mode)"
     )
     
     parser.add_argument(
@@ -107,7 +113,10 @@ Examples:
         if not args.template:
             print("Error: --template is required for score mode")
             sys.exit(1)
-        mode = ScoreMode(args.template, args.output_dir, args.verbose)
+        if not args.app_dir:
+            print("Error: --app-dir is required for score mode")
+            sys.exit(1)
+        mode = ScoreMode(args.app_dir, args.template, args.output_dir, args.verbose)
         
     elif args.mode == "plugin":
         if not args.name:

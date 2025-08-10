@@ -1,0 +1,203 @@
+name: "E-commerce Enterprise Scoring Template"
+description: "Evaluation criteria for e-commerce applications with payment processing and user experience focus"
+
+categories:
+  Security:
+    - name: "PCI DSS Compliance"
+      type: "boolean"
+      weight: 5
+      description: "Payment Card Industry Data Security Standard compliance"
+    - name: "Payment Security"
+      type: "scale"
+      max_score: 5
+      weight: 5
+      description: "Secure payment processing and encryption"
+    - name: "Data Protection"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Customer data protection and privacy"
+    - name: "Fraud Prevention"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Fraud detection and prevention measures"
+    - name: "SSL/TLS Implementation"
+      type: "boolean"
+      weight: 4
+      description: "Secure communication protocols"
+
+  User Experience:
+    - name: "Mobile Responsiveness"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Mobile-friendly design and functionality"
+    - name: "Page Load Speed"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Fast page loading times (<3 seconds)"
+    - name: "Checkout Flow"
+      type: "scale"
+      max_score: 5
+      weight: 5
+      description: "Streamlined and user-friendly checkout process"
+    - name: "Search Functionality"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "Advanced search and filtering capabilities"
+    - name: "Personalization"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "Personalized recommendations and content"
+
+  Performance:
+    - name: "Scalability"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Ability to handle high traffic and sales volumes"
+    - name: "Database Performance"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Optimized database queries and indexing"
+    - name: "Caching Strategy"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "Effective caching for improved performance"
+    - name: "CDN Integration"
+      type: "boolean"
+      weight: 3
+      description: "Content Delivery Network for global performance"
+
+  Payment Processing:
+    - name: "Payment Gateway Integration"
+      type: "scale"
+      max_score: 5
+      weight: 5
+      description: "Integration with major payment gateways"
+    - name: "Multiple Payment Methods"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Support for various payment options"
+    - name: "Transaction Management"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Order and transaction tracking"
+    - name: "Refund Processing"
+      type: "boolean"
+      weight: 3
+      description: "Automated refund and return processing"
+
+  Inventory Management:
+    - name: "Real-time Inventory"
+      type: "boolean"
+      weight: 4
+      description: "Real-time inventory tracking and updates"
+    - name: "Stock Alerts"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "Low stock and out-of-stock notifications"
+    - name: "Product Management"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Comprehensive product catalog management"
+    - name: "Supplier Integration"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "Integration with supplier systems"
+
+  Code Quality:
+    - name: "API Documentation"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "Comprehensive API documentation"
+    - name: "Testing Coverage"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Unit and integration test coverage >75%"
+    - name: "Error Handling"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Robust error handling for payment failures"
+    - name: "Code Maintainability"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "Clean, maintainable code structure"
+
+  Architecture:
+    - name: "Microservices"
+      type: "boolean"
+      weight: 3
+      description: "Microservices architecture for scalability"
+    - name: "API Design"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "RESTful API design with proper versioning"
+    - name: "Database Design"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Optimized database schema for e-commerce"
+    - name: "Third-party Integrations"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "Integration with shipping, tax, and analytics services"
+
+  Analytics & Reporting:
+    - name: "Sales Analytics"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Comprehensive sales and revenue reporting"
+    - name: "Customer Analytics"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "Customer behavior and segmentation analysis"
+    - name: "Inventory Reports"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "Inventory turnover and forecasting reports"
+    - name: "Performance Monitoring"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "Real-time performance and error monitoring"
+
+  DevOps:
+    - name: "CI/CD Pipeline"
+      type: "boolean"
+      weight: 3
+      description: "Automated build and deployment pipeline"
+    - name: "Monitoring"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Application and infrastructure monitoring"
+    - name: "Security Scanning"
+      type: "boolean"
+      weight: 4
+      description: "Automated security vulnerability scanning"
+    - name: "Backup Strategy"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Regular backups and disaster recovery plan"

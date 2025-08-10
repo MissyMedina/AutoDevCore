@@ -1,0 +1,132 @@
+name: "Healthcare Enterprise Scoring Template"
+description: "Evaluation criteria for healthcare applications with HIPAA compliance and patient data security focus"
+
+categories:
+  Security:
+    - name: "HIPAA Compliance"
+      type: "boolean"
+      weight: 5
+      description: "Meets HIPAA requirements for patient data protection"
+    - name: "Data Encryption"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Encryption at rest and in transit"
+    - name: "Access Controls"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Role-based access control implementation"
+    - name: "Audit Logging"
+      type: "boolean"
+      weight: 3
+      description: "Comprehensive audit trail for all data access"
+    - name: "Secure Authentication"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Multi-factor authentication and secure login"
+
+  Compliance:
+    - name: "Regulatory Standards"
+      type: "scale"
+      max_score: 5
+      weight: 5
+      description: "Compliance with healthcare regulations"
+    - name: "Data Retention"
+      type: "boolean"
+      weight: 3
+      description: "Proper data retention and disposal policies"
+    - name: "Privacy Controls"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Patient privacy protection measures"
+    - name: "Consent Management"
+      type: "boolean"
+      weight: 3
+      description: "Patient consent tracking and management"
+
+  Performance:
+    - name: "Response Time"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "API response time under 200ms"
+    - name: "Scalability"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "Ability to handle high patient loads"
+    - name: "Availability"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "99.9% uptime for critical functions"
+    - name: "Backup & Recovery"
+      type: "boolean"
+      weight: 4
+      description: "Automated backup and disaster recovery"
+
+  Code Quality:
+    - name: "Documentation"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "Comprehensive code and API documentation"
+    - name: "Testing Coverage"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Unit and integration test coverage >80%"
+    - name: "Error Handling"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Robust error handling and logging"
+    - name: "Code Standards"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "Adherence to coding standards and best practices"
+
+  Architecture:
+    - name: "Microservices"
+      type: "boolean"
+      weight: 3
+      description: "Microservices architecture for scalability"
+    - name: "API Design"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "RESTful API design with proper versioning"
+    - name: "Database Design"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Proper database schema and relationships"
+    - name: "Integration Capability"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "Integration with healthcare systems (HL7, FHIR)"
+
+  DevOps:
+    - name: "CI/CD Pipeline"
+      type: "boolean"
+      weight: 3
+      description: "Automated build and deployment pipeline"
+    - name: "Monitoring"
+      type: "scale"
+      max_score: 5
+      weight: 4
+      description: "Application and infrastructure monitoring"
+    - name: "Security Scanning"
+      type: "boolean"
+      weight: 4
+      description: "Automated security vulnerability scanning"
+    - name: "Environment Management"
+      type: "scale"
+      max_score: 5
+      weight: 3
+      description: "Proper development, staging, and production environments"
