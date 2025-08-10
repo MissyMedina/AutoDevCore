@@ -1,9 +1,10 @@
 """
-Code Generator Agent - Generates application codebase
+Code Generator Agent - Generates application codebase with security features
 """
 
 from typing import Dict, Any
 from pathlib import Path
+from .security_generator import SecurityGeneratorAgent
 
 
 class CodeGeneratorAgent:
@@ -11,6 +12,7 @@ class CodeGeneratorAgent:
     
     def __init__(self, verbose: bool = False):
         self.verbose = verbose
+        self.security_generator = SecurityGeneratorAgent(verbose)
     
     def generate_codebase(self, app_plan: Dict[str, Any], app_dir: Path) -> Dict[str, str]:
         """
@@ -38,9 +40,10 @@ class CodeGeneratorAgent:
             return self._generate_python_codebase(idea, app_plan)  # Default to Python
     
     def _generate_python_codebase(self, idea: str, app_plan: Dict[str, Any]) -> Dict[str, str]:
-        """Generate a Python/FastAPI codebase."""
+        """Generate a Python/FastAPI codebase with security features."""
         
-        return {
+        # Generate base codebase
+        base_files = {
             "main.py": self._generate_main_py(idea, app_plan),
             "models.py": self._generate_models_py(app_plan),
             "database.py": self._generate_database_py(app_plan),
@@ -51,10 +54,19 @@ class CodeGeneratorAgent:
             "tests/test_main.py": self._generate_tests_py(app_plan),
             "tests/__init__.py": "",
             "config.py": self._generate_config_py(),
+            "requirements.txt": self._generate_requirements_txt(),
             ".env.example": self._generate_env_example(),
             "Dockerfile": self._generate_dockerfile(),
             ".gitignore": self._generate_gitignore()
         }
+        
+        # Generate security features
+        security_files = self.security_generator.generate_security_features(app_plan)
+        
+        # Merge base and security files
+        all_files = {**base_files, **security_files}
+        
+        return all_files
     
     def _generate_node_codebase(self, idea: str, app_plan: Dict[str, Any]) -> Dict[str, str]:
         """Generate a Node.js/Express codebase."""
@@ -78,7 +90,7 @@ class CodeGeneratorAgent:
         
         return f'''"""
 {app_name} - {idea}
-AutoDevCore Generated Application
+AutoDevCore Generated Application with Security Features
 """
 
 from fastapi import FastAPI, HTTPException, Depends
@@ -89,6 +101,7 @@ import uvicorn
 from database import get_db, engine
 from models import Base
 from api.routes import router
+from middleware.security import setup_security_middleware
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -98,6 +111,9 @@ app = FastAPI(
     description="{idea}",
     version="1.0.0"
 )
+
+# Setup security middleware
+setup_security_middleware(app)
 
 # Add CORS middleware
 app.add_middleware(
@@ -367,6 +383,32 @@ class Settings(BaseSettings):
         env_file = ".env"
 
 settings = Settings()
+'''
+    
+    def _generate_requirements_txt(self) -> str:
+        """Generate requirements.txt with security dependencies."""
+        
+        return '''# Core Dependencies
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+sqlalchemy==2.0.23
+pydantic==2.5.0
+python-dotenv==1.0.0
+
+# Security Dependencies
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]==3.3.0
+python-multipart==0.0.6
+slowapi==0.1.9
+pydantic[email]==2.5.0
+pydantic-settings==2.1.0
+cryptography==41.0.7
+
+# Development Dependencies
+pytest==7.4.3
+pytest-cov==4.1.0
+black==23.11.0
+flake8==6.1.0
 '''
     
     def _generate_env_example(self) -> str:
