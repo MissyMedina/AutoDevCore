@@ -54,7 +54,7 @@ Examples:
     parser.add_argument(
         "--path",
         type=str,
-        help="Path to codebase (for blueprint mode)"
+        help="Path to codebase (for blueprint and journal modes)"
     )
     
     parser.add_argument(
@@ -101,7 +101,10 @@ Examples:
         mode = ComposeMode(args.idea, args.output_dir, args.verbose)
         
     elif args.mode == "journal":
-        mode = JournalMode(args.output_dir, args.verbose)
+        if not args.path:
+            print("Error: --path is required for journal mode")
+            sys.exit(1)
+        mode = JournalMode(args.path, args.output_dir, args.verbose)
         
     elif args.mode == "blueprint":
         if not args.path:
@@ -119,10 +122,24 @@ Examples:
         mode = ScoreMode(args.app_dir, args.template, args.output_dir, args.verbose)
         
     elif args.mode == "plugin":
-        if not args.name:
+        # Check for special plugin commands
+        list_plugins = args.name == "--list" or args.name == "list"
+        generate_docs = args.name == "--docs" or args.name == "docs"
+        
+        if list_plugins:
+            mode = PluginMode(output_dir=args.output_dir, verbose=args.verbose, list_plugins=True)
+        elif generate_docs:
+            mode = PluginMode(output_dir=args.output_dir, verbose=args.verbose, generate_docs=True)
+        elif not args.name:
             print("Error: --name is required for plugin mode")
+            print("💡 Use --name list to see available plugins")
+            print("💡 Use --name docs to generate documentation")
             sys.exit(1)
-        mode = PluginMode(args.name, args.output_dir, args.verbose)
+        else:
+            mode = PluginMode(args.name, args.output_dir, args.verbose)
+    else:
+        print(f"Error: Unknown mode '{args.mode}'")
+        sys.exit(1)
     
     # Execute the mode
     try:

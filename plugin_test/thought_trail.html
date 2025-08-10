@@ -1,0 +1,2116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoDevCore Thought Trail Visualization</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        .content {
+            padding: 30px;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+        }
+        .section h2 {
+            color: #333;
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #667eea;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -22px;
+            top: 20px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid white;
+        }
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .agent {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+        .timestamp {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .thought {
+            color: #333;
+            line-height: 1.5;
+        }
+        .data-preview {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f1f3f4;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: #555;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #5a6fd8;
+        }
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        .filter-section {
+            margin-bottom: 20px;
+        }
+        .filter-section label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .filter-section select {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .mermaid-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AutoDevCore Thought Trail</h1>
+            <p>Visualizing AI Agent Reasoning and Decision Making</p>
+        </div>
+        
+        <div class="content">
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-thoughts">0</div>
+                    <div class="stat-label">Total Thoughts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="unique-agents">0</div>
+                    <div class="stat-label">Unique Agents</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="avg-thought-length">0</div>
+                    <div class="stat-label">Avg Thought Length</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="analysis-duration">0s</div>
+                    <div class="stat-label">Analysis Duration</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>🎛️ Controls & Filters</h2>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="exportToJSON()">Export JSON</button>
+                    <button class="btn btn-secondary" onclick="exportToCSV()">Export CSV</button>
+                    <button class="btn btn-secondary" onclick="toggleDataPreview()">Toggle Data Preview</button>
+                </div>
+                <div class="filter-section">
+                    <label>Filter by Agent:</label>
+                    <select id="agent-filter" onchange="filterByAgent()">
+                        <option value="">All Agents</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>📊 Agent Activity Chart</h2>
+                <canvas id="agentChart" width="400" height="200"></canvas>
+            </div>
+            
+            <div class="section">
+                <h2>🕒 Timeline View</h2>
+                <div class="timeline" id="timeline">
+                    <!-- Timeline items will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>🔗 Thought Flow Diagram</h2>
+                <div class="mermaid-container">
+                    <div class="mermaid" id="mermaid-diagram">
+                        <!-- Mermaid diagram will be rendered here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize thought trail data
+        const thoughtTrail = [
+  {
+    "timestamp": "2025-08-10T00:52:41.387807",
+    "agent": "PluginAgent",
+    "thought": "Loading plugin: code_analyzer",
+    "data": {},
+    "id": 0
+  },
+  {
+    "timestamp": "2025-08-10T00:52:41.392709",
+    "agent": "PluginAgent",
+    "thought": "Plugin discovered",
+    "data": {
+      "name": "code_analyzer",
+      "path": "plugins/code_analyzer.py",
+      "description": "Analyzes code complexity, quality metrics, and provides recommendations",
+      "author": "AutoDevCore Team",
+      "version": "1.0.0",
+      "functions": [
+        "run",
+        "calculate_complexity"
+      ],
+      "valid": true,
+      "error": null
+    },
+    "id": 1
+  },
+  {
+    "timestamp": "2025-08-10T00:52:41.392809",
+    "agent": "PluginAgent",
+    "thought": "Loading and validating plugin",
+    "data": {},
+    "id": 2
+  },
+  {
+    "timestamp": "2025-08-10T00:52:41.393709",
+    "agent": "PluginAgent",
+    "thought": "Plugin loaded and validated successfully",
+    "data": {},
+    "id": 3
+  },
+  {
+    "timestamp": "2025-08-10T00:52:41.393733",
+    "agent": "PluginAgent",
+    "thought": "Executing plugin in sandboxed environment",
+    "data": {},
+    "id": 4
+  },
+  {
+    "timestamp": "2025-08-10T00:52:41.605412",
+    "agent": "PluginAgent",
+    "thought": "Plugin executed successfully",
+    "data": {
+      "result": {
+        "status": "success",
+        "message": "Code analysis completed successfully",
+        "results": {
+          "files_analyzed": 66,
+          "total_lines": 6377,
+          "functions": [
+            {
+              "name": "main",
+              "file": "cli.py",
+              "line": 22,
+              "length": 15,
+              "complexity": 16
+            },
+            {
+              "name": "show_splash",
+              "file": "splash.py",
+              "line": 7,
+              "length": 6,
+              "complexity": 1
+            },
+            {
+              "name": "show_help",
+              "file": "splash.py",
+              "line": 31,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "__init__",
+              "file": "modes/journal.py",
+              "line": 16,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "execute",
+              "file": "modes/journal.py",
+              "line": 20,
+              "length": 36,
+              "complexity": 2
+            },
+            {
+              "name": "_analyze_codebase_metrics",
+              "file": "modes/journal.py",
+              "line": 84,
+              "length": 12,
+              "complexity": 23
+            },
+            {
+              "name": "_calculate_nesting_depth",
+              "file": "modes/journal.py",
+              "line": 175,
+              "length": 4,
+              "complexity": 3
+            },
+            {
+              "name": "_analyze_technical_debt",
+              "file": "modes/journal.py",
+              "line": 185,
+              "length": 6,
+              "complexity": 15
+            },
+            {
+              "name": "_analyze_performance_patterns",
+              "file": "modes/journal.py",
+              "line": 253,
+              "length": 6,
+              "complexity": 10
+            },
+            {
+              "name": "_detect_security_vulnerabilities",
+              "file": "modes/journal.py",
+              "line": 295,
+              "length": 5,
+              "complexity": 9
+            },
+            {
+              "name": "_calculate_quality_metrics",
+              "file": "modes/journal.py",
+              "line": 340,
+              "length": 9,
+              "complexity": 7
+            },
+            {
+              "name": "_generate_ai_insights",
+              "file": "modes/journal.py",
+              "line": 389,
+              "length": 3,
+              "complexity": 8
+            },
+            {
+              "name": "_fallback_ai_insights",
+              "file": "modes/journal.py",
+              "line": 445,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_journal_report",
+              "file": "modes/journal.py",
+              "line": 455,
+              "length": 4,
+              "complexity": 17
+            },
+            {
+              "name": "_generate_actionable_recommendations",
+              "file": "modes/journal.py",
+              "line": 545,
+              "length": 13,
+              "complexity": 7
+            },
+            {
+              "name": "__init__",
+              "file": "modes/compose.py",
+              "line": 18,
+              "length": 6,
+              "complexity": 1
+            },
+            {
+              "name": "execute",
+              "file": "modes/compose.py",
+              "line": 26,
+              "length": 29,
+              "complexity": 1
+            },
+            {
+              "name": "_save_files",
+              "file": "modes/compose.py",
+              "line": 71,
+              "length": 10,
+              "complexity": 6
+            },
+            {
+              "name": "_generate_dependency_files",
+              "file": "modes/compose.py",
+              "line": 98,
+              "length": 4,
+              "complexity": 5
+            },
+            {
+              "name": "__init__",
+              "file": "modes/blueprint.py",
+              "line": 16,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "execute",
+              "file": "modes/blueprint.py",
+              "line": 20,
+              "length": 35,
+              "complexity": 2
+            },
+            {
+              "name": "_analyze_structure",
+              "file": "modes/blueprint.py",
+              "line": 80,
+              "length": 4,
+              "complexity": 13
+            },
+            {
+              "name": "_analyze_code_with_gpt_oss",
+              "file": "modes/blueprint.py",
+              "line": 130,
+              "length": 3,
+              "complexity": 2
+            },
+            {
+              "name": "_get_key_files",
+              "file": "modes/blueprint.py",
+              "line": 152,
+              "length": 5,
+              "complexity": 2
+            },
+            {
+              "name": "_analyze_architecture_patterns",
+              "file": "modes/blueprint.py",
+              "line": 170,
+              "length": 2,
+              "complexity": 8
+            },
+            {
+              "name": "_analyze_code_quality",
+              "file": "modes/blueprint.py",
+              "line": 220,
+              "length": 2,
+              "complexity": 8
+            },
+            {
+              "name": "_analyze_design_patterns",
+              "file": "modes/blueprint.py",
+              "line": 269,
+              "length": 4,
+              "complexity": 9
+            },
+            {
+              "name": "_analyze_complexity",
+              "file": "modes/blueprint.py",
+              "line": 299,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "_analyze_security_patterns",
+              "file": "modes/blueprint.py",
+              "line": 310,
+              "length": 4,
+              "complexity": 9
+            },
+            {
+              "name": "_fallback_code_analysis",
+              "file": "modes/blueprint.py",
+              "line": 339,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_analyze_dependencies",
+              "file": "modes/blueprint.py",
+              "line": 349,
+              "length": 5,
+              "complexity": 9
+            },
+            {
+              "name": "_extract_api_documentation",
+              "file": "modes/blueprint.py",
+              "line": 381,
+              "length": 4,
+              "complexity": 7
+            },
+            {
+              "name": "_detect_code_patterns",
+              "file": "modes/blueprint.py",
+              "line": 407,
+              "length": 4,
+              "complexity": 10
+            },
+            {
+              "name": "_generate_architecture_diagram",
+              "file": "modes/blueprint.py",
+              "line": 443,
+              "length": 4,
+              "complexity": 8
+            },
+            {
+              "name": "_generate_analysis_report",
+              "file": "modes/blueprint.py",
+              "line": 493,
+              "length": 4,
+              "complexity": 17
+            },
+            {
+              "name": "_generate_refactoring_recommendations",
+              "file": "modes/blueprint.py",
+              "line": 569,
+              "length": 7,
+              "complexity": 11
+            },
+            {
+              "name": "__init__",
+              "file": "modes/plugin.py",
+              "line": 19,
+              "length": 5,
+              "complexity": 1
+            },
+            {
+              "name": "execute",
+              "file": "modes/plugin.py",
+              "line": 27,
+              "length": 22,
+              "complexity": 7
+            },
+            {
+              "name": "_list_available_plugins",
+              "file": "modes/plugin.py",
+              "line": 89,
+              "length": 6,
+              "complexity": 3
+            },
+            {
+              "name": "_discover_all_plugins",
+              "file": "modes/plugin.py",
+              "line": 109,
+              "length": 5,
+              "complexity": 4
+            },
+            {
+              "name": "_analyze_plugin_file",
+              "file": "modes/plugin.py",
+              "line": 126,
+              "length": 4,
+              "complexity": 13
+            },
+            {
+              "name": "_discover_plugin_info",
+              "file": "modes/plugin.py",
+              "line": 185,
+              "length": 4,
+              "complexity": 2
+            },
+            {
+              "name": "_load_plugin_safely",
+              "file": "modes/plugin.py",
+              "line": 194,
+              "length": 4,
+              "complexity": 5
+            },
+            {
+              "name": "_execute_plugin_safely",
+              "file": "modes/plugin.py",
+              "line": 228,
+              "length": 2,
+              "complexity": 2
+            },
+            {
+              "name": "_generate_plugin_documentation",
+              "file": "modes/plugin.py",
+              "line": 246,
+              "length": 7,
+              "complexity": 7
+            },
+            {
+              "name": "_generate_execution_report",
+              "file": "modes/plugin.py",
+              "line": 315,
+              "length": 4,
+              "complexity": 4
+            },
+            {
+              "name": "__init__",
+              "file": "modes/base.py",
+              "line": 17,
+              "length": 5,
+              "complexity": 1
+            },
+            {
+              "name": "log_thought",
+              "file": "modes/base.py",
+              "line": 26,
+              "length": 4,
+              "complexity": 3
+            },
+            {
+              "name": "save_thought_trail",
+              "file": "modes/base.py",
+              "line": 43,
+              "length": 6,
+              "complexity": 2
+            },
+            {
+              "name": "generate_mermaid_diagram",
+              "file": "modes/base.py",
+              "line": 55,
+              "length": 8,
+              "complexity": 6
+            },
+            {
+              "name": "generate_interactive_html_report",
+              "file": "modes/base.py",
+              "line": 108,
+              "length": 6,
+              "complexity": 3
+            },
+            {
+              "name": "_generate_html_template",
+              "file": "modes/base.py",
+              "line": 121,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "export_thought_trail",
+              "file": "modes/base.py",
+              "line": 536,
+              "length": 2,
+              "complexity": 4
+            },
+            {
+              "name": "execute",
+              "file": "modes/base.py",
+              "line": 561,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "__init__",
+              "file": "modes/score.py",
+              "line": 16,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "execute",
+              "file": "modes/score.py",
+              "line": 21,
+              "length": 26,
+              "complexity": 3
+            },
+            {
+              "name": "_load_template",
+              "file": "modes/score.py",
+              "line": 70,
+              "length": 5,
+              "complexity": 5
+            },
+            {
+              "name": "_analyze_codebase",
+              "file": "modes/score.py",
+              "line": 88,
+              "length": 3,
+              "complexity": 2
+            },
+            {
+              "name": "_get_key_files",
+              "file": "modes/score.py",
+              "line": 110,
+              "length": 6,
+              "complexity": 4
+            },
+            {
+              "name": "_analyze_file_structure",
+              "file": "modes/score.py",
+              "line": 132,
+              "length": 4,
+              "complexity": 8
+            },
+            {
+              "name": "_analyze_code_quality",
+              "file": "modes/score.py",
+              "line": 159,
+              "length": 2,
+              "complexity": 8
+            },
+            {
+              "name": "_analyze_security",
+              "file": "modes/score.py",
+              "line": 211,
+              "length": 2,
+              "complexity": 8
+            },
+            {
+              "name": "_analyze_performance",
+              "file": "modes/score.py",
+              "line": 256,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_analyze_architecture",
+              "file": "modes/score.py",
+              "line": 265,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_fallback_analysis",
+              "file": "modes/score.py",
+              "line": 274,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_evaluate_app_intelligent",
+              "file": "modes/score.py",
+              "line": 284,
+              "length": 9,
+              "complexity": 3
+            },
+            {
+              "name": "_evaluate_criterion_intelligent",
+              "file": "modes/score.py",
+              "line": 321,
+              "length": 4,
+              "complexity": 7
+            },
+            {
+              "name": "_generate_recommendations",
+              "file": "modes/score.py",
+              "line": 357,
+              "length": 9,
+              "complexity": 6
+            },
+            {
+              "name": "_generate_radar_chart",
+              "file": "modes/score.py",
+              "line": 381,
+              "length": 4,
+              "complexity": 2
+            },
+            {
+              "name": "_generate_report",
+              "file": "modes/score.py",
+              "line": 402,
+              "length": 4,
+              "complexity": 9
+            },
+            {
+              "name": "__init__",
+              "file": "agents/composer.py",
+              "line": 14,
+              "length": 1,
+              "complexity": 1
+            },
+            {
+              "name": "create_app_plan",
+              "file": "agents/composer.py",
+              "line": 17,
+              "length": 3,
+              "complexity": 3
+            },
+            {
+              "name": "_create_fallback_plan",
+              "file": "agents/composer.py",
+              "line": 48,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_app_name",
+              "file": "agents/composer.py",
+              "line": 102,
+              "length": 4,
+              "complexity": 4
+            },
+            {
+              "name": "__init__",
+              "file": "agents/security_generator.py",
+              "line": 12,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "generate_security_features",
+              "file": "agents/security_generator.py",
+              "line": 16,
+              "length": 3,
+              "complexity": 2
+            },
+            {
+              "name": "_generate_auth_system",
+              "file": "agents/security_generator.py",
+              "line": 31,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_auth_models",
+              "file": "agents/security_generator.py",
+              "line": 108,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_security_middleware",
+              "file": "agents/security_generator.py",
+              "line": 166,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_security_config",
+              "file": "agents/security_generator.py",
+              "line": 224,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_validation_utils",
+              "file": "agents/security_generator.py",
+              "line": 265,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_security_requirements",
+              "file": "agents/security_generator.py",
+              "line": 314,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_auth_dependencies",
+              "file": "agents/security_generator.py",
+              "line": 326,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "__init__",
+              "file": "agents/prd_writer.py",
+              "line": 11,
+              "length": 1,
+              "complexity": 1
+            },
+            {
+              "name": "generate_prd",
+              "file": "agents/prd_writer.py",
+              "line": 14,
+              "length": 4,
+              "complexity": 2
+            },
+            {
+              "name": "_get_current_date",
+              "file": "agents/prd_writer.py",
+              "line": 207,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "_identify_primary_persona",
+              "file": "agents/prd_writer.py",
+              "line": 212,
+              "length": 3,
+              "complexity": 3
+            },
+            {
+              "name": "_get_persona_role",
+              "file": "agents/prd_writer.py",
+              "line": 223,
+              "length": 3,
+              "complexity": 3
+            },
+            {
+              "name": "_get_persona_goals",
+              "file": "agents/prd_writer.py",
+              "line": 234,
+              "length": 3,
+              "complexity": 3
+            },
+            {
+              "name": "_get_persona_pain_points",
+              "file": "agents/prd_writer.py",
+              "line": 245,
+              "length": 3,
+              "complexity": 3
+            },
+            {
+              "name": "_generate_use_cases",
+              "file": "agents/prd_writer.py",
+              "line": 256,
+              "length": 5,
+              "complexity": 6
+            },
+            {
+              "name": "_format_features",
+              "file": "agents/prd_writer.py",
+              "line": 277,
+              "length": 5,
+              "complexity": 3
+            },
+            {
+              "name": "_format_architecture",
+              "file": "agents/prd_writer.py",
+              "line": 288,
+              "length": 5,
+              "complexity": 1
+            },
+            {
+              "name": "_format_database_schema",
+              "file": "agents/prd_writer.py",
+              "line": 302,
+              "length": 6,
+              "complexity": 4
+            },
+            {
+              "name": "_format_api_endpoints",
+              "file": "agents/prd_writer.py",
+              "line": 323,
+              "length": 5,
+              "complexity": 4
+            },
+            {
+              "name": "_format_ui_components",
+              "file": "agents/prd_writer.py",
+              "line": 341,
+              "length": 5,
+              "complexity": 3
+            },
+            {
+              "name": "_format_deployment",
+              "file": "agents/prd_writer.py",
+              "line": 352,
+              "length": 5,
+              "complexity": 1
+            },
+            {
+              "name": "__init__",
+              "file": "agents/readme_writer.py",
+              "line": 11,
+              "length": 1,
+              "complexity": 1
+            },
+            {
+              "name": "generate_readme",
+              "file": "agents/readme_writer.py",
+              "line": 14,
+              "length": 6,
+              "complexity": 2
+            },
+            {
+              "name": "_format_features",
+              "file": "agents/readme_writer.py",
+              "line": 318,
+              "length": 5,
+              "complexity": 3
+            },
+            {
+              "name": "_format_api_endpoints",
+              "file": "agents/readme_writer.py",
+              "line": 329,
+              "length": 5,
+              "complexity": 4
+            },
+            {
+              "name": "_format_tech_stack",
+              "file": "agents/readme_writer.py",
+              "line": 347,
+              "length": 6,
+              "complexity": 3
+            },
+            {
+              "name": "_format_architecture",
+              "file": "agents/readme_writer.py",
+              "line": 360,
+              "length": 5,
+              "complexity": 1
+            },
+            {
+              "name": "_format_database_schema",
+              "file": "agents/readme_writer.py",
+              "line": 376,
+              "length": 6,
+              "complexity": 7
+            },
+            {
+              "name": "__init__",
+              "file": "agents/code_generator.py",
+              "line": 13,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "generate_codebase",
+              "file": "agents/code_generator.py",
+              "line": 17,
+              "length": 6,
+              "complexity": 4
+            },
+            {
+              "name": "_generate_python_codebase",
+              "file": "agents/code_generator.py",
+              "line": 42,
+              "length": 5,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_node_codebase",
+              "file": "agents/code_generator.py",
+              "line": 71,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_main_py",
+              "file": "agents/code_generator.py",
+              "line": 86,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_models_py",
+              "file": "agents/code_generator.py",
+              "line": 144,
+              "length": 5,
+              "complexity": 2
+            },
+            {
+              "name": "_generate_database_py",
+              "file": "agents/code_generator.py",
+              "line": 190,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_routes_py",
+              "file": "agents/code_generator.py",
+              "line": 221,
+              "length": 5,
+              "complexity": 2
+            },
+            {
+              "name": "_generate_helpers_py",
+              "file": "agents/code_generator.py",
+              "line": 307,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_tests_py",
+              "file": "agents/code_generator.py",
+              "line": 331,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_config_py",
+              "file": "agents/code_generator.py",
+              "line": 365,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_requirements_txt",
+              "file": "agents/code_generator.py",
+              "line": 388,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_env_example",
+              "file": "agents/code_generator.py",
+              "line": 414,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_dockerfile",
+              "file": "agents/code_generator.py",
+              "line": 435,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_gitignore",
+              "file": "agents/code_generator.py",
+              "line": 460,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_index_js",
+              "file": "agents/code_generator.py",
+              "line": 511,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_package_json",
+              "file": "agents/code_generator.py",
+              "line": 564,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_user_model_js",
+              "file": "agents/code_generator.py",
+              "line": 594,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_api_routes_js",
+              "file": "agents/code_generator.py",
+              "line": 624,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_helpers_js",
+              "file": "agents/code_generator.py",
+              "line": 662,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_tests_js",
+              "file": "agents/code_generator.py",
+              "line": 690,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "__init__",
+              "file": "integrations/gpt_oss.py",
+              "line": 20,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "_make_request",
+              "file": "integrations/gpt_oss.py",
+              "line": 25,
+              "length": 2,
+              "complexity": 3
+            },
+            {
+              "name": "generate",
+              "file": "integrations/gpt_oss.py",
+              "line": 52,
+              "length": 7,
+              "complexity": 3
+            },
+            {
+              "name": "generate_with_tools",
+              "file": "integrations/gpt_oss.py",
+              "line": 94,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "analyze_code",
+              "file": "integrations/gpt_oss.py",
+              "line": 109,
+              "length": 5,
+              "complexity": 1
+            },
+            {
+              "name": "generate_app_plan",
+              "file": "integrations/gpt_oss.py",
+              "line": 128,
+              "length": 6,
+              "complexity": 4
+            },
+            {
+              "name": "generate_code",
+              "file": "integrations/gpt_oss.py",
+              "line": 174,
+              "length": 5,
+              "complexity": 1
+            },
+            {
+              "name": "score_application",
+              "file": "integrations/gpt_oss.py",
+              "line": 193,
+              "length": 6,
+              "complexity": 1
+            },
+            {
+              "name": "create_tool_call",
+              "file": "integrations/gpt_oss.py",
+              "line": 224,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "create_tool_result",
+              "file": "integrations/gpt_oss.py",
+              "line": 233,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "format_conversation",
+              "file": "integrations/gpt_oss.py",
+              "line": 242,
+              "length": 4,
+              "complexity": 5
+            },
+            {
+              "name": "get_db",
+              "file": "demo_output/task-management/app/database.py",
+              "line": 20,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "test_read_main",
+              "file": "demo_output/task-management/app/tests/test_main.py",
+              "line": 11,
+              "length": 4,
+              "complexity": 1
+            },
+            {
+              "name": "test_health_check",
+              "file": "demo_output/task-management/app/tests/test_main.py",
+              "line": 17,
+              "length": 4,
+              "complexity": 1
+            },
+            {
+              "name": "test_get_users",
+              "file": "demo_output/task-management/app/tests/test_main.py",
+              "line": 23,
+              "length": 4,
+              "complexity": 1
+            },
+            {
+              "name": "hash_password",
+              "file": "demo_output/task-management/app/utils/helpers.py",
+              "line": 9,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "generate_token",
+              "file": "demo_output/task-management/app/utils/helpers.py",
+              "line": 13,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "format_datetime",
+              "file": "demo_output/task-management/app/utils/helpers.py",
+              "line": 17,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "get_users",
+              "file": "demo_output/task-management/app/api/routes.py",
+              "line": 14,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "get_user",
+              "file": "demo_output/task-management/app/api/routes.py",
+              "line": 29,
+              "length": 4,
+              "complexity": 2
+            },
+            {
+              "name": "get_db",
+              "file": "gpt_oss_test/SimpleTodoApp/database.py",
+              "line": 20,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "test_read_main",
+              "file": "gpt_oss_test/SimpleTodoApp/tests/test_main.py",
+              "line": 11,
+              "length": 4,
+              "complexity": 1
+            },
+            {
+              "name": "test_health_check",
+              "file": "gpt_oss_test/SimpleTodoApp/tests/test_main.py",
+              "line": 17,
+              "length": 4,
+              "complexity": 1
+            },
+            {
+              "name": "test_get_users",
+              "file": "gpt_oss_test/SimpleTodoApp/tests/test_main.py",
+              "line": 23,
+              "length": 4,
+              "complexity": 1
+            },
+            {
+              "name": "hash_password",
+              "file": "gpt_oss_test/SimpleTodoApp/utils/helpers.py",
+              "line": 9,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "generate_token",
+              "file": "gpt_oss_test/SimpleTodoApp/utils/helpers.py",
+              "line": 13,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "format_datetime",
+              "file": "gpt_oss_test/SimpleTodoApp/utils/helpers.py",
+              "line": 17,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "get_users",
+              "file": "gpt_oss_test/SimpleTodoApp/api/routes.py",
+              "line": 14,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "get_user",
+              "file": "gpt_oss_test/SimpleTodoApp/api/routes.py",
+              "line": 29,
+              "length": 4,
+              "complexity": 2
+            },
+            {
+              "name": "get_db",
+              "file": "output/restaurant-inventory/app/database.py",
+              "line": 20,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "test_read_main",
+              "file": "output/restaurant-inventory/app/tests/test_main.py",
+              "line": 11,
+              "length": 4,
+              "complexity": 1
+            },
+            {
+              "name": "test_health_check",
+              "file": "output/restaurant-inventory/app/tests/test_main.py",
+              "line": 17,
+              "length": 4,
+              "complexity": 1
+            },
+            {
+              "name": "test_get_users",
+              "file": "output/restaurant-inventory/app/tests/test_main.py",
+              "line": 23,
+              "length": 4,
+              "complexity": 1
+            },
+            {
+              "name": "hash_password",
+              "file": "output/restaurant-inventory/app/utils/helpers.py",
+              "line": 9,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "generate_token",
+              "file": "output/restaurant-inventory/app/utils/helpers.py",
+              "line": 13,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "format_datetime",
+              "file": "output/restaurant-inventory/app/utils/helpers.py",
+              "line": 17,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "get_users",
+              "file": "output/restaurant-inventory/app/api/routes.py",
+              "line": 14,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "get_user",
+              "file": "output/restaurant-inventory/app/api/routes.py",
+              "line": 29,
+              "length": 4,
+              "complexity": 2
+            },
+            {
+              "name": "get_products",
+              "file": "output/restaurant-inventory/app/api/routes.py",
+              "line": 44,
+              "length": 4,
+              "complexity": 1
+            },
+            {
+              "name": "get_product",
+              "file": "output/restaurant-inventory/app/api/routes.py",
+              "line": 61,
+              "length": 5,
+              "complexity": 2
+            },
+            {
+              "name": "get_db",
+              "file": "secure_app_test/SecureTaskApp/database.py",
+              "line": 20,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "setup_security_middleware",
+              "file": "secure_app_test/SecureTaskApp/middleware/security.py",
+              "line": 30,
+              "length": 7,
+              "complexity": 1
+            },
+            {
+              "name": "verify_password",
+              "file": "secure_app_test/SecureTaskApp/auth/auth.py",
+              "line": 23,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "get_password_hash",
+              "file": "secure_app_test/SecureTaskApp/auth/auth.py",
+              "line": 27,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "create_access_token",
+              "file": "secure_app_test/SecureTaskApp/auth/auth.py",
+              "line": 31,
+              "length": 6,
+              "complexity": 2
+            },
+            {
+              "name": "verify_token",
+              "file": "secure_app_test/SecureTaskApp/auth/auth.py",
+              "line": 42,
+              "length": 2,
+              "complexity": 3
+            },
+            {
+              "name": "get_current_user",
+              "file": "secure_app_test/SecureTaskApp/auth/auth.py",
+              "line": 53,
+              "length": 8,
+              "complexity": 3
+            },
+            {
+              "name": "get_current_active_user",
+              "file": "secure_app_test/SecureTaskApp/auth/auth.py",
+              "line": 69,
+              "length": 3,
+              "complexity": 2
+            },
+            {
+              "name": "validate_username",
+              "file": "secure_app_test/SecureTaskApp/auth/models.py",
+              "line": 16,
+              "length": 3,
+              "complexity": 3
+            },
+            {
+              "name": "validate_password",
+              "file": "secure_app_test/SecureTaskApp/auth/models.py",
+              "line": 24,
+              "length": 5,
+              "complexity": 5
+            },
+            {
+              "name": "require_admin",
+              "file": "secure_app_test/SecureTaskApp/auth/dependencies.py",
+              "line": 13,
+              "length": 3,
+              "complexity": 2
+            },
+            {
+              "name": "require_user_permission",
+              "file": "secure_app_test/SecureTaskApp/auth/dependencies.py",
+              "line": 22,
+              "length": 3,
+              "complexity": 2
+            },
+            {
+              "name": "test_read_main",
+              "file": "secure_app_test/SecureTaskApp/tests/test_main.py",
+              "line": 11,
+              "length": 4,
+              "complexity": 1
+            },
+            {
+              "name": "test_health_check",
+              "file": "secure_app_test/SecureTaskApp/tests/test_main.py",
+              "line": 17,
+              "length": 4,
+              "complexity": 1
+            },
+            {
+              "name": "test_get_users",
+              "file": "secure_app_test/SecureTaskApp/tests/test_main.py",
+              "line": 23,
+              "length": 4,
+              "complexity": 1
+            },
+            {
+              "name": "hash_password",
+              "file": "secure_app_test/SecureTaskApp/utils/helpers.py",
+              "line": 9,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "generate_token",
+              "file": "secure_app_test/SecureTaskApp/utils/helpers.py",
+              "line": 13,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "format_datetime",
+              "file": "secure_app_test/SecureTaskApp/utils/helpers.py",
+              "line": 17,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "validate_email",
+              "file": "secure_app_test/SecureTaskApp/utils/validation.py",
+              "line": 9,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "validate_password_strength",
+              "file": "secure_app_test/SecureTaskApp/utils/validation.py",
+              "line": 14,
+              "length": 7,
+              "complexity": 5
+            },
+            {
+              "name": "sanitize_input",
+              "file": "secure_app_test/SecureTaskApp/utils/validation.py",
+              "line": 35,
+              "length": 4,
+              "complexity": 2
+            },
+            {
+              "name": "validate_request_size",
+              "file": "secure_app_test/SecureTaskApp/utils/validation.py",
+              "line": 43,
+              "length": 2,
+              "complexity": 1
+            },
+            {
+              "name": "get_users",
+              "file": "secure_app_test/SecureTaskApp/api/routes.py",
+              "line": 14,
+              "length": 3,
+              "complexity": 1
+            },
+            {
+              "name": "get_user",
+              "file": "secure_app_test/SecureTaskApp/api/routes.py",
+              "line": 29,
+              "length": 4,
+              "complexity": 2
+            }
+          ],
+          "classes": [
+            {
+              "name": "JournalMode",
+              "file": "modes/journal.py",
+              "line": 13,
+              "methods": 12
+            },
+            {
+              "name": "ComposeMode",
+              "file": "modes/compose.py",
+              "line": 15,
+              "methods": 4
+            },
+            {
+              "name": "BlueprintMode",
+              "file": "modes/blueprint.py",
+              "line": 13,
+              "methods": 17
+            },
+            {
+              "name": "PluginMode",
+              "file": "modes/plugin.py",
+              "line": 16,
+              "methods": 10
+            },
+            {
+              "name": "BaseMode",
+              "file": "modes/base.py",
+              "line": 14,
+              "methods": 8
+            },
+            {
+              "name": "ScoreMode",
+              "file": "modes/score.py",
+              "line": 13,
+              "methods": 16
+            },
+            {
+              "name": "ComposerAgent",
+              "file": "agents/composer.py",
+              "line": 11,
+              "methods": 4
+            },
+            {
+              "name": "SecurityGeneratorAgent",
+              "file": "agents/security_generator.py",
+              "line": 9,
+              "methods": 9
+            },
+            {
+              "name": "PRDWriterAgent",
+              "file": "agents/prd_writer.py",
+              "line": 8,
+              "methods": 14
+            },
+            {
+              "name": "READMEWriterAgent",
+              "file": "agents/readme_writer.py",
+              "line": 8,
+              "methods": 7
+            },
+            {
+              "name": "CodeGeneratorAgent",
+              "file": "agents/code_generator.py",
+              "line": 10,
+              "methods": 21
+            },
+            {
+              "name": "GPTOSSClient",
+              "file": "integrations/gpt_oss.py",
+              "line": 17,
+              "methods": 8
+            },
+            {
+              "name": "HarmonyFormat",
+              "file": "integrations/gpt_oss.py",
+              "line": 220,
+              "methods": 3
+            },
+            {
+              "name": "Settings",
+              "file": "demo_output/task-management/app/config.py",
+              "line": 8,
+              "methods": 0
+            },
+            {
+              "name": "Config",
+              "file": "demo_output/task-management/app/config.py",
+              "line": 15,
+              "methods": 0
+            },
+            {
+              "name": "User",
+              "file": "demo_output/task-management/app/models.py",
+              "line": 11,
+              "methods": 0
+            },
+            {
+              "name": "Settings",
+              "file": "gpt_oss_test/SimpleTodoApp/config.py",
+              "line": 8,
+              "methods": 0
+            },
+            {
+              "name": "Config",
+              "file": "gpt_oss_test/SimpleTodoApp/config.py",
+              "line": 15,
+              "methods": 0
+            },
+            {
+              "name": "User",
+              "file": "gpt_oss_test/SimpleTodoApp/models.py",
+              "line": 11,
+              "methods": 0
+            },
+            {
+              "name": "Settings",
+              "file": "output/restaurant-inventory/app/config.py",
+              "line": 8,
+              "methods": 0
+            },
+            {
+              "name": "Config",
+              "file": "output/restaurant-inventory/app/config.py",
+              "line": 15,
+              "methods": 0
+            },
+            {
+              "name": "User",
+              "file": "output/restaurant-inventory/app/models.py",
+              "line": 11,
+              "methods": 0
+            },
+            {
+              "name": "Product",
+              "file": "output/restaurant-inventory/app/models.py",
+              "line": 24,
+              "methods": 0
+            },
+            {
+              "name": "Settings",
+              "file": "secure_app_test/SecureTaskApp/config.py",
+              "line": 8,
+              "methods": 0
+            },
+            {
+              "name": "Config",
+              "file": "secure_app_test/SecureTaskApp/config.py",
+              "line": 15,
+              "methods": 0
+            },
+            {
+              "name": "User",
+              "file": "secure_app_test/SecureTaskApp/models.py",
+              "line": 11,
+              "methods": 0
+            },
+            {
+              "name": "SecurityMiddleware",
+              "file": "secure_app_test/SecureTaskApp/middleware/security.py",
+              "line": 17,
+              "methods": 0
+            },
+            {
+              "name": "SecuritySettings",
+              "file": "secure_app_test/SecureTaskApp/config/security.py",
+              "line": 9,
+              "methods": 0
+            },
+            {
+              "name": "Config",
+              "file": "secure_app_test/SecureTaskApp/config/security.py",
+              "line": 34,
+              "methods": 0
+            },
+            {
+              "name": "UserCreate",
+              "file": "secure_app_test/SecureTaskApp/auth/models.py",
+              "line": 9,
+              "methods": 2
+            },
+            {
+              "name": "UserLogin",
+              "file": "secure_app_test/SecureTaskApp/auth/models.py",
+              "line": 35,
+              "methods": 0
+            },
+            {
+              "name": "Token",
+              "file": "secure_app_test/SecureTaskApp/auth/models.py",
+              "line": 40,
+              "methods": 0
+            },
+            {
+              "name": "UserResponse",
+              "file": "secure_app_test/SecureTaskApp/auth/models.py",
+              "line": 45,
+              "methods": 0
+            },
+            {
+              "name": "Config",
+              "file": "secure_app_test/SecureTaskApp/auth/models.py",
+              "line": 53,
+              "methods": 0
+            }
+          ],
+          "complexity_metrics": {
+            "high_complexity_functions": [
+              {
+                "name": "main",
+                "file": "cli.py",
+                "line": 22,
+                "length": 15,
+                "complexity": 16
+              },
+              {
+                "name": "_analyze_codebase_metrics",
+                "file": "modes/journal.py",
+                "line": 84,
+                "length": 12,
+                "complexity": 23
+              },
+              {
+                "name": "_analyze_technical_debt",
+                "file": "modes/journal.py",
+                "line": 185,
+                "length": 6,
+                "complexity": 15
+              },
+              {
+                "name": "_generate_journal_report",
+                "file": "modes/journal.py",
+                "line": 455,
+                "length": 4,
+                "complexity": 17
+              },
+              {
+                "name": "_analyze_structure",
+                "file": "modes/blueprint.py",
+                "line": 80,
+                "length": 4,
+                "complexity": 13
+              },
+              {
+                "name": "_generate_analysis_report",
+                "file": "modes/blueprint.py",
+                "line": 493,
+                "length": 4,
+                "complexity": 17
+              },
+              {
+                "name": "_generate_refactoring_recommendations",
+                "file": "modes/blueprint.py",
+                "line": 569,
+                "length": 7,
+                "complexity": 11
+              },
+              {
+                "name": "_analyze_plugin_file",
+                "file": "modes/plugin.py",
+                "line": 126,
+                "length": 4,
+                "complexity": 13
+              }
+            ],
+            "long_functions": [
+              {
+                "name": "execute",
+                "file": "modes/journal.py",
+                "line": 20,
+                "length": 36,
+                "complexity": 2
+              },
+              {
+                "name": "execute",
+                "file": "modes/compose.py",
+                "line": 26,
+                "length": 29,
+                "complexity": 1
+              },
+              {
+                "name": "execute",
+                "file": "modes/blueprint.py",
+                "line": 20,
+                "length": 35,
+                "complexity": 2
+              },
+              {
+                "name": "execute",
+                "file": "modes/plugin.py",
+                "line": 27,
+                "length": 22,
+                "complexity": 7
+              },
+              {
+                "name": "execute",
+                "file": "modes/score.py",
+                "line": 21,
+                "length": 26,
+                "complexity": 3
+              }
+            ],
+            "deep_nesting": []
+          },
+          "quality_issues": [],
+          "recommendations": [
+            "Consider refactoring high complexity functions into smaller, more focused functions",
+            "Break down long functions into smaller, more manageable pieces",
+            "Consider splitting large files into smaller modules"
+          ]
+        },
+        "report_file": "plugin_test/code_analysis_report.md"
+      }
+    },
+    "id": 5
+  },
+  {
+    "timestamp": "2025-08-10T00:52:41.627554",
+    "agent": "PluginAgent",
+    "thought": "Generating execution report",
+    "data": {},
+    "id": 6
+  }
+];
+        
+        // Initialize Mermaid
+        mermaid.initialize({ startOnLoad: true });
+        
+        // Calculate statistics
+        function calculateStats() {
+            const totalThoughts = thoughtTrail.length;
+            const uniqueAgents = new Set(thoughtTrail.map(t => t.agent)).size;
+            const avgLength = Math.round(thoughtTrail.reduce((sum, t) => sum + t.thought.length, 0) / totalThoughts);
+            
+            // Calculate duration
+            const firstTime = new Date(thoughtTrail[0].timestamp);
+            const lastTime = new Date(thoughtTrail[thoughtTrail.length - 1].timestamp);
+            const duration = Math.round((lastTime - firstTime) / 1000);
+            
+            document.getElementById('total-thoughts').textContent = totalThoughts;
+            document.getElementById('unique-agents').textContent = uniqueAgents;
+            document.getElementById('avg-thought-length').textContent = avgLength;
+            document.getElementById('analysis-duration').textContent = duration + 's';
+        }
+        
+        // Populate agent filter
+        function populateAgentFilter() {
+            const agents = [...new Set(thoughtTrail.map(t => t.agent))];
+            const select = document.getElementById('agent-filter');
+            
+            agents.forEach(agent => {
+                const option = document.createElement('option');
+                option.value = agent;
+                option.textContent = agent;
+                select.appendChild(option);
+            });
+        }
+        
+        // Render timeline
+        function renderTimeline(filteredTrail = thoughtTrail) {
+            const timeline = document.getElementById('timeline');
+            timeline.innerHTML = '';
+            
+            filteredTrail.forEach(thought => {
+                const item = document.createElement('div');
+                item.className = 'timeline-item';
+                
+                const timestamp = new Date(thought.timestamp).toLocaleTimeString();
+                const dataPreview = thought.data && Object.keys(thought.data).length > 0 
+                    ? `<div class="data-preview">Data: ${JSON.stringify(thought.data).substring(0, 100)}...</div>`
+                    : '';
+                
+                item.innerHTML = `
+                    <div class="timeline-header">
+                        <span class="agent">${thought.agent}</span>
+                        <span class="timestamp">${timestamp}</span>
+                    </div>
+                    <div class="thought">${thought.thought}</div>
+                    ${dataPreview}
+                `;
+                
+                timeline.appendChild(item);
+            });
+        }
+        
+        // Create agent activity chart
+        function createAgentChart() {
+            const ctx = document.getElementById('agentChart').getContext('2d');
+            const agentCounts = {};
+            
+            thoughtTrail.forEach(thought => {
+                agentCounts[thought.agent] = (agentCounts[thought.agent] || 0) + 1;
+            });
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(agentCounts),
+                    datasets: [{
+                        label: 'Thoughts per Agent',
+                        data: Object.values(agentCounts),
+                        backgroundColor: [
+                            '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4',
+                            '#FFEAA7', '#DDA0DD', '#98D8C8', '#F7DC6F'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Filter by agent
+        function filterByAgent() {
+            const selectedAgent = document.getElementById('agent-filter').value;
+            const filteredTrail = selectedAgent 
+                ? thoughtTrail.filter(t => t.agent === selectedAgent)
+                : thoughtTrail;
+            
+            renderTimeline(filteredTrail);
+        }
+        
+        // Export functions
+        function exportToJSON() {
+            const dataStr = JSON.stringify(thoughtTrail, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'thought_trail.json';
+            link.click();
+        }
+        
+        function exportToCSV() {
+            const headers = ['Timestamp', 'Agent', 'Thought', 'Data'];
+            const csvContent = [
+                headers.join(','),
+                ...thoughtTrail.map(t => [
+                    t.timestamp,
+                    t.agent,
+                    `"${t.thought.replace(/"/g, '""')}"`,
+                    `"${JSON.stringify(t.data).replace(/"/g, '""')}"`
+                ].join(','))
+            ].join('\n');
+            
+            const dataBlob = new Blob([csvContent], {type: 'text/csv'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'thought_trail.csv';
+            link.click();
+        }
+        
+        // Toggle data preview
+        function toggleDataPreview() {
+            const previews = document.querySelectorAll('.data-preview');
+            previews.forEach(preview => {
+                preview.style.display = preview.style.display === 'none' ? 'block' : 'none';
+            });
+        }
+        
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            calculateStats();
+            populateAgentFilter();
+            renderTimeline();
+            createAgentChart();
+        });
+    </script>
+</body>
+</html>
