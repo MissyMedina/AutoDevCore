@@ -12,8 +12,14 @@ from typing import Any, Dict, Optional
 # Add plugins directory to path for imports
 sys.path.append(str(Path(__file__).parent.parent / "plugins"))
 
-from multi_model_ai import (AIRequest, AIResponse, ModelProvider, MultiModelAI,
-                            TaskType, generate_ai_response)
+from multi_model_ai import (
+    AIRequest,
+    AIResponse,
+    ModelProvider,
+    MultiModelAI,
+    TaskType,
+    generate_ai_response,
+)
 
 
 class AIOrchestrator:

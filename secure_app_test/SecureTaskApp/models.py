@@ -4,8 +4,7 @@ SQLAlchemy Models
 
 from datetime import datetime
 
-from sqlalchemy import (DECIMAL, Boolean, Column, DateTime, Integer, String,
-                        Text)
+from sqlalchemy import DECIMAL, Boolean, Column, DateTime, Integer, String, Text
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()

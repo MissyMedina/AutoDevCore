@@ -11,6 +11,7 @@ import pytest
 import requests
 
 from integrations.gpt_oss import GPTOSSClient
+
 # Import the modules to test
 from modes.base import BaseMode
 from modes.compose import ComposeMode
