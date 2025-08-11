@@ -1,0 +1,14 @@
+{
+  "providers": {},
+  "default_provider": "gpt-oss",
+  "fallback_chain": [
+    "gpt-oss",
+    "openai",
+    "anthropic",
+    "google"
+  ],
+  "timeout": 60,
+  "max_retries": 3,
+  "cost_optimization": true,
+  "performance_tracking": true
+}
