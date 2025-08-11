@@ -25,11 +25,12 @@ class TestBaseMode:
     def setup_method(self):
         """Set up test environment."""
         self.temp_dir = tempfile.mkdtemp()
+
         # Create a concrete test class since BaseMode is abstract
         class TestMode(BaseMode):
             def execute(self):
                 pass
-        
+
         self.base_mode = TestMode(self.temp_dir, verbose=True)
 
     def teardown_method(self):
@@ -109,11 +110,16 @@ class TestComposeMode:
         mock_readme.return_value.generate_readme.return_value = "Test README content"
 
         # Mock the compose mode to use our mocked agents
-        with patch.object(self.compose_mode, 'composer', mock_composer.return_value), \
-             patch.object(self.compose_mode, 'prd_writer', mock_prd.return_value), \
-             patch.object(self.compose_mode, 'code_generator', mock_code.return_value), \
-             patch.object(self.compose_mode, 'readme_writer', mock_readme.return_value):
-            
+        with patch.object(
+            self.compose_mode, "composer", mock_composer.return_value
+        ), patch.object(
+            self.compose_mode, "prd_writer", mock_prd.return_value
+        ), patch.object(
+            self.compose_mode, "code_generator", mock_code.return_value
+        ), patch.object(
+            self.compose_mode, "readme_writer", mock_readme.return_value
+        ):
+
             # Execute the mode
             self.compose_mode.execute()
 
@@ -159,7 +165,7 @@ class TestScoreMode:
         template_file.write_text(template_content)
 
         # Mock the template path
-        with patch.object(self.score_mode, 'template', str(template_file)):
+        with patch.object(self.score_mode, "template", str(template_file)):
             template = self.score_mode._load_template()
             assert "Security" in template["categories"]
 
@@ -222,7 +228,7 @@ class TestGPTOSSClient:
         """Test request timeout handling."""
         # Clear cache first to ensure we don't get cached response
         self.client.clear_cache()
-        
+
         mock_post.side_effect = requests.exceptions.Timeout()
 
         result = self.client._make_request("test prompt")
@@ -391,12 +397,12 @@ class TestPerformance:
     def test_thought_logging_performance(self):
         """Test thought logging performance."""
         temp_dir = tempfile.mkdtemp()
-        
+
         # Create a concrete test class since BaseMode is abstract
         class TestMode(BaseMode):
             def execute(self):
                 pass
-        
+
         base_mode = TestMode(temp_dir, verbose=False)
 
         import time
