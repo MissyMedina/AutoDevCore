@@ -163,7 +163,7 @@ jobs:
         
     - name: Test Docker image
       run: |
-        docker run --rm ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }} python -c "
+        docker run --rm autodevcore:latest python -c "
         print('AutoDevCore Docker test successful!')
         from integrations.gpt_oss import gpt_oss_client
         print('GPT-OSS integration:', gpt_oss_client.get_cache_stats())
