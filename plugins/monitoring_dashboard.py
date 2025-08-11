@@ -580,16 +580,20 @@ class MonitoringDashboard:
                 "error": health_check.last_error
             }
         
-        # Get active alerts
+            # Get active alerts
         active_alerts = []
-        for alert_name, alert_data in self.alert_manager.triggered_alerts.items():
-            active_alerts.append({
-                "name": alert_name,
-                "severity": alert_data["alert"].severity,
-                "message": alert_data["alert"].message,
-                "triggered_at": alert_data["triggered_at"].isoformat(),
-                "context": alert_data["context"]
-            })
+        try:
+            for alert_name, alert_data in self.alert_manager.triggered_alerts.items():
+                active_alerts.append({
+                    "name": alert_name,
+                    "severity": alert_data["alert"].severity,
+                    "message": alert_data["alert"].message,
+                    "triggered_at": alert_data["triggered_at"].isoformat(),
+                    "context": alert_data["context"]
+                })
+        except (AttributeError, KeyError, TypeError) as e:
+            # If alert_manager or triggered_alerts is not properly initialized
+            active_alerts = []
         
         return {
             "timestamp": datetime.now().isoformat(),
@@ -660,8 +664,8 @@ def run(context=None):
         "data": {
             "dashboard_data": dashboard_data,
             "report": report,
-            "metrics_count": len(dashboard_data["metrics"]),
-            "health_checks_count": len(dashboard_data["health_status"]),
-            "active_alerts_count": len(dashboard_data["active_alerts"])
+            "metrics_count": len(dashboard_data.get("metrics", {})),
+            "health_checks_count": len(dashboard_data.get("health_status", {})),
+            "active_alerts_count": len(dashboard_data.get("active_alerts", []))
         }
     }
