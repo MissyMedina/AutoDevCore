@@ -16,7 +16,6 @@ websockets==12.0
 asyncio-mqtt==0.16.1
 
 # Database & Storage
-sqlite3
 psutil==5.9.6
 
 # Testing & Quality
