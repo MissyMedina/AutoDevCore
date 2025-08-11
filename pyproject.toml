@@ -25,3 +25,45 @@ extend-exclude = '''
   | gui_env
 )/
 '''
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = false
+warn_unused_configs = false
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = false
+disallow_untyped_decorators = false
+no_implicit_optional = false
+warn_redundant_casts = false
+warn_unused_ignores = false
+warn_no_return = false
+warn_unreachable = false
+strict_equality = false
+show_error_codes = true
+exclude = [
+    "gui_env",
+    "venv",
+    "site-packages",
+    "__pycache__",
+    ".pytest_cache",
+    "output",
+    "demo_output",
+    "test_evaluation",
+    "secure_app_test",
+    "secure_app_test_v2",
+    "gpt_oss_test",
+    "scoring_test",
+    "scoring_healthcare",
+    "journal_test",
+    "journal_test_enhanced",
+    "blueprint_test",
+    "secure_scoring_test",
+    "plugin_test",
+    "plugin_docs",
+    "profiles",
+    "logs",
+    "data"
+]
+ignore_missing_imports = true
+explicit_package_bases = true

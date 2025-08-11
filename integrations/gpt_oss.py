@@ -48,7 +48,7 @@ class GPTOSSClient:
         """Generate a cache key for the request."""
         cache_data = {"prompt": prompt, "model": self.model, "params": kwargs}
         cache_str = json.dumps(cache_data, sort_keys=True)
-        return hashlib.md5(cache_str.encode()).hexdigest()
+        return hashlib.md5(cache_str.encode(), usedforsecurity=False).hexdigest()
 
     def _get_cache_path(self, cache_key: str) -> Path:
         """Get the cache file path."""
