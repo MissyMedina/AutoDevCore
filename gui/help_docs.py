@@ -8,63 +8,64 @@ import streamlit as st
 from pathlib import Path
 import json
 
+
 class HelpDocumentation:
     """Comprehensive help documentation system for AutoDevCore GUI"""
-    
+
     def __init__(self):
         self.help_sections = {
-            'getting_started': {
-                'title': '🚀 Getting Started',
-                'icon': '🚀',
-                'content': self._get_getting_started_content()
+            "getting_started": {
+                "title": "🚀 Getting Started",
+                "icon": "🚀",
+                "content": self._get_getting_started_content(),
             },
-            'dashboard': {
-                'title': '📊 Dashboard Guide',
-                'icon': '📊',
-                'content': self._get_dashboard_content()
+            "dashboard": {
+                "title": "📊 Dashboard Guide",
+                "icon": "📊",
+                "content": self._get_dashboard_content(),
             },
-            'projects': {
-                'title': '🎯 Project Management',
-                'icon': '🎯',
-                'content': self._get_projects_content()
+            "projects": {
+                "title": "🎯 Project Management",
+                "icon": "🎯",
+                "content": self._get_projects_content(),
             },
-            'ai_lab': {
-                'title': '🤖 AI Lab & GPT-OSS',
-                'icon': '🤖',
-                'content': self._get_ai_lab_content()
+            "ai_lab": {
+                "title": "🤖 AI Lab & GPT-OSS",
+                "icon": "🤖",
+                "content": self._get_ai_lab_content(),
             },
-            'team': {
-                'title': '👥 Team Collaboration',
-                'icon': '👥',
-                'content': self._get_team_content()
+            "team": {
+                "title": "👥 Team Collaboration",
+                "icon": "👥",
+                "content": self._get_team_content(),
             },
-            'deploy': {
-                'title': '🚀 Deployment & DevOps',
-                'icon': '🚀',
-                'content': self._get_deploy_content()
+            "deploy": {
+                "title": "🚀 Deployment & DevOps",
+                "icon": "🚀",
+                "content": self._get_deploy_content(),
             },
-            'analytics': {
-                'title': '📈 Analytics & Reporting',
-                'icon': '📈',
-                'content': self._get_analytics_content()
+            "analytics": {
+                "title": "📈 Analytics & Reporting",
+                "icon": "📈",
+                "content": self._get_analytics_content(),
             },
-            'cli_guide': {
-                'title': '💻 CLI Command Guide',
-                'icon': '💻',
-                'content': self._get_cli_guide_content()
+            "cli_guide": {
+                "title": "💻 CLI Command Guide",
+                "icon": "💻",
+                "content": self._get_cli_guide_content(),
             },
-            'troubleshooting': {
-                'title': '🔧 Troubleshooting',
-                'icon': '🔧',
-                'content': self._get_troubleshooting_content()
+            "troubleshooting": {
+                "title": "🔧 Troubleshooting",
+                "icon": "🔧",
+                "content": self._get_troubleshooting_content(),
             },
-            'faq': {
-                'title': '❓ Frequently Asked Questions',
-                'icon': '❓',
-                'content': self._get_faq_content()
-            }
+            "faq": {
+                "title": "❓ Frequently Asked Questions",
+                "icon": "❓",
+                "content": self._get_faq_content(),
+            },
         }
-    
+
     def _get_getting_started_content(self):
         return """
         # 🚀 Welcome to AutoDevCore - Visual Development Hub
@@ -120,7 +121,7 @@ class HelpDocumentation:
         - Check the **System Status** for real-time health monitoring
         - Use **Quick Actions** for common tasks
         """
-    
+
     def _get_dashboard_content(self):
         return """
         # 📊 Dashboard Guide
@@ -183,7 +184,7 @@ class HelpDocumentation:
         - Use the sidebar to access different sections
         - Monitor system status for health indicators
         """
-    
+
     def _get_projects_content(self):
         return """
         # 🎯 Project Management Guide
@@ -257,7 +258,7 @@ class HelpDocumentation:
         - Assign team members early
         - Monitor progress regularly
         """
-    
+
     def _get_ai_lab_content(self):
         return """
         # 🤖 AI Lab & GPT-OSS Guide
@@ -342,7 +343,7 @@ class HelpDocumentation:
         - Monitor cache performance
         - Clear cache when needed
         """
-    
+
     def _get_team_content(self):
         return """
         # 👥 Team Collaboration Guide
@@ -426,7 +427,7 @@ class HelpDocumentation:
         - Monitor team activities
         - Follow security guidelines
         """
-    
+
     def _get_deploy_content(self):
         return """
         # 🚀 Deployment & DevOps Guide
@@ -535,7 +536,7 @@ class HelpDocumentation:
         - Monitor deployments closely
         - Have rollback plans ready
         """
-    
+
     def _get_analytics_content(self):
         return """
         # 📈 Analytics & Reporting Guide
@@ -660,7 +661,7 @@ class HelpDocumentation:
         - **Regular Reviews**: Periodic analysis sessions
         - **Action Planning**: Implement improvements
         """
-    
+
     def _get_troubleshooting_content(self):
         return """
         # 🔧 Troubleshooting Guide
@@ -884,7 +885,7 @@ class HelpDocumentation:
         cp -r ~/.streamlit_backup/ ~/.streamlit/
         ```
         """
-    
+
     def _get_faq_content(self):
         return """
         # ❓ Frequently Asked Questions
@@ -1027,7 +1028,7 @@ class HelpDocumentation:
         **Q: How do I stay updated?**
         A: Follow the project on GitHub, join the Discord community, and check for regular updates and new features.
         """
-    
+
     def _get_cli_guide_content(self):
         return """
         # 💻 AutoDevCore CLI Command Guide
@@ -1368,80 +1369,81 @@ class HelpDocumentation:
         - `4`: Permission error
         - `5`: Resource error
         """
-    
+
     def show_help_page(self):
         """Display the main help page with navigation"""
         st.markdown("## 📚 AutoDevCore Help & Documentation")
-        
+
         # Help navigation
         col1, col2, col3 = st.columns(3)
-        
+
         with col1:
             st.markdown("### 🚀 Getting Started")
             if st.button("🚀 Getting Started Guide"):
-                st.session_state.help_section = 'getting_started'
+                st.session_state.help_section = "getting_started"
                 st.rerun()
-        
+
         with col2:
             st.markdown("### 🎯 Core Features")
             if st.button("📊 Dashboard Guide"):
-                st.session_state.help_section = 'dashboard'
+                st.session_state.help_section = "dashboard"
                 st.rerun()
             if st.button("🎯 Project Management"):
-                st.session_state.help_section = 'projects'
+                st.session_state.help_section = "projects"
                 st.rerun()
             if st.button("🤖 AI Lab Guide"):
-                st.session_state.help_section = 'ai_lab'
+                st.session_state.help_section = "ai_lab"
                 st.rerun()
-        
+
         with col3:
             st.markdown("### 🔧 Support")
             if st.button("🔧 Troubleshooting"):
-                st.session_state.help_section = 'troubleshooting'
+                st.session_state.help_section = "troubleshooting"
                 st.rerun()
             if st.button("❓ FAQ"):
-                st.session_state.help_section = 'faq'
+                st.session_state.help_section = "faq"
                 st.rerun()
-        
+
         # Additional sections
         st.markdown("### 👥 Collaboration & Deployment")
         col4, col5, col6 = st.columns(3)
-        
+
         with col4:
             if st.button("👥 Team Collaboration"):
-                st.session_state.help_section = 'team'
+                st.session_state.help_section = "team"
                 st.rerun()
-        
+
         with col5:
             if st.button("🚀 Deployment Guide"):
-                st.session_state.help_section = 'deploy'
+                st.session_state.help_section = "deploy"
                 st.rerun()
-        
+
         with col6:
             if st.button("📈 Analytics Guide"):
-                st.session_state.help_section = 'analytics'
+                st.session_state.help_section = "analytics"
                 st.rerun()
-        
+
         # CLI Guide section
         st.markdown("### 💻 Command Line Interface")
         if st.button("💻 CLI Command Guide"):
-            st.session_state.help_section = 'cli_guide'
+            st.session_state.help_section = "cli_guide"
             st.rerun()
-        
+
         # Show selected section content
-        if hasattr(st.session_state, 'help_section') and st.session_state.help_section:
+        if hasattr(st.session_state, "help_section") and st.session_state.help_section:
             section = self.help_sections.get(st.session_state.help_section)
             if section:
                 st.markdown(f"## {section['icon']} {section['title']}")
-                st.markdown(section['content'])
-                
+                st.markdown(section["content"])
+
                 # Back to help menu button
                 if st.button("← Back to Help Menu"):
                     st.session_state.help_section = None
                     st.rerun()
         else:
             # Default help overview
-            st.markdown("""
+            st.markdown(
+                """
             ### Welcome to AutoDevCore Help!
             
             This comprehensive help system will guide you through all aspects of AutoDevCore GUI and CLI.
@@ -1463,7 +1465,9 @@ class HelpDocumentation:
             - Use the search function in your browser to find specific topics
             - Check the troubleshooting section before contacting support
             - Use CLI commands for automation and scripting
-            """)
+            """
+            )
+
 
 def show_help_documentation():
     """Main function to display help documentation"""

@@ -310,33 +310,46 @@ HTML_TEMPLATE = """
 </html>
 """
 
-@app.route('/')
+
+@app.route("/")
 def index():
     return render_template_string(HTML_TEMPLATE)
 
-@app.route('/api/status')
-def status():
-    return jsonify({
-        'status': 'online',
-        'timestamp': datetime.now().isoformat(),
-        'version': '1.0.0',
-        'features': ['AI Code Generation', 'Project Management', 'Team Collaboration', 'Deployment Pipeline']
-    })
 
-@app.route('/api/create-project', methods=['POST'])
+@app.route("/api/status")
+def status():
+    return jsonify(
+        {
+            "status": "online",
+            "timestamp": datetime.now().isoformat(),
+            "version": "1.0.0",
+            "features": [
+                "AI Code Generation",
+                "Project Management",
+                "Team Collaboration",
+                "Deployment Pipeline",
+            ],
+        }
+    )
+
+
+@app.route("/api/create-project", methods=["POST"])
 def create_project():
     data = request.json
-    return jsonify({
-        'success': True,
-        'project_id': 'proj_' + str(int(time.time())),
-        'message': f'Project "{data.get("name", "New Project")}" created successfully!'
-    })
+    return jsonify(
+        {
+            "success": True,
+            "project_id": "proj_" + str(int(time.time())),
+            "message": f'Project "{data.get("name", "New Project")}" created successfully!',
+        }
+    )
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     print("🚀 Starting AutoDevCore GUI...")
     print("📱 The GUI will open in your default web browser")
     print("🔗 URL: http://localhost:8501")
     print("⏹️  Press Ctrl+C to stop the server")
     print("-" * 50)
-    
-    app.run(host='0.0.0.0', port=8501, debug=True)
+
+    app.run(host="0.0.0.0", port=8501, debug=True)

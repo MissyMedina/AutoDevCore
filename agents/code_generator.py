@@ -9,39 +9,45 @@ from .security_generator import SecurityGeneratorAgent
 
 class CodeGeneratorAgent:
     """Agent responsible for generating the application codebase."""
-    
+
     def __init__(self, verbose: bool = False):
         self.verbose = verbose
         self.security_generator = SecurityGeneratorAgent(verbose)
-    
-    def generate_codebase(self, app_plan: Dict[str, Any], app_dir: Path) -> Dict[str, str]:
+
+    def generate_codebase(
+        self, app_plan: Dict[str, Any], app_dir: Path
+    ) -> Dict[str, str]:
         """
         Generate a complete codebase based on the app plan.
-        
+
         Args:
             app_plan: The app plan from the composer agent
             app_dir: The directory where to generate the codebase
-            
+
         Returns:
             Dictionary containing file paths and content
         """
         if self.verbose:
-            print(f"[CodeGeneratorAgent] Generating codebase for: {app_plan.get('app_name', 'AutoDevApp')}")
-        
-        tech_stack = app_plan.get('tech_stack', {})
-        backend = tech_stack.get('backend', 'Python/FastAPI')
-        idea = app_plan.get('description', 'AutoDevCore Generated App')
-        
-        if 'python' in backend.lower() or 'fastapi' in backend.lower():
+            print(
+                f"[CodeGeneratorAgent] Generating codebase for: {app_plan.get('app_name', 'AutoDevApp')}"
+            )
+
+        tech_stack = app_plan.get("tech_stack", {})
+        backend = tech_stack.get("backend", "Python/FastAPI")
+        idea = app_plan.get("description", "AutoDevCore Generated App")
+
+        if "python" in backend.lower() or "fastapi" in backend.lower():
             return self._generate_python_codebase(idea, app_plan)
-        elif 'node' in backend.lower() or 'javascript' in backend.lower():
+        elif "node" in backend.lower() or "javascript" in backend.lower():
             return self._generate_node_codebase(idea, app_plan)
         else:
             return self._generate_python_codebase(idea, app_plan)  # Default to Python
-    
-    def _generate_python_codebase(self, idea: str, app_plan: Dict[str, Any]) -> Dict[str, str]:
+
+    def _generate_python_codebase(
+        self, idea: str, app_plan: Dict[str, Any]
+    ) -> Dict[str, str]:
         """Generate a Python/FastAPI codebase with security features."""
-        
+
         # Generate base codebase
         base_files = {
             "main.py": self._generate_main_py(idea, app_plan),
@@ -57,20 +63,22 @@ class CodeGeneratorAgent:
             "requirements.txt": self._generate_requirements_txt(),
             ".env.example": self._generate_env_example(),
             "Dockerfile": self._generate_dockerfile(),
-            ".gitignore": self._generate_gitignore()
+            ".gitignore": self._generate_gitignore(),
         }
-        
+
         # Generate security features
         security_files = self.security_generator.generate_security_features(app_plan)
-        
+
         # Merge base and security files
         all_files = {**base_files, **security_files}
-        
+
         return all_files
-    
-    def _generate_node_codebase(self, idea: str, app_plan: Dict[str, Any]) -> Dict[str, str]:
+
+    def _generate_node_codebase(
+        self, idea: str, app_plan: Dict[str, Any]
+    ) -> Dict[str, str]:
         """Generate a Node.js/Express codebase."""
-        
+
         return {
             "index.js": self._generate_index_js(idea, app_plan),
             "package.json": self._generate_package_json(idea, app_plan),
@@ -80,14 +88,14 @@ class CodeGeneratorAgent:
             "tests/test.js": self._generate_tests_js(app_plan),
             ".env.example": self._generate_env_example(),
             "Dockerfile": self._generate_dockerfile(),
-            ".gitignore": self._generate_gitignore()
+            ".gitignore": self._generate_gitignore(),
         }
-    
+
     def _generate_main_py(self, idea: str, app_plan: Dict[str, Any]) -> str:
         """Generate the main FastAPI application file."""
-        
-        app_name = app_plan.get('name', 'AutoDevApp')
-        
+
+        app_name = app_plan.get("name", "AutoDevApp")
+
         return f'''"""
 {app_name} - {idea}
 AutoDevCore Generated Application with Security Features
@@ -135,10 +143,10 @@ async def health_check():
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
 '''
-    
+
     def _generate_models_py(self, app_plan: Dict[str, Any]) -> str:
         """Generate the SQLAlchemy models."""
-        
+
         models_content = '''"""
 SQLAlchemy Models
 """
@@ -161,10 +169,10 @@ class User(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 '''
-        
+
         # Add specific models based on app type
-        idea_lower = app_plan.get('description', '').lower()
-        if any(word in idea_lower for word in ['inventory', 'stock']):
+        idea_lower = app_plan.get("description", "").lower()
+        if any(word in idea_lower for word in ["inventory", "stock"]):
             models_content += '''
 
 class Product(Base):
@@ -179,12 +187,12 @@ class Product(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 '''
-        
+
         return models_content
-    
+
     def _generate_database_py(self, app_plan: Dict[str, Any]) -> str:
         """Generate the database configuration."""
-        
+
         return '''"""
 Database Configuration
 """
@@ -212,10 +220,10 @@ def get_db():
     finally:
         db.close()
 '''
-    
+
     def _generate_routes_py(self, app_plan: Dict[str, Any]) -> str:
         """Generate the API routes."""
-        
+
         routes_content = '''"""
 API Routes with Input Validation
 """
@@ -316,10 +324,10 @@ def get_user(user_id: int, db: Session = Depends(get_db)):
         "created_at": user.created_at
     }
 '''
-        
+
         # Add product routes if it's an inventory app
-        idea_lower = app_plan.get('description', '').lower()
-        if any(word in idea_lower for word in ['inventory', 'stock']):
+        idea_lower = app_plan.get("description", "").lower()
+        if any(word in idea_lower for word in ["inventory", "stock"]):
             routes_content += '''
 
 @router.get("/products/", response_model=List[dict])
@@ -355,12 +363,12 @@ def get_product(product_id: int, db: Session = Depends(get_db)):
         "created_at": product.created_at
     }
 '''
-        
+
         return routes_content
-    
+
     def _generate_helpers_py(self) -> str:
         """Generate utility helper functions."""
-        
+
         return '''"""
 Utility Helper Functions
 """
@@ -381,12 +389,12 @@ def format_datetime(dt: datetime) -> str:
     """Format datetime for API responses."""
     return dt.isoformat() if dt else None
 '''
-    
+
     def _generate_tests_py(self, app_plan: Dict[str, Any]) -> str:
         """Generate test files."""
-        
-        app_name = app_plan.get('name', 'AutoDevApp')
-        
+
+        app_name = app_plan.get("name", "AutoDevApp")
+
         return f'''"""
 Tests for {app_name}
 """
@@ -415,10 +423,10 @@ def test_get_users():
     assert response.status_code == 200
     assert isinstance(response.json(), list)
 '''
-    
+
     def _generate_config_py(self) -> str:
         """Generate configuration file."""
-        
+
         return '''"""
 Application Configuration
 """
@@ -438,11 +446,11 @@ class Settings(BaseSettings):
 
 settings = Settings()
 '''
-    
+
     def _generate_requirements_txt(self) -> str:
         """Generate requirements.txt with security dependencies."""
-        
-        return '''# Core Dependencies
+
+        return """# Core Dependencies
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
 sqlalchemy==2.0.23
@@ -463,12 +471,12 @@ pytest==7.4.3
 pytest-cov==4.1.0
 black==23.11.0
 flake8==6.1.0
-'''
-    
+"""
+
     def _generate_env_example(self) -> str:
         """Generate secure environment variables example."""
-        
-        return '''# Environment Variables Example
+
+        return """# Environment Variables Example
 # Copy this file to .env and update the values
 
 # Database Configuration
@@ -505,12 +513,12 @@ API_PORT=8000
 ENABLE_HTTPS_REDIRECT=false
 ENABLE_HSTS=true
 ENABLE_CSP=true
-'''
-    
+"""
+
     def _generate_dockerfile(self) -> str:
         """Generate Dockerfile."""
-        
-        return '''# Use Python 3.11 slim image
+
+        return """# Use Python 3.11 slim image
 FROM python:3.11-slim
 
 # Set working directory
@@ -530,12 +538,12 @@ EXPOSE 8000
 
 # Run the application
 CMD ["python", "main.py"]
-'''
-    
+"""
+
     def _generate_gitignore(self) -> str:
         """Generate .gitignore file."""
-        
-        return '''# Python
+
+        return """# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -581,14 +589,14 @@ ENV/
 # OS
 .DS_Store
 Thumbs.db
-'''
-    
+"""
+
     def _generate_index_js(self, idea: str, app_plan: Dict[str, Any]) -> str:
         """Generate the main Node.js application file."""
-        
-        app_name = app_plan.get('name', 'AutoDevApp')
-        
-        return f'''/**
+
+        app_name = app_plan.get("name", "AutoDevApp")
+
+        return f"""/**
  * {app_name} - {idea}
  * AutoDevCore Generated Application
  */
@@ -634,14 +642,14 @@ app.use((err, req, res, next) => {{
 app.listen(PORT, () => {{
     console.log(`{app_name} server running on port ${{PORT}}`);
 }});
-'''
-    
+"""
+
     def _generate_package_json(self, idea: str, app_plan: Dict[str, Any]) -> str:
         """Generate package.json for Node.js app."""
-        
-        app_name = app_plan.get('name', 'AutoDevApp')
-        
-        return f'''{{
+
+        app_name = app_plan.get("name", "AutoDevApp")
+
+        return f"""{{
   "name": "{app_name.lower().replace(' ', '-')}",
   "version": "1.0.0",
   "description": "{idea}",
@@ -664,12 +672,12 @@ app.listen(PORT, () => {{
   "author": "AutoDevCore",
   "license": "MIT"
 }}
-'''
-    
+"""
+
     def _generate_user_model_js(self) -> str:
         """Generate User model for Node.js."""
-        
-        return '''/**
+
+        return """/**
  * User Model
  */
 
@@ -694,12 +702,12 @@ class User {
 }
 
 module.exports = User;
-'''
-    
+"""
+
     def _generate_api_routes_js(self, app_plan: Dict[str, Any]) -> str:
         """Generate API routes for Node.js."""
-        
-        return '''/**
+
+        return """/**
  * API Routes
  */
 
@@ -732,12 +740,12 @@ router.get('/users/:id', (req, res) => {
 });
 
 module.exports = router;
-'''
-    
+"""
+
     def _generate_helpers_js(self) -> str:
         """Generate helper functions for Node.js."""
-        
-        return '''/**
+
+        return """/**
  * Utility Helper Functions
  */
 
@@ -760,14 +768,14 @@ module.exports = {
     generateToken,
     formatDate
 };
-'''
-    
+"""
+
     def _generate_tests_js(self, app_plan: Dict[str, Any]) -> str:
         """Generate tests for Node.js app."""
-        
-        app_name = app_plan.get('name', 'AutoDevApp')
-        
-        return f'''/**
+
+        app_name = app_plan.get("name", "AutoDevApp")
+
+        return f"""/**
  * Tests for {app_name}
  */
 
@@ -793,4 +801,4 @@ describe('API Tests', () => {{
         expect(Array.isArray(response.body)).toBe(true);
     }});
 }});
-'''
+"""

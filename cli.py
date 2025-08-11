@@ -21,10 +21,10 @@ from modes.plugin import PluginMode
 
 def main():
     """Main CLI entry point for AutoDevCore."""
-    
+
     # Show splash screen
     show_splash()
-    
+
     parser = argparse.ArgumentParser(
         description="AutoDevCore - Modular AI agents that build smarter, score deeper.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -35,83 +35,67 @@ Examples:
   ./autodevcore --mode blueprint --path ./legacy_codebase
   ./autodevcore --mode score --app-dir ./myapp --template profiles/fintech.yaml
   ./autodevcore --mode plugin --name ascii_weather
-        """
+        """,
     )
-    
+
     parser.add_argument(
         "--mode",
         choices=["compose", "journal", "blueprint", "score", "plugin"],
         required=True,
-        help="Operation mode"
+        help="Operation mode",
     )
-    
+
     parser.add_argument(
-        "--idea",
-        type=str,
-        help="App idea description (for compose mode)"
+        "--idea", type=str, help="App idea description (for compose mode)"
     )
-    
+
     parser.add_argument(
-        "--path",
-        type=str,
-        help="Path to codebase (for blueprint and journal modes)"
+        "--path", type=str, help="Path to codebase (for blueprint and journal modes)"
     )
-    
+
     parser.add_argument(
-        "--template",
-        type=str,
-        help="Scoring template profile (for score mode)"
+        "--template", type=str, help="Scoring template profile (for score mode)"
     )
-    
+
     parser.add_argument(
-        "--app-dir",
-        type=str,
-        help="App directory to score (for score mode)"
+        "--app-dir", type=str, help="App directory to score (for score mode)"
     )
-    
-    parser.add_argument(
-        "--name",
-        type=str,
-        help="Plugin name (for plugin mode)"
-    )
-    
-    parser.add_argument(
-        "--verbose",
-        action="store_true",
-        help="Enable verbose output"
-    )
-    
+
+    parser.add_argument("--name", type=str, help="Plugin name (for plugin mode)")
+
+    parser.add_argument("--verbose", action="store_true", help="Enable verbose output")
+
     parser.add_argument(
         "--output-dir",
         type=str,
         default="./output",
-        help="Output directory for generated files"
+        help="Output directory for generated files",
     )
-    
+
     args = parser.parse_args()
-    
+
     # Create output directory if it doesn't exist
     os.makedirs(args.output_dir, exist_ok=True)
-    
+
     # Initialize the appropriate mode
     if args.mode == "compose":
         if not args.idea:
             print("Error: --idea is required for compose mode")
             sys.exit(1)
         mode = ComposeMode(args.idea, args.output_dir, args.verbose)
-        
+
     elif args.mode == "journal":
         if not args.path:
             print("Error: --path is required for journal mode")
             sys.exit(1)
         mode = JournalMode(args.path, args.output_dir, args.verbose)
-        
+
     elif args.mode == "blueprint":
         if not args.path:
             print("Error: --path is required for blueprint mode")
             sys.exit(1)
         mode = BlueprintMode(args.path, args.output_dir, args.verbose)
-        
+
     elif args.mode == "score":
         if not args.template:
             print("Error: --template is required for score mode")
@@ -120,16 +104,20 @@ Examples:
             print("Error: --app-dir is required for score mode")
             sys.exit(1)
         mode = ScoreMode(args.app_dir, args.template, args.output_dir, args.verbose)
-        
+
     elif args.mode == "plugin":
         # Check for special plugin commands
         list_plugins = args.name == "--list" or args.name == "list"
         generate_docs = args.name == "--docs" or args.name == "docs"
-        
+
         if list_plugins:
-            mode = PluginMode(output_dir=args.output_dir, verbose=args.verbose, list_plugins=True)
+            mode = PluginMode(
+                output_dir=args.output_dir, verbose=args.verbose, list_plugins=True
+            )
         elif generate_docs:
-            mode = PluginMode(output_dir=args.output_dir, verbose=args.verbose, generate_docs=True)
+            mode = PluginMode(
+                output_dir=args.output_dir, verbose=args.verbose, generate_docs=True
+            )
         elif not args.name:
             print("Error: --name is required for plugin mode")
             print("💡 Use --name list to see available plugins")
@@ -140,7 +128,7 @@ Examples:
     else:
         print(f"Error: Unknown mode '{args.mode}'")
         sys.exit(1)
-    
+
     # Execute the mode
     try:
         mode.execute()
@@ -148,6 +136,7 @@ Examples:
         print(f"Error: {e}")
         if args.verbose:
             import traceback
+
             traceback.print_exc()
         sys.exit(1)
 

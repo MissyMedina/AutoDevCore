@@ -10,6 +10,7 @@ from models import User
 
 router = APIRouter()
 
+
 @router.get("/users/", response_model=List[dict])
 def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     """Get all users."""
@@ -20,10 +21,11 @@ def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
             "username": user.username,
             "email": user.email,
             "is_active": user.is_active,
-            "created_at": user.created_at
+            "created_at": user.created_at,
         }
         for user in users
     ]
+
 
 @router.get("/users/{user_id}")
 def get_user(user_id: int, db: Session = Depends(get_db)):
@@ -36,5 +38,5 @@ def get_user(user_id: int, db: Session = Depends(get_db)):
         "username": user.username,
         "email": user.email,
         "is_active": user.is_active,
-        "created_at": user.created_at
+        "created_at": user.created_at,
     }

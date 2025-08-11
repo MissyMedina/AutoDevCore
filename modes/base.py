@@ -13,16 +13,16 @@ from typing import Dict, List, Any
 
 class BaseMode(ABC):
     """Base class for all AutoDevCore modes with advanced thought trail visualization."""
-    
+
     def __init__(self, output_dir: str, verbose: bool = False):
         self.output_dir = Path(output_dir)
         self.verbose = verbose
         self.log_file = self.output_dir / "autodevcore.log"
         self.thought_trail = []
-        
+
         # Ensure output directory exists
         self.output_dir.mkdir(parents=True, exist_ok=True)
-    
+
     def log_thought(self, agent: str, thought: str, data: dict = None):
         """Log a thought from an agent."""
         thought_entry = {
@@ -30,35 +30,35 @@ class BaseMode(ABC):
             "agent": agent,
             "thought": thought,
             "data": data or {},
-            "id": len(self.thought_trail)
+            "id": len(self.thought_trail),
         }
-        
+
         self.thought_trail.append(thought_entry)
-        
+
         if self.verbose:
             print(f"[{agent}] {thought}")
             if data:
                 print(f"  Data: {json.dumps(data, indent=2)}")
-    
+
     def save_thought_trail(self):
         """Save the thought trail to JSON file and generate visualizations."""
         trail_file = self.output_dir / "thought_trail.json"
-        with open(trail_file, 'w') as f:
+        with open(trail_file, "w") as f:
             json.dump(self.thought_trail, f, indent=2)
-        
+
         print(f"💭 Thought trail saved to: {trail_file}")
-        
+
         # Generate enhanced visualizations
         self.generate_mermaid_diagram()
         self.generate_interactive_html_report()
-    
+
     def generate_mermaid_diagram(self):
         """Generate an enhanced Mermaid diagram from the thought trail."""
         if not self.thought_trail:
             return
-        
+
         mermaid_content = "graph TD\n"
-        
+
         # Color coding for different agents
         agent_colors = {
             "ComposerAgent": "#FF6B6B",
@@ -68,31 +68,35 @@ class BaseMode(ABC):
             "SecurityGeneratorAgent": "#FFEAA7",
             "BlueprintAgent": "#DDA0DD",
             "JournalAgent": "#98D8C8",
-            "ScoreAgent": "#F7DC6F"
+            "ScoreAgent": "#F7DC6F",
         }
-        
+
         for i, thought in enumerate(self.thought_trail):
             node_id = f"A{i}"
             agent = thought["agent"]
-            thought_text = thought["thought"][:40] + "..." if len(thought["thought"]) > 40 else thought["thought"]
-            
+            thought_text = (
+                thought["thought"][:40] + "..."
+                if len(thought["thought"]) > 40
+                else thought["thought"]
+            )
+
             # Get color for agent
             color = agent_colors.get(agent, "#E0E0E0")
-            
+
             mermaid_content += f'    {node_id}["{agent}<br/>{thought_text}"]\n'
-            mermaid_content += f'    style {node_id} fill:{color}\n'
-            
+            mermaid_content += f"    style {node_id} fill:{color}\n"
+
             if i > 0:
-                mermaid_content += f'    A{i-1} --> {node_id}\n'
-        
+                mermaid_content += f"    A{i-1} --> {node_id}\n"
+
         mermaid_file = self.output_dir / "thought_trail.md"
-        with open(mermaid_file, 'w') as f:
+        with open(mermaid_file, "w") as f:
             f.write("# AutoDevCore Thought Trail Visualization\n\n")
             f.write("## Agent Reasoning Flow\n\n")
             f.write("```mermaid\n")
             f.write(mermaid_content)
             f.write("```\n\n")
-            
+
             # Add timeline view
             f.write("## Timeline View\n\n")
             f.write("| Timestamp | Agent | Thought |\n")
@@ -100,29 +104,33 @@ class BaseMode(ABC):
             for thought in self.thought_trail:
                 timestamp = thought["timestamp"].split("T")[1][:8]  # HH:MM:SS
                 agent = thought["agent"]
-                thought_text = thought["thought"][:60] + "..." if len(thought["thought"]) > 60 else thought["thought"]
+                thought_text = (
+                    thought["thought"][:60] + "..."
+                    if len(thought["thought"]) > 60
+                    else thought["thought"]
+                )
                 f.write(f"| {timestamp} | {agent} | {thought_text} |\n")
-        
+
         print(f"📊 Enhanced Mermaid diagram saved to: {mermaid_file}")
-    
+
     def generate_interactive_html_report(self):
         """Generate an interactive HTML report for the thought trail."""
         if not self.thought_trail:
             return
-        
+
         html_content = self._generate_html_template()
-        
+
         html_file = self.output_dir / "thought_trail.html"
-        with open(html_file, 'w') as f:
+        with open(html_file, "w") as f:
             f.write(html_content)
-        
+
         print(f"🌐 Interactive HTML report saved to: {html_file}")
-    
+
     def _generate_html_template(self) -> str:
         """Generate the HTML template for interactive visualization."""
         # Convert thought trail to JSON for JavaScript
         thought_trail_json = json.dumps(self.thought_trail, indent=2)
-        
+
         return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -532,7 +540,7 @@ class BaseMode(ABC):
     </script>
 </body>
 </html>"""
-    
+
     def export_thought_trail(self, format: str = "json") -> str:
         """Export thought trail in various formats."""
         if format == "json":
@@ -540,23 +548,25 @@ class BaseMode(ABC):
         elif format == "csv":
             import csv
             import io
-            
+
             output = io.StringIO()
             writer = csv.writer(output)
             writer.writerow(["Timestamp", "Agent", "Thought", "Data"])
-            
+
             for thought in self.thought_trail:
-                writer.writerow([
-                    thought["timestamp"],
-                    thought["agent"],
-                    thought["thought"],
-                    json.dumps(thought["data"])
-                ])
-            
+                writer.writerow(
+                    [
+                        thought["timestamp"],
+                        thought["agent"],
+                        thought["thought"],
+                        json.dumps(thought["data"]),
+                    ]
+                )
+
             return output.getvalue()
         else:
             raise ValueError(f"Unsupported format: {format}")
-    
+
     @abstractmethod
     def execute(self):
         """Execute the mode's main functionality."""

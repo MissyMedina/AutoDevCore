@@ -21,40 +21,42 @@ async def test_websocket_working():
     """Test WebSocket functionality with a working implementation."""
     print("🧪 Testing WebSocket Server (Working Implementation)")
     print("=" * 60)
-    
+
     try:
         # Test the collaboration manager directly
         print("🔧 Testing Collaboration Manager...")
-        
+
         # Create a workspace
         workspace = await collaboration_manager.create_workspace(
             name="Test Workspace",
             description="A test workspace for WebSocket testing",
             owner_id="test_owner",
-            is_public=False
+            is_public=False,
         )
         print(f"✅ Created workspace: {workspace.name} (ID: {workspace.id})")
-        
+
         # Add a user to the workspace
         success = await collaboration_manager.add_user_to_workspace(
             workspace.id, "test_user", collaboration_manager.UserRole.EDITOR
         )
         print(f"✅ Added user to workspace: {success}")
-        
+
         # Update project data
         success = await collaboration_manager.update_project_data(
-            workspace.id, "test_user", {
+            workspace.id,
+            "test_user",
+            {
                 "app_name": "Test WebSocket App",
                 "description": "Testing WebSocket functionality",
-                "features": ["Real-time collaboration", "WebSocket communication"]
-            }
+                "features": ["Real-time collaboration", "WebSocket communication"],
+            },
         )
         print(f"✅ Updated project data: {success}")
-        
+
         # Get workspace info
         workspace_info = collaboration_manager.get_workspace_info(workspace.id)
         print(f"✅ Workspace info: {workspace_info['user_count']} users")
-        
+
         # Test message broadcasting (without WebSocket server)
         test_message = collaboration_manager.CollaborationMessage(
             id="test_message_123",
@@ -62,13 +64,13 @@ async def test_websocket_working():
             sender_id="test_user",
             workspace_id=workspace.id,
             data={"message": "Test broadcast"},
-            timestamp=time.time()
+            timestamp=time.time(),
         )
-        
+
         # This would broadcast to connected WebSocket clients
         # await collaboration_manager.broadcast_message(workspace.id, test_message)
         print("✅ Message broadcasting capability verified")
-        
+
         return {
             "success": True,
             "workspace_creation": "successful",
@@ -76,21 +78,18 @@ async def test_websocket_working():
             "project_data": "successful",
             "message_broadcasting": "capable",
             "workspace_id": workspace.id,
-            "user_count": workspace_info['user_count']
+            "user_count": workspace_info["user_count"],
         }
-        
+
     except Exception as e:
         print(f"❌ WebSocket test failed: {e}")
-        return {
-            "success": False,
-            "error": str(e)
-        }
+        return {"success": False, "error": str(e)}
 
 
 async def main():
     """Main test runner."""
     result = await test_websocket_working()
-    
+
     print("\n" + "=" * 60)
     if result["success"]:
         print("🎉 WebSocket functionality test PASSED!")
@@ -107,7 +106,7 @@ async def main():
         print("❌ WebSocket test FAILED!")
         print(f"❌ Error: {result['error']}")
     print("=" * 60)
-    
+
     return result
 
 

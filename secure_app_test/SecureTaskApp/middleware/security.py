@@ -14,27 +14,31 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class SecurityMiddleware(BaseHTTPMiddleware):
     """Custom security middleware."""
-    
+
     async def dispatch(self, request: Request, call_next):
         # Add security headers
         response = await call_next(request)
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["X-Frame-Options"] = "DENY"
         response.headers["X-XSS-Protection"] = "1; mode=block"
-        response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
+        response.headers["Strict-Transport-Security"] = (
+            "max-age=31536000; includeSubDomains"
+        )
         response.headers["Content-Security-Policy"] = "default-src 'self'"
         return response
 
+
 def setup_security_middleware(app):
     """Setup all security middleware."""
-    
+
     # Rate limiting
     limiter = Limiter(key_func=get_remote_address)
     app.state.limiter = limiter
     app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
-    
+
     # CORS with proper configuration
     app.add_middleware(
         CORSMiddleware,
@@ -43,12 +47,11 @@ def setup_security_middleware(app):
         allow_methods=["GET", "POST", "PUT", "DELETE"],
         allow_headers=["*"],
     )
-    
+
     # Trusted hosts
     app.add_middleware(
-        TrustedHostMiddleware,
-        allowed_hosts=["localhost", "yourdomain.com"]
+        TrustedHostMiddleware, allowed_hosts=["localhost", "yourdomain.com"]
     )
-    
+
     # Custom security middleware
     app.add_middleware(SecurityMiddleware)

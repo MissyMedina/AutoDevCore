@@ -19,7 +19,7 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(
     title="AutoDevApp",
     description="secure task management app with user authentication",
-    version="1.0.0"
+    version="1.0.0",
 )
 
 # Setup security middleware
@@ -37,15 +37,21 @@ app.add_middleware(
 # Include API routes
 app.include_router(router, prefix="/api/v1")
 
+
 @app.get("/")
 async def root():
     """Root endpoint."""
-    return {"message": "Welcome to AutoDevApp", "description": "secure task management app with user authentication"}
+    return {
+        "message": "Welcome to AutoDevApp",
+        "description": "secure task management app with user authentication",
+    }
+
 
 @app.get("/health")
 async def health_check():
     """Health check endpoint."""
     return {"status": "healthy", "service": "AutoDevApp"}
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

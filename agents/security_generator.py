@@ -8,16 +8,16 @@ from pathlib import Path
 
 class SecurityGeneratorAgent:
     """Agent responsible for adding security features to generated applications."""
-    
+
     def __init__(self, verbose: bool = False):
         self.verbose = verbose
         self.name = "SecurityGenerator"
-    
+
     def generate_security_features(self, app_plan: Dict[str, Any]) -> Dict[str, str]:
         """Generate security-related files and code."""
         if self.verbose:
             print(f"[{self.name}] Generating security features...")
-        
+
         return {
             "auth/auth.py": self._generate_auth_system(),
             "auth/models.py": self._generate_auth_models(),
@@ -25,9 +25,9 @@ class SecurityGeneratorAgent:
             "middleware/security.py": self._generate_security_middleware(),
             "config/security.py": self._generate_security_config(),
             "utils/validation.py": self._generate_validation_utils(),
-            "requirements_security.txt": self._generate_security_requirements()
+            "requirements_security.txt": self._generate_security_requirements(),
         }
-    
+
     def _generate_auth_system(self) -> str:
         """Generate authentication system."""
         return '''"""
@@ -104,7 +104,7 @@ def get_current_active_user(current_user: User = Depends(get_current_user)) -> U
         raise HTTPException(status_code=400, detail="Inactive user")
     return current_user
 '''
-    
+
     def _generate_auth_models(self) -> str:
         """Generate authentication Pydantic models."""
         return '''"""
@@ -162,7 +162,7 @@ class UserResponse(BaseModel):
     class Config:
         from_attributes = True
 '''
-    
+
     def _generate_security_middleware(self) -> str:
         """Generate security middleware."""
         return '''"""
@@ -221,7 +221,7 @@ def setup_security_middleware(app):
     # Custom security middleware
     app.add_middleware(SecurityMiddleware)
 '''
-    
+
     def _generate_security_config(self) -> str:
         """Generate security configuration."""
         return '''"""
@@ -262,7 +262,7 @@ class SecuritySettings(BaseSettings):
 
 settings = SecuritySettings()
 '''
-    
+
     def _generate_validation_utils(self) -> str:
         """Generate validation utilities."""
         return '''"""
@@ -311,10 +311,10 @@ def validate_request_size(content_length: int, max_size: int = 1024 * 1024) -> b
     """Validate request size."""
     return content_length <= max_size
 '''
-    
+
     def _generate_security_requirements(self) -> str:
         """Generate security requirements."""
-        return '''# Security Dependencies
+        return """# Security Dependencies
 passlib[bcrypt]==1.7.4
 python-jose[cryptography]==3.3.0
 python-multipart==0.0.6
@@ -322,8 +322,8 @@ slowapi==0.1.9
 pydantic[email]==2.5.0
 pydantic-settings==2.1.0
 cryptography==41.0.7
-'''
-    
+"""
+
     def _generate_auth_dependencies(self) -> str:
         """Generate authentication dependencies."""
         return '''"""

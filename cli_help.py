@@ -8,6 +8,7 @@ import sys
 import os
 from pathlib import Path
 
+
 def print_section(title, content):
     """Print a formatted section"""
     print(f"\n{'='*60}")
@@ -15,13 +16,14 @@ def print_section(title, content):
     print(f"{'='*60}")
     print(content)
 
+
 def show_cli_help():
     """Display comprehensive CLI help documentation"""
-    
+
     print("🚀 AutoDevCore CLI Help Documentation")
     print("=" * 60)
     print("Comprehensive guide for command-line usage")
-    
+
     # Basic Commands
     basic_commands = """
 🚀 Basic Commands
@@ -37,7 +39,7 @@ GPT-OSS Integration:
   python -c "from integrations.gpt_oss import gpt_oss_client; print(gpt_oss_client.generate_response('Write a Python function'))"
 """
     print_section("🚀 Basic Commands", basic_commands)
-    
+
     # Project Management
     project_commands = """
 🎯 Project Management Commands
@@ -53,7 +55,7 @@ Managing Projects:
   python -c "from plugins.plugin_manager import PluginManager; pm = PluginManager(); pm.delete_project('MyApp')"
 """
     print_section("🎯 Project Management", project_commands)
-    
+
     # AI Operations
     ai_commands = """
 🤖 AI Operations Commands
@@ -69,7 +71,7 @@ Performance Monitoring:
   python -c "from utils.performance_monitor import performance_monitor; print(performance_monitor.get_performance_report())"
 """
     print_section("🤖 AI Operations", ai_commands)
-    
+
     # Plugin Management
     plugin_commands = """
 🔧 Plugin Management Commands
@@ -86,7 +88,7 @@ Plugin Development:
   python -c "from plugins.plugin_manager import PluginManager; pm = PluginManager(); print(pm.generate_report())"
 """
     print_section("🔧 Plugin Management", plugin_commands)
-    
+
     # Collaboration
     collaboration_commands = """
 👥 Collaboration Commands
@@ -104,7 +106,7 @@ Collaboration Platform:
   python -c "from plugins.collaboration_platform import CollaborationPlatform; cp = CollaborationPlatform(); print(cp.get_project_status('MyProject'))"
 """
     print_section("👥 Collaboration", collaboration_commands)
-    
+
     # Deployment
     deployment_commands = """
 🚀 Deployment Commands
@@ -121,7 +123,7 @@ Performance Optimization:
   python -c "from plugins.performance_integration import PerformanceIntegration; pi = PerformanceIntegration(); print(pi.get_performance_score())"
 """
     print_section("🚀 Deployment", deployment_commands)
-    
+
     # Testing
     testing_commands = """
 🔧 Testing Commands
@@ -138,7 +140,7 @@ Load Testing:
   python -c "from tests.load_test import generate_load_test_report; print(generate_load_test_report())"
 """
     print_section("🔧 Testing", testing_commands)
-    
+
     # Utilities
     utility_commands = """
 🛠️ Utility Commands
@@ -155,7 +157,7 @@ Configuration:
   python -c "from config.settings import export_config; export_config('config_backup.yaml')"
 """
     print_section("🛠️ Utilities", utility_commands)
-    
+
     # Emergency Commands
     emergency_commands = """
 🚨 Emergency Commands
@@ -169,7 +171,7 @@ Recovery Operations:
   python -c "from utils.backup import backup_all_data; backup_all_data('backup_$(date +%Y%m%d_%H%M%S).tar.gz')"
 """
     print_section("🚨 Emergency Commands", emergency_commands)
-    
+
     # Pro Tips
     pro_tips = """
 💡 Pro Tips
@@ -196,96 +198,127 @@ Exit Codes:
   5: Resource error
 """
     print_section("💡 Pro Tips", pro_tips)
-    
+
     print(f"\n{'='*60}")
     print("📚 For more detailed help, visit the GUI help documentation")
     print("🌐 Run: python run_gui.py and click the Help button")
     print(f"{'='*60}")
 
+
 def main():
     """Main function"""
     if len(sys.argv) > 1:
         command = sys.argv[1].lower()
-        
-        if command in ['--help', '-h', 'help']:
+
+        if command in ["--help", "-h", "help"]:
             show_cli_help()
-        elif command == 'basic':
-            print_section("🚀 Basic Commands", """
+        elif command == "basic":
+            print_section(
+                "🚀 Basic Commands",
+                """
 Starting AutoDevCore:
   python main.py
   python main.py --debug
 
 GPT-OSS Integration:
   python -c "from integrations.gpt_oss import gpt_oss_client; print(gpt_oss_client.get_cache_stats())"
-            """)
-        elif command == 'projects':
-            print_section("🎯 Project Management", """
+            """,
+            )
+        elif command == "projects":
+            print_section(
+                "🎯 Project Management",
+                """
 Creating Projects:
   python -c "from agents.code_generator import CodeGeneratorAgent; gen = CodeGeneratorAgent(); gen.generate_codebase('MyApp', 'A simple web application')"
 
 Managing Projects:
   python -c "from plugins.plugin_manager import PluginManager; pm = PluginManager(); print(pm.list_projects())"
-            """)
-        elif command == 'ai':
-            print_section("🤖 AI Operations", """
+            """,
+            )
+        elif command == "ai":
+            print_section(
+                "🤖 AI Operations",
+                """
 Multi-Model AI:
   python -c "from plugins.ai_orchestrator import AIOrchestrator; ai = AIOrchestrator(); print(ai.generate_response('Create a REST API'))"
 
 Performance Monitoring:
   python -c "from plugins.monitoring_dashboard import MonitoringDashboard; md = MonitoringDashboard(); print(md.get_dashboard_data())"
-            """)
-        elif command == 'plugins':
-            print_section("🔧 Plugin Management", """
+            """,
+            )
+        elif command == "plugins":
+            print_section(
+                "🔧 Plugin Management",
+                """
 Plugin Operations:
   python -c "from plugins.plugin_manager import PluginManager; pm = PluginManager(); print(pm.list_plugins())"
   python -c "from plugins.plugin_manager import PluginManager; pm = PluginManager(); pm.install_plugin('plugin_name')"
-            """)
-        elif command == 'collaboration':
-            print_section("👥 Collaboration", """
+            """,
+            )
+        elif command == "collaboration":
+            print_section(
+                "👥 Collaboration",
+                """
 Team Management:
   python -c "from plugins.team_manager import TeamManager; tm = TeamManager(); tm.create_team('MyTeam', 'Team description')"
 
 Collaboration Platform:
   python -c "from plugins.collaboration_platform import CollaborationPlatform; cp = CollaborationPlatform(); cp.start()"
-            """)
-        elif command == 'deploy':
-            print_section("🚀 Deployment", """
+            """,
+            )
+        elif command == "deploy":
+            print_section(
+                "🚀 Deployment",
+                """
 CI/CD Pipeline:
   python -c "from plugins.security_auditor import SecurityAuditor; sa = SecurityAuditor(); print(sa.run_full_audit())"
 
 Performance Optimization:
   python -c "from plugins.performance_optimizer import PerformanceOptimizer; po = PerformanceOptimizer(); print(po.optimize_all())"
-            """)
-        elif command == 'testing':
-            print_section("🔧 Testing", """
+            """,
+            )
+        elif command == "testing":
+            print_section(
+                "🔧 Testing",
+                """
 Test Suites:
   python tests/end_to_end_test.py
   python -m pytest tests/ -v
 
 Load Testing:
   python -c "from tests.load_test import run_comprehensive_load_test; print(run_comprehensive_load_test())"
-            """)
-        elif command == 'utilities':
-            print_section("🛠️ Utilities", """
+            """,
+            )
+        elif command == "utilities":
+            print_section(
+                "🛠️ Utilities",
+                """
 System Information:
   python --version
   pip list
   python -c "import psutil; print(f'CPU: {psutil.cpu_percent()}%, Memory: {psutil.virtual_memory().percent}%')"
-            """)
-        elif command == 'emergency':
-            print_section("🚨 Emergency Commands", """
+            """,
+            )
+        elif command == "emergency":
+            print_section(
+                "🚨 Emergency Commands",
+                """
 Recovery Operations:
   pkill -f "python.*main.py"
   pkill -f "streamlit"
   pkill -f "ollama"
   python -c "from plugins.performance_optimizer import PerformanceOptimizer; po = PerformanceOptimizer(); po.clear_all_caches()"
-            """)
+            """,
+            )
         else:
             print(f"Unknown command: {command}")
-            print("Available commands: basic, projects, ai, plugins, collaboration, deploy, testing, utilities, emergency")
+            print(
+                "Available commands: basic, projects, ai, plugins, collaboration, deploy, testing, utilities, emergency"
+            )
             print("Use --help for full documentation")
     else:
         show_cli_help()
+
 
 if __name__ == "__main__":
     main()
