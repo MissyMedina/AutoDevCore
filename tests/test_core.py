@@ -25,7 +25,12 @@ class TestBaseMode:
     def setup_method(self):
         """Set up test environment."""
         self.temp_dir = tempfile.mkdtemp()
-        self.base_mode = BaseMode(self.temp_dir, verbose=True)
+        # Create a concrete test class since BaseMode is abstract
+        class TestMode(BaseMode):
+            def execute(self):
+                pass
+        
+        self.base_mode = TestMode(self.temp_dir, verbose=True)
 
     def teardown_method(self):
         """Clean up test environment."""
@@ -103,14 +108,20 @@ class TestComposeMode:
         }
         mock_readme.return_value.generate_readme.return_value = "Test README content"
 
-        # Execute the mode
-        self.compose_mode.execute()
+        # Mock the compose mode to use our mocked agents
+        with patch.object(self.compose_mode, 'composer', mock_composer.return_value), \
+             patch.object(self.compose_mode, 'prd_writer', mock_prd.return_value), \
+             patch.object(self.compose_mode, 'code_generator', mock_code.return_value), \
+             patch.object(self.compose_mode, 'readme_writer', mock_readme.return_value):
+            
+            # Execute the mode
+            self.compose_mode.execute()
 
-        # Verify agents were called
-        mock_composer.return_value.create_app_plan.assert_called_once()
-        mock_prd.return_value.generate_prd.assert_called_once()
-        mock_code.return_value.generate_codebase.assert_called_once()
-        mock_readme.return_value.generate_readme.assert_called_once()
+            # Verify agents were called
+            mock_composer.return_value.create_app_plan.assert_called_once()
+            mock_prd.return_value.generate_prd.assert_called_once()
+            mock_code.return_value.generate_codebase.assert_called_once()
+            mock_readme.return_value.generate_readme.assert_called_once()
 
 
 class TestScoreMode:
@@ -147,8 +158,10 @@ class TestScoreMode:
         template_file = Path(self.temp_dir) / "test_template.yaml"
         template_file.write_text(template_content)
 
-        template = self.score_mode._load_template(str(template_file))
-        assert "Security" in template["categories"]
+        # Mock the template path
+        with patch.object(self.score_mode, 'template', str(template_file)):
+            template = self.score_mode._load_template()
+            assert "Security" in template["categories"]
 
     def test_evaluate_app(self):
         """Test app evaluation."""
@@ -160,7 +173,7 @@ class TestScoreMode:
             }
         }
 
-        result = self.score_mode._evaluate_app(template)
+        result = self.score_mode._evaluate_app_intelligent(template, {})
         assert "overall_score" in result
         assert "categories" in result
 
@@ -207,12 +220,15 @@ class TestGPTOSSClient:
     @patch("requests.Session.post")
     def test_make_request_timeout(self, mock_post):
         """Test request timeout handling."""
+        # Clear cache first to ensure we don't get cached response
+        self.client.clear_cache()
+        
         mock_post.side_effect = requests.exceptions.Timeout()
 
-        with pytest.raises(Exception) as exc_info:
-            self.client._make_request("test prompt")
+        result = self.client._make_request("test prompt")
 
-        assert "timed out" in str(exc_info.value)
+        assert "timeout" in result["response"].lower()
+        assert result["done"] is True
 
     def test_generate_with_error(self):
         """Test generate method with error handling."""
@@ -375,7 +391,13 @@ class TestPerformance:
     def test_thought_logging_performance(self):
         """Test thought logging performance."""
         temp_dir = tempfile.mkdtemp()
-        base_mode = BaseMode(temp_dir, verbose=False)
+        
+        # Create a concrete test class since BaseMode is abstract
+        class TestMode(BaseMode):
+            def execute(self):
+                pass
+        
+        base_mode = TestMode(temp_dir, verbose=False)
 
         import time
 
