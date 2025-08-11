@@ -3,8 +3,8 @@
 Test script to verify security features
 """
 
-from config.security import settings
 from api.routes import UserCreate
+from config.security import settings
 from pydantic import ValidationError
 
 

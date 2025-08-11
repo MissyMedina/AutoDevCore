@@ -3,13 +3,13 @@
 AI Optimizer - Advanced AI model optimization with smart fallbacks
 """
 
-import time
-import json
 import asyncio
-from pathlib import Path
-from typing import Dict, List, Any, Optional, Callable
+import json
+import time
 from dataclasses import dataclass
 from enum import Enum
+from pathlib import Path
+from typing import Any, Callable, Dict, List, Optional
 
 
 class ModelType(Enum):

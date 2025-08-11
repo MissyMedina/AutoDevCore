@@ -4,14 +4,15 @@ AutoDevCore JWT Authentication System
 Provides secure authentication for API endpoints and user sessions
 """
 
-import jwt
 import datetime
-import secrets
 import hashlib
-from pathlib import Path
-from typing import Dict, Any, Optional, Union
 import json
 import os
+import secrets
+from pathlib import Path
+from typing import Any, Dict, Optional, Union
+
+import jwt
 
 
 class JWTAuthManager:

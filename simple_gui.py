@@ -3,10 +3,11 @@
 Simple AutoDevCore GUI using Flask
 """
 
-from flask import Flask, render_template_string, request, jsonify
 import json
 import time
 from datetime import datetime
+
+from flask import Flask, jsonify, render_template_string, request
 
 app = Flask(__name__)
 

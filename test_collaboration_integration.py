@@ -6,19 +6,20 @@ Tests actual WebSocket server and full collaboration functionality
 
 import asyncio
 import json
-import time
+import sys
 import threading
-import websockets
+import time
 import uuid
 from pathlib import Path
-import sys
+
+import websockets
 
 # Add plugins directory to path
 sys.path.append(str(Path(__file__).parent / "plugins"))
 
-from websocket_server import collaboration_manager, run_websocket_server
-from team_manager import team_manager, TeamRole, Permission
 from collaboration_platform import collaboration_platform
+from team_manager import Permission, TeamRole, team_manager
+from websocket_server import collaboration_manager, run_websocket_server
 
 
 class CollaborationIntegrationTest:

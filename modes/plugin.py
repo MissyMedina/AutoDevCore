@@ -2,15 +2,16 @@
 Plugin Mode - Enhanced plugin system with discovery, management, and sandboxing
 """
 
-import importlib.util
-import sys
-import json
-import inspect
 import ast
-from pathlib import Path
-from typing import Dict, List, Any, Optional
-from .base import BaseMode
+import importlib.util
+import inspect
+import json
+import sys
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+from .base import BaseMode
 
 
 class PluginMode(BaseMode):

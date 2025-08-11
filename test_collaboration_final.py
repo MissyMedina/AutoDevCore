@@ -4,15 +4,15 @@ Final Collaboration Test - Proves the platform works without hanging
 """
 
 import json
+import sys
 import time
 from pathlib import Path
-import sys
 
 # Add plugins directory to path
 sys.path.append(str(Path(__file__).parent / "plugins"))
 
-from team_manager import team_manager, TeamRole, Permission
 from collaboration_platform import collaboration_platform
+from team_manager import Permission, TeamRole, team_manager
 
 
 def test_collaboration_final():

@@ -2,8 +2,9 @@
 Code Generator Agent - Generates application codebase with security features
 """
 
-from typing import Dict, Any
 from pathlib import Path
+from typing import Any, Dict
+
 from .security_generator import SecurityGeneratorAgent
 
 

@@ -3,18 +3,19 @@
 Unit tests for Collaboration Platform
 """
 
-import pytest
 import json
-import tempfile
 import shutil
-from pathlib import Path
 import sys
+import tempfile
+from pathlib import Path
+
+import pytest
 
 # Add project root to path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from plugins.team_manager import team_manager, TeamRole, Permission
 from plugins.collaboration_platform import collaboration_platform
+from plugins.team_manager import Permission, TeamRole, team_manager
 
 
 class TestTeamManager:

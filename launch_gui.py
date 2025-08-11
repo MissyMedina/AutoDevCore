@@ -3,9 +3,9 @@
 Simple AutoDevCore GUI Launcher
 """
 
+import os
 import subprocess
 import sys
-import os
 from pathlib import Path
 
 

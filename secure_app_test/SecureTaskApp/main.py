@@ -3,15 +3,14 @@ AutoDevApp - secure task management app with user authentication
 AutoDevCore Generated Application with Security Features
 """
 
-from fastapi import FastAPI, HTTPException, Depends
-from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy.orm import Session
 import uvicorn
-
-from database import get_db, engine
-from models import Base
 from api.routes import router
+from database import engine, get_db
+from fastapi import Depends, FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from middleware.security import setup_security_middleware
+from models import Base
+from sqlalchemy.orm import Session
 
 # Create database tables
 Base.metadata.create_all(bind=engine)

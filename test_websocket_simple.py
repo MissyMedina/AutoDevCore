@@ -5,11 +5,12 @@ Simple WebSocket Test - Tests actual WebSocket server functionality
 
 import asyncio
 import json
-import time
-import threading
-import websockets
-from pathlib import Path
 import sys
+import threading
+import time
+from pathlib import Path
+
+import websockets
 
 # Add plugins directory to path
 sys.path.append(str(Path(__file__).parent / "plugins"))

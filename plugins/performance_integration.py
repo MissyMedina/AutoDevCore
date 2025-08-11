@@ -4,23 +4,19 @@ Integrates performance optimization with existing systems for Phase 4.3
 """
 
 import asyncio
-import threading
-import time
-from typing import Dict, Any, Optional, List
-from pathlib import Path
 import json
 import logging
+import threading
+import time
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
-from .performance_optimizer import (
-    PerformanceOptimizer,
-    cache_result,
-    monitor_performance,
-    CacheConfig,
-    CacheStrategy,
-)
+from .ai_orchestrator import AIOrchestrator
 from .monitoring_dashboard import MonitoringDashboard
 from .multi_model_ai import MultiModelAI
-from .ai_orchestrator import AIOrchestrator
+from .performance_optimizer import (CacheConfig, CacheStrategy,
+                                    PerformanceOptimizer, cache_result,
+                                    monitor_performance)
 
 
 class PerformanceIntegration:

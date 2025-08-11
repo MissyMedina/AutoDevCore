@@ -2,9 +2,11 @@
 SQLAlchemy Models
 """
 
-from sqlalchemy import Column, Integer, String, DateTime, Boolean, Text, DECIMAL
-from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
+
+from sqlalchemy import (DECIMAL, Boolean, Column, DateTime, Integer, String,
+                        Text)
+from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 

@@ -4,9 +4,10 @@ AutoDevCore GUI Help Documentation System
 Comprehensive help and user guides for all features
 """
 
-import streamlit as st
-from pathlib import Path
 import json
+from pathlib import Path
+
+import streamlit as st
 
 
 class HelpDocumentation:

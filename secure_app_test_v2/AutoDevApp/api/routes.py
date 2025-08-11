@@ -2,12 +2,14 @@
 API Routes with Input Validation
 """
 
-from fastapi import APIRouter, Depends, HTTPException, status
-from sqlalchemy.orm import Session
 from typing import List
-from pydantic import BaseModel, validator, Field
+
 from database import get_db
+from fastapi import APIRouter, Depends, HTTPException, status
 from models import User
+from pydantic import BaseModel, Field, validator
+from sqlalchemy.orm import Session
+
 from utils.validation import validate_password_strength
 
 

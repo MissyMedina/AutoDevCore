@@ -4,22 +4,16 @@ AI Orchestrator - Integrates multi-model AI with existing agents
 """
 
 import asyncio
-import time
-from typing import Dict, Any, Optional
-from pathlib import Path
 import sys
+import time
+from pathlib import Path
+from typing import Any, Dict, Optional
 
 # Add plugins directory to path for imports
 sys.path.append(str(Path(__file__).parent.parent / "plugins"))
 
-from multi_model_ai import (
-    MultiModelAI,
-    AIRequest,
-    AIResponse,
-    TaskType,
-    ModelProvider,
-    generate_ai_response,
-)
+from multi_model_ai import (AIRequest, AIResponse, ModelProvider, MultiModelAI,
+                            TaskType, generate_ai_response)
 
 
 class AIOrchestrator:

@@ -3,18 +3,18 @@ Security Auditor for AutoDevCore
 Comprehensive security assessment tool for Phase 4.2
 """
 
-import os
 import ast
-import json
-import subprocess
+import hashlib
 import importlib.util
-from pathlib import Path
-from typing import List, Dict, Any, Optional
+import json
+import os
+import re
+import secrets
+import subprocess
 from dataclasses import dataclass
 from enum import Enum
-import re
-import hashlib
-import secrets
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 
 class Severity(Enum):

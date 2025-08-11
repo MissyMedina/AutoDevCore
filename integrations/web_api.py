@@ -5,12 +5,14 @@ Demonstrates JWT authentication and CORS configuration
 """
 
 import asyncio
+import json
+from typing import Any, Dict, Optional
+
 import aiohttp
 from aiohttp import web
-import json
-from typing import Dict, Any, Optional
-from integrations.jwt_auth import jwt_auth
+
 from integrations.cors_config import cors_manager
+from integrations.jwt_auth import jwt_auth
 
 
 class AutoDevCoreAPI:

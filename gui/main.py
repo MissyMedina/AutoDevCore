@@ -4,17 +4,18 @@ AutoDevCore GUI - Visual Development Hub
 A professional interface that bridges technical and business needs
 """
 
-import streamlit as st
-import streamlit.components.v1 as components
-import sys
-import os
-from pathlib import Path
 import json
+import os
+import sys
 import time
 from datetime import datetime
+from pathlib import Path
+
+import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-import pandas as pd
+import streamlit as st
+import streamlit.components.v1 as components
 
 # Add project root to path for imports
 project_root = Path(__file__).parent.parent
@@ -27,8 +28,8 @@ try:
     from plugins.collaboration_platform import CollaborationPlatform
     from plugins.monitoring_dashboard import MonitoringDashboard
     from plugins.performance_optimizer import PerformanceOptimizer
-    from plugins.security_auditor import SecurityAuditor
     from plugins.plugin_manager import PluginManager
+    from plugins.security_auditor import SecurityAuditor
 
     AUTODEV_AVAILABLE = True
     st.session_state.autodev_available = True

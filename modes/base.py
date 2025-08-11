@@ -2,13 +2,13 @@
 Base Mode Class for AutoDevCore with Advanced Thought Trail Visualization
 """
 
+import base64
 import json
 import os
-import base64
+from abc import ABC, abstractmethod
 from datetime import datetime
 from pathlib import Path
-from abc import ABC, abstractmethod
-from typing import Dict, List, Any
+from typing import Any, Dict, List
 
 
 class BaseMode(ABC):

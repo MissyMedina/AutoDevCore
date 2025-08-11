@@ -3,16 +3,16 @@ AutoDevCore End-to-End Test Suite
 Comprehensive testing of all features from basic functionality to advanced capabilities
 """
 
-import os
-import sys
-import time
 import json
+import os
 import shutil
-import tempfile
 import subprocess
-from pathlib import Path
-from typing import Dict, Any, List, Optional
+import sys
+import tempfile
+import time
 import traceback
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 
 class EndToEndTestSuite:
@@ -80,13 +80,13 @@ class EndToEndTestSuite:
             from agents.code_generator import CodeGeneratorAgent
             from agents.security_generator import SecurityGeneratorAgent
             from integrations.gpt_oss import gpt_oss_client
-            from plugins.plugin_manager import PluginManager
-            from plugins.multi_model_ai import MultiModelAI
             from plugins.ai_orchestrator import AIOrchestrator
             from plugins.collaboration_platform import CollaborationPlatform
-            from plugins.performance_optimizer import PerformanceOptimizer
-            from plugins.security_auditor import SecurityAuditor
             from plugins.monitoring_dashboard import MonitoringDashboard
+            from plugins.multi_model_ai import MultiModelAI
+            from plugins.performance_optimizer import PerformanceOptimizer
+            from plugins.plugin_manager import PluginManager
+            from plugins.security_auditor import SecurityAuditor
 
             # Test basic functionality
             code_gen = CodeGeneratorAgent()
@@ -109,8 +109,8 @@ class EndToEndTestSuite:
     def test_2_ai_model_integration(self):
         """Test 2: AI model integration and basic operations"""
         try:
-            from plugins.multi_model_ai import MultiModelAI
             from plugins.ai_orchestrator import AIOrchestrator
+            from plugins.multi_model_ai import MultiModelAI
 
             # Initialize AI components
             mmai = MultiModelAI()
@@ -565,8 +565,9 @@ class EndToEndTestSuite:
         """Test 15: Overall system health check"""
         try:
             # Test basic system functionality
-            import psutil
             import sqlite3
+
+            import psutil
             import redis
 
             # Check system resources

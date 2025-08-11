@@ -2,8 +2,8 @@
 Security Generator Agent - Adds security features to generated applications
 """
 
-from typing import Dict, Any, List
 from pathlib import Path
+from typing import Any, Dict, List
 
 
 class SecurityGeneratorAgent:

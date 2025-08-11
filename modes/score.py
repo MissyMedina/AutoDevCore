@@ -2,12 +2,15 @@
 Score Mode - Evaluate apps against industry templates with GPT-OSS integration
 """
 
-import yaml
 import json
 from pathlib import Path
-from typing import Dict, List, Any
-from .base import BaseMode
+from typing import Any, Dict, List
+
+import yaml
+
 from integrations import gpt_oss_client
+
+from .base import BaseMode
 
 
 class ScoreMode(BaseMode):

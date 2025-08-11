@@ -5,10 +5,10 @@ Provides Cross-Origin Resource Sharing configuration for web components
 """
 
 import json
-from pathlib import Path
-from typing import List, Dict, Any, Optional
-from dataclasses import dataclass
 import re
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 
 @dataclass

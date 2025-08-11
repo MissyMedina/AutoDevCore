@@ -4,9 +4,9 @@ AutoDevCore GUI Launcher
 Launches the Streamlit-based Visual Development Hub
 """
 
+import os
 import subprocess
 import sys
-import os
 from pathlib import Path
 
 

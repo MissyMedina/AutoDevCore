@@ -11,7 +11,7 @@ __description__ = (
 import ast
 import os
 from pathlib import Path
-from typing import Dict, List, Any
+from typing import Any, Dict, List
 
 
 def run(context: Dict[str, Any]) -> Dict[str, Any]:

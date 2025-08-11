@@ -4,19 +4,19 @@ AutoDevCore CLI - Modular AI agents that build smarter, score deeper.
 """
 
 import argparse
-import sys
 import os
+import sys
 from pathlib import Path
 
 # Add the project root to Python path
 sys.path.insert(0, str(Path(__file__).parent))
 
-from splash import show_splash
+from modes.blueprint import BlueprintMode
 from modes.compose import ComposeMode
 from modes.journal import JournalMode
-from modes.blueprint import BlueprintMode
-from modes.score import ScoreMode
 from modes.plugin import PluginMode
+from modes.score import ScoreMode
+from splash import show_splash
 
 
 def main():

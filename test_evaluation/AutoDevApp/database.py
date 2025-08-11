@@ -2,10 +2,11 @@
 Database Configuration
 """
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
 import os
+
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
 # Database URL - use environment variable or default to SQLite
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./app.db")

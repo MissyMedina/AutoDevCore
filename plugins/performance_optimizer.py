@@ -3,21 +3,22 @@ Performance Optimizer for AutoDevCore
 Comprehensive performance optimization system for Phase 4.3
 """
 
-import redis
-import sqlite3
-import psutil
-import time
 import asyncio
-import threading
-from typing import Dict, Any, Optional, List, Union
-from dataclasses import dataclass, field
-from enum import Enum
+import hashlib
 import json
 import logging
-from pathlib import Path
 import pickle
+import sqlite3
+import threading
+import time
+from dataclasses import dataclass, field
+from enum import Enum
 from functools import wraps
-import hashlib
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Union
+
+import psutil
+import redis
 
 
 class CacheStrategy(Enum):

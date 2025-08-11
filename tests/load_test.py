@@ -3,13 +3,14 @@ Load Testing for AutoDevCore
 Comprehensive load testing using Locust for Phase 4.3
 """
 
-import time
+import asyncio
 import json
 import random
-from locust import HttpUser, task, between, events
-from typing import Dict, Any, List
-import asyncio
 import threading
+import time
+from typing import Any, Dict, List
+
+from locust import HttpUser, between, events, task
 
 
 class AutoDevCoreLoadTest(HttpUser):

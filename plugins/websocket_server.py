@@ -7,12 +7,13 @@ import asyncio
 import json
 import logging
 import uuid
-from datetime import datetime
-from typing import Dict, List, Set, Any, Optional
-from dataclasses import dataclass, field
-from enum import Enum
-import websockets
 import warnings
+from dataclasses import dataclass, field
+from datetime import datetime
+from enum import Enum
+from typing import Any, Dict, List, Optional, Set
+
+import websockets
 
 # Suppress websockets deprecation warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning, module="websockets")
@@ -22,6 +23,7 @@ try:
 except ImportError:
     # Fallback for newer websockets versions
     from websockets.legacy.server import WebSocketServerProtocol
+
 import threading
 import time
 

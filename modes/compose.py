@@ -6,11 +6,13 @@ This mode orchestrates the complete application generation process.
 
 import os
 from pathlib import Path
-from .base import BaseMode
+
+from agents.code_generator import CodeGeneratorAgent
 from agents.composer import ComposerAgent
 from agents.prd_writer import PRDWriterAgent
-from agents.code_generator import CodeGeneratorAgent
 from agents.readme_writer import READMEWriterAgent
+
+from .base import BaseMode
 
 
 class ComposeMode(BaseMode):

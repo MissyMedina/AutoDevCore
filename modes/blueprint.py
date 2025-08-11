@@ -2,12 +2,14 @@
 Blueprint Mode - Analyze legacy codebases and generate structure diagrams with GPT-OSS
 """
 
-import json
 import ast
+import json
 from pathlib import Path
-from typing import Dict, List, Any, Optional
-from .base import BaseMode
+from typing import Any, Dict, List, Optional
+
 from integrations import gpt_oss_client
+
+from .base import BaseMode
 
 
 class BlueprintMode(BaseMode):

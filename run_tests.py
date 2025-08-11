@@ -3,12 +3,12 @@
 Test runner for AutoDevCore.
 """
 
-import sys
-import subprocess
-import os
-from pathlib import Path
 import json
+import os
+import subprocess
+import sys
 from datetime import datetime
+from pathlib import Path
 
 
 def run_tests():

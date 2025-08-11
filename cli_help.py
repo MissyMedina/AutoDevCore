@@ -4,8 +4,8 @@ AutoDevCore CLI Help Documentation
 Standalone help system for command-line users
 """
 
-import sys
 import os
+import sys
 from pathlib import Path
 
 

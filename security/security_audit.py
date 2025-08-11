@@ -4,16 +4,16 @@ AutoDevCore Security Audit Tool
 Comprehensive security assessment and hardening
 """
 
-import os
-import sys
-import json
+import ast
 import hashlib
+import json
+import os
+import re
 import secrets
 import subprocess
+import sys
 from pathlib import Path
-from typing import Dict, List, Any, Optional
-import ast
-import re
+from typing import Any, Dict, List, Optional
 
 
 class SecurityAuditor:

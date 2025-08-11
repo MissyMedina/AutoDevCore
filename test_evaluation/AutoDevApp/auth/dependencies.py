@@ -2,13 +2,13 @@
 Authentication Dependencies
 """
 
-from fastapi import Depends, HTTPException, status
-from sqlalchemy.orm import Session
 from typing import Optional
 
-from database import get_db
-from models import User
 from auth.auth import get_current_active_user
+from database import get_db
+from fastapi import Depends, HTTPException, status
+from models import User
+from sqlalchemy.orm import Session
 
 
 def require_admin(current_user: User = Depends(get_current_active_user)) -> User:

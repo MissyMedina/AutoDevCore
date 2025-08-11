@@ -35,8 +35,8 @@ jobs:
         
     - name: Run code formatting check
       run: |
-        black --check --diff .
-        isort --check-only --diff .
+        black --check --diff . --exclude gui_env
+        isort --check-only --diff . --skip gui_env
         
     - name: Run type checking
       run: |

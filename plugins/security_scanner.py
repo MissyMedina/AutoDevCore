@@ -8,10 +8,10 @@ __description__ = (
     "Scans code for common security vulnerabilities and provides remediation advice"
 )
 
-import re
 import ast
+import re
 from pathlib import Path
-from typing import Dict, List, Any
+from typing import Any, Dict, List
 
 
 def run(context: Dict[str, Any]) -> Dict[str, Any]:

@@ -6,19 +6,19 @@ Collaboration Platform - Main integration of real-time collaboration features
 import asyncio
 import json
 import logging
+import sys
 import threading
 import time
 import uuid
 from datetime import datetime
-from typing import Dict, List, Any, Optional
 from pathlib import Path
-import sys
+from typing import Any, Dict, List, Optional
 
 # Add collaboration directory to path
 sys.path.append(str(Path(__file__).parent))
 
+from team_manager import Permission, TeamRole, team_manager
 from websocket_server import collaboration_manager, run_websocket_server
-from team_manager import team_manager, TeamRole, Permission
 
 
 class CollaborationPlatform:

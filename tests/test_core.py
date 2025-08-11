@@ -2,18 +2,19 @@
 Core unit tests for AutoDevCore.
 """
 
-import pytest
-import tempfile
 import shutil
-import requests
+import tempfile
 from pathlib import Path
-from unittest.mock import Mock, patch, MagicMock
+from unittest.mock import MagicMock, Mock, patch
 
+import pytest
+import requests
+
+from integrations.gpt_oss import GPTOSSClient
 # Import the modules to test
 from modes.base import BaseMode
 from modes.compose import ComposeMode
 from modes.score import ScoreMode
-from integrations.gpt_oss import GPTOSSClient
 from utils.performance import PerformanceMonitor, PerformanceOptimizer
 
 
