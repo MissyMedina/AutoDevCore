@@ -69,21 +69,68 @@ class ScoreMode(BaseMode):
     
     def _load_template(self) -> dict:
         """Load the scoring template."""
-        template_path = Path(self.template)
+        # Try multiple possible locations
+        possible_paths = [
+            Path(self.template),  # Direct path
+            Path("profiles") / f"{self.template}.yaml",  # profiles/template.yaml
+            Path("profiles") / self.template,  # profiles/template
+            Path("profiles") / f"{self.template}.yml",  # profiles/template.yml
+        ]
         
-        if not template_path.exists():
-            # Try to find it in the profiles directory
-            template_path = Path("profiles") / self.template
+        for template_path in possible_paths:
+            if template_path.exists():
+                try:
+                    with open(template_path, 'r') as f:
+                        template_data = yaml.safe_load(f)
+                        if template_data:
+                            print(f"✅ Loaded template from: {template_path}")
+                            return template_data
+                except Exception as e:
+                    print(f"⚠️ Error loading template from {template_path}: {e}")
+                    continue
         
-        if not template_path.exists():
-            return None
-        
-        try:
-            with open(template_path, 'r') as f:
-                return yaml.safe_load(f)
-        except Exception as e:
-            print(f"Error loading template: {e}")
-            return None
+        # If no template found, return a default template
+        print(f"⚠️ Could not load template '{self.template}', using default template")
+        return self._get_default_template()
+    
+    def _get_default_template(self) -> dict:
+        """Get a default scoring template."""
+        return {
+            "name": "Default Template",
+            "description": "Default scoring template for general applications",
+            "categories": {
+                "Security": {
+                    "weight": 25,
+                    "criteria": {
+                        "Authentication": {"weight": 40, "description": "User authentication system"},
+                        "Input Validation": {"weight": 30, "description": "Input sanitization and validation"},
+                        "Data Protection": {"weight": 30, "description": "Data encryption and protection"}
+                    }
+                },
+                "Performance": {
+                    "weight": 25,
+                    "criteria": {
+                        "Response Time": {"weight": 50, "description": "API response time"},
+                        "Scalability": {"weight": 50, "description": "Application scalability"}
+                    }
+                },
+                "Code Quality": {
+                    "weight": 25,
+                    "criteria": {
+                        "Structure": {"weight": 40, "description": "Code organization and structure"},
+                        "Documentation": {"weight": 30, "description": "Code documentation"},
+                        "Testing": {"weight": 30, "description": "Test coverage and quality"}
+                    }
+                },
+                "User Experience": {
+                    "weight": 25,
+                    "criteria": {
+                        "Interface": {"weight": 50, "description": "User interface quality"},
+                        "Accessibility": {"weight": 50, "description": "Application accessibility"}
+                    }
+                }
+            }
+        }
     
     def _analyze_codebase(self) -> Dict[str, Any]:
         """Analyze the codebase using GPT-OSS."""

@@ -1,0 +1,194 @@
+{
+  "websocket": {
+    "success": false,
+    "error": "received 1011 (internal error); then sent 1011 (internal error)"
+  },
+  "team_management": {
+    "success": true,
+    "team_id": "a0328fa3-b567-4890-8231-4dc431603c7a",
+    "team_name": "Integration Test Team",
+    "invitation_id": "370c5a21-9ea3-4575-b26c-ce8e5fee91c0",
+    "permissions": {
+      "can_edit": true,
+      "can_invite": true
+    },
+    "analytics": {
+      "team_id": "a0328fa3-b567-4890-8231-4dc431603c7a",
+      "total_members": 1,
+      "active_members": 1,
+      "activity_rate": 100.0,
+      "role_distribution": {
+        "owner": 1
+      },
+      "created_at": "2025-08-10T16:45:47.882190",
+      "last_updated": "2025-08-10T16:45:47.882204"
+    }
+  },
+  "collaboration_platform": {
+    "success": true,
+    "project_creation": {
+      "success": true,
+      "team_id": "f83037dc-18a1-4715-bd95-e9a3a1e85241",
+      "workspace_id": "workspace_01973ed8",
+      "project_name": "Integration Test Project",
+      "owner_id": "test_owner_1"
+    },
+    "invitation": {
+      "success": true,
+      "invitation_id": "1dd2683d-4e55-4b24-acff-9d570e110938",
+      "email": "developer@integration.test",
+      "role": "editor",
+      "expires_at": "2025-08-17T16:45:51.899975",
+      "workspace_added": true
+    },
+    "project_status": {
+      "success": true,
+      "team": {
+        "id": "f83037dc-18a1-4715-bd95-e9a3a1e85241",
+        "name": "Integration Test Team",
+        "description": "Team for Integration Test Project project",
+        "member_count": 1,
+        "role": "owner",
+        "permissions": [
+          "view_analytics",
+          "edit_project",
+          "manage_settings",
+          "invite_members",
+          "manage_roles",
+          "view_project",
+          "remove_members",
+          "export_project",
+          "delete_project",
+          "generate_ai"
+        ]
+      },
+      "workspace": null,
+      "analytics": {
+        "team_id": "f83037dc-18a1-4715-bd95-e9a3a1e85241",
+        "total_members": 1,
+        "active_members": 1,
+        "activity_rate": 100.0,
+        "role_distribution": {
+          "owner": 1
+        },
+        "created_at": "2025-08-10T16:45:51.894013",
+        "last_updated": "2025-08-10T16:45:51.894021"
+      },
+      "user": {
+        "id": "test_owner_1",
+        "username": "User_test_own",
+        "role": "owner",
+        "joined_at": "2025-08-10T16:45:51.894032",
+        "last_active": "2025-08-10T16:45:51.894034"
+      }
+    },
+    "user_dashboard": {
+      "success": true,
+      "teams": [
+        {
+          "id": "02fc49f9-319f-497f-9c18-ecb929621d99",
+          "name": "Task Manager Team",
+          "description": "Team for AI-Powered Task Manager project",
+          "role": "owner",
+          "member_count": 1,
+          "workspace_id": null
+        },
+        {
+          "id": "72b6502b-2a19-4c1d-bedb-427e0901c1e2",
+          "name": "Test Development Team",
+          "description": "A test team for collaborative development",
+          "role": "owner",
+          "member_count": 3,
+          "workspace_id": null
+        },
+        {
+          "id": "cccf2522-d3a7-4be6-8816-cb84ac748a08",
+          "name": "Task Manager Team",
+          "description": "Team for AI-Powered Task Manager project",
+          "role": "owner",
+          "member_count": 1,
+          "workspace_id": null
+        },
+        {
+          "id": "479e1f3e-94be-4866-9c96-88aff9013915",
+          "name": "Test Task Manager Team",
+          "description": "Team for AI-Powered Task Manager project",
+          "role": "owner",
+          "member_count": 1,
+          "workspace_id": null
+        },
+        {
+          "id": "8a09ab18-cce0-414b-8202-0155f9fb092d",
+          "name": "Integration Test Team",
+          "description": "Team for integration testing",
+          "role": "owner",
+          "member_count": 1,
+          "workspace_id": null
+        },
+        {
+          "id": "3c22a126-41b8-4792-907c-c840393f884f",
+          "name": "Integration Test Team",
+          "description": "Team for Integration Test Project project",
+          "role": "owner",
+          "member_count": 1,
+          "workspace_id": null
+        },
+        {
+          "id": "11110bcc-e224-433b-a925-8f5ec9eec639",
+          "name": "Integration Test Team",
+          "description": "Team for integration testing",
+          "role": "owner",
+          "member_count": 1,
+          "workspace_id": null
+        },
+        {
+          "id": "a11a125f-8967-47e1-a732-7fbb7c751252",
+          "name": "Integration Test Team",
+          "description": "Team for Integration Test Project project",
+          "role": "owner",
+          "member_count": 1,
+          "workspace_id": "workspace_bdb54130"
+        },
+        {
+          "id": "60e985b6-c7e6-4041-8aa8-c703f4c17f4c",
+          "name": "Integration Test Team",
+          "description": "Team for integration testing",
+          "role": "owner",
+          "member_count": 1,
+          "workspace_id": null
+        },
+        {
+          "id": "83e27184-5394-4a7c-a61c-ce2fe2f809c6",
+          "name": "Integration Test Team",
+          "description": "Team for Integration Test Project project",
+          "role": "owner",
+          "member_count": 1,
+          "workspace_id": "workspace_9b2518cc"
+        },
+        {
+          "id": "a0328fa3-b567-4890-8231-4dc431603c7a",
+          "name": "Integration Test Team",
+          "description": "Team for integration testing",
+          "role": "owner",
+          "member_count": 1,
+          "workspace_id": null
+        },
+        {
+          "id": "f83037dc-18a1-4715-bd95-e9a3a1e85241",
+          "name": "Integration Test Team",
+          "description": "Team for Integration Test Project project",
+          "role": "owner",
+          "member_count": 1,
+          "workspace_id": "workspace_01973ed8"
+        }
+      ],
+      "workspaces": [],
+      "pending_invitations": [],
+      "stats": {
+        "total_teams": 12,
+        "total_workspaces": 0,
+        "pending_invitations": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+# AutoDevCore GUI Dependencies
+# Core GUI Framework
+streamlit>=1.28.0
+plotly>=5.17.0
+pandas>=2.0.0
+
+# Additional GUI Enhancements
+streamlit-option-menu>=0.3.6
+streamlit-ace>=0.1.1
+streamlit-authenticator>=0.2.3
+streamlit-aggrid>=0.3.4
+
+# Data Visualization
+altair>=5.0.0
+bokeh>=3.2.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Real-time Features
+websockets>=11.0.0
+asyncio-mqtt>=0.13.0
+
+# File Handling
+python-multipart>=0.0.6
+Pillow>=10.0.0
+
+# Utilities
+python-dateutil>=2.8.2
+pytz>=2023.3

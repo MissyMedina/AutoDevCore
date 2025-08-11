@@ -108,6 +108,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+gui_env/
 
 # Spyder project settings
 .spyderproject
@@ -146,6 +147,10 @@ logs/
 *.log
 thought_trail.json
 architecture.md
+
+# Cache directories
+.cache/
+*.cache
 
 # Ollama models (too large for git)
 models/

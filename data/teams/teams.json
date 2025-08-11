@@ -1,0 +1,1455 @@
+{
+  "02fc49f9-319f-497f-9c18-ecb929621d99": {
+    "id": "02fc49f9-319f-497f-9c18-ecb929621d99",
+    "name": "Task Manager Team",
+    "description": "Team for AI-Powered Task Manager project",
+    "owner_id": "test_owner_1",
+    "created_at": "2025-08-10T11:28:17.738433",
+    "updated_at": "2025-08-10T11:28:17.738442",
+    "members": {
+      "test_owner_1": {
+        "user_id": "test_owner_1",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T11:28:17.738468",
+        "last_active": "2025-08-10T11:28:17.738469",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {},
+    "is_public": false,
+    "max_members": 50
+  },
+  "72b6502b-2a19-4c1d-bedb-427e0901c1e2": {
+    "id": "72b6502b-2a19-4c1d-bedb-427e0901c1e2",
+    "name": "Test Development Team",
+    "description": "A test team for collaborative development",
+    "owner_id": "test_owner_1",
+    "created_at": "2025-08-10T12:54:53.654086",
+    "updated_at": "2025-08-10T12:54:53.658490",
+    "members": {
+      "test_owner_1": {
+        "user_id": "test_owner_1",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T12:54:53.654097",
+        "last_active": "2025-08-10T12:54:53.654098",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      },
+      "test_member_1": {
+        "user_id": "test_member_1",
+        "username": "Alice Developer",
+        "email": "alice@test.com",
+        "role": "editor",
+        "joined_at": "2025-08-10T12:54:53.657170",
+        "last_active": "2025-08-10T12:54:53.657177",
+        "permissions": [
+          "view_project",
+          "generate_ai",
+          "export_project",
+          "edit_project"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      },
+      "test_member_2": {
+        "user_id": "test_member_2",
+        "username": "Bob Reviewer",
+        "email": "bob@test.com",
+        "role": "viewer",
+        "joined_at": "2025-08-10T12:54:53.658477",
+        "last_active": "2025-08-10T12:54:53.658482",
+        "permissions": [
+          "view_project",
+          "export_project"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {},
+    "is_public": false,
+    "max_members": 50
+  },
+  "cccf2522-d3a7-4be6-8816-cb84ac748a08": {
+    "id": "cccf2522-d3a7-4be6-8816-cb84ac748a08",
+    "name": "Task Manager Team",
+    "description": "Team for AI-Powered Task Manager project",
+    "owner_id": "test_owner_1",
+    "created_at": "2025-08-10T12:55:06.306331",
+    "updated_at": "2025-08-10T12:55:06.306341",
+    "members": {
+      "test_owner_1": {
+        "user_id": "test_owner_1",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T12:55:06.306360",
+        "last_active": "2025-08-10T12:55:06.306362",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {},
+    "is_public": false,
+    "max_members": 50
+  },
+  "479e1f3e-94be-4866-9c96-88aff9013915": {
+    "id": "479e1f3e-94be-4866-9c96-88aff9013915",
+    "name": "Test Task Manager Team",
+    "description": "Team for AI-Powered Task Manager project",
+    "owner_id": "test_owner_1",
+    "created_at": "2025-08-10T13:14:31.979106",
+    "updated_at": "2025-08-10T13:14:31.979110",
+    "members": {
+      "test_owner_1": {
+        "user_id": "test_owner_1",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T13:14:31.979131",
+        "last_active": "2025-08-10T13:14:31.979133",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {},
+    "is_public": false,
+    "max_members": 50
+  },
+  "8a09ab18-cce0-414b-8202-0155f9fb092d": {
+    "id": "8a09ab18-cce0-414b-8202-0155f9fb092d",
+    "name": "Integration Test Team",
+    "description": "Team for integration testing",
+    "owner_id": "test_owner_1",
+    "created_at": "2025-08-10T16:43:02.659535",
+    "updated_at": "2025-08-10T16:43:02.659542",
+    "members": {
+      "test_owner_1": {
+        "user_id": "test_owner_1",
+        "username": "User_test_own",
+        "email": "owner@integration.test",
+        "role": "owner",
+        "joined_at": "2025-08-10T16:43:02.659549",
+        "last_active": "2025-08-10T16:43:02.659550",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {},
+    "is_public": false,
+    "max_members": 50
+  },
+  "3c22a126-41b8-4792-907c-c840393f884f": {
+    "id": "3c22a126-41b8-4792-907c-c840393f884f",
+    "name": "Integration Test Team",
+    "description": "Team for Integration Test Project project",
+    "owner_id": "test_owner_1",
+    "created_at": "2025-08-10T16:43:06.666249",
+    "updated_at": "2025-08-10T16:43:06.666254",
+    "members": {
+      "test_owner_1": {
+        "user_id": "test_owner_1",
+        "username": "User_test_own",
+        "email": "owner@integration.test",
+        "role": "owner",
+        "joined_at": "2025-08-10T16:43:06.666262",
+        "last_active": "2025-08-10T16:43:06.666263",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {},
+    "is_public": false,
+    "max_members": 50
+  },
+  "11110bcc-e224-433b-a925-8f5ec9eec639": {
+    "id": "11110bcc-e224-433b-a925-8f5ec9eec639",
+    "name": "Integration Test Team",
+    "description": "Team for integration testing",
+    "owner_id": "test_owner_1",
+    "created_at": "2025-08-10T16:44:23.229804",
+    "updated_at": "2025-08-10T16:44:23.229818",
+    "members": {
+      "test_owner_1": {
+        "user_id": "test_owner_1",
+        "username": "User_test_own",
+        "email": "owner@integration.test",
+        "role": "owner",
+        "joined_at": "2025-08-10T16:44:23.229832",
+        "last_active": "2025-08-10T16:44:23.229833",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {},
+    "is_public": false,
+    "max_members": 50
+  },
+  "a11a125f-8967-47e1-a732-7fbb7c751252": {
+    "id": "a11a125f-8967-47e1-a732-7fbb7c751252",
+    "name": "Integration Test Team",
+    "description": "Team for Integration Test Project project",
+    "owner_id": "test_owner_1",
+    "created_at": "2025-08-10T16:44:27.237160",
+    "updated_at": "2025-08-10T16:44:27.237172",
+    "members": {
+      "test_owner_1": {
+        "user_id": "test_owner_1",
+        "username": "User_test_own",
+        "email": "owner@integration.test",
+        "role": "owner",
+        "joined_at": "2025-08-10T16:44:27.237181",
+        "last_active": "2025-08-10T16:44:27.237182",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_bdb54130"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "60e985b6-c7e6-4041-8aa8-c703f4c17f4c": {
+    "id": "60e985b6-c7e6-4041-8aa8-c703f4c17f4c",
+    "name": "Integration Test Team",
+    "description": "Team for integration testing",
+    "owner_id": "test_owner_1",
+    "created_at": "2025-08-10T16:44:59.293967",
+    "updated_at": "2025-08-10T16:44:59.293979",
+    "members": {
+      "test_owner_1": {
+        "user_id": "test_owner_1",
+        "username": "User_test_own",
+        "email": "owner@integration.test",
+        "role": "owner",
+        "joined_at": "2025-08-10T16:44:59.293988",
+        "last_active": "2025-08-10T16:44:59.293989",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {},
+    "is_public": false,
+    "max_members": 50
+  },
+  "83e27184-5394-4a7c-a61c-ce2fe2f809c6": {
+    "id": "83e27184-5394-4a7c-a61c-ce2fe2f809c6",
+    "name": "Integration Test Team",
+    "description": "Team for Integration Test Project project",
+    "owner_id": "test_owner_1",
+    "created_at": "2025-08-10T16:45:03.305197",
+    "updated_at": "2025-08-10T16:45:03.305204",
+    "members": {
+      "test_owner_1": {
+        "user_id": "test_owner_1",
+        "username": "User_test_own",
+        "email": "owner@integration.test",
+        "role": "owner",
+        "joined_at": "2025-08-10T16:45:03.305213",
+        "last_active": "2025-08-10T16:45:03.305214",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_9b2518cc"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "a0328fa3-b567-4890-8231-4dc431603c7a": {
+    "id": "a0328fa3-b567-4890-8231-4dc431603c7a",
+    "name": "Integration Test Team",
+    "description": "Team for integration testing",
+    "owner_id": "test_owner_1",
+    "created_at": "2025-08-10T16:45:47.882190",
+    "updated_at": "2025-08-10T16:45:47.882204",
+    "members": {
+      "test_owner_1": {
+        "user_id": "test_owner_1",
+        "username": "User_test_own",
+        "email": "owner@integration.test",
+        "role": "owner",
+        "joined_at": "2025-08-10T16:45:47.882219",
+        "last_active": "2025-08-10T16:45:47.882220",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {},
+    "is_public": false,
+    "max_members": 50
+  },
+  "f83037dc-18a1-4715-bd95-e9a3a1e85241": {
+    "id": "f83037dc-18a1-4715-bd95-e9a3a1e85241",
+    "name": "Integration Test Team",
+    "description": "Team for Integration Test Project project",
+    "owner_id": "test_owner_1",
+    "created_at": "2025-08-10T16:45:51.894013",
+    "updated_at": "2025-08-10T16:45:51.894021",
+    "members": {
+      "test_owner_1": {
+        "user_id": "test_owner_1",
+        "username": "User_test_own",
+        "email": "owner@integration.test",
+        "role": "owner",
+        "joined_at": "2025-08-10T16:45:51.894032",
+        "last_active": "2025-08-10T16:45:51.894034",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_01973ed8"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "f55f3e51-142d-4225-9aee-eb7839d22934": {
+    "id": "f55f3e51-142d-4225-9aee-eb7839d22934",
+    "name": "Final Test Team",
+    "description": "Team for final testing",
+    "owner_id": "final_test_owner",
+    "created_at": "2025-08-10T17:00:09.152123",
+    "updated_at": "2025-08-10T17:00:09.152143",
+    "members": {
+      "final_test_owner": {
+        "user_id": "final_test_owner",
+        "username": "User_final_te",
+        "email": "owner@final.test",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:00:09.152161",
+        "last_active": "2025-08-10T17:00:09.152162",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {},
+    "is_public": false,
+    "max_members": 50
+  },
+  "ae3b8623-fdb1-4619-9a95-a9a69b56e85f": {
+    "id": "ae3b8623-fdb1-4619-9a95-a9a69b56e85f",
+    "name": "Final Test Team",
+    "description": "Team for Final Test Project project",
+    "owner_id": "final_test_owner",
+    "created_at": "2025-08-10T17:00:09.156425",
+    "updated_at": "2025-08-10T17:00:09.156428",
+    "members": {
+      "final_test_owner": {
+        "user_id": "final_test_owner",
+        "username": "User_final_te",
+        "email": "owner@final.test",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:00:09.156435",
+        "last_active": "2025-08-10T17:00:09.156436",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_cb0ed0a7"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "b1d191cc-2416-4a43-b9bf-d16af1956571": {
+    "id": "b1d191cc-2416-4a43-b9bf-d16af1956571",
+    "name": "Test Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:06:35.959231",
+    "updated_at": "2025-08-10T17:06:35.959238",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:06:35.959247",
+        "last_active": "2025-08-10T17:06:35.959249",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_3561d521"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "b150f277-53a4-4085-b7f0-3b8a87237e5d": {
+    "id": "b150f277-53a4-4085-b7f0-3b8a87237e5d",
+    "name": "Test Project Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:06:35.973803",
+    "updated_at": "2025-08-10T17:06:35.973810",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:06:35.973819",
+        "last_active": "2025-08-10T17:06:35.973820",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_45b31bfc"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "26a1a327-e7db-4e3e-bda5-af6e55e40169": {
+    "id": "26a1a327-e7db-4e3e-bda5-af6e55e40169",
+    "name": "Test Project Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:06:35.992213",
+    "updated_at": "2025-08-10T17:06:35.992219",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:06:35.992227",
+        "last_active": "2025-08-10T17:06:35.992228",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_fd1bfaa1"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "1a2ce654-fdf5-4f1e-b047-079369427795": {
+    "id": "1a2ce654-fdf5-4f1e-b047-079369427795",
+    "name": "Test Project Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:06:36.094694",
+    "updated_at": "2025-08-10T17:06:36.094702",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:06:36.094711",
+        "last_active": "2025-08-10T17:06:36.094712",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_a6143304"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "44964426-f29a-424a-90fd-4d89742efcda": {
+    "id": "44964426-f29a-424a-90fd-4d89742efcda",
+    "name": "Integration Test Project Team",
+    "description": "Team for Integration Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:06:36.108557",
+    "updated_at": "2025-08-10T17:06:36.108563",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:06:36.108571",
+        "last_active": "2025-08-10T17:06:36.108572",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_1a7b98d5"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "ca087dee-69af-4fae-bea3-e7f77c6143cf": {
+    "id": "ca087dee-69af-4fae-bea3-e7f77c6143cf",
+    "name": "Test Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:07:03.961809",
+    "updated_at": "2025-08-10T17:07:03.961817",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:07:03.961826",
+        "last_active": "2025-08-10T17:07:03.961827",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_3479cd72"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "0e023ade-6d2c-45f3-b7c6-2e6a5d2ffea0": {
+    "id": "0e023ade-6d2c-45f3-b7c6-2e6a5d2ffea0",
+    "name": "Test Project Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:07:03.978774",
+    "updated_at": "2025-08-10T17:07:03.978781",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:07:03.978790",
+        "last_active": "2025-08-10T17:07:03.978791",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_b57a71d1"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "faefef8c-231d-4ea2-a74a-8772a4a3401a": {
+    "id": "faefef8c-231d-4ea2-a74a-8772a4a3401a",
+    "name": "Test Project Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:07:03.997085",
+    "updated_at": "2025-08-10T17:07:03.997094",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:07:03.997103",
+        "last_active": "2025-08-10T17:07:03.997104",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_0f359935"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "4bbfff2b-4d5c-4d7b-bf3b-3e00093787ca": {
+    "id": "4bbfff2b-4d5c-4d7b-bf3b-3e00093787ca",
+    "name": "Test Project Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:07:04.012230",
+    "updated_at": "2025-08-10T17:07:04.012237",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:07:04.012245",
+        "last_active": "2025-08-10T17:07:04.012246",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_bf15fb8d"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "d118020d-b95d-431c-b13c-6da9e8510c2c": {
+    "id": "d118020d-b95d-431c-b13c-6da9e8510c2c",
+    "name": "Integration Test Project Team",
+    "description": "Team for Integration Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:07:04.028535",
+    "updated_at": "2025-08-10T17:07:04.028542",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:07:04.028553",
+        "last_active": "2025-08-10T17:07:04.028554",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "view_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_6c11ca51"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "01d75b29-17b8-4799-9522-e11333fbff42": {
+    "id": "01d75b29-17b8-4799-9522-e11333fbff42",
+    "name": "Test Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:07:22.383436",
+    "updated_at": "2025-08-10T17:07:22.383452",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:07:22.383469",
+        "last_active": "2025-08-10T17:07:22.383470",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "remove_members",
+          "view_project",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "manage_settings"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_d9a23486"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "e9d91be7-7552-4e9c-9575-1c213fd4bd8b": {
+    "id": "e9d91be7-7552-4e9c-9575-1c213fd4bd8b",
+    "name": "Test Project Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:07:22.401484",
+    "updated_at": "2025-08-10T17:07:22.401498",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:07:22.401515",
+        "last_active": "2025-08-10T17:07:22.401516",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "remove_members",
+          "view_project",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "manage_settings"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_1a58f1dc"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "b5eac6cc-6cd3-45c1-acb9-bd1d90ea806c": {
+    "id": "b5eac6cc-6cd3-45c1-acb9-bd1d90ea806c",
+    "name": "Test Project Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:07:22.424418",
+    "updated_at": "2025-08-10T17:07:22.424433",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:07:22.424446",
+        "last_active": "2025-08-10T17:07:22.424447",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "remove_members",
+          "view_project",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "manage_settings"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_b3f17403"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "f9c09d43-3ae8-406e-b96b-c062074ce971": {
+    "id": "f9c09d43-3ae8-406e-b96b-c062074ce971",
+    "name": "Test Project Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:07:22.442722",
+    "updated_at": "2025-08-10T17:07:22.442729",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:07:22.442738",
+        "last_active": "2025-08-10T17:07:22.442739",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "remove_members",
+          "view_project",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "manage_settings"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_a3e5d43a"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "105462ac-24a7-4cc6-8e69-8ee2c76b2194": {
+    "id": "105462ac-24a7-4cc6-8e69-8ee2c76b2194",
+    "name": "Integration Test Project Team",
+    "description": "Team for Integration Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:07:22.459480",
+    "updated_at": "2025-08-10T17:07:22.459486",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:07:22.459496",
+        "last_active": "2025-08-10T17:07:22.459497",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "remove_members",
+          "view_project",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "manage_settings"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_b3faadeb"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "7a4451ed-f064-4c1d-b9b6-d96a23995c85": {
+    "id": "7a4451ed-f064-4c1d-b9b6-d96a23995c85",
+    "name": "Test Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:18:30.342552",
+    "updated_at": "2025-08-10T17:18:30.342566",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:18:30.342578",
+        "last_active": "2025-08-10T17:18:30.342580",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "remove_members",
+          "view_project",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "manage_settings"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_fd77bf3b"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "9c53e925-bf89-4a5d-825b-accfab4c11b1": {
+    "id": "9c53e925-bf89-4a5d-825b-accfab4c11b1",
+    "name": "Test Project Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:18:30.362683",
+    "updated_at": "2025-08-10T17:18:30.362691",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:18:30.362701",
+        "last_active": "2025-08-10T17:18:30.362703",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "remove_members",
+          "view_project",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "manage_settings"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_68c8ac66"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "86aa1c57-45c9-487a-a290-dcee06a4d58d": {
+    "id": "86aa1c57-45c9-487a-a290-dcee06a4d58d",
+    "name": "Test Project Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:18:30.390447",
+    "updated_at": "2025-08-10T17:18:30.390459",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:18:30.390469",
+        "last_active": "2025-08-10T17:18:30.390471",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "remove_members",
+          "view_project",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "manage_settings"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_681e584c"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "430c8018-e65c-4eb2-9bd0-c690a0b709ad": {
+    "id": "430c8018-e65c-4eb2-9bd0-c690a0b709ad",
+    "name": "Test Project Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:18:30.408880",
+    "updated_at": "2025-08-10T17:18:30.408887",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:18:30.408897",
+        "last_active": "2025-08-10T17:18:30.408899",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "remove_members",
+          "view_project",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "manage_settings"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_02fe9cba"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "1754fc10-bfc2-47cc-8265-4f1736d7733c": {
+    "id": "1754fc10-bfc2-47cc-8265-4f1736d7733c",
+    "name": "Integration Test Project Team",
+    "description": "Team for Integration Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:18:30.429010",
+    "updated_at": "2025-08-10T17:18:30.429019",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:18:30.429066",
+        "last_active": "2025-08-10T17:18:30.429072",
+        "permissions": [
+          "generate_ai",
+          "view_analytics",
+          "export_project",
+          "remove_members",
+          "view_project",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "manage_settings"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_c1a76247"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "aa5440cc-437a-40be-9afd-6abbf95e99f7": {
+    "id": "aa5440cc-437a-40be-9afd-6abbf95e99f7",
+    "name": "Test Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:19:06.347030",
+    "updated_at": "2025-08-10T17:19:06.347056",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:19:06.347409",
+        "last_active": "2025-08-10T17:19:06.347421",
+        "permissions": [
+          "view_analytics",
+          "generate_ai",
+          "view_project",
+          "export_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_57c21148"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "7a089f7e-6197-40e3-9ba2-97c6825d709f": {
+    "id": "7a089f7e-6197-40e3-9ba2-97c6825d709f",
+    "name": "Test Project Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:19:06.372095",
+    "updated_at": "2025-08-10T17:19:06.372108",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:19:06.372121",
+        "last_active": "2025-08-10T17:19:06.372122",
+        "permissions": [
+          "view_analytics",
+          "generate_ai",
+          "view_project",
+          "export_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_f3d7a967"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "66aa0104-1653-4c00-8365-97bf504a5c66": {
+    "id": "66aa0104-1653-4c00-8365-97bf504a5c66",
+    "name": "Test Project Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:19:06.399684",
+    "updated_at": "2025-08-10T17:19:06.399710",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:19:06.399736",
+        "last_active": "2025-08-10T17:19:06.399738",
+        "permissions": [
+          "view_analytics",
+          "generate_ai",
+          "view_project",
+          "export_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_2a914ebd"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "1dbb4314-538d-449d-be4f-096b5481c203": {
+    "id": "1dbb4314-538d-449d-be4f-096b5481c203",
+    "name": "Test Project Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:19:06.425712",
+    "updated_at": "2025-08-10T17:19:06.425722",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:19:06.425731",
+        "last_active": "2025-08-10T17:19:06.425732",
+        "permissions": [
+          "view_analytics",
+          "generate_ai",
+          "view_project",
+          "export_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_54e010fe"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "e1002152-4b34-401f-b8fc-e5e431cf2838": {
+    "id": "e1002152-4b34-401f-b8fc-e5e431cf2838",
+    "name": "Integration Test Project Team",
+    "description": "Team for Integration Test Project project",
+    "owner_id": "test_owner",
+    "created_at": "2025-08-10T17:19:06.447292",
+    "updated_at": "2025-08-10T17:19:06.447311",
+    "members": {
+      "test_owner": {
+        "user_id": "test_owner",
+        "username": "User_test_own",
+        "email": "owner@test.com",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:19:06.447356",
+        "last_active": "2025-08-10T17:19:06.447360",
+        "permissions": [
+          "view_analytics",
+          "generate_ai",
+          "view_project",
+          "export_project",
+          "manage_settings",
+          "manage_roles",
+          "edit_project",
+          "delete_project",
+          "invite_members",
+          "remove_members"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_6a59d981"
+    },
+    "is_public": false,
+    "max_members": 50
+  }
+}

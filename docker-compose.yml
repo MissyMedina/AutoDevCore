@@ -1,0 +1,116 @@
+version: '3.8'
+
+services:
+  # AutoDevCore Application
+  autodevcore:
+    build: .
+    container_name: autodevcore-app
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app
+      - ENVIRONMENT=development
+    volumes:
+      - ./data:/app/data
+      - ./output:/app/output
+      - ./logs:/app/logs
+    networks:
+      - autodevcore-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "from integrations.gpt_oss import gpt_oss_client; print('Health check: OK')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Redis for caching and session management
+  redis:
+    image: redis:7-alpine
+    container_name: autodevcore-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - autodevcore-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # PostgreSQL for production database (optional)
+  postgres:
+    image: postgres:15-alpine
+    container_name: autodevcore-db
+    environment:
+      POSTGRES_DB: autodevcore
+      POSTGRES_USER: autodevcore
+      POSTGRES_PASSWORD: autodevcore_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - autodevcore-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U autodevcore"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Nginx for reverse proxy (production)
+  nginx:
+    image: nginx:alpine
+    container_name: autodevcore-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - autodevcore
+    networks:
+      - autodevcore-network
+    profiles:
+      - production
+
+  # Monitoring stack
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: autodevcore-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    networks:
+      - autodevcore-network
+    profiles:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: autodevcore-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./monitoring/grafana:/etc/grafana/provisioning:ro
+    networks:
+      - autodevcore-network
+    profiles:
+      - monitoring
+
+volumes:
+  redis-data:
+  postgres-data:
+  prometheus-data:
+  grafana-data:
+
+networks:
+  autodevcore-network:
+    driver: bridge

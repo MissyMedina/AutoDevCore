@@ -1,0 +1,116 @@
+{
+  "team_management": {
+    "success": true,
+    "team_id": "f55f3e51-142d-4225-9aee-eb7839d22934",
+    "invitation_id": "d21d5528-0d9e-45ef-8d06-a9f03ff3b003",
+    "permissions": {
+      "can_edit": true,
+      "can_invite": true
+    },
+    "analytics": {
+      "team_id": "f55f3e51-142d-4225-9aee-eb7839d22934",
+      "total_members": 1,
+      "active_members": 1,
+      "activity_rate": 100.0,
+      "role_distribution": {
+        "owner": 1
+      },
+      "created_at": "2025-08-10T17:00:09.152123",
+      "last_updated": "2025-08-10T17:00:09.152143"
+    }
+  },
+  "collaboration_platform": {
+    "success": true,
+    "project_creation": {
+      "success": true,
+      "team_id": "ae3b8623-fdb1-4619-9a95-a9a69b56e85f",
+      "workspace_id": "workspace_cb0ed0a7",
+      "project_name": "Final Test Project",
+      "owner_id": "final_test_owner"
+    },
+    "invitation": {
+      "success": true,
+      "invitation_id": "6dd2b317-57cf-4d9c-aeae-ad33884eec03",
+      "email": "developer@final.test",
+      "role": "editor",
+      "expires_at": "2025-08-17T17:00:09.161955",
+      "workspace_added": true
+    },
+    "project_status": {
+      "success": true,
+      "team": {
+        "id": "ae3b8623-fdb1-4619-9a95-a9a69b56e85f",
+        "name": "Final Test Team",
+        "description": "Team for Final Test Project project",
+        "member_count": 1,
+        "role": "owner",
+        "permissions": [
+          "remove_members",
+          "generate_ai",
+          "view_analytics",
+          "view_project",
+          "invite_members",
+          "export_project",
+          "manage_settings",
+          "manage_roles",
+          "delete_project",
+          "edit_project"
+        ]
+      },
+      "workspace": null,
+      "analytics": {
+        "team_id": "ae3b8623-fdb1-4619-9a95-a9a69b56e85f",
+        "total_members": 1,
+        "active_members": 1,
+        "activity_rate": 100.0,
+        "role_distribution": {
+          "owner": 1
+        },
+        "created_at": "2025-08-10T17:00:09.156425",
+        "last_updated": "2025-08-10T17:00:09.156428"
+      },
+      "user": {
+        "id": "final_test_owner",
+        "username": "User_final_te",
+        "role": "owner",
+        "joined_at": "2025-08-10T17:00:09.156435",
+        "last_active": "2025-08-10T17:00:09.156436"
+      }
+    },
+    "user_dashboard": {
+      "success": true,
+      "teams": [
+        {
+          "id": "f55f3e51-142d-4225-9aee-eb7839d22934",
+          "name": "Final Test Team",
+          "description": "Team for final testing",
+          "role": "owner",
+          "member_count": 1,
+          "workspace_id": null
+        },
+        {
+          "id": "ae3b8623-fdb1-4619-9a95-a9a69b56e85f",
+          "name": "Final Test Team",
+          "description": "Team for Final Test Project project",
+          "role": "owner",
+          "member_count": 1,
+          "workspace_id": "workspace_cb0ed0a7"
+        }
+      ],
+      "workspaces": [],
+      "pending_invitations": [],
+      "stats": {
+        "total_teams": 2,
+        "total_workspaces": 0,
+        "pending_invitations": 0
+      }
+    }
+  },
+  "websocket_infrastructure": {
+    "success": true,
+    "import": "successful",
+    "message_types": 13,
+    "user_roles": 4,
+    "capability": "ready_for_websocket_server"
+  }
+}
