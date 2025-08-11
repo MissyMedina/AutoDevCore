@@ -40,7 +40,7 @@ jobs:
         
     - name: Run type checking
       run: |
-        mypy plugins/ integrations/ agents/ utils/ --ignore-missing-imports --no-strict-optional --ignore-errors
+        mypy plugins/ integrations/ agents/ utils/ --ignore-missing-imports --no-strict-optional
         
     - name: Run security scan
       run: |
