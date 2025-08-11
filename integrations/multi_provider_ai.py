@@ -52,7 +52,12 @@ class MultiProviderAI:
                 },
                 "chat_endpoint": "/v1/messages",
                 "models_endpoint": "/v1/models",
-                "models": ["claude-3-opus", "claude-3-sonnet", "claude-3-haiku", "claude-2.1"],
+                "models": [
+                    "claude-3-opus",
+                    "claude-3-sonnet",
+                    "claude-3-haiku",
+                    "claude-2.1",
+                ],
                 "strengths": ["analysis", "safety", "research", "documentation"],
                 "reliability": 0.92,
             },
@@ -65,7 +70,12 @@ class MultiProviderAI:
                 },
                 "chat_endpoint": "/v1beta/models/{model}:generateContent",
                 "models_endpoint": "/v1beta/models",
-                "models": ["gemini-pro", "gemini-pro-vision", "gemini-flash", "gemini-nano"],
+                "models": [
+                    "gemini-pro",
+                    "gemini-pro-vision",
+                    "gemini-flash",
+                    "gemini-nano",
+                ],
                 "strengths": ["multimodal", "fast_inference", "google_integration"],
                 "reliability": 0.90,
             },
@@ -79,7 +89,12 @@ class MultiProviderAI:
                 },
                 "chat_endpoint": "/v1/chat",
                 "models_endpoint": "/v1/models",
-                "models": ["command", "command-r", "command-r-plus", "embed-english-v3"],
+                "models": [
+                    "command",
+                    "command-r",
+                    "command-r-plus",
+                    "embed-english-v3",
+                ],
                 "strengths": ["rag_optimized", "embeddings", "cost_effective"],
                 "reliability": 0.88,
             },
@@ -93,7 +108,12 @@ class MultiProviderAI:
                 },
                 "chat_endpoint": "/v1/chat/completions",
                 "models_endpoint": "/v1/models",
-                "models": ["mistral-large", "mistral-medium", "mistral-small", "mixtral-8x7b"],
+                "models": [
+                    "mistral-large",
+                    "mistral-medium",
+                    "mistral-small",
+                    "mixtral-8x7b",
+                ],
                 "strengths": ["open_source_friendly", "efficient", "cost_effective"],
                 "reliability": 0.85,
             },
@@ -107,7 +127,11 @@ class MultiProviderAI:
                 },
                 "chat_endpoint": "/chat/completions",
                 "models_endpoint": "/models",
-                "models": ["llama-3.1-sonar-small", "llama-3.1-sonar-medium", "llama-3.1-sonar-large"],
+                "models": [
+                    "llama-3.1-sonar-small",
+                    "llama-3.1-sonar-medium",
+                    "llama-3.1-sonar-large",
+                ],
                 "strengths": ["web_search", "real_time_info", "research"],
                 "reliability": 0.87,
             },
@@ -142,7 +166,7 @@ class MultiProviderAI:
         """Load API configuration with bulletproof error handling."""
         try:
             if self.config_file.exists():
-                with open(self.config_file, 'r') as f:
+                with open(self.config_file, "r") as f:
                     return json.load(f)
             else:
                 # Create default config
@@ -165,7 +189,7 @@ class MultiProviderAI:
         """Save API configuration with bulletproof error handling."""
         try:
             self.config_file.parent.mkdir(parents=True, exist_ok=True)
-            with open(self.config_file, 'w') as f:
+            with open(self.config_file, "w") as f:
                 json.dump(config, f, indent=2)
         except Exception as e:
             self.logger.error(f"Failed to save config: {e}")
@@ -177,30 +201,36 @@ class MultiProviderAI:
 
         provider_config = self.providers[provider_name]
         api_key = self.config.get("providers", {}).get(provider_name, {}).get("api_key")
-        
+
         if not api_key and provider_name != "gpt-oss":
             return {"success": False, "error": f"No API key for {provider_name}"}
 
         try:
             headers = provider_config["headers_template"](api_key or "")
-            
+
             # Test endpoint
-            test_url = f"{provider_config['base_url']}{provider_config['models_endpoint']}"
-            
+            test_url = (
+                f"{provider_config['base_url']}{provider_config['models_endpoint']}"
+            )
+
             async with aiohttp.ClientSession() as session:
-                async with session.get(test_url, headers=headers, timeout=10) as response:
+                async with session.get(
+                    test_url, headers=headers, timeout=10
+                ) as response:
                     if response.status == 200:
                         return {
                             "success": True,
                             "provider": provider_name,
-                            "response_time": response.headers.get("x-response-time", "unknown"),
+                            "response_time": response.headers.get(
+                                "x-response-time", "unknown"
+                            ),
                             "models": provider_config["models"],
                             "strengths": provider_config["strengths"],
                         }
                     else:
                         return {
                             "success": False,
-                            "error": f"HTTP {response.status}: {await response.text()}"
+                            "error": f"HTTP {response.status}: {await response.text()}",
                         }
         except Exception as e:
             return {"success": False, "error": str(e)}
@@ -211,26 +241,30 @@ class MultiProviderAI:
         task_type: str = "general",
         provider: Optional[str] = None,
         model: Optional[str] = None,
-        **kwargs
+        **kwargs,
     ) -> Dict[str, Any]:
         """Generate response with bulletproof fallback chain."""
-        
+
         # Determine provider based on task and availability
         if not provider:
             provider = self._select_optimal_provider(task_type)
-        
+
         # Try primary provider
         result = await self._call_provider(provider, prompt, model, **kwargs)
         if result["success"]:
             return result
 
         # BULLETPROOF FALLBACK CHAIN
-        fallback_chain = self.config.get("fallback_chain", ["gpt-oss", "openai", "anthropic"])
-        
+        fallback_chain = self.config.get(
+            "fallback_chain", ["gpt-oss", "openai", "anthropic"]
+        )
+
         for fallback_provider in fallback_chain:
             if fallback_provider != provider:
                 self.logger.info(f"Trying fallback provider: {fallback_provider}")
-                result = await self._call_provider(fallback_provider, prompt, model, **kwargs)
+                result = await self._call_provider(
+                    fallback_provider, prompt, model, **kwargs
+                )
                 if result["success"]:
                     result["used_fallback"] = True
                     result["original_provider"] = provider
@@ -247,17 +281,21 @@ class MultiProviderAI:
 
     def _select_optimal_provider(self, task_type: str) -> str:
         """Select optimal provider based on task type and availability."""
-        preferred_providers = self.task_preferences.get(task_type, ["gpt-oss", "openai", "anthropic"])
-        
+        preferred_providers = self.task_preferences.get(
+            task_type, ["gpt-oss", "openai", "anthropic"]
+        )
+
         # Check which providers have API keys configured
         configured_providers = []
         for provider in preferred_providers:
-            if provider == "gpt-oss" or self.config.get("providers", {}).get(provider, {}).get("api_key"):
+            if provider == "gpt-oss" or self.config.get("providers", {}).get(
+                provider, {}
+            ).get("api_key"):
                 configured_providers.append(provider)
-        
+
         if configured_providers:
             return configured_providers[0]
-        
+
         return "gpt-oss"  # Always available as local fallback
 
     async def _call_provider(
@@ -268,11 +306,13 @@ class MultiProviderAI:
             return {"success": False, "error": f"Unknown provider: {provider_name}"}
 
         provider_config = self.providers[provider_name]
-        
+
         # Get API key (skip for gpt-oss)
         api_key = None
         if provider_name != "gpt-oss":
-            api_key = self.config.get("providers", {}).get(provider_name, {}).get("api_key")
+            api_key = (
+                self.config.get("providers", {}).get(provider_name, {}).get("api_key")
+            )
             if not api_key:
                 return {"success": False, "error": f"No API key for {provider_name}"}
 
@@ -282,26 +322,43 @@ class MultiProviderAI:
 
         try:
             start_time = time.time()
-            
+
             if provider_name == "openai":
-                response = await self._call_openai(provider_config, prompt, model, api_key, **kwargs)
+                response = await self._call_openai(
+                    provider_config, prompt, model, api_key, **kwargs
+                )
             elif provider_name == "anthropic":
-                response = await self._call_anthropic(provider_config, prompt, model, api_key, **kwargs)
+                response = await self._call_anthropic(
+                    provider_config, prompt, model, api_key, **kwargs
+                )
             elif provider_name == "google":
-                response = await self._call_google(provider_config, prompt, model, api_key, **kwargs)
+                response = await self._call_google(
+                    provider_config, prompt, model, api_key, **kwargs
+                )
             elif provider_name == "cohere":
-                response = await self._call_cohere(provider_config, prompt, model, api_key, **kwargs)
+                response = await self._call_cohere(
+                    provider_config, prompt, model, api_key, **kwargs
+                )
             elif provider_name == "mistral":
-                response = await self._call_mistral(provider_config, prompt, model, api_key, **kwargs)
+                response = await self._call_mistral(
+                    provider_config, prompt, model, api_key, **kwargs
+                )
             elif provider_name == "perplexity":
-                response = await self._call_perplexity(provider_config, prompt, model, api_key, **kwargs)
+                response = await self._call_perplexity(
+                    provider_config, prompt, model, api_key, **kwargs
+                )
             elif provider_name == "gpt-oss":
-                response = await self._call_gpt_oss(provider_config, prompt, model, **kwargs)
+                response = await self._call_gpt_oss(
+                    provider_config, prompt, model, **kwargs
+                )
             else:
-                return {"success": False, "error": f"Unsupported provider: {provider_name}"}
+                return {
+                    "success": False,
+                    "error": f"Unsupported provider: {provider_name}",
+                }
 
             response_time = time.time() - start_time
-            
+
             return {
                 "success": True,
                 "provider": provider_name,
@@ -314,7 +371,9 @@ class MultiProviderAI:
         except Exception as e:
             return {"success": False, "error": str(e)}
 
-    async def _call_openai(self, config: Dict, prompt: str, model: str, api_key: str, **kwargs) -> str:
+    async def _call_openai(
+        self, config: Dict, prompt: str, model: str, api_key: str, **kwargs
+    ) -> str:
         """Call OpenAI API."""
         headers = config["headers_template"](api_key)
         payload = {
@@ -323,18 +382,20 @@ class MultiProviderAI:
             "max_tokens": kwargs.get("max_tokens", 2000),
             "temperature": kwargs.get("temperature", 0.1),
         }
-        
+
         async with aiohttp.ClientSession() as session:
             async with session.post(
                 f"{config['base_url']}{config['chat_endpoint']}",
                 headers=headers,
                 json=payload,
-                timeout=60
+                timeout=60,
             ) as response:
                 data = await response.json()
                 return data["choices"][0]["message"]["content"]
 
-    async def _call_anthropic(self, config: Dict, prompt: str, model: str, api_key: str, **kwargs) -> str:
+    async def _call_anthropic(
+        self, config: Dict, prompt: str, model: str, api_key: str, **kwargs
+    ) -> str:
         """Call Anthropic API."""
         headers = config["headers_template"](api_key)
         payload = {
@@ -342,18 +403,20 @@ class MultiProviderAI:
             "max_tokens": kwargs.get("max_tokens", 2000),
             "messages": [{"role": "user", "content": prompt}],
         }
-        
+
         async with aiohttp.ClientSession() as session:
             async with session.post(
                 f"{config['base_url']}{config['chat_endpoint']}",
                 headers=headers,
                 json=payload,
-                timeout=60
+                timeout=60,
             ) as response:
                 data = await response.json()
                 return data["content"][0]["text"]
 
-    async def _call_google(self, config: Dict, prompt: str, model: str, api_key: str, **kwargs) -> str:
+    async def _call_google(
+        self, config: Dict, prompt: str, model: str, api_key: str, **kwargs
+    ) -> str:
         """Call Google AI API."""
         headers = config["headers_template"](api_key)
         payload = {
@@ -361,17 +424,21 @@ class MultiProviderAI:
             "generationConfig": {
                 "maxOutputTokens": kwargs.get("max_tokens", 2000),
                 "temperature": kwargs.get("temperature", 0.1),
-            }
+            },
         }
-        
+
         url = f"{config['base_url']}{config['chat_endpoint'].format(model=model)}?key={api_key}"
-        
+
         async with aiohttp.ClientSession() as session:
-            async with session.post(url, headers=headers, json=payload, timeout=60) as response:
+            async with session.post(
+                url, headers=headers, json=payload, timeout=60
+            ) as response:
                 data = await response.json()
                 return data["candidates"][0]["content"]["parts"][0]["text"]
 
-    async def _call_cohere(self, config: Dict, prompt: str, model: str, api_key: str, **kwargs) -> str:
+    async def _call_cohere(
+        self, config: Dict, prompt: str, model: str, api_key: str, **kwargs
+    ) -> str:
         """Call Cohere API."""
         headers = config["headers_template"](api_key)
         payload = {
@@ -380,18 +447,20 @@ class MultiProviderAI:
             "max_tokens": kwargs.get("max_tokens", 2000),
             "temperature": kwargs.get("temperature", 0.1),
         }
-        
+
         async with aiohttp.ClientSession() as session:
             async with session.post(
                 f"{config['base_url']}{config['chat_endpoint']}",
                 headers=headers,
                 json=payload,
-                timeout=60
+                timeout=60,
             ) as response:
                 data = await response.json()
                 return data["text"]
 
-    async def _call_mistral(self, config: Dict, prompt: str, model: str, api_key: str, **kwargs) -> str:
+    async def _call_mistral(
+        self, config: Dict, prompt: str, model: str, api_key: str, **kwargs
+    ) -> str:
         """Call Mistral AI API."""
         headers = config["headers_template"](api_key)
         payload = {
@@ -400,18 +469,20 @@ class MultiProviderAI:
             "max_tokens": kwargs.get("max_tokens", 2000),
             "temperature": kwargs.get("temperature", 0.1),
         }
-        
+
         async with aiohttp.ClientSession() as session:
             async with session.post(
                 f"{config['base_url']}{config['chat_endpoint']}",
                 headers=headers,
                 json=payload,
-                timeout=60
+                timeout=60,
             ) as response:
                 data = await response.json()
                 return data["choices"][0]["message"]["content"]
 
-    async def _call_perplexity(self, config: Dict, prompt: str, model: str, api_key: str, **kwargs) -> str:
+    async def _call_perplexity(
+        self, config: Dict, prompt: str, model: str, api_key: str, **kwargs
+    ) -> str:
         """Call Perplexity API."""
         headers = config["headers_template"](api_key)
         payload = {
@@ -420,18 +491,20 @@ class MultiProviderAI:
             "max_tokens": kwargs.get("max_tokens", 2000),
             "temperature": kwargs.get("temperature", 0.1),
         }
-        
+
         async with aiohttp.ClientSession() as session:
             async with session.post(
                 f"{config['base_url']}{config['chat_endpoint']}",
                 headers=headers,
                 json=payload,
-                timeout=60
+                timeout=60,
             ) as response:
                 data = await response.json()
                 return data["choices"][0]["message"]["content"]
 
-    async def _call_gpt_oss(self, config: Dict, prompt: str, model: str, **kwargs) -> str:
+    async def _call_gpt_oss(
+        self, config: Dict, prompt: str, model: str, **kwargs
+    ) -> str:
         """Call GPT-OSS (local Ollama)."""
         payload = {
             "model": model,
@@ -440,14 +513,14 @@ class MultiProviderAI:
             "options": {
                 "num_predict": kwargs.get("max_tokens", 2000),
                 "temperature": kwargs.get("temperature", 0.1),
-            }
+            },
         }
-        
+
         async with aiohttp.ClientSession() as session:
             async with session.post(
                 f"{config['base_url']}{config['chat_endpoint']}",
                 json=payload,
-                timeout=300
+                timeout=300,
             ) as response:
                 data = await response.json()
                 return data["response"]
@@ -456,9 +529,8 @@ class MultiProviderAI:
         """Get status of all providers."""
         status = {}
         for provider_name, provider_config in self.providers.items():
-            has_api_key = (
-                provider_name == "gpt-oss" or 
-                bool(self.config.get("providers", {}).get(provider_name, {}).get("api_key"))
+            has_api_key = provider_name == "gpt-oss" or bool(
+                self.config.get("providers", {}).get(provider_name, {}).get("api_key")
             )
             status[provider_name] = {
                 "name": provider_config["name"],

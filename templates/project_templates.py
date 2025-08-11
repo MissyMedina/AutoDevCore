@@ -6,14 +6,15 @@ Industry-specific templates with proven patterns and best practices
 
 import json
 import os
-from pathlib import Path
-from typing import Dict, Any, List, Optional
 from dataclasses import dataclass, field
 from enum import Enum
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 
 class IndustryType(Enum):
     """Industry types for project templates."""
+
     SAAS = "saas"
     FINTECH = "fintech"
     ECOMMERCE = "ecommerce"
@@ -28,6 +29,7 @@ class IndustryType(Enum):
 
 class ComplexityLevel(Enum):
     """Complexity levels for project templates."""
+
     STARTER = "starter"
     PROFESSIONAL = "professional"
     ENTERPRISE = "enterprise"
@@ -36,6 +38,7 @@ class ComplexityLevel(Enum):
 @dataclass
 class ProjectTemplate:
     """Project template with comprehensive configuration."""
+
     name: str
     industry: IndustryType
     complexity: ComplexityLevel
@@ -57,10 +60,10 @@ class ProjectTemplate:
 
 class ProjectTemplateManager:
     """Manages project templates with bulletproof configurations."""
-    
+
     def __init__(self):
         self.templates = self._initialize_templates()
-    
+
     def _initialize_templates(self) -> Dict[str, ProjectTemplate]:
         """Initialize comprehensive project templates."""
         return {
@@ -78,7 +81,7 @@ class ProjectTemplateManager:
                     "Basic Analytics",
                     "Email Notifications",
                     "API Rate Limiting",
-                    "Multi-tenancy Support"
+                    "Multi-tenancy Support",
                 ],
                 tech_stack={
                     "backend": "FastAPI",
@@ -87,7 +90,7 @@ class ProjectTemplateManager:
                     "cache": "Redis",
                     "queue": "Celery",
                     "search": "Elasticsearch",
-                    "monitoring": "Prometheus + Grafana"
+                    "monitoring": "Prometheus + Grafana",
                 },
                 architecture="Microservices with API Gateway",
                 security_features=[
@@ -98,7 +101,7 @@ class ProjectTemplateManager:
                     "Data Encryption at Rest",
                     "HTTPS Enforcement",
                     "CORS Configuration",
-                    "Input Validation & Sanitization"
+                    "Input Validation & Sanitization",
                 ],
                 performance_features=[
                     "Database Connection Pooling",
@@ -106,14 +109,14 @@ class ProjectTemplateManager:
                     "CDN Integration",
                     "Database Indexing",
                     "Async Processing",
-                    "Load Balancing Ready"
+                    "Load Balancing Ready",
                 ],
                 deployment_config={
                     "docker": True,
                     "kubernetes": False,
                     "ci_cd": "GitHub Actions",
                     "monitoring": "Prometheus + Grafana",
-                    "logging": "ELK Stack"
+                    "logging": "ELK Stack",
                 },
                 testing_strategy=[
                     "Unit Tests (90%+ coverage)",
@@ -121,20 +124,20 @@ class ProjectTemplateManager:
                     "API Tests",
                     "Security Tests",
                     "Performance Tests",
-                    "End-to-End Tests"
+                    "End-to-End Tests",
                 ],
                 documentation_requirements=[
                     "API Documentation (OpenAPI/Swagger)",
                     "User Documentation",
                     "Developer Documentation",
                     "Deployment Guide",
-                    "Troubleshooting Guide"
+                    "Troubleshooting Guide",
                 ],
                 compliance_requirements=[
                     "GDPR Compliance",
                     "SOC 2 Type II",
                     "PCI DSS (if handling payments)",
-                    "Data Privacy Laws"
+                    "Data Privacy Laws",
                 ],
                 estimated_development_time="8-12 weeks",
                 cost_estimate="$50,000 - $100,000",
@@ -142,16 +145,15 @@ class ProjectTemplateManager:
                     "Scalability challenges",
                     "Security vulnerabilities",
                     "Compliance requirements",
-                    "Third-party dependencies"
+                    "Third-party dependencies",
                 ],
                 success_metrics=[
                     "99.9% Uptime",
                     "< 200ms API Response Time",
                     "1000+ Concurrent Users",
-                    "Zero Security Incidents"
-                ]
+                    "Zero Security Incidents",
+                ],
             ),
-            
             "saas-enterprise": ProjectTemplate(
                 name="Enterprise SaaS Platform",
                 industry=IndustryType.SAAS,
@@ -167,7 +169,7 @@ class ProjectTemplateManager:
                     "Advanced Billing & Invoicing",
                     "White-label Support",
                     "Advanced API Management",
-                    "Real-time Collaboration"
+                    "Real-time Collaboration",
                 ],
                 tech_stack={
                     "backend": "FastAPI + Django",
@@ -176,7 +178,7 @@ class ProjectTemplateManager:
                     "cache": "Redis Cluster",
                     "queue": "Apache Kafka",
                     "search": "Elasticsearch",
-                    "monitoring": "Datadog + New Relic"
+                    "monitoring": "Datadog + New Relic",
                 },
                 architecture="Event-Driven Microservices",
                 security_features=[
@@ -186,7 +188,7 @@ class ProjectTemplateManager:
                     "Advanced Encryption",
                     "Security Information & Event Management",
                     "Penetration Testing",
-                    "Vulnerability Scanning"
+                    "Vulnerability Scanning",
                 ],
                 performance_features=[
                     "Auto-scaling",
@@ -194,34 +196,34 @@ class ProjectTemplateManager:
                     "Database Sharding",
                     "Advanced Caching",
                     "Load Balancing",
-                    "Performance Monitoring"
+                    "Performance Monitoring",
                 ],
                 deployment_config={
                     "docker": True,
                     "kubernetes": True,
                     "ci_cd": "GitLab CI/CD",
                     "monitoring": "Datadog",
-                    "logging": "Splunk"
+                    "logging": "Splunk",
                 },
                 testing_strategy=[
                     "Comprehensive Test Suite",
                     "Security Testing",
                     "Performance Testing",
                     "Chaos Engineering",
-                    "Compliance Testing"
+                    "Compliance Testing",
                 ],
                 documentation_requirements=[
                     "Comprehensive API Documentation",
                     "Enterprise Documentation",
                     "Compliance Documentation",
-                    "Security Documentation"
+                    "Security Documentation",
                 ],
                 compliance_requirements=[
                     "SOC 2 Type II",
                     "ISO 27001",
                     "GDPR",
                     "HIPAA (if applicable)",
-                    "FedRAMP (if applicable)"
+                    "FedRAMP (if applicable)",
                 ],
                 estimated_development_time="6-12 months",
                 cost_estimate="$500,000 - $2,000,000",
@@ -229,16 +231,15 @@ class ProjectTemplateManager:
                     "Complex compliance requirements",
                     "High security requirements",
                     "Scalability challenges",
-                    "Integration complexity"
+                    "Integration complexity",
                 ],
                 success_metrics=[
                     "99.99% Uptime",
                     "< 100ms API Response Time",
                     "10,000+ Concurrent Users",
-                    "Zero Security Incidents"
-                ]
+                    "Zero Security Incidents",
+                ],
             ),
-            
             # FINTECH TEMPLATES
             "fintech-starter": ProjectTemplate(
                 name="FinTech Starter Platform",
@@ -253,7 +254,7 @@ class ProjectTemplateManager:
                     "Financial Reporting",
                     "Audit Logging",
                     "Fraud Detection (Basic)",
-                    "KYC/AML Integration"
+                    "KYC/AML Integration",
                 ],
                 tech_stack={
                     "backend": "FastAPI",
@@ -261,7 +262,7 @@ class ProjectTemplateManager:
                     "database": "PostgreSQL",
                     "cache": "Redis",
                     "queue": "Celery",
-                    "monitoring": "Prometheus"
+                    "monitoring": "Prometheus",
                 },
                 architecture="Secure Monolithic with API Gateway",
                 security_features=[
@@ -270,37 +271,37 @@ class ProjectTemplateManager:
                     "Secure Key Management",
                     "Audit Logging",
                     "Fraud Detection",
-                    "Compliance Monitoring"
+                    "Compliance Monitoring",
                 ],
                 performance_features=[
                     "High Availability",
                     "Transaction Monitoring",
                     "Performance Tracking",
-                    "Disaster Recovery"
+                    "Disaster Recovery",
                 ],
                 deployment_config={
                     "docker": True,
                     "kubernetes": False,
                     "ci_cd": "GitHub Actions",
-                    "monitoring": "Prometheus + Grafana"
+                    "monitoring": "Prometheus + Grafana",
                 },
                 testing_strategy=[
                     "Security Testing",
                     "Compliance Testing",
                     "Transaction Testing",
-                    "Fraud Detection Testing"
+                    "Fraud Detection Testing",
                 ],
                 documentation_requirements=[
                     "Compliance Documentation",
                     "Security Documentation",
                     "API Documentation",
-                    "Audit Documentation"
+                    "Audit Documentation",
                 ],
                 compliance_requirements=[
                     "PCI DSS",
                     "GDPR",
                     "Financial Regulations",
-                    "KYC/AML Requirements"
+                    "KYC/AML Requirements",
                 ],
                 estimated_development_time="12-16 weeks",
                 cost_estimate="$100,000 - $200,000",
@@ -308,16 +309,15 @@ class ProjectTemplateManager:
                     "Regulatory compliance",
                     "Security requirements",
                     "Financial regulations",
-                    "Fraud risks"
+                    "Fraud risks",
                 ],
                 success_metrics=[
                     "99.99% Uptime",
                     "Zero Security Breaches",
                     "100% Compliance",
-                    "< 100ms Transaction Time"
-                ]
+                    "< 100ms Transaction Time",
+                ],
             ),
-            
             # E-COMMERCE TEMPLATES
             "ecommerce-starter": ProjectTemplate(
                 name="E-Commerce Starter Platform",
@@ -332,7 +332,7 @@ class ProjectTemplateManager:
                     "Inventory Management",
                     "Customer Reviews",
                     "Basic Analytics",
-                    "Email Marketing"
+                    "Email Marketing",
                 ],
                 tech_stack={
                     "backend": "FastAPI",
@@ -340,7 +340,7 @@ class ProjectTemplateManager:
                     "database": "PostgreSQL",
                     "cache": "Redis",
                     "search": "Elasticsearch",
-                    "payment": "Stripe"
+                    "payment": "Stripe",
                 },
                 architecture="Monolithic with Microservices Ready",
                 security_features=[
@@ -348,51 +348,46 @@ class ProjectTemplateManager:
                     "Secure Payment Processing",
                     "Data Encryption",
                     "Fraud Protection",
-                    "Secure Checkout"
+                    "Secure Checkout",
                 ],
                 performance_features=[
                     "Product Search Optimization",
                     "Image Optimization",
                     "Caching Strategy",
-                    "CDN Integration"
+                    "CDN Integration",
                 ],
                 deployment_config={
                     "docker": True,
                     "kubernetes": False,
-                    "ci_cd": "GitHub Actions"
+                    "ci_cd": "GitHub Actions",
                 },
                 testing_strategy=[
                     "Payment Testing",
                     "Security Testing",
                     "Performance Testing",
-                    "User Experience Testing"
+                    "User Experience Testing",
                 ],
                 documentation_requirements=[
                     "API Documentation",
                     "User Documentation",
-                    "Payment Documentation"
+                    "Payment Documentation",
                 ],
-                compliance_requirements=[
-                    "PCI DSS",
-                    "GDPR",
-                    "Consumer Protection Laws"
-                ],
+                compliance_requirements=["PCI DSS", "GDPR", "Consumer Protection Laws"],
                 estimated_development_time="10-14 weeks",
                 cost_estimate="$75,000 - $150,000",
                 risk_factors=[
                     "Payment security",
                     "Inventory management",
                     "Customer satisfaction",
-                    "Competition"
+                    "Competition",
                 ],
                 success_metrics=[
                     "99.9% Uptime",
                     "Fast Page Load Times",
                     "High Conversion Rate",
-                    "Low Cart Abandonment"
-                ]
+                    "Low Cart Abandonment",
+                ],
             ),
-            
             # HEALTHCARE TEMPLATES
             "healthcare-starter": ProjectTemplate(
                 name="Healthcare Management Platform",
@@ -407,14 +402,14 @@ class ProjectTemplateManager:
                     "Secure Messaging",
                     "Prescription Management",
                     "Billing Integration",
-                    "Reporting & Analytics"
+                    "Reporting & Analytics",
                 ],
                 tech_stack={
                     "backend": "FastAPI",
                     "frontend": "React + TypeScript",
                     "database": "PostgreSQL",
                     "encryption": "AES-256",
-                    "compliance": "HIPAA Tools"
+                    "compliance": "HIPAA Tools",
                 },
                 architecture="Secure Monolithic with Compliance",
                 security_features=[
@@ -423,50 +418,45 @@ class ProjectTemplateManager:
                     "Access Controls",
                     "Audit Logging",
                     "Secure Communication",
-                    "Data Backup"
+                    "Data Backup",
                 ],
                 performance_features=[
                     "High Availability",
                     "Data Integrity",
                     "Backup & Recovery",
-                    "Compliance Monitoring"
+                    "Compliance Monitoring",
                 ],
                 deployment_config={
                     "docker": True,
                     "kubernetes": False,
-                    "compliance": "HIPAA"
+                    "compliance": "HIPAA",
                 },
                 testing_strategy=[
                     "Compliance Testing",
                     "Security Testing",
-                    "Data Integrity Testing"
+                    "Data Integrity Testing",
                 ],
                 documentation_requirements=[
                     "HIPAA Documentation",
                     "Security Documentation",
-                    "Compliance Documentation"
+                    "Compliance Documentation",
                 ],
-                compliance_requirements=[
-                    "HIPAA",
-                    "HITECH",
-                    "State Regulations"
-                ],
+                compliance_requirements=["HIPAA", "HITECH", "State Regulations"],
                 estimated_development_time="16-20 weeks",
                 cost_estimate="$200,000 - $400,000",
                 risk_factors=[
                     "HIPAA compliance",
                     "Data security",
                     "Regulatory changes",
-                    "Patient privacy"
+                    "Patient privacy",
                 ],
                 success_metrics=[
                     "100% HIPAA Compliance",
                     "Zero Data Breaches",
                     "99.99% Uptime",
-                    "Fast Response Times"
-                ]
+                    "Fast Response Times",
+                ],
             ),
-            
             # IOT TEMPLATES
             "iot-starter": ProjectTemplate(
                 name="IoT Device Management Platform",
@@ -481,7 +471,7 @@ class ProjectTemplateManager:
                     "Device Authentication",
                     "Data Analytics",
                     "API for Devices",
-                    "Dashboard"
+                    "Dashboard",
                 ],
                 tech_stack={
                     "backend": "FastAPI",
@@ -489,56 +479,48 @@ class ProjectTemplateManager:
                     "database": "PostgreSQL + InfluxDB",
                     "mqtt": "Mosquitto",
                     "real_time": "WebSocket",
-                    "visualization": "Grafana"
+                    "visualization": "Grafana",
                 },
                 architecture="Event-Driven with Real-time Processing",
                 security_features=[
                     "Device Authentication",
                     "Data Encryption",
                     "Secure Communication",
-                    "Access Controls"
+                    "Access Controls",
                 ],
                 performance_features=[
                     "Real-time Processing",
                     "Scalable Architecture",
                     "Data Compression",
-                    "Efficient Storage"
+                    "Efficient Storage",
                 ],
-                deployment_config={
-                    "docker": True,
-                    "kubernetes": False,
-                    "mqtt": True
-                },
+                deployment_config={"docker": True, "kubernetes": False, "mqtt": True},
                 testing_strategy=[
                     "Device Testing",
                     "Performance Testing",
-                    "Security Testing"
+                    "Security Testing",
                 ],
                 documentation_requirements=[
                     "API Documentation",
                     "Device Documentation",
-                    "Integration Guide"
+                    "Integration Guide",
                 ],
-                compliance_requirements=[
-                    "Data Privacy",
-                    "Security Standards"
-                ],
+                compliance_requirements=["Data Privacy", "Security Standards"],
                 estimated_development_time="12-16 weeks",
                 cost_estimate="$100,000 - $200,000",
                 risk_factors=[
                     "Device compatibility",
                     "Scalability",
                     "Data security",
-                    "Network reliability"
+                    "Network reliability",
                 ],
                 success_metrics=[
                     "99.9% Uptime",
                     "Real-time Data Processing",
                     "Secure Communication",
-                    "Scalable Architecture"
-                ]
+                    "Scalable Architecture",
+                ],
             ),
-            
             # GAMING TEMPLATES
             "gaming-starter": ProjectTemplate(
                 name="Gaming Platform",
@@ -553,95 +535,98 @@ class ProjectTemplateManager:
                     "Achievement System",
                     "Social Features",
                     "Payment Integration",
-                    "Analytics"
+                    "Analytics",
                 ],
                 tech_stack={
                     "backend": "FastAPI",
                     "frontend": "React + TypeScript",
                     "database": "PostgreSQL + Redis",
                     "real_time": "WebSocket",
-                    "game_engine": "Unity/Unreal Integration"
+                    "game_engine": "Unity/Unreal Integration",
                 },
                 architecture="Real-time Gaming Architecture",
                 security_features=[
                     "Anti-cheat Protection",
                     "Secure Communication",
                     "Data Validation",
-                    "Rate Limiting"
+                    "Rate Limiting",
                 ],
                 performance_features=[
                     "Low Latency",
                     "Real-time Processing",
                     "Scalable Architecture",
-                    "Optimized Networking"
+                    "Optimized Networking",
                 ],
                 deployment_config={
                     "docker": True,
                     "kubernetes": False,
-                    "game_servers": True
+                    "game_servers": True,
                 },
                 testing_strategy=[
                     "Game Testing",
                     "Performance Testing",
                     "Security Testing",
-                    "Load Testing"
+                    "Load Testing",
                 ],
                 documentation_requirements=[
                     "API Documentation",
                     "Game Integration Guide",
-                    "Developer Documentation"
+                    "Developer Documentation",
                 ],
-                compliance_requirements=[
-                    "Age Restrictions",
-                    "Data Privacy"
-                ],
+                compliance_requirements=["Age Restrictions", "Data Privacy"],
                 estimated_development_time="14-18 weeks",
                 cost_estimate="$150,000 - $300,000",
                 risk_factors=[
                     "Performance requirements",
                     "Scalability",
                     "User engagement",
-                    "Competition"
+                    "Competition",
                 ],
                 success_metrics=[
                     "< 50ms Latency",
                     "High User Engagement",
                     "Scalable Architecture",
-                    "Low Churn Rate"
-                ]
-            )
+                    "Low Churn Rate",
+                ],
+            ),
         }
-    
+
     def get_template(self, template_id: str) -> Optional[ProjectTemplate]:
         """Get a specific template by ID."""
         return self.templates.get(template_id)
-    
-    def list_templates(self, industry: Optional[IndustryType] = None, complexity: Optional[ComplexityLevel] = None) -> List[ProjectTemplate]:
+
+    def list_templates(
+        self,
+        industry: Optional[IndustryType] = None,
+        complexity: Optional[ComplexityLevel] = None,
+    ) -> List[ProjectTemplate]:
         """List templates with optional filtering."""
         templates = list(self.templates.values())
-        
+
         if industry:
             templates = [t for t in templates if t.industry == industry]
-        
+
         if complexity:
             templates = [t for t in templates if t.complexity == complexity]
-        
+
         return templates
-    
-    def get_template_recommendations(self, requirements: Dict[str, Any]) -> List[ProjectTemplate]:
+
+    def get_template_recommendations(
+        self, requirements: Dict[str, Any]
+    ) -> List[ProjectTemplate]:
         """Get template recommendations based on requirements."""
         recommendations = []
-        
+
         # Industry-based recommendations
         if "industry" in requirements:
             industry = IndustryType(requirements["industry"])
             recommendations.extend(self.list_templates(industry=industry))
-        
+
         # Complexity-based recommendations
         if "complexity" in requirements:
             complexity = ComplexityLevel(requirements["complexity"])
             recommendations.extend(self.list_templates(complexity=complexity))
-        
+
         # Feature-based recommendations
         if "features" in requirements:
             required_features = set(requirements["features"])
@@ -649,26 +634,34 @@ class ProjectTemplateManager:
                 template_features = set(template.features)
                 if required_features.issubset(template_features):
                     recommendations.append(template)
-        
+
         # Remove duplicates and sort by relevance
         unique_recommendations = list({t.name: t for t in recommendations}.values())
-        return sorted(unique_recommendations, key=lambda t: len(t.features), reverse=True)
-    
-    def generate_project_plan(self, template_id: str, customizations: Dict[str, Any] = None) -> Dict[str, Any]:
+        return sorted(
+            unique_recommendations, key=lambda t: len(t.features), reverse=True
+        )
+
+    def generate_project_plan(
+        self, template_id: str, customizations: Dict[str, Any] = None
+    ) -> Dict[str, Any]:
         """Generate a complete project plan from a template."""
         template = self.get_template(template_id)
         if not template:
             return {"error": f"Template {template_id} not found"}
-        
+
         customizations = customizations or {}
-        
+
         # Merge template with customizations
         plan = {
             "template": template_id,
             "name": customizations.get("name", template.name),
             "description": customizations.get("description", template.description),
-            "features": template.features + customizations.get("additional_features", []),
-            "tech_stack": {**template.tech_stack, **customizations.get("tech_stack", {})},
+            "features": template.features
+            + customizations.get("additional_features", []),
+            "tech_stack": {
+                **template.tech_stack,
+                **customizations.get("tech_stack", {}),
+            },
             "architecture": customizations.get("architecture", template.architecture),
             "security_features": template.security_features,
             "performance_features": template.performance_features,
@@ -681,21 +674,22 @@ class ProjectTemplateManager:
             "risk_factors": template.risk_factors,
             "success_metrics": template.success_metrics,
             "customizations": customizations,
-            "generated_at": "2024-01-01T00:00:00Z"
+            "generated_at": "2024-01-01T00:00:00Z",
         }
-        
+
         return plan
-    
+
     def export_template(self, template_id: str, format: str = "json") -> str:
         """Export template in specified format."""
         template = self.get_template(template_id)
         if not template:
             return ""
-        
+
         if format == "json":
             return json.dumps(template.__dict__, indent=2, default=str)
         elif format == "yaml":
             import yaml
+
             return yaml.dump(template.__dict__, default_flow_style=False)
         else:
             return str(template.__dict__)
