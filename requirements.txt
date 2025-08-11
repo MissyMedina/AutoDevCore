@@ -24,10 +24,10 @@ pytest-cov==4.1.0
 pytest-asyncio==0.21.1
 pytest-mock==3.12.0
 bandit==1.7.5
-safety==2.3.5
-black==23.11.0
-isort==5.12.0
-mypy==1.7.1
+safety>=2.3.5
+black>=23.11.0
+isort>=5.12.0
+mypy>=1.7.1
 
 # Performance & Monitoring
 locust==2.17.0
