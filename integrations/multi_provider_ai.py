@@ -546,6 +546,34 @@ class MultiProviderAI:
         """Get provider recommendations for different tasks."""
         return self.task_preferences
 
+    def generate_response_sync(
+        self,
+        prompt: str,
+        task_type: str = "general",
+        provider: Optional[str] = None,
+        model: Optional[str] = None,
+        **kwargs,
+    ) -> Dict[str, Any]:
+        """Synchronous wrapper for generate_response."""
+        try:
+            # Run the async method in a new event loop
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            result = loop.run_until_complete(
+                self.generate_response(prompt, task_type, provider, model, **kwargs)
+            )
+            loop.close()
+            return result
+        except Exception as e:
+            return {
+                "success": False,
+                "error": f"Generation failed: {str(e)}",
+                "content": None,
+                "provider": provider or "unknown",
+                "model": model or "unknown",
+                "response_time": 0.0,
+            }
+
 
 # Global instance for easy access
 multi_provider_ai = MultiProviderAI()

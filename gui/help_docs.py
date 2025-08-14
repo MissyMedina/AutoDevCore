@@ -85,10 +85,11 @@ class HelpDocumentation:
         
         The interface adapts to your role:
         
-        - **Developer**: AI-assisted coding, debugging, and deployment tools
+        - **Senior Developer (Senior_Dev)**: Advanced AI-assisted coding, architecture design, and team mentoring
+        - **Mid-Level Developer (MidLvl_Dev)**: Feature development, code improvement, and skill building
+        - **Entry-Level Developer (EntryLvl_Dev)**: Guided tutorials and learning paths
         - **Project Manager**: High-level project tracking and team management
         - **DevOps Engineer**: Deployment pipelines and system monitoring
-        - **New Developer**: Guided tutorials and learning paths
         - **Stakeholder**: Business metrics and ROI analysis
         
         ## 🎨 Interface Overview
@@ -131,7 +132,7 @@ class HelpDocumentation:
         
         ## 🎯 Role-Based Views
         
-        ### Developer Dashboard
+        ### Senior Developer Dashboard (Senior_Dev)
         - **Code Editor**: AI-assisted development environment
         - **Development Tools**: Debugging, testing, and profiling
         - **AI Assistant**: Context-aware help and suggestions
@@ -147,7 +148,13 @@ class HelpDocumentation:
         - **System Monitoring**: Real-time health metrics
         - **Security Status**: Vulnerability scanning results
         
-        ### New Developer Dashboard
+        ### Mid-Level Developer Dashboard (MidLvl_Dev)
+        - **Development Hub**: Feature development and code improvement
+        - **Skill Development**: Progress tracking and learning modules
+        - **Team Collaboration**: Code review and peer learning
+        - **Quick Actions**: Start new features and review code
+
+        ### Entry-Level Developer Dashboard (EntryLvl_Dev)
         - **Learning Path**: Step-by-step tutorials
         - **Quick Start**: Guided project creation
         - **AI Assistant**: Helpful guidance and tips

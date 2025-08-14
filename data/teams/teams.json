@@ -15,16 +15,16 @@
         "joined_at": "2025-08-10T11:28:17.738468",
         "last_active": "2025-08-10T11:28:17.738469",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -50,16 +50,16 @@
         "joined_at": "2025-08-10T12:54:53.654097",
         "last_active": "2025-08-10T12:54:53.654098",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -73,9 +73,9 @@
         "last_active": "2025-08-10T12:54:53.657177",
         "permissions": [
           "view_project",
-          "generate_ai",
           "export_project",
-          "edit_project"
+          "edit_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -115,16 +115,16 @@
         "joined_at": "2025-08-10T12:55:06.306360",
         "last_active": "2025-08-10T12:55:06.306362",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -150,16 +150,16 @@
         "joined_at": "2025-08-10T13:14:31.979131",
         "last_active": "2025-08-10T13:14:31.979133",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -185,16 +185,16 @@
         "joined_at": "2025-08-10T16:43:02.659549",
         "last_active": "2025-08-10T16:43:02.659550",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -220,16 +220,16 @@
         "joined_at": "2025-08-10T16:43:06.666262",
         "last_active": "2025-08-10T16:43:06.666263",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -255,16 +255,16 @@
         "joined_at": "2025-08-10T16:44:23.229832",
         "last_active": "2025-08-10T16:44:23.229833",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -290,16 +290,16 @@
         "joined_at": "2025-08-10T16:44:27.237181",
         "last_active": "2025-08-10T16:44:27.237182",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -327,16 +327,16 @@
         "joined_at": "2025-08-10T16:44:59.293988",
         "last_active": "2025-08-10T16:44:59.293989",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -362,16 +362,16 @@
         "joined_at": "2025-08-10T16:45:03.305213",
         "last_active": "2025-08-10T16:45:03.305214",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -399,16 +399,16 @@
         "joined_at": "2025-08-10T16:45:47.882219",
         "last_active": "2025-08-10T16:45:47.882220",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -434,16 +434,16 @@
         "joined_at": "2025-08-10T16:45:51.894032",
         "last_active": "2025-08-10T16:45:51.894034",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -471,16 +471,16 @@
         "joined_at": "2025-08-10T17:00:09.152161",
         "last_active": "2025-08-10T17:00:09.152162",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -506,16 +506,16 @@
         "joined_at": "2025-08-10T17:00:09.156435",
         "last_active": "2025-08-10T17:00:09.156436",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -543,16 +543,16 @@
         "joined_at": "2025-08-10T17:06:35.959247",
         "last_active": "2025-08-10T17:06:35.959249",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -580,16 +580,16 @@
         "joined_at": "2025-08-10T17:06:35.973819",
         "last_active": "2025-08-10T17:06:35.973820",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -617,16 +617,16 @@
         "joined_at": "2025-08-10T17:06:35.992227",
         "last_active": "2025-08-10T17:06:35.992228",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -654,16 +654,16 @@
         "joined_at": "2025-08-10T17:06:36.094711",
         "last_active": "2025-08-10T17:06:36.094712",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -691,16 +691,16 @@
         "joined_at": "2025-08-10T17:06:36.108571",
         "last_active": "2025-08-10T17:06:36.108572",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -728,16 +728,16 @@
         "joined_at": "2025-08-10T17:07:03.961826",
         "last_active": "2025-08-10T17:07:03.961827",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -765,16 +765,16 @@
         "joined_at": "2025-08-10T17:07:03.978790",
         "last_active": "2025-08-10T17:07:03.978791",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -802,16 +802,16 @@
         "joined_at": "2025-08-10T17:07:03.997103",
         "last_active": "2025-08-10T17:07:03.997104",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -839,16 +839,16 @@
         "joined_at": "2025-08-10T17:07:04.012245",
         "last_active": "2025-08-10T17:07:04.012246",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -876,16 +876,16 @@
         "joined_at": "2025-08-10T17:07:04.028553",
         "last_active": "2025-08-10T17:07:04.028554",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "view_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -913,16 +913,16 @@
         "joined_at": "2025-08-10T17:07:22.383469",
         "last_active": "2025-08-10T17:07:22.383470",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "remove_members",
+          "invite_members",
           "view_project",
-          "manage_roles",
           "edit_project",
           "delete_project",
-          "invite_members",
-          "manage_settings"
+          "manage_settings",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -950,16 +950,16 @@
         "joined_at": "2025-08-10T17:07:22.401515",
         "last_active": "2025-08-10T17:07:22.401516",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "remove_members",
+          "invite_members",
           "view_project",
-          "manage_roles",
           "edit_project",
           "delete_project",
-          "invite_members",
-          "manage_settings"
+          "manage_settings",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -987,16 +987,16 @@
         "joined_at": "2025-08-10T17:07:22.424446",
         "last_active": "2025-08-10T17:07:22.424447",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "remove_members",
+          "invite_members",
           "view_project",
-          "manage_roles",
           "edit_project",
           "delete_project",
-          "invite_members",
-          "manage_settings"
+          "manage_settings",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -1024,16 +1024,16 @@
         "joined_at": "2025-08-10T17:07:22.442738",
         "last_active": "2025-08-10T17:07:22.442739",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "remove_members",
+          "invite_members",
           "view_project",
-          "manage_roles",
           "edit_project",
           "delete_project",
-          "invite_members",
-          "manage_settings"
+          "manage_settings",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -1061,16 +1061,16 @@
         "joined_at": "2025-08-10T17:07:22.459496",
         "last_active": "2025-08-10T17:07:22.459497",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "remove_members",
+          "invite_members",
           "view_project",
-          "manage_roles",
           "edit_project",
           "delete_project",
-          "invite_members",
-          "manage_settings"
+          "manage_settings",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -1098,16 +1098,16 @@
         "joined_at": "2025-08-10T17:18:30.342578",
         "last_active": "2025-08-10T17:18:30.342580",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "remove_members",
+          "invite_members",
           "view_project",
-          "manage_roles",
           "edit_project",
           "delete_project",
-          "invite_members",
-          "manage_settings"
+          "manage_settings",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -1135,16 +1135,16 @@
         "joined_at": "2025-08-10T17:18:30.362701",
         "last_active": "2025-08-10T17:18:30.362703",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "remove_members",
+          "invite_members",
           "view_project",
-          "manage_roles",
           "edit_project",
           "delete_project",
-          "invite_members",
-          "manage_settings"
+          "manage_settings",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -1172,16 +1172,16 @@
         "joined_at": "2025-08-10T17:18:30.390469",
         "last_active": "2025-08-10T17:18:30.390471",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "remove_members",
+          "invite_members",
           "view_project",
-          "manage_roles",
           "edit_project",
           "delete_project",
-          "invite_members",
-          "manage_settings"
+          "manage_settings",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -1209,16 +1209,16 @@
         "joined_at": "2025-08-10T17:18:30.408897",
         "last_active": "2025-08-10T17:18:30.408899",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "remove_members",
+          "invite_members",
           "view_project",
-          "manage_roles",
           "edit_project",
           "delete_project",
-          "invite_members",
-          "manage_settings"
+          "manage_settings",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -1246,16 +1246,16 @@
         "joined_at": "2025-08-10T17:18:30.429066",
         "last_active": "2025-08-10T17:18:30.429072",
         "permissions": [
-          "generate_ai",
-          "view_analytics",
-          "export_project",
-          "remove_members",
+          "invite_members",
           "view_project",
-          "manage_roles",
           "edit_project",
           "delete_project",
-          "invite_members",
-          "manage_settings"
+          "manage_settings",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -1283,16 +1283,16 @@
         "joined_at": "2025-08-10T17:19:06.347409",
         "last_active": "2025-08-10T17:19:06.347421",
         "permissions": [
-          "view_analytics",
-          "generate_ai",
-          "view_project",
-          "export_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -1320,16 +1320,16 @@
         "joined_at": "2025-08-10T17:19:06.372121",
         "last_active": "2025-08-10T17:19:06.372122",
         "permissions": [
-          "view_analytics",
-          "generate_ai",
-          "view_project",
-          "export_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -1357,16 +1357,16 @@
         "joined_at": "2025-08-10T17:19:06.399736",
         "last_active": "2025-08-10T17:19:06.399738",
         "permissions": [
-          "view_analytics",
-          "generate_ai",
-          "view_project",
-          "export_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -1394,16 +1394,16 @@
         "joined_at": "2025-08-10T17:19:06.425731",
         "last_active": "2025-08-10T17:19:06.425732",
         "permissions": [
-          "view_analytics",
-          "generate_ai",
-          "view_project",
-          "export_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -1431,16 +1431,16 @@
         "joined_at": "2025-08-10T17:19:06.447356",
         "last_active": "2025-08-10T17:19:06.447360",
         "permissions": [
-          "view_analytics",
-          "generate_ai",
-          "view_project",
-          "export_project",
-          "manage_settings",
-          "manage_roles",
-          "edit_project",
-          "delete_project",
           "invite_members",
-          "remove_members"
+          "view_project",
+          "edit_project",
+          "manage_settings",
+          "delete_project",
+          "manage_roles",
+          "view_analytics",
+          "remove_members",
+          "export_project",
+          "generate_ai"
         ],
         "avatar_url": null,
         "is_active": true
@@ -1448,6 +1448,43 @@
     },
     "settings": {
       "workspace_id": "workspace_6a59d981"
+    },
+    "is_public": false,
+    "max_members": 50
+  },
+  "f25630b3-b7a5-4e7b-af1a-d692e47c729f": {
+    "id": "f25630b3-b7a5-4e7b-af1a-d692e47c729f",
+    "name": "Test Project Team",
+    "description": "Team for Test Project project",
+    "owner_id": "test_user",
+    "created_at": "2025-08-13T19:25:56.036058",
+    "updated_at": "2025-08-13T19:25:56.036072",
+    "members": {
+      "test_user": {
+        "user_id": "test_user",
+        "username": "User_test_use",
+        "email": "test@example.com",
+        "role": "owner",
+        "joined_at": "2025-08-13T19:25:56.036082",
+        "last_active": "2025-08-13T19:25:56.036083",
+        "permissions": [
+          "invite_members",
+          "view_project",
+          "edit_project",
+          "delete_project",
+          "manage_settings",
+          "manage_roles",
+          "remove_members",
+          "view_analytics",
+          "generate_ai",
+          "export_project"
+        ],
+        "avatar_url": null,
+        "is_active": true
+      }
+    },
+    "settings": {
+      "workspace_id": "workspace_a0fbd946"
     },
     "is_public": false,
     "max_members": 50

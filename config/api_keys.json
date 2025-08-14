@@ -1,0 +1,54 @@
+{
+  "openai": {
+    "api_key": "",
+    "org_id": "",
+    "enabled": false,
+    "models": ["gpt-4", "gpt-3.5-turbo", "gpt-4-turbo"],
+    "base_url": "https://api.openai.com/v1"
+  },
+  "anthropic": {
+    "api_key": "",
+    "enabled": false,
+    "models": ["claude-3-opus", "claude-3-sonnet", "claude-3-haiku"],
+    "base_url": "https://api.anthropic.com"
+  },
+  "google": {
+    "api_key": "",
+    "enabled": false,
+    "models": ["gemini-pro", "gemini-pro-vision"],
+    "base_url": "https://generativelanguage.googleapis.com"
+  },
+  "cohere": {
+    "api_key": "",
+    "enabled": false,
+    "models": ["command", "command-light", "command-nightly"],
+    "base_url": "https://api.cohere.ai"
+  },
+  "mistral": {
+    "api_key": "",
+    "enabled": false,
+    "models": ["mistral-large", "mistral-medium", "mistral-small"],
+    "base_url": "https://api.mistral.ai"
+  },
+  "perplexity": {
+    "api_key": "",
+    "enabled": false,
+    "models": ["llama-3.1-8b-instruct", "llama-3.1-70b-instruct", "mixtral-8x7b-instruct"],
+    "base_url": "https://api.perplexity.ai"
+  },
+  "gpt_oss": {
+    "url": "http://localhost:11434",
+    "model": "gpt-oss:20b",
+    "enabled": true,
+    "models": ["gpt-oss:20b", "gpt-oss:7b", "mistral:7b"],
+    "base_url": "http://localhost:11434"
+  },
+  "settings": {
+    "default_provider": "gpt_oss",
+    "fallback_chain": ["gpt_oss", "openai", "anthropic", "google"],
+    "timeout": 60,
+    "max_retries": 3,
+    "cost_optimization": true,
+    "performance_tracking": true
+  }
+}

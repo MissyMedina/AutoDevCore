@@ -1,483 +1,466 @@
-# 🚀 AutoDevCore User Guide
+# 📚 AutoDevCore User Guide
 
-## Welcome to AutoDevCore!
+**Complete guide to using AutoDevCore's production-ready development platform**
 
-AutoDevCore is an AI-powered code generation platform that transforms your ideas into fully functional applications. This guide will help you get started and make the most of AutoDevCore's powerful features.
+AutoDevCore is a comprehensive AI-powered development platform designed for professional development teams, project managers, and stakeholders. This guide covers all aspects of using the platform effectively.
 
-## 📋 Table of Contents
+## 🚀 **Getting Started**
 
-1. [Quick Start](#quick-start)
-2. [Core Features](#core-features)
-3. [AI-Powered Code Generation](#ai-powered-code-generation)
-4. [Plugin System](#plugin-system)
-5. [Collaboration Platform](#collaboration-platform)
-6. [Performance & Security](#performance--security)
-7. [Advanced Features](#advanced-features)
-8. [Troubleshooting](#troubleshooting)
-9. [Best Practices](#best-practices)
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Python 3.11 or higher
-- OpenAI API key (for AI features)
-- Git (for version control)
-
-### Installation
-
+### **Quick Launch**
 ```bash
-# Clone the repository
-git clone https://github.com/your-org/autodevcore.git
-cd autodevcore
+# Launch the comprehensive Streamlit GUI (Recommended)
+python run_gui.py
 
-# Install dependencies
-pip install -r requirements.txt
+# Launch the lightweight Flask GUI (Alternative)
+python simple_gui.py
 
-# Set up environment variables
-cp .env.example .env
-# Edit .env with your API keys
+# Use the CLI for automated development
+python cli.py --mode compose --idea "AI-powered task manager"
 ```
 
-### Your First Application
-
-```bash
-# Generate a simple task management app
-python cli.py --mode generate --idea "Task Management System" --complexity simple
-
-# The app will be generated in the output/ directory
-cd output/task-management-system
-python main.py
-```
-
-## 🎯 Core Features
-
-### 1. AI-Powered Code Generation
-
-AutoDevCore uses advanced AI models to generate complete applications from natural language descriptions.
-
-**Example:**
-```bash
-python cli.py --mode generate \
-  --idea "E-commerce platform with user authentication and product catalog" \
-  --complexity medium \
-  --framework fastapi
-```
-
-**Supported Frameworks:**
-- **FastAPI** - Modern, fast web framework
-- **Flask** - Lightweight and flexible
-- **Django** - Full-featured web framework
-- **Node.js** - JavaScript runtime
-
-**Complexity Levels:**
-- **Simple** - Basic CRUD operations
-- **Medium** - Authentication, database, API
-- **Complex** - Advanced features, microservices
-
-### 2. Multi-Model AI Integration
-
-AutoDevCore intelligently selects the best AI model for each task:
-
-- **OpenAI GPT-4** - Complex reasoning and planning
-- **Anthropic Claude** - Code generation and analysis
-- **GPT-OSS** - Local/offline operations
-- **Fallback Systems** - Reliable operation
-
-### 3. Plugin System
-
-Extend AutoDevCore's capabilities with plugins:
-
-```bash
-# List available plugins
-python cli.py --mode plugin --name list
-
-# Install a plugin
-python cli.py --mode plugin --name install --plugin collaboration_platform
-
-# Use a plugin
-python cli.py --mode plugin --name collaboration_platform --operation create_project
-```
-
-**Available Plugins:**
-- **Collaboration Platform** - Real-time team collaboration
-- **Performance Optimizer** - Caching and optimization
-- **Security Auditor** - Security analysis and recommendations
-- **Monitoring Dashboard** - System metrics and health
-- **Multi-Model AI** - Intelligent AI model selection
-
-### 4. Real-Time Collaboration
-
-Work with your team in real-time:
-
-```python
-from plugins.collaboration_platform import CollaborationPlatform
-
-# Create a collaborative project
-collab = CollaborationPlatform()
-project = collab.create_collaborative_project(
-    name="My Awesome App",
-    description="A collaborative development project",
-    owner_id="user123"
-)
-
-# Invite team members
-collab.invite_to_project(
-    project_id=project['id'],
-    email="teammate@example.com",
-    role="editor"
-)
-```
-
-**Collaboration Features:**
-- **Real-time editing** - See changes as they happen
-- **Role-based access** - Owner, Admin, Editor, Viewer, Guest
-- **Project management** - Organize and track progress
-- **Team analytics** - Performance and contribution metrics
-
-## 🔧 AI-Powered Code Generation
-
-### Application Planning
-
-AutoDevCore creates detailed application plans before generating code:
-
-```python
-from plugins.ai_orchestrator import AIOrchestrator
-
-orchestrator = AIOrchestrator()
-
-# Generate application plan
-plan = orchestrator.generate_app_plan(
-    "Social media dashboard with analytics and user management"
-)
-
-print(plan['features'])  # List of planned features
-print(plan['architecture'])  # System architecture
-print(plan['database_schema'])  # Database design
-```
-
-### Code Generation
-
-Generate complete applications with intelligent code:
-
-```python
-# Generate code from plan
-code = orchestrator.generate_code(plan)
-
-# The generated code includes:
-# - Main application file
-# - Database models
-# - API routes
-# - Authentication system
-# - Frontend templates
-# - Configuration files
-# - Tests
-```
-
-### Code Analysis
-
-Analyze and improve existing code:
-
-```python
-# Analyze code quality
-analysis = orchestrator.analyze_code(code_sample)
-
-print(analysis['quality_score'])  # 0-100 quality score
-print(analysis['suggestions'])  # Improvement recommendations
-print(analysis['security_issues'])  # Security vulnerabilities
-```
-
-## 🔌 Plugin System
-
-### Installing Plugins
-
-```bash
-# Install from local directory
-python cli.py --mode plugin --name install --plugin ./my_plugin
-
-# Install from repository
-python cli.py --mode plugin --name install --plugin https://github.com/user/plugin
-
-# Install with dependencies
-python cli.py --mode plugin --name install --plugin my_plugin --install-deps
-```
-
-### Creating Custom Plugins
-
-Create your own plugins to extend AutoDevCore:
-
-```python
-# my_plugin.py
-from plugins.plugin_manager import PluginBase
-
-class MyCustomPlugin(PluginBase):
-    def __init__(self):
-        super().__init__()
-        self.name = "My Custom Plugin"
-        self.version = "1.0.0"
-        self.description = "A custom plugin for AutoDevCore"
-    
-    def execute(self, operation: str, **kwargs):
-        if operation == "custom_action":
-            return self.custom_action(**kwargs)
-        else:
-            raise ValueError(f"Unknown operation: {operation}")
-    
-    def custom_action(self, **kwargs):
-        # Your custom logic here
-        return {"result": "Custom action completed"}
-```
-
-### Plugin Management
-
-```python
-from plugins.plugin_manager import PluginManager
-
-pm = PluginManager()
-
-# List installed plugins
-plugins = pm.list_plugins()
-
-# Search for plugins
-results = pm.search_plugins("collaboration")
-
-# Update plugins
-pm.update_plugin("plugin_name")
-
-# Uninstall plugins
-pm.uninstall_plugin("plugin_name")
-```
-
-## 👥 Collaboration Platform
-
-### Creating Workspaces
-
-```python
-from plugins.collaboration_platform import CollaborationPlatform
-
-cp = CollaborationPlatform()
-
-# Create a new workspace
-workspace = cp.create_collaborative_project(
-    name="Team Project",
-    description="A collaborative development workspace",
-    owner_id="user123"
-)
-```
-
-### Team Management
-
-```python
-# Invite team members
-invitation = cp.invite_to_project(
-    project_id=workspace['id'],
-    email="developer@example.com",
-    role="editor"
-)
-
-# Check project status
-status = cp.get_project_status(workspace['id'])
-
-# Get user dashboard
-dashboard = cp.get_user_dashboard("user123")
-```
-
-### Real-Time Features
-
-- **Live editing** - See changes in real-time
-- **Cursor tracking** - Know where team members are working
-- **Chat system** - Built-in communication
-- **File sharing** - Share and collaborate on files
-- **Version control** - Track changes and history
-
-## ⚡ Performance & Security
-
-### Performance Optimization
-
-AutoDevCore includes automatic performance optimization:
-
-```python
-from plugins.performance_integration import performance_integration
-
-# Get performance summary
-summary = performance_integration.get_performance_summary()
-print(f"Performance Score: {summary['performance_score']}/100")
-
-# Run performance audit
-audit = performance_integration.run_performance_audit()
-print(f"Optimizations Applied: {audit['optimizations_applied']}")
-```
-
-**Performance Features:**
-- **Redis Caching** - Intelligent caching with TTL
-- **Database Optimization** - Query optimization and indexing
-- **Memory Management** - Automatic garbage collection
-- **CPU Optimization** - Thread pool management
-- **Load Testing** - Comprehensive performance testing
-
-### Security Features
-
-AutoDevCore prioritizes security:
-
-```python
-from plugins.security_auditor import security_auditor
-
-# Run security audit
-results = security_auditor.run_full_audit()
-print(f"Security Score: {results.overall_score}/100")
-
-# Check for vulnerabilities
-for issue in results.critical_issues:
-    print(f"Critical: {issue.title}")
-```
-
-**Security Features:**
-- **Input Validation** - Comprehensive input sanitization
-- **Authentication** - JWT-based authentication
-- **Authorization** - Role-based access control
-- **CORS Protection** - Cross-origin resource sharing
-- **Security Headers** - HTTP security headers
-- **Dependency Scanning** - Vulnerability detection
-
-## 🎨 Advanced Features
-
-### Custom Templates
-
-Create custom application templates:
-
-```python
-# Create a custom template
-template = {
-    "name": "My Custom Template",
-    "framework": "fastapi",
-    "features": ["authentication", "database", "api"],
-    "custom_code": {
-        "main.py": "# Your custom main.py code",
-        "models.py": "# Your custom models",
-        "routes.py": "# Your custom routes"
-    }
-}
-
-# Use custom template
-python cli.py --mode generate --template custom --idea "My App"
-```
-
-### API Integration
-
-Integrate with external APIs:
-
-```python
-from plugins.multi_model_ai import MultiModelAI
-
-mmai = MultiModelAI()
-
-# Use specific AI model
-response = mmai.generate_response(
-    prompt="Generate a REST API for user management",
-    model_type="openai_gpt4"
-)
-```
-
-### Monitoring & Analytics
-
-Monitor your applications:
-
-```python
-from plugins.monitoring_dashboard import MonitoringDashboard
-
-dashboard = MonitoringDashboard()
-
-# Get system metrics
-metrics = dashboard.get_dashboard_data()
-print(f"CPU Usage: {metrics['cpu_percent']}%")
-print(f"Memory Usage: {metrics['memory_percent']}%")
-
-# Set up alerts
-dashboard.set_alert(
-    name="High CPU Alert",
-    condition="cpu_percent > 80",
-    action="send_notification"
-)
-```
-
-## 🔧 Troubleshooting
-
-### Common Issues
-
-**1. AI Model Timeout**
-```bash
-# Check AI model health
-python cli.py --mode health --check ai_models
-
-# Use fallback model
-python cli.py --mode generate --model gpt_oss --idea "My App"
-```
-
-**2. Performance Issues**
-```bash
-# Run performance optimization
-python cli.py --mode optimize --type performance
-
-# Check system resources
-python cli.py --mode monitor --metrics system
-```
-
-**3. Plugin Installation Issues**
-```bash
-# Check plugin compatibility
-python cli.py --mode plugin --name validate --plugin plugin_name
-
-# Reinstall plugin
-python cli.py --mode plugin --name reinstall --plugin plugin_name
-```
-
-### Getting Help
-
-- **Documentation**: Check the docs/ directory
-- **Issues**: Report on GitHub
-- **Community**: Join our Discord server
-- **Support**: Contact support@autodevcore.com
-
-## 💡 Best Practices
-
-### Application Generation
-
-1. **Start Simple**: Begin with simple complexity and iterate
-2. **Clear Descriptions**: Provide detailed, specific requirements
-3. **Test Early**: Test generated applications thoroughly
-4. **Customize**: Modify generated code to fit your needs
-5. **Version Control**: Use Git for all generated projects
-
-### Collaboration
-
-1. **Define Roles**: Set appropriate permissions for team members
-2. **Regular Communication**: Use built-in chat and comments
-3. **Code Reviews**: Review changes before merging
-4. **Documentation**: Keep documentation up to date
-5. **Backup**: Regular backups of important projects
-
-### Performance
-
-1. **Monitor Resources**: Keep an eye on system performance
-2. **Use Caching**: Enable caching for frequently accessed data
-3. **Optimize Queries**: Review and optimize database queries
-4. **Scale Appropriately**: Scale resources based on load
-5. **Regular Audits**: Run performance audits regularly
-
-### Security
-
-1. **Keep Updated**: Regularly update dependencies
-2. **Validate Input**: Always validate and sanitize input
-3. **Use HTTPS**: Enable HTTPS in production
-4. **Monitor Logs**: Monitor application logs for issues
-5. **Regular Scans**: Run security scans regularly
-
-## 🎉 Conclusion
-
-AutoDevCore is designed to make application development faster, easier, and more collaborative. With its AI-powered code generation, comprehensive plugin system, and real-time collaboration features, you can build amazing applications with confidence.
-
-**Happy coding! 🚀**
+### **First Time Setup**
+1. **Install Dependencies**: Ensure all requirements are installed
+2. **Start Ollama**: Run `ollama run gpt-oss:20b` for local AI
+3. **Configure API Keys**: Set up cloud AI providers (optional)
+4. **Launch GUI**: Start with `python run_gui.py`
+5. **Choose Role**: Select your role from the sidebar
 
 ---
 
-*For more information, visit our [documentation](https://docs.autodevcore.com) or [GitHub repository](https://github.com/your-org/autodevcore).*
+## 🎯 **Role-Based Dashboards**
+
+### **Developer Dashboard**
+**For**: Software developers, engineers, and technical team members
+
+#### **Key Features**
+- **AI Code Generation**: Generate code from natural language descriptions
+- **Code Analysis**: Automated code review and optimization
+- **Debugging Tools**: AI-powered error detection and resolution
+- **File Management**: Upload and manage code files and folders
+- **Project Setup**: Initialize new projects with templates
+
+#### **Workflow**
+1. **Upload Code**: Drag and drop files or specify folder paths
+2. **AI Analysis**: Use AI assistant for code review and suggestions
+3. **Generate Code**: Create new code with AI assistance
+4. **Debug Issues**: Automated debugging and error resolution
+5. **Deploy**: Simulated deployment with status tracking
+
+#### **AI Assistant Usage**
+- **Code Generation**: "Create a React component for user authentication"
+- **Code Review**: "Review this function for potential issues"
+- **Debugging**: "Help me fix this error in my Python code"
+- **Optimization**: "Optimize this SQL query for better performance"
+
+### **Project Manager Dashboard**
+**For**: Project managers, team leads, and project coordinators
+
+#### **Key Features**
+- **Project Creation**: Template-based project setup with comprehensive configuration
+- **Progress Tracking**: Real-time project progress and milestone monitoring
+- **Team Management**: Workload distribution and resource allocation
+- **Budget Control**: Real-time budget tracking with alerts and forecasting
+- **Risk Assessment**: Automated risk analysis with mitigation strategies
+
+#### **Project Templates**
+1. **Web Application**: React + Node.js + PostgreSQL (8-12 weeks, $15K budget)
+2. **Mobile App**: React Native + Firebase + Redux (12-16 weeks, $25K budget)
+3. **API Development**: FastAPI + PostgreSQL + Docker (4-6 weeks, $8K budget)
+4. **Data Analytics**: Python + Pandas + Plotly + PostgreSQL (6-10 weeks, $18K budget)
+5. **E-commerce Platform**: React + Node.js + Stripe + MongoDB (10-14 weeks, $30K budget)
+
+#### **Project Management Workflow**
+1. **Create Project**: Select template and configure project details
+2. **Assign Team**: Select team members and assign roles
+3. **Set Milestones**: Define key milestones and deadlines
+4. **Track Progress**: Monitor progress and update status
+5. **Manage Budget**: Track spending and forecast costs
+6. **Generate Reports**: Create comprehensive project reports
+
+### **DevOps Dashboard**
+**For**: DevOps engineers, system administrators, and infrastructure teams
+
+#### **Key Features**
+- **System Monitoring**: Real-time infrastructure health monitoring
+- **Deployment Management**: Application deployment and status tracking
+- **Security Scanning**: Automated security analysis and vulnerability assessment
+- **Performance Metrics**: System performance and application metrics
+- **Log Analysis**: Comprehensive logging and error tracking
+
+#### **Infrastructure Monitoring**
+- **CPU Usage**: Real-time CPU utilization monitoring
+- **Memory Usage**: Memory consumption and optimization tracking
+- **Disk Usage**: Storage utilization and cleanup recommendations
+- **Network Usage**: Network performance and bandwidth monitoring
+- **Service Status**: Application and service availability tracking
+
+#### **Security Features**
+- **Vulnerability Scanning**: Automated security assessment
+- **Compliance Monitoring**: SOC 2, GDPR, HIPAA compliance tracking
+- **Access Control**: Role-based permissions and authentication
+- **Audit Logging**: Comprehensive activity and security event logging
+
+### **Stakeholder Dashboard**
+**For**: Business stakeholders, executives, and decision makers
+
+#### **Key Features**
+- **Business Intelligence**: Real-time business metrics and analytics
+- **ROI Analysis**: Investment tracking and return on investment analysis
+- **Performance Metrics**: Project performance and business impact
+- **Strategic KPIs**: Key performance indicators and business metrics
+- **Executive Reports**: Comprehensive business reporting and analysis
+
+#### **Business Intelligence Features**
+- **Financial Health**: Cost analysis, budget utilization, revenue tracking
+- **Strategic KPIs**: Performance indicators and business metrics
+- **Competitive Analysis**: Market positioning and competitive intelligence
+- **Risk Assessment**: Business risk analysis and mitigation strategies
+- **Trend Analysis**: Performance trends and predictive analytics
+
+#### **ROI Analysis**
+- **Investment Tracking**: Total investment and cost breakdown
+- **Revenue Generation**: Revenue tracking and growth analysis
+- **Cost Savings**: Efficiency gains and cost reduction metrics
+- **Payback Period**: Return on investment timeline analysis
+- **Risk Assessment**: Investment risk analysis and mitigation
+
+### **Admin Dashboard**
+**For**: System administrators, IT managers, and security teams
+
+#### **Key Features**
+- **User Management**: Comprehensive user administration and SSO integration
+- **Security Configuration**: Security policies and access control
+- **External Integrations**: SSO providers and API integrations
+- **System Health**: Infrastructure monitoring and health checks
+- **Auditing & Compliance**: Audit logging and compliance reporting
+
+#### **User Management Features**
+- **SSO Integration**: Azure AD, AWS IAM, Google Workspace, Okta, OneLogin, Auth0
+- **Role Management**: Role-based access control and permissions
+- **Group Management**: Team organization and group permissions
+- **Security Policies**: Authentication and authorization policies
+- **Compliance Tracking**: SOC 2, GDPR, HIPAA, ISO 27001 compliance
+
+---
+
+## 🤖 **AI Integration Guide**
+
+### **Multi-Provider AI System**
+AutoDevCore integrates with 7 different AI providers for maximum reliability and performance:
+
+#### **Local AI (GPT-OSS)**
+- **Model**: gpt-oss:20b via Ollama
+- **Cost**: Free (local processing)
+- **Use Case**: Code generation, debugging, analysis
+- **Setup**: `ollama run gpt-oss:20b`
+- **Advantages**: No API costs, offline operation, privacy
+
+#### **Cloud AI Providers**
+1. **OpenAI**: GPT-4, GPT-3.5-turbo (best for complex reasoning)
+2. **Anthropic**: Claude-3 models (best for analysis and safety)
+3. **Google AI**: Gemini models (best for multimodal tasks)
+4. **Cohere**: Command models (cost-effective)
+5. **Mistral**: Mistral models (high performance)
+6. **Perplexity**: Llama models (fast responses)
+
+### **AI Configuration**
+Configure AI providers in the Settings page:
+
+```json
+{
+  "openai": {
+    "api_key": "your-openai-key",
+    "enabled": true
+  },
+  "anthropic": {
+    "api_key": "your-anthropic-key",
+    "enabled": true
+  },
+  "gpt_oss": {
+    "url": "http://localhost:11434",
+    "model": "gpt-oss:20b",
+    "enabled": true
+  }
+}
+```
+
+### **AI Usage Best Practices**
+1. **Start Simple**: Begin with basic code generation
+2. **Be Specific**: Provide detailed descriptions for better results
+3. **Iterate**: Refine prompts based on AI responses
+4. **Validate**: Always review and test AI-generated code
+5. **Document**: Maintain documentation for AI-generated code
+
+### **AI Prompt Examples**
+- **Code Generation**: "Create a Python function that validates email addresses using regex"
+- **Code Review**: "Review this React component for accessibility issues"
+- **Debugging**: "Help me fix this JavaScript error: 'Cannot read property of undefined'"
+- **Optimization**: "Optimize this database query for better performance"
+- **Documentation**: "Generate documentation for this API endpoint"
+
+---
+
+## 📊 **Project Management Guide**
+
+### **Creating Projects**
+1. **Select Template**: Choose from 5 pre-built templates
+2. **Configure Details**: Set project name, description, and requirements
+3. **Assign Team**: Select team members and assign roles
+4. **Set Budget**: Define budget and timeline
+5. **Risk Assessment**: Identify and mitigate potential risks
+6. **Create Milestones**: Define key project milestones
+
+### **Project Templates**
+Each template includes:
+- **Estimated Duration**: Realistic development timelines
+- **Team Size**: Recommended team composition
+- **Complexity Assessment**: Risk and difficulty evaluation
+- **Tech Stack**: Modern, production-ready technologies
+- **Budget Estimates**: Realistic cost projections
+
+### **Project Tracking**
+- **Progress Monitoring**: Real-time progress tracking
+- **Milestone Management**: Key milestone tracking with automated status updates
+- **Budget Control**: Real-time budget tracking with overrun alerts
+- **Team Management**: Workload distribution and resource optimization
+- **Risk Assessment**: Automated risk analysis with mitigation strategies
+
+### **Reporting and Analytics**
+- **Project Reports**: Comprehensive project status reports
+- **Performance Metrics**: Project performance and success metrics
+- **Budget Analysis**: Cost analysis and budget utilization
+- **Team Analytics**: Team performance and workload analysis
+- **Risk Reports**: Risk assessment and mitigation reports
+
+---
+
+## 🔧 **Development Tools Guide**
+
+### **Code Generation**
+- **AI-Powered**: Generate code from natural language descriptions
+- **Template-Based**: Use pre-built templates for common patterns
+- **Customizable**: Modify generated code to meet specific requirements
+- **Best Practices**: Follow industry best practices and standards
+
+### **Code Analysis**
+- **Automated Review**: AI-powered code review and analysis
+- **Quality Assessment**: Code quality metrics and recommendations
+- **Security Scanning**: Automated security vulnerability detection
+- **Performance Analysis**: Performance optimization suggestions
+
+### **Debugging Tools**
+- **Error Detection**: Automated error detection and analysis
+- **Solution Suggestions**: AI-powered debugging suggestions
+- **Code Validation**: Syntax and logic validation
+- **Performance Profiling**: Performance bottleneck identification
+
+### **File Management**
+- **Upload Support**: Drag and drop file upload
+- **Folder Processing**: Process entire folders and directories
+- **Version Control**: Git integration and version management
+- **Backup and Recovery**: Automatic backup and recovery features
+
+---
+
+## 📈 **Analytics and Business Intelligence**
+
+### **Real-time Analytics**
+- **Project Metrics**: Progress tracking, budget utilization, team performance
+- **AI Performance**: Response times, success rates, cost analysis
+- **User Activity**: Engagement metrics, feature usage, user behavior
+- **System Health**: Infrastructure monitoring, service status, performance metrics
+
+### **Business Intelligence Features**
+- **Financial Analytics**: Cost analysis, budget tracking, ROI calculation
+- **Performance Metrics**: Project success rates, delivery times, quality metrics
+- **Trend Analysis**: Performance trends, usage patterns, growth analysis
+- **Predictive Analytics**: 30-day forecasting, risk assessment, opportunity identification
+
+### **Executive Reporting**
+- **Executive Summary**: High-level business metrics and performance overview
+- **Risk Assessment**: Business risk analysis and mitigation strategies
+- **Strategic Recommendations**: Data-driven strategic recommendations
+- **Competitive Analysis**: Market positioning and competitive intelligence
+
+---
+
+## 🔒 **Security and Compliance**
+
+### **Authentication and Authorization**
+- **Multi-Provider SSO**: Azure AD, AWS IAM, Google Workspace, Okta, OneLogin, Auth0
+- **Role-Based Access Control**: Developer, Project Manager, DevOps, Stakeholder, Admin
+- **Session Management**: Secure session handling and timeout
+- **Password Policies**: Strong password requirements and policies
+
+### **Data Protection**
+- **Encryption**: Data encryption in transit and at rest
+- **Access Control**: Granular permissions and access management
+- **Audit Logging**: Comprehensive activity and security event logging
+- **Compliance**: SOC 2, GDPR, HIPAA, ISO 27001 compliance support
+
+### **Security Monitoring**
+- **Real-time Alerts**: Security event monitoring and alerting
+- **Vulnerability Scanning**: Automated security assessment
+- **Threat Detection**: Advanced threat detection and response
+- **Incident Response**: Automated incident response and recovery
+
+---
+
+## 🚀 **Deployment and Operations**
+
+### **Local Development**
+```bash
+# Development environment
+python run_gui.py
+# Access at: http://localhost:8501
+```
+
+### **Production Deployment**
+```bash
+# Docker deployment
+docker-compose up -d
+
+# Environment variables
+export AUTODEV_API_KEYS_PATH=/path/to/api_keys.json
+export AUTODEV_LOG_LEVEL=INFO
+export AUTODEV_ENVIRONMENT=production
+```
+
+### **Cloud Deployment**
+- **AWS**: EC2, ECS, Lambda deployment options
+- **Azure**: App Service, Container Instances
+- **Google Cloud**: Compute Engine, Cloud Run
+- **Heroku**: Simple deployment with Git integration
+
+### **Monitoring and Maintenance**
+- **Health Checks**: Automated system health monitoring
+- **Performance Monitoring**: Real-time performance metrics
+- **Log Management**: Comprehensive logging and log analysis
+- **Backup and Recovery**: Automated backup and disaster recovery
+
+---
+
+## 📚 **Advanced Features**
+
+### **API Integration**
+- **RESTful APIs**: Comprehensive API for external integrations
+- **Webhook Support**: Real-time event notifications
+- **Custom Integrations**: Build custom integrations with external systems
+- **API Documentation**: Comprehensive API documentation and examples
+
+### **Customization**
+- **Theme Configuration**: Custom themes and branding
+- **Workflow Customization**: Customize workflows and processes
+- **Template Creation**: Create custom project templates
+- **Plugin Development**: Develop custom plugins and extensions
+
+### **Automation**
+- **CI/CD Integration**: Continuous integration and deployment
+- **Automated Testing**: Automated testing and quality assurance
+- **Deployment Automation**: Automated deployment and rollback
+- **Monitoring Automation**: Automated monitoring and alerting
+
+---
+
+## 🆘 **Troubleshooting Guide**
+
+### **Common Issues**
+
+#### **GUI Not Loading**
+```bash
+# Check if ports are available
+lsof -i :8501
+lsof -i :8502
+
+# Kill conflicting processes
+pkill -f "streamlit run"
+pkill -f "python simple_gui.py"
+```
+
+#### **AI Not Responding**
+```bash
+# Check Ollama status
+ollama list
+ollama run gpt-oss:20b
+
+# Test AI connection
+curl http://localhost:11434/api/tags
+```
+
+#### **API Key Issues**
+```bash
+# Check API configuration
+cat config/api_keys.json
+
+# Test API connections
+python -c "from integrations.multi_provider_ai import MultiProviderAI; print(MultiProviderAI().get_provider_status())"
+```
+
+### **Performance Optimization**
+- **Memory Usage**: Monitor memory consumption and optimize
+- **Response Times**: Optimize AI provider selection and caching
+- **Database Performance**: Optimize queries and indexing
+- **Network Latency**: Use local AI providers for faster responses
+
+### **Debugging Tips**
+1. **Check Logs**: Review application logs for error messages
+2. **Test Components**: Test individual components in isolation
+3. **Verify Configuration**: Ensure all configuration is correct
+4. **Update Dependencies**: Keep dependencies up to date
+5. **Monitor Resources**: Monitor system resources and performance
+
+---
+
+## 📞 **Support and Resources**
+
+### **Documentation**
+- **GUI Help**: `docs/GUI_HELP.md` - Interface-specific guidance
+- **API Reference**: `docs/API_REFERENCE.md` - Technical API documentation
+- **Interactive Tutorial**: `docs/INTERACTIVE_TUTORIAL.md` - Step-by-step learning
+
+### **Community**
+- **GitHub Issues**: Report bugs and feature requests
+- **Discussions**: Join community discussions and Q&A
+- **Contributing**: Guidelines for contributing to the project
+
+### **Getting Help**
+1. **Check Documentation**: Review relevant documentation first
+2. **Search Issues**: Look for similar issues in GitHub
+3. **Ask Community**: Post questions in discussions
+4. **Report Bugs**: Create detailed bug reports with steps to reproduce
+
+---
+
+## 🎯 **Best Practices**
+
+### **Development Workflow**
+1. **Plan**: Use project templates and planning tools
+2. **Develop**: Leverage AI assistance for code generation
+3. **Test**: Use automated testing and debugging tools
+4. **Deploy**: Use deployment automation and monitoring
+5. **Monitor**: Track performance and user feedback
+
+### **AI Usage**
+1. **Start Simple**: Begin with basic code generation
+2. **Iterate**: Refine AI prompts for better results
+3. **Validate**: Always review and test AI-generated code
+4. **Optimize**: Use AI for optimization and improvement
+5. **Document**: Maintain documentation for AI-generated code
+
+### **Project Management**
+1. **Use Templates**: Leverage pre-built project templates
+2. **Track Progress**: Monitor project progress and milestones
+3. **Manage Resources**: Optimize team allocation and workload
+4. **Control Budget**: Monitor budget utilization and costs
+5. **Assess Risks**: Regular risk assessment and mitigation
+
+### **Security**
+1. **Use SSO**: Implement single sign-on for user authentication
+2. **Role-Based Access**: Use role-based access control
+3. **Monitor Activity**: Monitor user activity and system access
+4. **Regular Updates**: Keep system and dependencies updated
+5. **Backup Data**: Regular backup and disaster recovery
+
+---
+
+**AutoDevCore User Guide - Empowering development teams with AI-powered intelligence and comprehensive project management.**

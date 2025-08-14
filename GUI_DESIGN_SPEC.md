@@ -5,8 +5,9 @@
 ### **Target Users:**
 - **Project Managers** - Need high-level visibility and progress tracking
 - **DevOps Engineers** - Require deployment and monitoring controls
-- **New Developers** - Want guided workflows and learning tools
-- **Senior Developers** - Need advanced features and customization
+- **Entry-Level Developers (EntryLvl_Dev)** - Want guided workflows and learning tools
+- **Mid-Level Developers (MidLvl_Dev)** - Need feature development and skill building
+- **Senior Developers (Senior_Dev)** - Need advanced features and customization
 - **Stakeholders** - Want to understand development progress and direction
 
 ### **Design Principles:**
@@ -151,14 +152,20 @@ Text: #1e293b (Dark Gray)
 - **Performance Metrics** - Load testing and optimization tools
 - **Environment Management** - Staging, production, and rollback controls
 
-### **For New Developers:**
+### **For Entry-Level Developers (EntryLvl_Dev):**
 - **Guided Tutorials** - Step-by-step learning paths
 - **Code Templates** - Pre-built components and patterns
 - **AI Code Assistant** - Real-time help and suggestions
 - **Visual Debugging** - See code execution flow
 - **Learning Progress** - Track skills and achievements
 
-### **For Senior Developers:**
+### **For Mid-Level Developers (MidLvl_Dev):**
+- **Feature Development** - Rapid feature implementation
+- **Code Review Tools** - Automated and manual review processes
+- **Skill Building** - Advanced learning modules and certifications
+- **Team Collaboration** - Peer programming and knowledge sharing
+
+### **For Senior Developers (Senior_Dev):**
 - **Advanced AI Controls** - Fine-tune model parameters
 - **Custom Plugin Development** - Visual plugin builder
 - **Performance Profiling** - Deep dive into optimization
@@ -337,7 +344,8 @@ Text: #1e293b (Dark Gray)
 
 ### **User Adoption:**
 - **Project Managers:** 90% can create and track projects without training
-- **New Developers:** 80% can generate their first app within 30 minutes
+- **Entry-Level Developers:** 80% can generate their first app within 30 minutes
+- **Mid-Level Developers:** 90% can implement features within 2 hours
 - **DevOps Engineers:** 95% can deploy applications using the interface
 - **Stakeholders:** 85% can understand project progress from dashboard
 

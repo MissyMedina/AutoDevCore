@@ -11,8 +11,8 @@ from pathlib import Path
 # Add plugins directory to path
 sys.path.append(str(Path(__file__).parent / "plugins"))
 
-from collaboration_platform import collaboration_platform
-from team_manager import Permission, TeamRole, team_manager
+from collaboration import CollaborationPlatform
+from collaboration import team_manager, TeamRole, Permission
 
 
 def test_collaboration_final():
@@ -67,7 +67,8 @@ def test_collaboration_final():
         # Test 2: Collaboration Platform (Synchronous)
         print("\n2️⃣ Testing Collaboration Platform...")
 
-        project_result = collaboration_platform.create_collaborative_project(
+        cp = CollaborationPlatform()
+        project_result = cp.create_collaborative_project(
             project_name="Final Test Project",
             description="Final integration test project",
             owner_id="final_test_owner",
@@ -82,7 +83,7 @@ def test_collaboration_final():
             workspace_id = project_result["workspace_id"]
 
             # Test invitation
-            invite_result = collaboration_platform.invite_to_project(
+            invite_result = cp.invite_to_project(
                 team_id=team_id,
                 workspace_id=workspace_id,
                 email="developer@final.test",
@@ -94,7 +95,7 @@ def test_collaboration_final():
                 print(f"   ✅ Invited member: {invite_result['email']}")
 
             # Test project status
-            status_result = collaboration_platform.get_project_status(
+            status_result = cp.get_project_status(
                 team_id=team_id, workspace_id=workspace_id, user_id="final_test_owner"
             )
 
@@ -102,7 +103,7 @@ def test_collaboration_final():
                 print(f"   ✅ Project status: {status_result['team']['name']}")
 
             # Test user dashboard
-            dashboard_result = collaboration_platform.get_user_dashboard(
+            dashboard_result = cp.get_user_dashboard(
                 "final_test_owner"
             )
 
@@ -127,12 +128,12 @@ def test_collaboration_final():
 
         # Test that the collaboration manager can be imported and instantiated
         try:
-            from websocket_server import collaboration_manager
+            from collaboration import collaboration_manager
 
             print("   ✅ Collaboration manager imported successfully")
 
             # Test message types
-            from websocket_server import MessageType, UserRole
+            from collaboration import MessageType, UserRole
 
             print(f"   ✅ Message types: {len(list(MessageType))} types available")
             print(f"   ✅ User roles: {len(list(UserRole))} roles available")

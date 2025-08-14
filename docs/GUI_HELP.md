@@ -1,566 +1,419 @@
-# AutoDevCore GUI - Complete Help Documentation
+# 🎨 AutoDevCore GUI Help Documentation
 
-## 🚀 **BULLETPROOF EDITION** - Complete GUI Reference
+**Comprehensive guide to AutoDevCore's dual GUI architecture and role-based dashboards**
 
-AutoDevCore GUI is a **production-ready, enterprise-grade** web interface that transforms prompts into scaffolded apps with **bulletproof reliability and zero downtime**. Built with Streamlit for a professional, Microsoft-style interface that's user-friendly for managers, DevOps, and new developers.
+AutoDevCore provides two distinct GUI interfaces designed for different use cases and user preferences. Both interfaces are production-ready and offer comprehensive functionality for AI-powered development and project management.
 
----
+## 🚀 **Quick Start**
 
-## 📋 **Quick Start**
-
-### **Launching the GUI**
+### **Primary GUI (Streamlit)**
 ```bash
-# Start the GUI
-streamlit run gui/main.py
+# Launch the comprehensive Streamlit GUI
+python run_gui.py
 
-# Access the interface
-open http://localhost:8501
+# Access at: http://localhost:8501
 ```
 
-### **First Steps**
-1. **Configure AI Providers**: Set up your API keys in the API Configuration panel
-2. **Choose Template**: Select an industry-specific project template
-3. **Describe Your App**: Enter a detailed description of your application
-4. **Generate**: Click generate and watch your app come to life
-5. **Score & Deploy**: Evaluate your app and deploy with Git integration
+### **Alternative GUI (Flask)**
+```bash
+# Launch the lightweight Flask GUI
+python simple_gui.py
+
+# Access at: http://localhost:8502
+```
 
 ---
 
-## 🎯 **Main Interface**
+## 🎨 **GUI Architecture Overview**
 
-### **1. Application Generation Panel**
+### **Streamlit GUI (Primary Interface)**
+- **Technology**: Streamlit web framework
+- **Port**: 8501
+- **Features**: Role-based dashboards, comprehensive project management, real-time analytics
+- **Best For**: Full-featured development environment, team collaboration, business intelligence
 
-The core application generation interface with enterprise-grade features.
-
-#### **Description Input**
-- **Text Area**: Enter detailed application descriptions
-- **Character Counter**: Track description length
-- **Auto-save**: Automatically saves your work
-- **Template Suggestions**: AI-powered description suggestions
-
-#### **Template Selection**
-- **Industry Templates**: SaaS, FinTech, E-commerce, Healthcare, IoT, Gaming
-- **Complexity Levels**: Starter, Professional, Enterprise
-- **Template Preview**: See template features and requirements
-- **Custom Templates**: Create and save custom templates
-
-#### **AI Provider Selection**
-- **Provider Dropdown**: Choose from 7 AI providers
-- **Provider Status**: Real-time availability indicators
-- **Cost Estimates**: Estimated cost for generation
-- **Performance History**: Past performance metrics
-
-#### **Advanced Options**
-- **Features Selection**: Choose specific features to include
-- **Security Level**: Select security requirements
-- **Performance Settings**: Configure performance parameters
-- **Git Integration**: Enable automatic Git repository setup
-
-### **2. API Configuration Panel**
-
-Configure and manage multiple AI provider API keys.
-
-#### **Supported Providers**
-- **OpenAI**: GPT-4, GPT-3.5 models
-- **Anthropic**: Claude 3 models
-- **Google AI**: Gemini Pro models
-- **Cohere**: Command models
-- **Mistral AI**: Mistral Large models
-- **Perplexity**: Sonar models
-- **GPT-OSS**: Local models (no API key needed)
-
-#### **Configuration Features**
-- **Secure Storage**: Encrypted API key storage
-- **Connection Testing**: Test provider connectivity
-- **Usage Monitoring**: Track API usage and costs
-- **Key Rotation**: Easy API key updates
-
-#### **Provider Management**
-- **Enable/Disable**: Toggle providers on/off
-- **Priority Setting**: Set provider priority order
-- **Fallback Configuration**: Configure automatic fallbacks
-- **Cost Optimization**: Set cost limits and preferences
-
-### **3. Project Templates Panel**
-
-Browse and customize industry-specific project templates.
-
-#### **Available Templates**
-
-| Template | Industry | Complexity | Features | Est. Time | Est. Cost |
-|----------|----------|------------|----------|-----------|-----------|
-| **SaaS Starter** | SaaS | Starter | User auth, billing, analytics | 8-12 weeks | $50K-$100K |
-| **SaaS Enterprise** | SaaS | Enterprise | SSO, compliance, white-label | 6-12 months | $500K-$2M |
-| **FinTech Starter** | FinTech | Starter | Payments, compliance, security | 12-16 weeks | $100K-$200K |
-| **E-commerce Starter** | E-commerce | Starter | Catalog, cart, payments | 10-14 weeks | $75K-$150K |
-| **Healthcare Starter** | Healthcare | Starter | HIPAA, patient records | 16-20 weeks | $200K-$400K |
-| **IoT Starter** | IoT | Starter | Device management, real-time | 12-16 weeks | $100K-$200K |
-| **Gaming Starter** | Gaming | Starter | User management, multiplayer | 14-18 weeks | $150K-$300K |
-
-#### **Template Features**
-- **Detailed Preview**: View template specifications
-- **Customization**: Modify template features
-- **Export/Import**: Save and share custom templates
-- **Comparison**: Compare multiple templates
-
-### **4. Application Scoring Panel**
-
-Evaluate generated applications against industry standards.
-
-#### **Scoring Criteria**
-- **Security**: Authentication, authorization, data protection
-- **Performance**: Response times, scalability, optimization
-- **Architecture**: Code quality, design patterns, maintainability
-- **Compliance**: Industry-specific compliance requirements
-- **Documentation**: Code documentation, user guides, API docs
-
-#### **Scoring Templates**
-- **Industry-Specific**: Tailored to each industry
-- **Compliance Focused**: HIPAA, PCI DSS, SOC 2, GDPR
-- **Performance Optimized**: Scalability and performance metrics
-- **Security Hardened**: Enterprise security standards
-
-#### **Results Display**
-- **Score Breakdown**: Detailed scoring by category
-- **Improvement Suggestions**: Actionable recommendations
-- **Comparison Charts**: Visual score comparisons
-- **Export Options**: PDF, JSON, CSV reports
-
-### **5. Git Integration Panel**
-
-Professional Git repository management for generated projects.
-
-#### **Repository Setup**
-- **Auto Initialization**: Automatic Git repository creation
-- **Remote Configuration**: GitHub/GitLab integration
-- **Branch Management**: Feature branches and workflows
-- **Commit History**: Intelligent commit messages
-
-#### **Git Features**
-- **Repository Status**: Real-time Git status
-- **Branch Operations**: Create, switch, merge branches
-- **Commit Management**: Stage, commit, push changes
-- **Conflict Resolution**: Handle merge conflicts
-
-#### **Workflow Integration**
-- **CI/CD Setup**: Configure CI/CD pipelines
-- **Deployment**: Automated deployment workflows
-- **Collaboration**: Team collaboration features
-- **Version Control**: Professional version management
-
-### **6. Error Handling Panel**
-
-Comprehensive error handling with actionable solutions.
-
-#### **Error Categories**
-- **AI Model Errors**: Provider-specific solutions
-- **Network Errors**: Connection and timeout handling
-- **Configuration Errors**: API keys, settings, permissions
-- **Validation Errors**: Input format and requirements
-- **Integration Errors**: Git, plugins, external services
-- **System Errors**: File, memory, permission issues
-
-#### **Error Features**
-- **Pattern Recognition**: Automatic error categorization
-- **Solution Database**: Step-by-step fix instructions
-- **Code Examples**: Working code snippets
-- **Documentation Links**: Direct links to relevant docs
-
-#### **Error Management**
-- **Error Logging**: Comprehensive error tracking
-- **Alert System**: Real-time error notifications
-- **Resolution Tracking**: Track error resolution progress
-- **Prevention**: Proactive error prevention
-
-### **7. Performance Monitoring Panel**
-
-Real-time performance monitoring and optimization.
-
-#### **System Metrics**
-- **CPU Usage**: Real-time CPU monitoring
-- **Memory Usage**: Memory consumption tracking
-- **Disk I/O**: Storage performance metrics
-- **Network I/O**: Network performance monitoring
-
-#### **AI Performance**
-- **Provider Response Times**: AI model performance
-- **Success Rates**: Generation success tracking
-- **Cost Analysis**: API usage cost monitoring
-- **Optimization Suggestions**: Performance improvement tips
-
-#### **Application Metrics**
-- **Generation Times**: Application generation performance
-- **Quality Scores**: Generated application quality
-- **User Satisfaction**: User feedback and ratings
-- **Usage Analytics**: Feature usage statistics
+### **Flask GUI (Alternative Interface)**
+- **Technology**: Flask web framework with HTML/CSS/JavaScript
+- **Port**: 8502
+- **Features**: Lightweight interface, modal dialogs, AI chat integration
+- **Best For**: Quick access, simple interactions, lightweight deployment
 
 ---
 
-## 🔧 **Advanced Features**
+## 🎯 **Role-Based Dashboards (Streamlit GUI)**
 
-### **Multi-Provider AI Management**
+### **1. Developer Dashboard**
+**Purpose**: Code development, AI assistance, debugging, and project setup
 
-#### **Provider Configuration**
-- **API Key Management**: Secure storage and rotation
-- **Provider Testing**: Connection and functionality testing
-- **Performance Tracking**: Response times and success rates
-- **Cost Optimization**: Usage monitoring and cost control
+#### **Core Features**
+- **📝 Code Editor**: Upload and edit code files with syntax highlighting
+- **🤖 AI Assistant**: Multi-provider AI chat for code generation and debugging
+- **🔧 Development Tools**: AI code generation, debugging, deployment
+- **📁 File Management**: Upload code files and folders for analysis
+- **📊 System Status**: Real-time monitoring of AI services and system health
 
-#### **Intelligent Selection**
-- **Task-Specific Routing**: Optimal provider for each task
-- **Performance-Based Selection**: Choose based on past performance
-- **Cost-Aware Selection**: Balance performance and cost
-- **Fallback Chains**: Automatic provider switching
+#### **AI Integration**
+- **Local AI**: GPT-OSS via Ollama (free, offline)
+- **Cloud AI**: OpenAI, Anthropic, Google AI, Cohere, Mistral, Perplexity
+- **Smart Selection**: Automatic provider selection based on task requirements
+- **Fallback Chain**: Automatic switching if primary provider fails
 
-#### **Health Monitoring**
-- **Real-time Status**: Live provider availability
-- **Performance Alerts**: Notifications for performance issues
-- **Maintenance Scheduling**: Planned maintenance notifications
-- **Recovery Procedures**: Automatic recovery from failures
+#### **Development Workflow**
+1. **Upload Code**: Drag and drop files or specify folder paths
+2. **AI Analysis**: Use AI assistant for code review and optimization
+3. **Generate Code**: Create new code with AI assistance
+4. **Debug Issues**: Automated debugging and error analysis
+5. **Deploy**: Simulated deployment with status tracking
 
-### **Project Template Management**
+### **2. Project Manager Dashboard**
+**Purpose**: Project lifecycle management, team coordination, budget control
 
-#### **Template Customization**
-- **Feature Selection**: Choose specific features to include
-- **Technology Stack**: Select preferred technologies
-- **Security Requirements**: Configure security levels
-- **Performance Settings**: Set performance parameters
+#### **Core Features**
+- **📋 Project Creation**: Template-based project setup with comprehensive configuration
+- **📊 Project Analytics**: Real-time progress tracking and performance metrics
+- **👥 Team Management**: Workload distribution and resource allocation
+- **💰 Budget Management**: Real-time budget tracking with alerts
+- **📈 Progress Monitoring**: Milestone tracking and status updates
 
-#### **Template Creation**
-- **Custom Templates**: Create industry-specific templates
-- **Template Sharing**: Share templates with team
-- **Version Control**: Template version management
-- **Template Validation**: Validate template configurations
+#### **Project Templates**
+1. **Web Application**: React + Node.js + PostgreSQL (8-12 weeks, $15K budget)
+2. **Mobile App**: React Native + Firebase + Redux (12-16 weeks, $25K budget)
+3. **API Development**: FastAPI + PostgreSQL + Docker (4-6 weeks, $8K budget)
+4. **Data Analytics**: Python + Pandas + Plotly + PostgreSQL (6-10 weeks, $18K budget)
+5. **E-commerce Platform**: React + Node.js + Stripe + MongoDB (10-14 weeks, $30K budget)
 
-#### **Template Analytics**
-- **Usage Statistics**: Track template usage
-- **Success Rates**: Template success metrics
-- **User Feedback**: Template ratings and reviews
-- **Improvement Suggestions**: Template enhancement recommendations
+#### **Project Management Features**
+- **Risk Assessment**: Automated risk analysis with mitigation strategies
+- **Milestone Tracking**: Key milestone management with automated status updates
+- **Team Allocation**: Workload distribution and resource optimization
+- **Budget Control**: Real-time budget tracking with overrun alerts
+- **Progress Analytics**: Comprehensive project performance metrics
 
-### **Git Integration Features**
+### **3. DevOps Dashboard**
+**Purpose**: System monitoring, deployment management, security oversight
 
-#### **Repository Management**
-- **Auto Setup**: Automatic repository initialization
-- **Remote Configuration**: Easy GitHub/GitLab setup
-- **Branch Strategy**: Professional branching workflows
-- **Merge Management**: Automated merge procedures
+#### **Core Features**
+- **🖥️ System Monitoring**: Real-time infrastructure health monitoring
+- **🚀 Deployment Management**: Application deployment and status tracking
+- **🔒 Security Scanning**: Automated security analysis and vulnerability assessment
+- **📊 Performance Metrics**: System performance and application metrics
+- **🔍 Log Analysis**: Comprehensive logging and error tracking
 
-#### **Workflow Automation**
-- **CI/CD Integration**: Automated testing and deployment
-- **Code Quality**: Automated code quality checks
-- **Security Scanning**: Automated security testing
-- **Documentation**: Automated documentation generation
+#### **System Health Monitoring**
+- **CPU Usage**: Real-time CPU utilization monitoring
+- **Memory Usage**: Memory consumption and optimization tracking
+- **Disk Usage**: Storage utilization and cleanup recommendations
+- **Network Usage**: Network performance and bandwidth monitoring
+- **Service Status**: Application and service availability tracking
 
-#### **Collaboration Features**
-- **Team Management**: User and permission management
-- **Code Review**: Automated code review processes
-- **Issue Tracking**: Integrated issue management
-- **Release Management**: Automated release procedures
+#### **Security Features**
+- **Vulnerability Scanning**: Automated security assessment
+- **Compliance Monitoring**: SOC 2, GDPR, HIPAA compliance tracking
+- **Access Control**: Role-based permissions and authentication
+- **Audit Logging**: Comprehensive activity and security event logging
+
+### **4. Stakeholder Dashboard**
+**Purpose**: Business intelligence, ROI analysis, executive reporting
+
+#### **Core Features**
+- **📊 Business Intelligence**: Real-time business metrics and analytics
+- **💰 ROI Analysis**: Investment tracking and return on investment analysis
+- **📈 Performance Metrics**: Project performance and business impact
+- **🎯 Strategic KPIs**: Key performance indicators and business metrics
+- **📋 Executive Reports**: Comprehensive business reporting and analysis
+
+#### **Business Intelligence Features**
+- **Financial Health**: Cost analysis, budget utilization, revenue tracking
+- **Strategic KPIs**: Performance indicators and business metrics
+- **Competitive Analysis**: Market positioning and competitive intelligence
+- **Risk Assessment**: Business risk analysis and mitigation strategies
+- **Trend Analysis**: Performance trends and predictive analytics
+
+#### **ROI Analysis**
+- **Investment Tracking**: Total investment and cost breakdown
+- **Revenue Generation**: Revenue tracking and growth analysis
+- **Cost Savings**: Efficiency gains and cost reduction metrics
+- **Payback Period**: Return on investment timeline analysis
+- **Risk Assessment**: Investment risk analysis and mitigation
+
+### **5. Admin Dashboard**
+**Purpose**: System administration, user management, security configuration
+
+#### **Core Features**
+- **👥 User Management**: Comprehensive user administration and SSO integration
+- **🔒 Security Configuration**: Security policies and access control
+- **🔗 External Integrations**: SSO providers and API integrations
+- **📊 System Health**: Infrastructure monitoring and health checks
+- **📋 Auditing & Compliance**: Audit logging and compliance reporting
+
+#### **User Management Features**
+- **SSO Integration**: Azure AD, AWS IAM, Google Workspace, Okta, OneLogin, Auth0
+- **Role Management**: Role-based access control and permissions
+- **Group Management**: Team organization and group permissions
+- **Security Policies**: Authentication and authorization policies
+- **Compliance Tracking**: SOC 2, GDPR, HIPAA, ISO 27001 compliance
+
+#### **System Administration**
+- **Infrastructure Health**: CPU, memory, disk, network monitoring
+- **Application Health**: Service status and performance metrics
+- **Security Monitoring**: Security alerts and threat detection
+- **Audit Logging**: Comprehensive system and user activity logging
+- **Compliance Reporting**: Automated compliance report generation
 
 ---
 
-## 📊 **Dashboard & Analytics**
+## 🎨 **Flask GUI Features**
 
-### **Main Dashboard**
+### **Core Interface**
+- **Clean Design**: Minimalist interface with modern styling
+- **Modal Dialogs**: Settings and project creation in modal windows
+- **Real-time Updates**: Live status updates and notifications
+- **Responsive Layout**: Works on desktop and mobile devices
 
-#### **Overview Metrics**
-- **Applications Generated**: Total applications created
-- **Success Rate**: Generation success percentage
-- **Average Score**: Average application quality score
-- **Active Projects**: Currently active projects
+### **Key Features**
+- **⚙️ Settings**: Comprehensive application configuration
+- **🆕 New Project**: Project creation with templates and configuration
+- **💬 AI Chat**: Integrated AI assistant for development help
+- **📊 Status**: Real-time system status and health monitoring
+- **📋 Project List**: Project management and tracking
 
-#### **Performance Charts**
-- **Generation Times**: Application generation performance
-- **AI Provider Performance**: Provider response times
-- **Template Usage**: Most popular templates
-- **Error Rates**: System error tracking
-
-#### **Recent Activity**
-- **Latest Generations**: Recently generated applications
-- **Recent Scores**: Latest application evaluations
-- **Recent Commits**: Latest Git commits
-- **System Alerts**: Important system notifications
-
-### **Analytics Panel**
-
-#### **Usage Analytics**
-- **User Activity**: User interaction tracking
-- **Feature Usage**: Most used features
-- **Template Popularity**: Popular template analysis
-- **Provider Usage**: AI provider usage statistics
-
-#### **Performance Analytics**
-- **System Performance**: Overall system performance
-- **AI Performance**: AI provider performance analysis
-- **Generation Quality**: Application quality trends
-- **Error Analysis**: Error pattern analysis
-
-#### **Business Intelligence**
-- **Cost Analysis**: API usage cost tracking
-- **ROI Metrics**: Return on investment calculations
-- **Efficiency Metrics**: Process efficiency analysis
-- **Quality Metrics**: Quality improvement tracking
+### **AI Integration**
+- **Local AI**: GPT-OSS integration via Ollama
+- **Real-time Chat**: Live AI assistance and code generation
+- **Context Awareness**: AI understands project context and requirements
+- **Multi-turn Conversations**: Maintains conversation context
 
 ---
 
-## 🚨 **Error Handling & Support**
+## 🤖 **AI Integration Details**
 
-### **Error Categories**
+### **Multi-Provider AI System**
+AutoDevCore integrates with 7 different AI providers for maximum reliability and performance:
 
-#### **AI Model Errors**
-- **Provider Unavailable**: AI provider is down
-- **API Key Issues**: Invalid or expired API keys
-- **Rate Limiting**: API rate limit exceeded
-- **Model Errors**: AI model-specific errors
+#### **Local AI (GPT-OSS)**
+- **Model**: gpt-oss:20b via Ollama
+- **Cost**: Free (local processing)
+- **Use Case**: Code generation, debugging, analysis
+- **Setup**: `ollama run gpt-oss:20b`
+- **Advantages**: No API costs, offline operation, privacy
 
-#### **Network Errors**
-- **Connection Timeout**: Network connection issues
-- **DNS Resolution**: Domain resolution problems
-- **SSL/TLS Errors**: Certificate validation issues
-- **Proxy Issues**: Proxy configuration problems
+#### **Cloud AI Providers**
+1. **OpenAI**: GPT-4, GPT-3.5-turbo (best for complex reasoning)
+2. **Anthropic**: Claude-3 models (best for analysis and safety)
+3. **Google AI**: Gemini models (best for multimodal tasks)
+4. **Cohere**: Command models (cost-effective)
+5. **Mistral**: Mistral models (high performance)
+6. **Perplexity**: Llama models (fast responses)
 
-#### **Configuration Errors**
-- **Missing Settings**: Required configuration missing
-- **Invalid Values**: Invalid configuration values
-- **Permission Issues**: File or directory permissions
-- **Dependency Issues**: Missing or incompatible dependencies
+### **Intelligent Provider Selection**
+- **Task-Specific Selection**: Different providers for different tasks
+- **Cost Optimization**: Automatic selection based on cost and performance
+- **Fallback Chain**: Automatic switching if primary provider fails
+- **Health Monitoring**: Real-time availability checking
 
-#### **Validation Errors**
-- **Input Validation**: Invalid user input
-- **Format Errors**: Incorrect data formats
-- **Size Limits**: File or data size exceeded
-- **Type Errors**: Incorrect data types
+### **AI Features**
+- **Code Generation**: Generate code from natural language descriptions
+- **Code Review**: Automated code analysis and improvement suggestions
+- **Debugging**: AI-powered error detection and resolution
+- **Documentation**: Automatic code documentation generation
+- **Testing**: AI-generated test cases and test automation
 
-### **Error Resolution**
+---
 
-#### **Automatic Resolution**
-- **Provider Fallback**: Automatic provider switching
-- **Retry Logic**: Automatic retry with exponential backoff
-- **Error Recovery**: Automatic error recovery procedures
-- **Graceful Degradation**: Graceful service degradation
+## 📊 **Analytics & Business Intelligence**
 
-#### **Manual Resolution**
-- **Step-by-step Guides**: Detailed resolution instructions
-- **Code Examples**: Working code examples
-- **Documentation Links**: Relevant documentation
-- **Support Contact**: Direct support contact information
+### **Real-time Analytics Dashboard**
+- **Project Metrics**: Progress tracking, budget utilization, team performance
+- **AI Performance**: Response times, success rates, cost analysis
+- **User Activity**: Engagement metrics, feature usage, user behavior
+- **System Health**: Infrastructure monitoring, service status, performance metrics
 
-#### **Prevention**
-- **Proactive Monitoring**: Real-time system monitoring
-- **Predictive Alerts**: Early warning systems
-- **Health Checks**: Regular system health checks
-- **Maintenance Scheduling**: Planned maintenance procedures
+### **Business Intelligence Features**
+- **Financial Analytics**: Cost analysis, budget tracking, ROI calculation
+- **Performance Metrics**: Project success rates, delivery times, quality metrics
+- **Trend Analysis**: Performance trends, usage patterns, growth analysis
+- **Predictive Analytics**: 30-day forecasting, risk assessment, opportunity identification
+
+### **Executive Reporting**
+- **Executive Summary**: High-level business metrics and performance overview
+- **Risk Assessment**: Business risk analysis and mitigation strategies
+- **Strategic Recommendations**: Data-driven strategic recommendations
+- **Competitive Analysis**: Market positioning and competitive intelligence
+
+---
+
+## 🔧 **Configuration & Customization**
+
+### **API Configuration**
+Configure AI providers in the Settings page:
+
+```json
+{
+  "openai": {
+    "api_key": "your-openai-key",
+    "enabled": true
+  },
+  "anthropic": {
+    "api_key": "your-anthropic-key",
+    "enabled": true
+  },
+  "gpt_oss": {
+    "url": "http://localhost:11434",
+    "model": "gpt-oss:20b",
+    "enabled": true
+  }
+}
+```
+
+### **Theme Configuration**
+- **Light Theme**: Clean, professional appearance
+- **Dark Theme**: Modern, developer-friendly interface
+- **Custom Colors**: Brand-specific color schemes
+- **Accessibility**: High contrast and accessibility features
+
+### **User Preferences**
+- **Language**: Multi-language support
+- **Notifications**: Customizable notification settings
+- **Auto-save**: Automatic project and setting persistence
+- **Shortcuts**: Keyboard shortcuts for power users
+
+---
+
+## 🚀 **Deployment Options**
+
+### **Local Development**
+```bash
+# Development environment
+python run_gui.py
+# Access at: http://localhost:8501
+```
+
+### **Production Deployment**
+```bash
+# Docker deployment
+docker-compose up -d
+
+# Environment variables
+export AUTODEV_API_KEYS_PATH=/path/to/api_keys.json
+export AUTODEV_LOG_LEVEL=INFO
+export AUTODEV_ENVIRONMENT=production
+```
+
+### **Cloud Deployment**
+- **AWS**: EC2, ECS, Lambda deployment options
+- **Azure**: App Service, Container Instances
+- **Google Cloud**: Compute Engine, Cloud Run
+- **Heroku**: Simple deployment with Git integration
 
 ---
 
 ## 🔒 **Security Features**
 
 ### **Authentication & Authorization**
-
-#### **User Authentication**
-- **JWT Tokens**: Secure token-based authentication
-- **Session Management**: Secure session handling
-- **Password Policies**: Strong password requirements
-- **Multi-factor Authentication**: Enhanced security
-
-#### **Access Control**
-- **Role-based Access**: User role management
-- **Permission System**: Granular permission control
-- **Resource Protection**: Protected resource access
-- **Audit Logging**: Comprehensive access logging
+- **Multi-Provider SSO**: Azure AD, AWS IAM, Google Workspace, Okta, OneLogin, Auth0
+- **Role-Based Access Control**: Developer, Project Manager, DevOps, Stakeholder, Admin
+- **Session Management**: Secure session handling and timeout
+- **Password Policies**: Strong password requirements and policies
 
 ### **Data Protection**
-
-#### **Data Encryption**
-- **At Rest**: Encrypted data storage
-- **In Transit**: Encrypted data transmission
-- **API Keys**: Encrypted API key storage
-- **User Data**: Encrypted user information
-
-#### **Privacy Protection**
-- **Data Minimization**: Minimal data collection
-- **User Consent**: Explicit user consent
-- **Data Retention**: Configurable data retention
-- **Data Deletion**: Secure data deletion
+- **Encryption**: Data encryption in transit and at rest
+- **Access Control**: Granular permissions and access management
+- **Audit Logging**: Comprehensive activity and security event logging
+- **Compliance**: SOC 2, GDPR, HIPAA, ISO 27001 compliance support
 
 ### **Security Monitoring**
-
-#### **Threat Detection**
-- **Intrusion Detection**: Real-time threat detection
-- **Anomaly Detection**: Behavioral anomaly detection
-- **Vulnerability Scanning**: Regular vulnerability scans
-- **Security Alerts**: Real-time security notifications
-
-#### **Compliance**
-- **OWASP Compliance**: OWASP Top 10 compliance
-- **Industry Standards**: Industry-specific compliance
-- **Audit Trails**: Comprehensive audit logging
-- **Compliance Reporting**: Automated compliance reports
+- **Real-time Alerts**: Security event monitoring and alerting
+- **Vulnerability Scanning**: Automated security assessment
+- **Threat Detection**: Advanced threat detection and response
+- **Incident Response**: Automated incident response and recovery
 
 ---
 
-## 📈 **Performance Optimization**
+## 📚 **Troubleshooting**
 
-### **System Performance**
+### **Common Issues**
 
-#### **Resource Optimization**
-- **Memory Management**: Efficient memory usage
-- **CPU Optimization**: CPU usage optimization
-- **Disk I/O**: Storage performance optimization
-- **Network Optimization**: Network performance tuning
+#### **GUI Not Loading**
+```bash
+# Check if ports are available
+lsof -i :8501
+lsof -i :8502
 
-#### **Caching Strategy**
-- **Intelligent Caching**: Smart caching algorithms
-- **Cache Invalidation**: Automatic cache management
-- **Performance Monitoring**: Cache performance tracking
-- **Optimization Suggestions**: Cache optimization tips
+# Kill conflicting processes
+pkill -f "streamlit run"
+pkill -f "python simple_gui.py"
+```
 
-### **AI Performance**
+#### **AI Not Responding**
+```bash
+# Check Ollama status
+ollama list
+ollama run gpt-oss:20b
 
-#### **Model Optimization**
-- **Provider Selection**: Optimal provider selection
-- **Prompt Optimization**: Enhanced prompt engineering
-- **Response Caching**: AI response caching
-- **Performance Tracking**: AI performance monitoring
+# Test AI connection
+curl http://localhost:11434/api/tags
+```
 
-#### **Cost Optimization**
-- **Usage Monitoring**: API usage tracking
-- **Cost Analysis**: Detailed cost analysis
-- **Optimization Suggestions**: Cost reduction tips
-- **Budget Management**: Budget control and alerts
+#### **API Key Issues**
+```bash
+# Check API configuration
+cat config/api_keys.json
+
+# Test API connections
+python -c "from integrations.multi_provider_ai import MultiProviderAI; print(MultiProviderAI().get_provider_status())"
+```
+
+### **Performance Optimization**
+- **Memory Usage**: Monitor memory consumption and optimize
+- **Response Times**: Optimize AI provider selection and caching
+- **Database Performance**: Optimize queries and indexing
+- **Network Latency**: Use local AI providers for faster responses
 
 ---
 
 ## 🎯 **Best Practices**
 
-### **Application Generation**
+### **Development Workflow**
+1. **Plan**: Use project templates and planning tools
+2. **Develop**: Leverage AI assistance for code generation
+3. **Test**: Use automated testing and debugging tools
+4. **Deploy**: Use deployment automation and monitoring
+5. **Monitor**: Track performance and user feedback
 
-#### **Description Writing**
-1. **Be Specific**: Include detailed feature requirements
-2. **Industry Context**: Specify target industry
-3. **User Stories**: Include user story descriptions
-4. **Technical Requirements**: Specify technical constraints
-5. **Success Criteria**: Define success metrics
+### **AI Usage**
+1. **Start Simple**: Begin with basic code generation
+2. **Iterate**: Refine AI prompts for better results
+3. **Validate**: Always review and test AI-generated code
+4. **Optimize**: Use AI for optimization and improvement
+5. **Document**: Maintain documentation for AI-generated code
 
-#### **Template Selection**
-1. **Match Industry**: Choose industry-appropriate template
-2. **Consider Complexity**: Select appropriate complexity level
-3. **Review Features**: Ensure template includes required features
-4. **Check Compliance**: Verify compliance requirements
-5. **Estimate Resources**: Review time and cost estimates
-
-#### **AI Provider Selection**
-1. **Task Optimization**: Choose provider for specific task
-2. **Performance History**: Consider past performance
-3. **Cost Considerations**: Balance performance and cost
-4. **Reliability**: Consider provider reliability
-5. **Fallback Planning**: Have backup providers ready
-
-### **Quality Assurance**
-
-#### **Application Testing**
-1. **Functional Testing**: Test all application features
-2. **Security Testing**: Verify security implementation
-3. **Performance Testing**: Test application performance
-4. **Compliance Testing**: Verify compliance requirements
-5. **User Acceptance**: Validate user requirements
-
-#### **Code Quality**
-1. **Code Review**: Review generated code quality
-2. **Documentation**: Ensure comprehensive documentation
-3. **Testing Coverage**: Verify test coverage
-4. **Security Scanning**: Run security scans
-5. **Performance Analysis**: Analyze performance metrics
-
-### **Deployment & Maintenance**
-
-#### **Git Workflow**
-1. **Repository Setup**: Initialize Git repository
-2. **Branch Strategy**: Use proper branching strategy
-3. **Commit Standards**: Follow commit message standards
-4. **Code Review**: Implement code review process
-5. **Automated Testing**: Set up automated testing
-
-#### **CI/CD Pipeline**
-1. **Automated Builds**: Set up automated builds
-2. **Testing Automation**: Automate testing procedures
-3. **Security Scanning**: Integrate security scanning
-4. **Deployment Automation**: Automate deployment process
-5. **Monitoring**: Set up monitoring and alerting
+### **Project Management**
+1. **Use Templates**: Leverage pre-built project templates
+2. **Track Progress**: Monitor project progress and milestones
+3. **Manage Resources**: Optimize team allocation and workload
+4. **Control Budget**: Monitor budget utilization and costs
+5. **Assess Risks**: Regular risk assessment and mitigation
 
 ---
 
-## 🆘 **Getting Help**
+## 📞 **Support & Resources**
 
-### **In-App Help**
+### **Documentation**
+- **User Guide**: `docs/USER_GUIDE.md` - Comprehensive user manual
+- **API Reference**: `docs/API_REFERENCE.md` - Technical API documentation
+- **Interactive Tutorial**: `docs/INTERACTIVE_TUTORIAL.md` - Step-by-step learning
 
-#### **Contextual Help**
-- **Tooltips**: Hover for feature explanations
-- **Help Buttons**: Click for detailed help
-- **Error Messages**: Clear error explanations
-- **Solution Suggestions**: Automatic solution suggestions
+### **Community**
+- **GitHub Issues**: Report bugs and feature requests
+- **Discussions**: Join community discussions and Q&A
+- **Contributing**: Guidelines for contributing to the project
 
-#### **Documentation Access**
-- **User Guide**: Complete user documentation
-- **API Reference**: Technical API documentation
-- **Video Tutorials**: Step-by-step video guides
-- **FAQ**: Frequently asked questions
-
-### **Support Channels**
-
-#### **Community Support**
-- **GitHub Discussions**: Community discussions
-- **Discord Server**: Real-time community chat
-- **Stack Overflow**: Technical Q&A platform
-- **Reddit Community**: Community discussions
-
-#### **Professional Support**
-- **Email Support**: Direct email support
-- **Live Chat**: Real-time chat support
-- **Phone Support**: Phone support for enterprise
-- **On-site Support**: On-site support for enterprise
-
-### **Self-Service**
-
-#### **Troubleshooting**
-- **Error Diagnostics**: Automatic error diagnosis
-- **Solution Database**: Comprehensive solution database
-- **Step-by-step Guides**: Detailed resolution guides
-- **Video Tutorials**: Visual troubleshooting guides
-
-#### **Learning Resources**
-- **Interactive Tutorials**: Hands-on learning
-- **Best Practices**: Industry best practices
-- **Case Studies**: Real-world examples
-- **Webinars**: Educational webinars
+### **Getting Help**
+1. **Check Documentation**: Review relevant documentation first
+2. **Search Issues**: Look for similar issues in GitHub
+3. **Ask Community**: Post questions in discussions
+4. **Report Bugs**: Create detailed bug reports with steps to reproduce
 
 ---
 
-## 🏆 **Hackathon Features**
-
-### **Competition Ready**
-
-#### **Perfect Score Achievement**
-- **9.8/10 Overall Score**: Near-perfect evaluation score
-- **100/100 Security Score**: Perfect security implementation
-- **Enterprise Features**: Professional-grade features
-- **Production Ready**: Ready for real-world deployment
-
-#### **Innovation Highlights**
-- **Multi-Provider AI**: 7 AI providers with intelligent fallbacks
-- **Enterprise Templates**: Industry-specific compliance templates
-- **Professional Git Integration**: Complete repository management
-- **Bulletproof Error Handling**: Comprehensive error solutions
-
-#### **Technical Excellence**
-- **Perfect Architecture**: Enterprise-grade system architecture
-- **Zero Vulnerabilities**: Complete security compliance
-- **High Performance**: Optimized for speed and reliability
-- **Comprehensive Testing**: 35 tests with 100% pass rate
-
----
-
-**AutoDevCore GUI - BULLETPROOF AND BOUNCE BACK TO SENDER!** 🚀💥
-
-*The core of intelligent development - now with bulletproof reliability and enterprise-grade features.*
+**AutoDevCore GUI - Empowering development teams with AI-powered intelligence and comprehensive project management.**

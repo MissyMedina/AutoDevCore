@@ -1,0 +1,5 @@
+{
+  "aiProvider": "openai",
+  "defaultPort": "8502",
+  "theme": "light"
+}
