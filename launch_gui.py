@@ -8,7 +8,6 @@ import subprocess
 import sys
 from pathlib import Path
 
-
 def main():
     """Launch the GUI with the correct Python environment"""
     print("🚀 Launching AutoDevCore GUI with Python 3.12...")
@@ -60,7 +59,6 @@ def main():
         return 1
 
     return 0
-
 
 if __name__ == "__main__":
     sys.exit(main())

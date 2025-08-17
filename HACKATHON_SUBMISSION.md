@@ -1,7 +1,7 @@
 # 🚀 AutoDevCore - BULLETPROOF EDITION
 ## Hackathon Submission - Complete Victory Package
 
-**Modular AI agents that build smarter, score deeper, and NEVER fail.**  
+**Modular AI agents that build smarter, score deeper, and NEVER fail.**
 *The core of intelligent development - now with bulletproof reliability and enterprise-grade features.*
 
 ---

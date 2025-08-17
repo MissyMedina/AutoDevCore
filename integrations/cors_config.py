@@ -10,7 +10,6 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-
 @dataclass
 class CORSConfig:
     """CORS Configuration settings"""
@@ -21,7 +20,6 @@ class CORSConfig:
     allow_credentials: bool
     max_age: int
     expose_headers: List[str]
-
 
 class CORSMiddleware:
     """CORS Middleware for handling cross-origin requests"""
@@ -70,7 +68,6 @@ class CORSMiddleware:
         self.add_cors_headers(headers)
 
         return {"status": 200, "headers": headers, "body": ""}
-
 
 class CORSManager:
     """CORS Configuration Manager for AutoDevCore"""
@@ -219,7 +216,6 @@ class CORSManager:
                 "*" in self.config.allowed_origins and self.config.allow_credentials
             ),
         }
-
 
 # Global instance
 cors_manager = CORSManager()

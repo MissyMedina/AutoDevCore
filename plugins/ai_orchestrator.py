@@ -21,7 +21,6 @@ from multi_model_ai import (
     generate_ai_response,
 )
 
-
 class AIOrchestrator:
     """Orchestrates AI operations across multiple models and agents."""
 
@@ -244,21 +243,17 @@ Provide comprehensive, well-structured documentation with examples and usage ins
             ),
         }
 
-
 # Global orchestrator instance
 ai_orchestrator = AIOrchestrator()
-
 
 # Convenience functions for backward compatibility
 async def generate_app_plan(description: str, **kwargs) -> Dict[str, Any]:
     """Generate application plan."""
     return await ai_orchestrator.generate_app_plan(description, **kwargs)
 
-
 async def generate_code(component: str, requirements: str, **kwargs) -> Dict[str, Any]:
     """Generate code."""
     return await ai_orchestrator.generate_code(component, requirements, **kwargs)
-
 
 async def analyze_code(
     code: str, analysis_type: str = "general", **kwargs
@@ -266,20 +261,17 @@ async def analyze_code(
     """Analyze code."""
     return await ai_orchestrator.analyze_code(code, analysis_type, **kwargs)
 
-
 async def score_application(
     app_path: str, template: str = "general", **kwargs
 ) -> Dict[str, Any]:
     """Score application."""
     return await ai_orchestrator.score_application(app_path, template, **kwargs)
 
-
 async def generate_documentation(
     content: str, doc_type: str = "readme", **kwargs
 ) -> Dict[str, Any]:
     """Generate documentation."""
     return await ai_orchestrator.generate_documentation(content, doc_type, **kwargs)
-
 
 def run(context=None):
     """Plugin entry point for testing the AI orchestrator."""

@@ -15,7 +15,6 @@ from starlette.middleware.base import BaseHTTPMiddleware
 
 logger = logging.getLogger(__name__)
 
-
 class SecurityMiddleware(BaseHTTPMiddleware):
     """Custom security middleware."""
 
@@ -30,7 +29,6 @@ class SecurityMiddleware(BaseHTTPMiddleware):
         )
         response.headers["Content-Security-Policy"] = "default-src 'self'"
         return response
-
 
 def setup_security_middleware(app):
     """Setup all security middleware."""

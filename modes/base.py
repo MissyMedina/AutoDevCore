@@ -10,7 +10,6 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List
 
-
 class BaseMode(ABC):
     """Base class for all AutoDevCore modes with advanced thought trail visualization."""
 
@@ -324,7 +323,7 @@ class BaseMode(ABC):
             <h1>🤖 AutoDevCore Thought Trail</h1>
             <p>Visualizing AI Agent Reasoning and Decision Making</p>
         </div>
-        
+
         <div class="content">
             <div class="stats">
                 <div class="stat-card">
@@ -344,7 +343,7 @@ class BaseMode(ABC):
                     <div class="stat-label">Analysis Duration</div>
                 </div>
             </div>
-            
+
             <div class="section">
                 <h2>🎛️ Controls & Filters</h2>
                 <div class="controls">
@@ -359,19 +358,19 @@ class BaseMode(ABC):
                     </select>
                 </div>
             </div>
-            
+
             <div class="section">
                 <h2>📊 Agent Activity Chart</h2>
                 <canvas id="agentChart" width="400" height="200"></canvas>
             </div>
-            
+
             <div class="section">
                 <h2>🕒 Timeline View</h2>
                 <div class="timeline" id="timeline">
                     <!-- Timeline items will be populated by JavaScript -->
                 </div>
             </div>
-            
+
             <div class="section">
                 <h2>🔗 Thought Flow Diagram</h2>
                 <div class="mermaid-container">
@@ -386,32 +385,32 @@ class BaseMode(ABC):
     <script>
         // Initialize thought trail data
         const thoughtTrail = {thought_trail_json};
-        
+
         // Initialize Mermaid
         mermaid.initialize({{ startOnLoad: true }});
-        
+
         // Calculate statistics
         function calculateStats() {{
             const totalThoughts = thoughtTrail.length;
             const uniqueAgents = new Set(thoughtTrail.map(t => t.agent)).size;
             const avgLength = Math.round(thoughtTrail.reduce((sum, t) => sum + t.thought.length, 0) / totalThoughts);
-            
+
             // Calculate duration
             const firstTime = new Date(thoughtTrail[0].timestamp);
             const lastTime = new Date(thoughtTrail[thoughtTrail.length - 1].timestamp);
             const duration = Math.round((lastTime - firstTime) / 1000);
-            
+
             document.getElementById('total-thoughts').textContent = totalThoughts;
             document.getElementById('unique-agents').textContent = uniqueAgents;
             document.getElementById('avg-thought-length').textContent = avgLength;
             document.getElementById('analysis-duration').textContent = duration + 's';
         }}
-        
+
         // Populate agent filter
         function populateAgentFilter() {{
             const agents = [...new Set(thoughtTrail.map(t => t.agent))];
             const select = document.getElementById('agent-filter');
-            
+
             agents.forEach(agent => {{
                 const option = document.createElement('option');
                 option.value = agent;
@@ -419,21 +418,21 @@ class BaseMode(ABC):
                 select.appendChild(option);
             }});
         }}
-        
+
         // Render timeline
         function renderTimeline(filteredTrail = thoughtTrail) {{
             const timeline = document.getElementById('timeline');
             timeline.innerHTML = '';
-            
+
             filteredTrail.forEach(thought => {{
                 const item = document.createElement('div');
                 item.className = 'timeline-item';
-                
+
                 const timestamp = new Date(thought.timestamp).toLocaleTimeString();
-                const dataPreview = thought.data && Object.keys(thought.data).length > 0 
+                const dataPreview = thought.data && Object.keys(thought.data).length > 0
                     ? `<div class="data-preview">Data: ${{JSON.stringify(thought.data).substring(0, 100)}}...</div>`
                     : '';
-                
+
                 item.innerHTML = `
                     <div class="timeline-header">
                         <span class="agent">${{thought.agent}}</span>
@@ -442,20 +441,20 @@ class BaseMode(ABC):
                     <div class="thought">${{thought.thought}}</div>
                     ${{dataPreview}}
                 `;
-                
+
                 timeline.appendChild(item);
             }});
         }}
-        
+
         // Create agent activity chart
         function createAgentChart() {{
             const ctx = document.getElementById('agentChart').getContext('2d');
             const agentCounts = {{}};
-            
+
             thoughtTrail.forEach(thought => {{
                 agentCounts[thought.agent] = (agentCounts[thought.agent] || 0) + 1;
             }});
-            
+
             new Chart(ctx, {{
                 type: 'bar',
                 data: {{
@@ -480,17 +479,17 @@ class BaseMode(ABC):
                 }}
             }});
         }}
-        
+
         // Filter by agent
         function filterByAgent() {{
             const selectedAgent = document.getElementById('agent-filter').value;
-            const filteredTrail = selectedAgent 
+            const filteredTrail = selectedAgent
                 ? thoughtTrail.filter(t => t.agent === selectedAgent)
                 : thoughtTrail;
-            
+
             renderTimeline(filteredTrail);
         }}
-        
+
         // Export functions
         function exportToJSON() {{
             const dataStr = JSON.stringify(thoughtTrail, null, 2);
@@ -501,7 +500,7 @@ class BaseMode(ABC):
             link.download = 'thought_trail.json';
             link.click();
         }}
-        
+
         function exportToCSV() {{
             const headers = ['Timestamp', 'Agent', 'Thought', 'Data'];
             const csvContent = [
@@ -513,7 +512,7 @@ class BaseMode(ABC):
                     `"${{JSON.stringify(t.data).replace(/"/g, '""')}}"`
                 ].join(','))
             ].join('\\n');
-            
+
             const dataBlob = new Blob([csvContent], {{type: 'text/csv'}});
             const url = URL.createObjectURL(dataBlob);
             const link = document.createElement('a');
@@ -521,7 +520,7 @@ class BaseMode(ABC):
             link.download = 'thought_trail.csv';
             link.click();
         }}
-        
+
         // Toggle data preview
         function toggleDataPreview() {{
             const previews = document.querySelectorAll('.data-preview');
@@ -529,7 +528,7 @@ class BaseMode(ABC):
                 preview.style.display = preview.style.display === 'none' ? 'block' : 'none';
             }});
         }}
-        
+
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {{
             calculateStats();
@@ -546,6 +545,7 @@ class BaseMode(ABC):
         if format == "json":
             return json.dumps(self.thought_trail, indent=2)
         elif format == "csv":
+
             import csv
             import io
 

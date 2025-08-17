@@ -14,7 +14,6 @@ from .monitoring_dashboard import MonitoringDashboard, MetricsCollector
 from .config import get_config, get_thresholds
 from .storage import get_storage
 
-
 class MetricsAPI:
     """High-level API for metrics and monitoring functionality."""
 
@@ -66,6 +65,7 @@ class MetricsAPI:
     def get_system_metrics(self) -> Dict[str, Any]:
         """Get current system metrics."""
         try:
+
             import psutil
 
             cpu_percent = psutil.cpu_percent(interval=1)
@@ -212,25 +212,20 @@ class MetricsAPI:
                 "timestamp": datetime.now().isoformat(),
             }
 
-
 # Global metrics API instance
 metrics_api = MetricsAPI()
-
 
 def get_metrics_api() -> MetricsAPI:
     """Get the global metrics API instance."""
     return metrics_api
 
-
 def start_monitoring() -> Dict[str, Any]:
     """Start monitoring using the global API."""
     return metrics_api.start_monitoring()
 
-
 def get_system_metrics() -> Dict[str, Any]:
     """Get system metrics using the global API."""
     return metrics_api.get_system_metrics()
-
 
 def record_metric(
     name: str, value: float, labels: Optional[Dict[str, str]] = None

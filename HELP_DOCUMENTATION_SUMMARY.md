@@ -139,8 +139,8 @@ if st.session_state.current_page == "help":
 python cli_help.py [section]
 
 # Available sections
-sections = ['basic', 'projects', 'ai', 'plugins', 
-           'collaboration', 'deploy', 'testing', 
+sections = ['basic', 'projects', 'ai', 'plugins',
+           'collaboration', 'deploy', 'testing',
            'utilities', 'emergency']
 ```
 

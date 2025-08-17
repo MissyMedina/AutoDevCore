@@ -13,7 +13,6 @@ from typing import Any, Dict, Optional
 import requests
 import streamlit as st
 
-
 class APIConfigPanel:
     """Professional API configuration panel for AI providers"""
 
@@ -407,12 +406,12 @@ class APIConfigPanel:
                 """
             **Available Providers:**
             - **OpenAI**: GPT-4, GPT-3.5, DALL-E models
-            - **Anthropic**: Claude 3, Claude 2 models  
+            - **Anthropic**: Claude 3, Claude 2 models
             - **Google AI**: Gemini Pro, Gemini Flash models
             - **Cohere**: Command, Command R models
             - **Mistral AI**: Mistral 7B, Mixtral models
             - **Perplexity**: AI models with web search
-            
+
             **Security Note:** API keys are stored locally and encrypted. Never share your API keys.
             """
             )
@@ -542,7 +541,6 @@ class APIConfigPanel:
                             st.error("❌ Failed to import configuration")
                 except Exception as e:
                     st.error(f"❌ Invalid configuration file: {e}")
-
 
 def show_api_config_panel():
     """Main function to display the API configuration panel"""

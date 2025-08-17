@@ -11,7 +11,6 @@ from typing import Any, Dict, List, Optional
 
 import psutil
 
-
 class PerformanceMonitor:
     """Monitor and track performance metrics."""
 
@@ -164,7 +163,6 @@ class PerformanceMonitor:
 
         return summary
 
-
 class PerformanceOptimizer:
     """Optimize performance based on monitoring data."""
 
@@ -263,11 +261,9 @@ class PerformanceOptimizer:
 
         return recommendations
 
-
 # Global performance monitor instance
 performance_monitor = PerformanceMonitor()
 performance_optimizer = PerformanceOptimizer()
-
 
 def monitor_operation(operation_name: str):
     """Decorator to monitor operation performance."""
@@ -284,7 +280,6 @@ def monitor_operation(operation_name: str):
         return wrapper
 
     return decorator
-
 
 def get_performance_report() -> Dict[str, Any]:
     """Get a comprehensive performance report."""

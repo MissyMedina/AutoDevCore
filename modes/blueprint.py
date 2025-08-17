@@ -11,7 +11,6 @@ from integrations import gpt_oss_client
 
 from .base import BaseMode
 
-
 class BlueprintMode(BaseMode):
     """Blueprint mode for analyzing legacy codebases with GPT-OSS integration."""
 
@@ -228,10 +227,10 @@ class BlueprintMode(BaseMode):
             3. Dependency injection patterns
             4. Service layer patterns
             5. Data access patterns
-            
+
             Code to analyze:
             {sample_code[:2000]}
-            
+
             Provide a JSON response with:
             - architecture_type (string)
             - patterns_detected (list)
@@ -277,10 +276,10 @@ class BlueprintMode(BaseMode):
             3. Error handling
             4. Documentation quality
             5. Best practices adherence
-            
+
             Code to analyze:
             {sample_code[:1500]}
-            
+
             Provide a JSON response with:
             - overall_quality_score (0-100)
             - strengths (list)

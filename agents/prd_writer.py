@@ -4,7 +4,6 @@ PRD Writer Agent - Generates Product Requirements Documents
 
 from typing import Any, Dict
 
-
 class PRDWriterAgent:
     """Agent responsible for generating Product Requirements Documents."""
 
@@ -29,15 +28,15 @@ class PRDWriterAgent:
 
 ## 1. Product Overview
 
-**Product Name**: {app_plan.get('name', 'AutoDevApp')}  
-**Date**: {self._get_current_date()}  
-**Status**: Draft  
+**Product Name**: {app_plan.get('name', 'AutoDevApp')}
+**Date**: {self._get_current_date()}
+**Status**: Draft
 **Target Release**: v1.0 - Q1 2024
 
 ## 2. Business Objectives & Goals
 
 - **Primary Goal**: {idea}
-- **Success Metrics**: 
+- **Success Metrics**:
   - User adoption rate > 80%
   - System uptime > 99.9%
   - Response time < 200ms
@@ -206,6 +205,7 @@ This application addresses the need for {idea.lower()}. It provides a comprehens
 
     def _get_current_date(self) -> str:
         """Get the current date in a formatted string."""
+
         from datetime import datetime
 
         return datetime.now().strftime("%B %d, %Y")

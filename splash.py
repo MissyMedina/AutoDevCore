@@ -4,24 +4,23 @@ Splash screen and help display for AutoDevCore.
 
 from datetime import datetime
 
-
 def show_splash():
     """Display the AutoDevCore splash banner."""
     splash = """
 ================================================================================
-                                                                                
-      .o.                       .             oooooooooo.                      
-     .888.                    .o8             `888'   `Y8b                     
-    .8"888.     oooo  oooo  .o888oo  .ooooo.   888      888  .ooooo.          
-   .8' `888.    `888  `888    888   d88' `88b  888      888 d88' `88b         
-  .88ooo8888.    888   888    888   888   888  888      888 888ooo888         
- .8'     `888.   888   888    888 . 888   888  888     d88' 888    .o         
-o88o     o8888o  `V88V"V8P'   "888" `Y8bod8P' o888bood8P'   `Y8bod8P'         
-                                                                                
-                    Modular AI agents that build smarter, score deeper          
-                                                                                
-                              The core of intelligent development               
-                                                                                
+
+      .o.                       .             oooooooooo.
+     .888.                    .o8             `888'   `Y8b
+    .8"888.     oooo  oooo  .o888oo  .ooooo.   888      888  .ooooo.
+   .8' `888.    `888  `888    888   d88' `88b  888      888 d88' `88b
+  .88ooo8888.    888   888    888   888   888  888      888 888ooo888
+ .8'     `888.   888   888    888 . 888   888  888     d88' 888    .o
+o88o     o8888o  `V88V"V8P'   "888" `Y8bod8P' o888bood8P'   `Y8bod8P'
+
+                    Modular AI agents that build smarter, score deeper
+
+                              The core of intelligent development
+
 ================================================================================
     """
     print(splash)
@@ -29,31 +28,30 @@ o88o     o8888o  `V88V"V8P'   "888" `Y8bod8P' o888bood8P'   `Y8bod8P'
     print("=" * 80)
     print()
 
-
 def show_help():
     """Display help information."""
     help_text = """
     🎯 AutoDevCore - The core of intelligent development
-    
+
     USAGE:
         python cli.py --mode <mode> [options]
-    
+
     MODES:
         compose    - Generate complete applications from ideas
         journal    - Analyze codebases and generate insights
         blueprint  - Create architecture diagrams from code
         score      - Evaluate applications against templates
         plugin     - Execute custom plugins
-    
+
     EXAMPLES:
         python cli.py --mode compose --idea "task management app" --output-dir ./myapp
         python cli.py --mode score --app-dir ./myapp --template fintech
         python cli.py --mode plugin --name ascii_weather
-    
+
     OPTIONS:
         --verbose     - Enable verbose output
         --help        - Show this help message
-    
+
     FEATURES:
         🤖 GPT-OSS Integration - Local AI-powered reasoning
         🧠 Agent Thought Trails - Track AI reasoning steps

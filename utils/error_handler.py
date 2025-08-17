@@ -12,7 +12,6 @@ from datetime import datetime
 from enum import Enum
 from typing import Any, Dict, List, Optional, Union
 
-
 class ErrorSeverity(Enum):
     """Error severity levels."""
 
@@ -20,7 +19,6 @@ class ErrorSeverity(Enum):
     WARNING = "warning"
     ERROR = "error"
     CRITICAL = "critical"
-
 
 class ErrorCategory(Enum):
     """Error categories for better organization."""
@@ -36,7 +34,6 @@ class ErrorCategory(Enum):
     SECURITY = "security"
     PERFORMANCE = "performance"
 
-
 @dataclass
 class ErrorContext:
     """Context information for error handling."""
@@ -47,7 +44,6 @@ class ErrorContext:
     system_info: Dict[str, Any] = field(default_factory=dict)
     timestamp: datetime = field(default_factory=datetime.now)
 
-
 @dataclass
 class ErrorSolution:
     """Solution information for errors."""
@@ -57,7 +53,6 @@ class ErrorSolution:
     code_example: str = ""
     documentation_url: str = ""
     command: str = ""
-
 
 @dataclass
 class ErrorInfo:
@@ -71,7 +66,6 @@ class ErrorInfo:
     solution: Optional[ErrorSolution] = None
     original_exception: Optional[Exception] = None
     traceback: str = ""
-
 
 class BulletproofErrorHandler:
     """Bulletproof error handling with comprehensive solutions."""
@@ -511,10 +505,8 @@ else:
         error_info = self.handle_error(exception, context)
         return self.format_error_message(error_info)
 
-
 # Global instance for easy access
 error_handler = BulletproofErrorHandler()
-
 
 def handle_error_decorator(func):
     """Decorator to automatically handle errors in functions."""

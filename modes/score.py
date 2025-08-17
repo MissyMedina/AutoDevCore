@@ -12,7 +12,6 @@ from integrations import gpt_oss_client
 
 from .base import BaseMode
 
-
 class ScoreMode(BaseMode):
     """Score mode for evaluating apps against industry templates with GPT-OSS."""
 
@@ -272,10 +271,10 @@ class ScoreMode(BaseMode):
             3. Error handling
             4. Documentation
             5. Best practices
-            
+
             Code to analyze:
             {sample_code[:2000]}  # Limit to 2000 chars
-            
+
             Provide a JSON response with:
             - overall_quality_score (0-100)
             - strengths (list of positive aspects)
@@ -331,7 +330,7 @@ class ScoreMode(BaseMode):
             Analyze the security aspects of this application based on:
             1. Files with security indicators: {security_indicators}
             2. Common security best practices
-            
+
             Provide a JSON response with:
             - security_score (0-100)
             - security_strengths (list)

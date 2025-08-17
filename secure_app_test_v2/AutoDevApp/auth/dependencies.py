@@ -10,7 +10,6 @@ from fastapi import Depends, HTTPException, status
 from models import User
 from sqlalchemy.orm import Session
 
-
 def require_admin(current_user: User = Depends(get_current_active_user)) -> User:
     """Require admin role."""
     if not hasattr(current_user, "is_admin") or not current_user.is_admin:
@@ -18,7 +17,6 @@ def require_admin(current_user: User = Depends(get_current_active_user)) -> User
             status_code=status.HTTP_403_FORBIDDEN, detail="Admin access required"
         )
     return current_user
-
 
 def require_user_permission(
     user_id: int, current_user: User = Depends(get_current_active_user)

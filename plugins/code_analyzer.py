@@ -13,7 +13,6 @@ import os
 from pathlib import Path
 from typing import Any, Dict, List
 
-
 def run(context: Dict[str, Any]) -> Dict[str, Any]:
     """
     Analyze code complexity and quality metrics.
@@ -132,7 +131,6 @@ def run(context: Dict[str, Any]) -> Dict[str, Any]:
         "results": analysis_results,
         "report_file": str(report_file),
     }
-
 
 def calculate_complexity(node: ast.AST) -> int:
     """Calculate cyclomatic complexity of an AST node."""

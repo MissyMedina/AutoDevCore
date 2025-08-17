@@ -10,7 +10,6 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
-
 class ComplexityAnalyzer:
     """Analyze code complexity metrics."""
 
@@ -110,7 +109,6 @@ class ComplexityAnalyzer:
         else:
             return 6.0
 
-
 class InterconnectednessAnalyzer:
     """Analyze module interconnectedness."""
 
@@ -193,7 +191,6 @@ class InterconnectednessAnalyzer:
 
         avg_coupling = sum(self.coupling_scores.values()) / len(self.coupling_scores)
         return avg_coupling
-
 
 def main():
     """Main evaluation function."""
@@ -298,7 +295,6 @@ def main():
         print("⚠️  NEEDS WORK - Room for improvement")
 
     print("\n" + "=" * 60)
-
 
 if __name__ == "__main__":
     main()

@@ -23,7 +23,7 @@ st.markdown(
         opacity: 1 !important;
         visibility: visible !important;
     }
-    
+
     .stTextArea > div > div > textarea {
         background-color: white !important;
         color: #1e293b !important;
@@ -35,7 +35,7 @@ st.markdown(
         opacity: 1 !important;
         visibility: visible !important;
     }
-    
+
     .stSelectbox > div > div > div {
         background-color: white !important;
         color: #1e293b !important;

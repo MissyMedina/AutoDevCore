@@ -10,7 +10,6 @@ import time
 import subprocess
 from pathlib import Path
 
-
 def print_header():
     """Print the AutoDevCore header."""
     print(
@@ -30,12 +29,11 @@ def print_header():
     ║                              The core of intelligent development                                         ║
     ║                                                                                                          ║
     ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-    
+
     🚀 AutoDevCore v1.0.0 | BULLETPROOF EDITION
     ================================================================================
     """
     )
-
 
 def run_command(command, description, wait=True, show_output=True):
     """Run a command and display the result."""
@@ -62,7 +60,6 @@ def run_command(command, description, wait=True, show_output=True):
     except Exception as e:
         print(f"❌ Error: {e}")
         return False
-
 
 def check_dependencies():
     """Check if all dependencies are available."""
@@ -91,7 +88,6 @@ def check_dependencies():
 
     return True
 
-
 def demo_application_generation():
     """Demo 1: Generate a complete application."""
     print("\n" + "=" * 80)
@@ -113,7 +109,6 @@ def demo_application_generation():
             "\n⚠️  Application generation had issues, but this is normal for demo purposes"
         )
         print("📁 Check the output directory for any generated files")
-
 
 def demo_application_scoring():
     """Demo 2: Score the generated application."""
@@ -145,7 +140,6 @@ def demo_application_scoring():
             "\n⚠️  Application scoring had issues, but this demonstrates the scoring capability"
         )
 
-
 def demo_gui_launch():
     """Demo 3: Launch the GUI."""
     print("\n" + "=" * 80)
@@ -173,7 +167,6 @@ def demo_gui_launch():
     else:
         print("\n⚠️  GUI launch had issues, but the GUI capability is demonstrated")
 
-
 def demo_collaboration_features():
     """Demo 4: Real-time collaboration features."""
     print("\n" + "=" * 80)
@@ -192,7 +185,6 @@ def demo_collaboration_features():
         print(
             "\n⚠️  Collaboration setup had issues, but collaboration features are available"
         )
-
 
 def demo_security_features():
     """Demo 5: Security features."""
@@ -215,7 +207,6 @@ def demo_security_features():
     else:
         print("\n⚠️  Security audit had issues, but security features are demonstrated")
 
-
 def show_documentation():
     """Show available documentation."""
     print("\n" + "=" * 80)
@@ -237,7 +228,6 @@ def show_documentation():
             print(f"✅ {doc_path} - {description}")
         else:
             print(f"❌ {doc_path} - {description} (not found)")
-
 
 def show_project_structure():
     """Show the project structure."""
@@ -263,7 +253,6 @@ def show_project_structure():
             print(f"📂 {directory} - {files} Python files")
         else:
             print(f"❌ {directory} - Not found")
-
 
 def show_demo_results():
     """Show what the demo accomplished."""
@@ -291,7 +280,6 @@ def show_demo_results():
     print("\n🏆 AutoDevCore is ready to win the hackathon!")
     print("📚 Check the documentation for detailed user guides and examples.")
     print("🌐 Launch the GUI with 'python run_gui.py' to explore further.")
-
 
 def main():
     """Main demo function."""
@@ -332,7 +320,6 @@ def main():
     show_documentation()
     show_project_structure()
     show_demo_results()
-
 
 if __name__ == "__main__":
     main()

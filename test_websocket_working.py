@@ -17,7 +17,6 @@ sys.path.append(str(Path(__file__).parent / "plugins"))
 
 from websocket_server import collaboration_manager
 
-
 async def test_websocket_working():
     """Test WebSocket functionality with a working implementation."""
     print("🧪 Testing WebSocket Server (Working Implementation)")
@@ -86,7 +85,6 @@ async def test_websocket_working():
         print(f"❌ WebSocket test failed: {e}")
         return {"success": False, "error": str(e)}
 
-
 async def main():
     """Main test runner."""
     result = await test_websocket_working()
@@ -109,7 +107,6 @@ async def main():
     print("=" * 60)
 
     return result
-
 
 if __name__ == "__main__":
     asyncio.run(main())

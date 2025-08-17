@@ -15,6 +15,7 @@ from utils.complexity_optimizer import (
     Priority,
     TaskType,
 )
+
 from utils.interface_abstraction import (
     ComponentBase,
     DependencyInjector,
@@ -22,6 +23,7 @@ from utils.interface_abstraction import (
     MessageQueue,
     ServiceLocator,
 )
+
 from utils.type_enhancer import (
     LogLevel,
     Result,
@@ -31,7 +33,6 @@ from utils.type_enhancer import (
     TypeSafeValidator,
     ValidationResult,
 )
-
 
 class TestComplexityOptimizer(unittest.TestCase):
     """Test complexity optimization utilities."""
@@ -124,7 +125,6 @@ class TestComplexityOptimizer(unittest.TestCase):
         self.assertEqual(result["field"], "username")
         self.assertEqual(result["expected_type"], "string")
 
-
 class TestInterfaceAbstraction(unittest.TestCase):
     """Test interface abstraction utilities."""
 
@@ -191,7 +191,6 @@ class TestInterfaceAbstraction(unittest.TestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0], "test_message")
 
-
 class TestTypeEnhancer(unittest.TestCase):
     """Test type enhancement utilities."""
 
@@ -210,6 +209,7 @@ class TestTypeEnhancer(unittest.TestCase):
 
         # Test TTL
         self.cache.set("expire_key", "expire_value", 1)
+
         import time
 
         time.sleep(1.1)  # Wait for expiration
@@ -267,7 +267,6 @@ class TestTypeEnhancer(unittest.TestCase):
         self.assertFalse(result.is_valid)
         self.assertEqual(len(result.errors), 1)
 
-
 class TestComponentBase(unittest.TestCase):
     """Test component base class."""
 
@@ -300,7 +299,6 @@ class TestComponentBase(unittest.TestCase):
 
         self.assertEqual(len(messages_received), 1)
         self.assertEqual(messages_received[0], "test_message")
-
 
 if __name__ == "__main__":
     unittest.main()

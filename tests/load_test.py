@@ -12,7 +12,6 @@ from typing import Any, Dict, List
 
 from locust import HttpUser, between, events, task
 
-
 class AutoDevCoreLoadTest(HttpUser):
     """Load test user for AutoDevCore"""
 
@@ -113,7 +112,6 @@ def fibonacci(n):
                 response.success()
             else:
                 response.failure(f"Failed with status {response.status_code}")
-
 
 class PerformanceMonitor:
     """Performance monitoring during load tests"""
@@ -224,10 +222,8 @@ class PerformanceMonitor:
 
         return endpoint_stats
 
-
 # Global performance monitor
 performance_monitor = PerformanceMonitor()
-
 
 @events.request.add_listener
 def on_request(
@@ -245,7 +241,6 @@ def on_request(
     """Record request metrics"""
     status_code = response.status_code if response else 500
     performance_monitor.record_request(name, response_time, status_code)
-
 
 def run_load_test_scenario(
     scenario_name: str, users: int, spawn_rate: int, duration: int
@@ -277,7 +272,6 @@ def run_load_test_scenario(
     results["scenario"] = scenario_name
 
     return results
-
 
 def run_comprehensive_load_test() -> Dict[str, Any]:
     """Run comprehensive load testing"""
@@ -316,7 +310,6 @@ def run_comprehensive_load_test() -> Dict[str, Any]:
     all_results["summary"]["avg_throughput"] = sum(throughputs) / len(throughputs)
 
     return all_results
-
 
 def generate_load_test_report(results: Dict[str, Any]) -> str:
     """Generate a comprehensive load test report"""
@@ -391,7 +384,6 @@ def generate_load_test_report(results: Dict[str, Any]) -> str:
     report.append("- ⚡ **Consider horizontal scaling** for higher loads")
 
     return "\n".join(report)
-
 
 if __name__ == "__main__":
     # Run comprehensive load test

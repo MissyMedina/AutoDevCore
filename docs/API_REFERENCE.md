@@ -142,13 +142,13 @@ def chat_api():
 ```python
 class MultiProviderAI:
     """Multi-provider AI integration system"""
-    
+
     def __init__(self):
         """Initialize multi-provider AI system"""
         # Load provider configurations
         # Setup fallback chains
         # Initialize health monitoring
-    
+
     async def generate_response(
         self,
         prompt: str,
@@ -161,7 +161,7 @@ class MultiProviderAI:
         # Select optimal provider
         # Generate response
         # Handle errors and fallbacks
-    
+
     def generate_response_sync(
         self,
         prompt: str,
@@ -173,7 +173,7 @@ class MultiProviderAI:
         """Synchronous wrapper for generate_response"""
         # Run async method in event loop
         # Return synchronous result
-    
+
     def get_provider_status(self) -> Dict[str, Dict[str, Any]]:
         """Get status of all AI providers"""
         # Check provider availability
@@ -228,19 +228,19 @@ PROVIDERS = {
 ```python
 class GPTOSSClient:
     """Local AI client using GPT-OSS via Ollama"""
-    
+
     def __init__(self, base_url: str = "http://localhost:11434", model: str = "gpt-oss:20b"):
         """Initialize GPT-OSS client"""
         # Setup Ollama connection
         # Configure model parameters
         # Initialize caching
-    
+
     def generate(self, prompt: str, **kwargs) -> Dict[str, Any]:
         """Generate response using local AI model"""
         # Send prompt to Ollama
         # Process response
         # Handle errors and caching
-    
+
     def get_cache_stats(self) -> Dict[str, Any]:
         """Get caching statistics"""
         # Return cache hit rates
@@ -611,23 +611,23 @@ SESSION_STATE_KEYS = {
     "team_members": ["object"],  # Team member data
     "users": ["object"],  # All users data
     "groups": ["object"],  # All groups data
-    
+
     # Project management
     "projects": ["object"],  # All projects data
     "project_templates": "object",  # Project templates
     "show_new_project_form": "boolean",  # New project form visibility
     "editing_project": "string",  # Project being edited
     "viewing_project": "string",  # Project being viewed
-    
+
     # AI and chat
     "chat_history": ["object"],  # Chat message history
     "global_chat_history": ["object"],  # Global chat history
     "ai_lab_data": "object",  # AI lab test data
-    
+
     # Business intelligence
     "business_metrics": "object",  # Business metrics data
     "analytics_data": "object",  # Analytics data
-    
+
     # UI state
     "current_page": "string",  # Current page/dashboard
     "show_project_report": "boolean",  # Project report visibility

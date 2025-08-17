@@ -22,7 +22,6 @@ from .performance_optimizer import (
     monitor_performance,
 )
 
-
 class PerformanceIntegration:
     """Integrates performance optimization with AutoDevCore systems"""
 
@@ -120,6 +119,7 @@ class PerformanceIntegration:
         self, plugin_name: str, operation: str, **kwargs
     ) -> Dict[str, Any]:
         """Optimized plugin operations with monitoring"""
+
         # Import plugin manager dynamically to avoid circular imports
         from .plugin_manager import PluginManager
 
@@ -417,10 +417,8 @@ class PerformanceIntegration:
 
         return "\n".join(report)
 
-
 # Global performance integration instance
 performance_integration = PerformanceIntegration()
-
 
 if __name__ == "__main__":
     # Run performance audit and generate report

@@ -94,17 +94,17 @@ AutoDevCore/
 def run(context=None):
     """
     Plugin description.
-    
+
     Args:
         context: Optional context data
-        
+
     Returns:
         dict: Plugin results
     """
     try:
         # Your plugin logic here
         result = "Plugin executed successfully"
-        
+
         return {
             "status": "success",
             "message": result,

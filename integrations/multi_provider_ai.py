@@ -15,7 +15,6 @@ from typing import Any, Dict, List, Optional, Union
 import aiohttp
 import requests
 
-
 class MultiProviderAI:
     """Multi-provider AI integration with intelligent model selection - BULLETPROOF"""
 
@@ -561,12 +560,17 @@ class MultiProviderAI:
                 loop = asyncio.get_running_loop()
                 # If we're in an async context, use thread executor
                 import concurrent.futures
+
                 with concurrent.futures.ThreadPoolExecutor() as executor:
                     future = executor.submit(
                         self._run_async_in_thread,
-                        prompt, task_type, provider, model, **kwargs
+                        prompt,
+                        task_type,
+                        provider,
+                        model,
+                        **kwargs,
                     )
-                    return future.result(timeout=kwargs.get('timeout', 30))
+                    return future.result(timeout=kwargs.get("timeout", 30))
             except RuntimeError:
                 # No event loop running, safe to use asyncio.run
                 return asyncio.run(
@@ -583,14 +587,17 @@ class MultiProviderAI:
             }
 
     def _run_async_in_thread(
-        self, prompt: str, task_type: str, provider: Optional[str],
-        model: Optional[str], **kwargs
+        self,
+        prompt: str,
+        task_type: str,
+        provider: Optional[str],
+        model: Optional[str],
+        **kwargs,
     ) -> Dict[str, Any]:
         """Run async operation in a new event loop (for thread execution)."""
         return asyncio.run(
             self.generate_response(prompt, task_type, provider, model, **kwargs)
         )
-
 
 # Global instance for easy access
 multi_provider_ai = MultiProviderAI()

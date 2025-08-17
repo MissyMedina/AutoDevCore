@@ -15,7 +15,6 @@ from typing import Any, Dict, List, Optional, Union
 
 import aiohttp
 
-
 class ModelProvider(Enum):
     """Supported AI model providers."""
 
@@ -23,7 +22,6 @@ class ModelProvider(Enum):
     ANTHROPIC = "anthropic"
     GPT_OSS = "gpt-oss"
     FALLBACK = "fallback"
-
 
 class TaskType(Enum):
     """Types of AI tasks for model selection."""
@@ -33,7 +31,6 @@ class TaskType(Enum):
     ANALYSIS = "analysis"
     SCORING = "scoring"
     DOCUMENTATION = "documentation"
-
 
 @dataclass
 class ModelConfig:
@@ -56,7 +53,6 @@ class ModelConfig:
     success_rate: float = 0.0
     avg_response_time: float = 0.0
 
-
 @dataclass
 class AIRequest:
     """AI request configuration."""
@@ -68,7 +64,6 @@ class AIRequest:
     timeout: Optional[int] = None
     priority: str = "normal"  # low, normal, high
     fallback_required: bool = True
-
 
 @dataclass
 class AIResponse:
@@ -83,7 +78,6 @@ class AIResponse:
     success: bool
     error_message: Optional[str] = None
     metadata: Dict[str, Any] = field(default_factory=dict)
-
 
 class ModelHealthChecker:
     """Check health and availability of AI models."""
@@ -157,6 +151,7 @@ class ModelHealthChecker:
     async def _check_gpt_oss_health(self, model_config: ModelConfig) -> bool:
         """Check GPT-OSS model health."""
         try:
+
             import requests
 
             response = requests.get("http://localhost:11434/api/tags", timeout=5)
@@ -168,7 +163,6 @@ class ModelHealthChecker:
             return False
         except:
             return False
-
 
 class ModelSelector:
     """Intelligent model selection based on task and performance."""
@@ -307,7 +301,6 @@ class ModelSelector:
         history["avg_response_time"] = (
             history["total_response_time"] / history["total_requests"]
         )
-
 
 class MultiModelAI:
     """Multi-model AI integration with intelligent selection and fallback."""
@@ -582,6 +575,7 @@ class MultiModelAI:
         self, model: ModelConfig, request: AIRequest
     ) -> tuple[str, int]:
         """Call GPT-OSS (Ollama) API."""
+
         import requests
 
         data = {
@@ -658,9 +652,10 @@ class MultiModelAI:
                 loop = asyncio.get_running_loop()
                 # If we're in an async context, we need to use a different approach
                 import concurrent.futures
+
                 with concurrent.futures.ThreadPoolExecutor() as executor:
                     future = executor.submit(self._run_in_new_loop, request)
-                    response = future.result(timeout=kwargs.get('timeout', 30))
+                    response = future.result(timeout=kwargs.get("timeout", 30))
                     return response.content
             except RuntimeError:
                 # No event loop running, safe to create one
@@ -679,10 +674,8 @@ class MultiModelAI:
         async with self:
             return await self.generate(request)
 
-
 # Global instance for easy access
 multi_model_ai = MultiModelAI()
-
 
 async def generate_ai_response(
     prompt: str, task_type: TaskType, **kwargs
@@ -692,7 +685,6 @@ async def generate_ai_response(
 
     async with multi_model_ai as ai:
         return await ai.generate(request)
-
 
 def run(context=None):
     """Plugin entry point for testing."""

@@ -1,0 +1,17 @@
+STDOUT:
+
+
+STDERR:
+/Users/missym/VibeSeasons2/OpnAI_Hackathon/gui_env/lib/python3.12/site-packages/_pytest/config/__init__.py:331: PluggyTeardownRaisedWarning: A plugin raised an exception during an old-style hookwrapper teardown.
+Plugin: helpconfig, Hook: pytest_cmdline_parse
+UsageError: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]
+__main__.py: error: unrecognized arguments: --html=test_output/test_report.html --self-contained-html
+  inifile: /Users/missym/VibeSeasons2/OpnAI_Hackathon/pytest.ini
+  rootdir: /Users/missym/VibeSeasons2/OpnAI_Hackathon
+For more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning
+  config = pluginmanager.hook.pytest_cmdline_parse(
+ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]
+__main__.py: error: unrecognized arguments: --html=test_output/test_report.html --self-contained-html
+  inifile: /Users/missym/VibeSeasons2/OpnAI_Hackathon/pytest.ini
+  rootdir: /Users/missym/VibeSeasons2/OpnAI_Hackathon
+

@@ -9,7 +9,7 @@
 #### 🖥️ **Streamlit GUI - Visual Development Hub**
 - **URL**: `http://localhost:8501`
 - **Purpose**: Primary visual interface for AutoDevCore
-- **Features**: 
+- **Features**:
   - Role-based dashboards (Developer, PM, DevOps, Admin, Stakeholder)
   - AI Lab for testing models
   - Project management interface
@@ -253,6 +253,6 @@ python3 -c "from plugins.security_auditor import SecurityAuditor; sa = SecurityA
 
 ---
 
-**Last Updated**: 2025-08-15  
-**Version**: 1.0.0  
+**Last Updated**: 2025-08-15
+**Version**: 1.0.0
 **Status**: All services active and optimized

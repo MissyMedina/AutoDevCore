@@ -19,7 +19,6 @@ from typing import Any, Callable, Dict, List, Optional
 
 import psutil
 
-
 @dataclass
 class MetricPoint:
     """Individual metric data point."""
@@ -28,7 +27,6 @@ class MetricPoint:
     value: float
     labels: Dict[str, str] = field(default_factory=dict)
     metadata: Dict[str, Any] = field(default_factory=dict)
-
 
 @dataclass
 class Alert:
@@ -43,7 +41,6 @@ class Alert:
     last_triggered: Optional[datetime] = None
     trigger_count: int = 0
 
-
 @dataclass
 class HealthCheck:
     """Health check configuration."""
@@ -56,7 +53,6 @@ class HealthCheck:
     last_check: Optional[datetime] = None
     last_status: str = "unknown"
     last_error: Optional[str] = None
-
 
 class MetricsCollector:
     """Collect and store system metrics."""
@@ -90,7 +86,7 @@ class MetricsCollector:
 
         cursor.execute(
             """
-            CREATE INDEX IF NOT EXISTS idx_metrics_name_time 
+            CREATE INDEX IF NOT EXISTS idx_metrics_name_time
             ON metrics(metric_name, timestamp)
         """
         )
@@ -227,7 +223,6 @@ class MetricsCollector:
         except Exception as e:
             logging.error(f"Failed to cleanup old metrics: {e}")
 
-
 class AlertManager:
     """Manage alerts and notifications."""
 
@@ -326,7 +321,6 @@ class AlertManager:
 
         logging.warning(f"Alert triggered: {alert.name} - {alert.message}")
 
-
 class HealthChecker:
     """Perform health checks on system components."""
 
@@ -394,7 +388,6 @@ class HealthChecker:
             health_check.last_error = str(e)
 
         health_check.last_check = datetime.now()
-
 
 class MonitoringDashboard:
     """Main monitoring dashboard class."""
@@ -617,6 +610,7 @@ class MonitoringDashboard:
 
         # Ensure we always have some metrics for testing/demo purposes
         if not current_metrics:
+
             import psutil
 
             current_time = datetime.now()
@@ -731,10 +725,8 @@ Generated: {dashboard_data['timestamp']}
 
         return report
 
-
 # Global monitoring dashboard instance
 monitoring_dashboard = MonitoringDashboard()
-
 
 def run(context=None):
     """Plugin entry point for testing the monitoring dashboard."""

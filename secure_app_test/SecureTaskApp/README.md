@@ -46,7 +46,7 @@ secure task management app with user authentication
    ```bash
    # For Python backend
    pip install -r requirements.txt
-   
+
    # For Node.js backend
    npm install
    ```
@@ -61,7 +61,7 @@ secure task management app with user authentication
    ```bash
    # Python backend
    python main.py
-   
+
    # Node.js backend
    npm start
    ```
@@ -167,7 +167,7 @@ securetaskapp/
    ```bash
    # Python with auto-reload
    uvicorn main:app --reload --host 0.0.0.0 --port 8000
-   
+
    # Node.js with auto-reload
    npm run dev
    ```

@@ -57,7 +57,7 @@ class UserCreate(BaseModel):
     username: str
     email: EmailStr
     password: str
-    
+
     @validator('password')
     def validate_password(cls, v):
         if len(v) < 8:
@@ -109,7 +109,7 @@ class Settings(BaseSettings):
     SECRET_KEY: str
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
-    
+
     class Config:
         env_file = ".env"
 
@@ -152,7 +152,7 @@ from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 
 # Security headers
 app.add_middleware(
-    TrustedHostMiddleware, 
+    TrustedHostMiddleware,
     allowed_hosts=["yourdomain.com", "localhost"]
 )
 

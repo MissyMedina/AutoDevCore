@@ -159,6 +159,8 @@ models/
 # Temporary files
 *.tmp
 *.temp
+*.bak
+temp_*.py
 .DS_Store
 Thumbs.db
 

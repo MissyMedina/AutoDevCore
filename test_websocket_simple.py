@@ -17,7 +17,6 @@ sys.path.append(str(Path(__file__).parent / "plugins"))
 
 from websocket_server import run_websocket_server
 
-
 async def test_websocket_simple():
     """Simple WebSocket test that actually works."""
     print("🧪 Testing WebSocket Server (Simple Version)")
@@ -86,7 +85,6 @@ async def test_websocket_simple():
         print(f"❌ WebSocket test failed: {e}")
         return {"success": False, "error": str(e)}
 
-
 async def main():
     """Main test runner."""
     result = await test_websocket_simple()
@@ -103,7 +101,6 @@ async def main():
     print("=" * 50)
 
     return result
-
 
 if __name__ == "__main__":
     asyncio.run(main())

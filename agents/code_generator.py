@@ -7,7 +7,6 @@ from typing import Any, Dict
 
 from .security_generator import SecurityGeneratorAgent
 
-
 class CodeGeneratorAgent:
     """Agent responsible for generating the application codebase."""
 
@@ -161,7 +160,7 @@ Base = declarative_base()
 class User(Base):
     """User model."""
     __tablename__ = "users"
-    
+
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String(50), unique=True, index=True)
     email = Column(String(100), unique=True, index=True)
@@ -179,7 +178,7 @@ class User(Base):
 class Product(Base):
     """Product model for inventory management."""
     __tablename__ = "products"
-    
+
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(100), nullable=False)
     description = Column(Text)
@@ -242,14 +241,15 @@ class UserCreate(BaseModel):
     username: str = Field(..., min_length=3, max_length=50, description="Username must be 3-50 characters")
     email: str = Field(..., description="Valid email address")
     password: str = Field(..., min_length=8, description="Password must be at least 8 characters")
-    
+
     @validator('email')
     def validate_email(cls, v):
+
         import re
         if not re.match(r"[^@]+@[^@]+\\.[^@]+", v):
             raise ValueError('Invalid email format')
         return v
-    
+
     @validator('password')
     def validate_password(cls, v):
         if not validate_password_strength(v):
@@ -260,10 +260,11 @@ class UserUpdate(BaseModel):
     username: str = Field(None, min_length=3, max_length=50)
     email: str = Field(None)
     is_active: bool = Field(None)
-    
+
     @validator('email')
     def validate_email(cls, v):
         if v is not None:
+
             import re
             if not re.match(r"[^@]+@[^@]+\.[^@]+", v):
                 raise ValueError('Invalid email format')
@@ -283,7 +284,7 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Username or email already registered"
         )
-    
+
     # Create new user (password hashing would be handled in auth system)
     new_user = User(
         username=user.username,
@@ -293,7 +294,7 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
-    
+
     return {"message": "User created successfully", "user_id": new_user.id}
 
 @router.get("/users/", response_model=List[dict])
@@ -334,6 +335,7 @@ def get_user(user_id: int, db: Session = Depends(get_db)):
 @router.get("/products/", response_model=List[dict])
 def get_products(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     """Get all products."""
+
     from models import Product
     products = db.query(Product).offset(skip).limit(limit).all()
     return [
@@ -351,6 +353,7 @@ def get_products(skip: int = 0, limit: int = 100, db: Session = Depends(get_db))
 @router.get("/products/{product_id}")
 def get_product(product_id: int, db: Session = Depends(get_db)):
     """Get product by ID."""
+
     from models import Product
     product = db.query(Product).filter(Product.id == product_id).first()
     if product is None:
@@ -441,7 +444,7 @@ class Settings(BaseSettings):
     debug: bool = False
     database_url: str = "sqlite:///./app.db"
     secret_key: str = "your-secret-key-here"
-    
+
     class Config:
         env_file = ".env"
 
@@ -690,7 +693,7 @@ class User {
         this.isActive = isActive;
         this.createdAt = createdAt;
     }
-    
+
     toJSON() {
         return {
             id: this.id,
@@ -789,13 +792,13 @@ describe('API Tests', () => {{
         expect(response.status).toBe(200);
         expect(response.body.message).toBe('Welcome to {app_name}');
     }});
-    
+
     test('GET /health should return health status', async () => {{
         const response = await request(app).get('/health');
         expect(response.status).toBe(200);
         expect(response.body.status).toBe('healthy');
     }});
-    
+
     test('GET /api/v1/users should return users', async () => {{
         const response = await request(app).get('/api/v1/users');
         expect(response.status).toBe(200);

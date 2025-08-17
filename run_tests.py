@@ -10,7 +10,6 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-
 def run_tests():
     """Run all tests and generate reports."""
     print("🧪 Running AutoDevCore Test Suite")
@@ -64,7 +63,6 @@ def run_tests():
         print(f"❌ Error running tests: {e}")
         return False
 
-
 def generate_test_summary(result, output_dir):
     """Generate a test summary report."""
     summary = {
@@ -87,7 +85,6 @@ def generate_test_summary(result, output_dir):
         json.dump(summary, f, indent=2)
 
     print(f"📊 Test summary saved to: {output_dir / 'test_summary.json'}")
-
 
 def run_performance_tests():
     """Run performance tests."""
@@ -114,7 +111,6 @@ def run_performance_tests():
         print(f"❌ Performance test error: {e}")
         return False
 
-
 def run_integration_tests():
     """Run integration tests."""
     print("\n🔗 Running Integration Tests")
@@ -139,7 +135,6 @@ def run_integration_tests():
     except Exception as e:
         print(f"❌ Integration test error: {e}")
         return False
-
 
 def check_code_quality():
     """Check code quality with linting tools."""
@@ -198,7 +193,6 @@ def check_code_quality():
 
     return all(passed for _, passed, _ in quality_checks)
 
-
 def main():
     """Main test runner function."""
     print("🚀 AutoDevCore Test Suite")
@@ -236,7 +230,6 @@ def main():
     print("📋 Test report: test_output/test_report.html")
 
     return 0 if all_passed else 1
-
 
 if __name__ == "__main__":
     sys.exit(main())

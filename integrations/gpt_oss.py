@@ -11,7 +11,6 @@ from typing import Any, Dict, List, Optional
 
 import requests
 
-
 class GPTOSSClient:
     """Client for interacting with GPT-OSS models via Ollama."""
 
@@ -89,6 +88,7 @@ class GPTOSSClient:
 
     def _make_request(self, prompt: str, **kwargs) -> Dict[str, Any]:
         """Make a request to Ollama with caching and optimization."""
+
         import time
 
         start_time = time.time()
@@ -177,9 +177,9 @@ class GPTOSSClient:
         """Analyze code with caching."""
         prompt = f"""
         Analyze the following code for {analysis_type}:
-        
+
         {code[:2000]}
-        
+
         Provide a JSON response with:
         - analysis_type (string)
         - findings (list)
@@ -210,7 +210,7 @@ class GPTOSSClient:
         """Generate an application plan with caching."""
         prompt = f"""
         Create a detailed application plan for: {idea}
-        
+
         Provide a JSON response with:
         - app_name (string)
         - description (string)
@@ -246,9 +246,9 @@ class GPTOSSClient:
         """Generate code with caching."""
         full_prompt = f"""
         Generate {language} code for:
-        
+
         {prompt}
-        
+
         Provide only the code, no explanations.
         """
 
@@ -264,9 +264,9 @@ class GPTOSSClient:
         """Score an application against criteria with caching."""
         prompt = f"""
         Score this application: {app_description}
-        
+
         Against these criteria: {', '.join(criteria)}
-        
+
         Provide a JSON response with:
         - overall_score (0-100)
         - category_scores (dict)
@@ -333,7 +333,6 @@ class GPTOSSClient:
         except Exception:
             return {"error": "Could not get cache stats"}
 
-
 class HarmonyFormat:
     """Utilities for Harmony format (GPT-OSS chat format)."""
 
@@ -359,7 +358,6 @@ class HarmonyFormat:
             elif msg["role"] == "system":
                 formatted.append(f"<|system|>\n{msg['content']}<|end|>")
         return "\n".join(formatted)
-
 
 # Global client instance
 gpt_oss_client = GPTOSSClient()

@@ -27,10 +27,10 @@ __description__ = "What your plugin does"
 def run(context):
     """
     Main plugin function.
-    
+
     Args:
         context (dict): Execution context with plugin_name, output_dir, verbose
-    
+
     Returns:
         Any: Plugin execution result
     """
@@ -73,7 +73,7 @@ def run(context):
 
 ### ascii_weather
 
-**Description**: 
+**Description**:
 ASCII Weather Plugin for AutoDevCore
 A simple plugin that generates ASCII weather art
 
@@ -89,4 +89,3 @@ A simple plugin that generates ASCII weather art
 - `_get_weather_ascii`
 
 ---
-

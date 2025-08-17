@@ -360,6 +360,6 @@ For deployment issues:
 
 ---
 
-**Deployment Guide Version**: 1.0.0  
-**Last Updated**: 2025-08-10  
+**Deployment Guide Version**: 1.0.0
+**Last Updated**: 2025-08-10
 **AutoDevCore Version**: v1.0.0

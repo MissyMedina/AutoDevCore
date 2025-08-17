@@ -7,7 +7,6 @@ from typing import Optional
 
 from pydantic import BaseModel, EmailStr, validator
 
-
 class UserCreate(BaseModel):
     """User creation model."""
 
@@ -35,20 +34,17 @@ class UserCreate(BaseModel):
             raise ValueError("Password must contain at least one number")
         return v
 
-
 class UserLogin(BaseModel):
     """User login model."""
 
     username: str
     password: str
 
-
 class Token(BaseModel):
     """Token response model."""
 
     access_token: str
     token_type: str
-
 
 class UserResponse(BaseModel):
     """User response model."""

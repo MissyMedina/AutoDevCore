@@ -11,7 +11,6 @@ from integrations import gpt_oss_client
 
 from .base import BaseMode
 
-
 class JournalMode(BaseMode):
     """Journal mode for intelligent codebase analysis and insights with GPT-OSS integration."""
 
@@ -499,10 +498,10 @@ class JournalMode(BaseMode):
             3. Best practices adherence
             4. Scalability considerations
             5. Maintainability factors
-            
+
             Code to analyze:
             {sample_code[:2000]}
-            
+
             Provide a JSON response with:
             - architecture_insights (list)
             - improvement_opportunities (list)

@@ -134,14 +134,14 @@ def collect_system_metrics():
         "system.cpu.usage", cpu_percent,
         labels={"type": "overall"}
     )
-    
+
     # Memory usage
     memory = psutil.virtual_memory()
     self.metrics_collector.record_metric(
         "system.memory.usage", memory.percent,
         labels={"type": "overall"}
     )
-    
+
     # Disk usage
     disk = psutil.disk_usage('/')
     self.metrics_collector.record_metric(
@@ -185,12 +185,12 @@ async def check_ai_models():
     report = multi_model_ai.get_performance_report()
     available_models = report["available_models"]
     total_models = report["total_models"]
-    
+
     if available_models == 0:
         raise Exception("No AI models available")
     elif available_models < total_models:
         raise Exception(f"Only {available_models}/{total_models} models available")
-    
+
     return "healthy"
 
 health_checks = [
@@ -299,6 +299,6 @@ This implementation **completes Phase 2** of our God-Tier roadmap and provides t
 
 ---
 
-**Implementation Date**: 2025-08-10  
-**Status**: ✅ **Production Ready**  
+**Implementation Date**: 2025-08-10
+**Status**: ✅ **Production Ready**
 **Impact**: 🚀 **Enterprise-Grade Enhancement**

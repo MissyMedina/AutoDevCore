@@ -13,7 +13,6 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-
 class PluginValidator:
     """Validate plugins for security and functionality."""
 
@@ -138,7 +137,6 @@ class PluginValidator:
 
         return errors
 
-
 class PluginTester:
     """Test plugins for functionality."""
 
@@ -188,7 +186,6 @@ class PluginTester:
 
         except Exception as e:
             return False, {"error": f"Failed to load plugin: {e}"}
-
 
 class DependencyManager:
     """Manage plugin dependencies."""
@@ -250,7 +247,6 @@ class DependencyManager:
             return True
         except subprocess.CalledProcessError:
             return False
-
 
 class PluginManager:
     """Advanced plugin manager with validation, testing, and dependency management."""
@@ -535,7 +531,6 @@ Generated: {datetime.now().isoformat()}
 """
 
         return report
-
 
 def run(context=None):
     """Plugin manager entry point."""

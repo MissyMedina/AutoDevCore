@@ -217,7 +217,7 @@ async def get_task_statistics(db: Session = Depends(get_db)) -> Dict:
     total_tasks = db.query(Task).count()
     completed_tasks = db.query(Task).filter(Task.completed == True).count()
     completion_rate = (completed_tasks / total_tasks * 100) if total_tasks > 0 else 0
-    
+
     return {
         "total_tasks": total_tasks,
         "completed_tasks": completed_tasks,

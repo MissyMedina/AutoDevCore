@@ -24,24 +24,28 @@ engine_kwargs = {
 
 if DATABASE_URL.startswith("sqlite"):
     # SQLite-specific optimizations
-    engine_kwargs.update({
-        "connect_args": {
-            "check_same_thread": False,
-            "timeout": 20,
-            "isolation_level": None,  # Autocommit mode
-        },
-        "poolclass": StaticPool,
-        "pool_pre_ping": True,
-    })
+    engine_kwargs.update(
+        {
+            "connect_args": {
+                "check_same_thread": False,
+                "timeout": 20,
+                "isolation_level": None,  # Autocommit mode
+            },
+            "poolclass": StaticPool,
+            "pool_pre_ping": True,
+        }
+    )
 else:
     # PostgreSQL/MySQL optimizations
-    engine_kwargs.update({
-        "poolclass": QueuePool,
-        "pool_size": 10,
-        "max_overflow": 20,
-        "pool_pre_ping": True,
-        "pool_recycle": 3600,  # Recycle connections every hour
-    })
+    engine_kwargs.update(
+        {
+            "poolclass": QueuePool,
+            "pool_size": 10,
+            "max_overflow": 20,
+            "pool_pre_ping": True,
+            "pool_recycle": 3600,  # Recycle connections every hour
+        }
+    )
 
 # Synchronous engine
 engine = create_engine(DATABASE_URL, **engine_kwargs)
@@ -54,7 +58,6 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 AsyncSessionLocal = async_sessionmaker(
     async_engine, class_=AsyncSession, expire_on_commit=False
 )
-
 
 # SQLite performance optimizations
 @event.listens_for(engine, "connect")
@@ -74,7 +77,6 @@ def set_sqlite_pragma(dbapi_connection, connection_record):
         cursor.execute("PRAGMA temp_store=MEMORY")
         cursor.close()
 
-
 @contextmanager
 def get_db() -> Generator[SessionLocal, None, None]:
     """Get database session with proper cleanup."""
@@ -88,7 +90,6 @@ def get_db() -> Generator[SessionLocal, None, None]:
     finally:
         db.close()
 
-
 @asynccontextmanager
 async def get_async_db() -> AsyncGenerator[AsyncSession, None]:
     """Get async database session with proper cleanup."""
@@ -99,7 +100,6 @@ async def get_async_db() -> AsyncGenerator[AsyncSession, None]:
         except Exception:
             await session.rollback()
             raise
-
 
 # Legacy compatibility function
 def get_db_legacy():

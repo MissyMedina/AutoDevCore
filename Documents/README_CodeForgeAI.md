@@ -10,11 +10,11 @@
 - Ideal for secure environments or devs who don’t want AI tooling calling home.
 
 ## 📦 Table of Contents
-- [Motivation](#motivation)  
-- [Features](#features)  
-- [Installation](#installation)  
-- [Usage](#usage)  
-- [Contributing](#contributing)  
+- [Motivation](#motivation)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
 - [License](#license)
 
 ## 🧠 Motivation

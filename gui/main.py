@@ -31,6 +31,7 @@ go = None
 
 # Import AutoDevCore modules
 try:
+
     from integrations.gpt_oss import gpt_oss_client
     from plugins.ai_orchestrator import AIOrchestrator
     from plugins.collaboration_platform import CollaborationPlatform
@@ -48,6 +49,7 @@ except ImportError as e:
 
 # Import help documentation
 try:
+
     from help_docs import show_help_documentation
 
     HELP_AVAILABLE = True
@@ -57,6 +59,7 @@ except ImportError as e:
 
 # Import API configuration panel
 try:
+
     from api_config_panel import show_api_config_panel
 
     API_CONFIG_AVAILABLE = True
@@ -66,6 +69,7 @@ except ImportError as e:
 
 # Import multi-provider AI
 try:
+
     from integrations.multi_provider_ai import multi_provider_ai
 
     MULTI_PROVIDER_AVAILABLE = True
@@ -100,7 +104,7 @@ st.markdown(
         --surface-color: #ffffff;
         --text-color: #1e293b;
     }
-    
+
     /* Main container styling */
     .main-header {
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -110,7 +114,7 @@ st.markdown(
         margin-bottom: 2rem;
         text-align: center;
     }
-    
+
     .metric-card {
         background: var(--surface-color);
         border: 1px solid #e2e8f0;
@@ -119,7 +123,7 @@ st.markdown(
         margin: 0.5rem 0;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    
+
     .status-indicator {
         display: inline-block;
         width: 12px;
@@ -127,16 +131,16 @@ st.markdown(
         border-radius: 50%;
         margin-right: 8px;
     }
-    
+
     .status-online { background-color: var(--success-color); }
     .status-warning { background-color: var(--warning-color); }
     .status-offline { background-color: var(--error-color); }
-    
+
     /* Sidebar styling */
     .sidebar .sidebar-content {
         background-color: var(--background-color);
     }
-    
+
     /* Button styling */
     .stButton > button {
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -147,24 +151,24 @@ st.markdown(
         font-weight: 600;
         transition: all 0.3s ease;
     }
-    
+
     .stButton > button:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
-    
+
     /* Progress bar styling */
     .stProgress > div > div > div {
         background: linear-gradient(90deg, var(--success-color), var(--primary-color));
     }
-    
+
     /* Code block styling */
     .stCodeBlock {
         background-color: #1e293b;
         border-radius: 8px;
         padding: 1rem;
     }
-    
+
     /* Fix for AI assistant text visibility - COMPREHENSIVE FIX */
     .stTextArea > div > div > textarea {
         color: #1e293b !important;
@@ -175,12 +179,12 @@ st.markdown(
         font-size: 16px !important;
         min-height: 100px !important;
     }
-    
+
     /* Ensure all text in text areas is visible */
     .stTextArea > div > div > textarea::placeholder {
         color: #64748b !important;
     }
-    
+
     /* Fix for all input fields */
     .stTextInput > div > div > input {
         color: #1e293b !important;
@@ -190,7 +194,7 @@ st.markdown(
         padding: 0.5rem !important;
         font-size: 16px !important;
     }
-    
+
     /* Fix for select boxes */
     .stSelectbox > div > div > div {
         color: #1e293b !important;
@@ -198,7 +202,7 @@ st.markdown(
         border: 2px solid #e2e8f0 !important;
         border-radius: 8px !important;
     }
-    
+
     /* Ensure all form elements are interactive */
     .stTextInput, .stTextArea, .stSelectbox {
         opacity: 1 !important;
@@ -313,7 +317,6 @@ if "radar_chart_data" not in st.session_state:
 if "scoring_in_progress" not in st.session_state:
     st.session_state.scoring_in_progress = False
 
-
 def test_gpt_oss_connection():
     """Test GPT-OSS connection and return status"""
     try:
@@ -328,7 +331,6 @@ def test_gpt_oss_connection():
     except Exception as e:
         st.session_state.gpt_oss_status = "error"
         return False, str(e)
-
 
 def run_cli_command(command):
     """Actually run CLI commands and return results"""
@@ -364,7 +366,6 @@ def run_cli_command(command):
     except Exception as e:
         print(f"DEBUG: Exception occurred: {str(e)}")
         return False, "", str(e)
-
 
 def run_code_scoring(code_content, template="profiles/fintech.yaml"):
     """Run code scoring using AutoDevCore scoring mode"""
@@ -535,10 +536,10 @@ This code has been analyzed using a fallback scoring method due to AI model conn
     finally:
         # Clean up temporary directory
         if temp_dir and temp_dir.exists():
+
             import shutil
 
             shutil.rmtree(temp_dir, ignore_errors=True)
-
 
 def generate_enhanced_html_report(radar_chart_data, scoring_results, template):
     """Generate an enhanced HTML report with beautiful styling"""
@@ -582,20 +583,20 @@ def generate_enhanced_html_report(radar_chart_data, scoring_results, template):
             padding: 0;
             box-sizing: border-box;
         }}
-        
+
         body {{
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             color: #333;
         }}
-        
+
         .container {{
             max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }}
-        
+
         .header {{
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -604,18 +605,18 @@ def generate_enhanced_html_report(radar_chart_data, scoring_results, template):
             text-align: center;
             margin-bottom: 0;
         }}
-        
+
         .header h1 {{
             font-size: 3em;
             margin-bottom: 10px;
             font-weight: 300;
         }}
-        
+
         .header p {{
             font-size: 1.2em;
             opacity: 0.9;
         }}
-        
+
         .score-badge {{
             display: inline-block;
             background: rgba(255,255,255,0.2);
@@ -625,21 +626,21 @@ def generate_enhanced_html_report(radar_chart_data, scoring_results, template):
             font-size: 1.5em;
             font-weight: bold;
         }}
-        
+
         .content {{
             background: white;
             border-radius: 0 0 20px 20px;
             padding: 40px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }}
-        
+
         .metrics-grid {{
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-bottom: 40px;
         }}
-        
+
         .metric-card {{
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 25px;
@@ -648,46 +649,46 @@ def generate_enhanced_html_report(radar_chart_data, scoring_results, template):
             border-left: 5px solid #667eea;
             transition: transform 0.3s ease;
         }}
-        
+
         .metric-card:hover {{
             transform: translateY(-5px);
         }}
-        
+
         .metric-value {{
             font-size: 2.5em;
             font-weight: bold;
             color: #667eea;
             margin-bottom: 10px;
         }}
-        
+
         .metric-label {{
             font-size: 1.1em;
             color: #666;
             text-transform: uppercase;
             letter-spacing: 1px;
         }}
-        
+
         .chart-container {{
             background: #f8f9fa;
             padding: 30px;
             border-radius: 15px;
             margin-bottom: 30px;
         }}
-        
+
         .chart-container h3 {{
             text-align: center;
             margin-bottom: 20px;
             color: #333;
             font-size: 1.5em;
         }}
-        
+
         .report-section {{
             background: #f8f9fa;
             padding: 30px;
             border-radius: 15px;
             margin-bottom: 30px;
         }}
-        
+
         .report-section h3 {{
             color: #667eea;
             margin-bottom: 20px;
@@ -695,12 +696,12 @@ def generate_enhanced_html_report(radar_chart_data, scoring_results, template):
             border-bottom: 2px solid #667eea;
             padding-bottom: 10px;
         }}
-        
+
         .report-content {{
             line-height: 1.6;
             font-size: 1.1em;
         }}
-        
+
         .footer {{
             text-align: center;
             margin-top: 40px;
@@ -709,22 +710,22 @@ def generate_enhanced_html_report(radar_chart_data, scoring_results, template):
             border-radius: 15px;
             color: #666;
         }}
-        
+
         .timestamp {{
             font-size: 0.9em;
             color: #999;
             margin-top: 10px;
         }}
-        
+
         @media (max-width: 768px) {{
             .container {{
                 padding: 10px;
             }}
-            
+
             .header h1 {{
                 font-size: 2em;
             }}
-            
+
             .metrics-grid {{
                 grid-template-columns: 1fr;
             }}
@@ -740,7 +741,7 @@ def generate_enhanced_html_report(radar_chart_data, scoring_results, template):
                 <i class="fas fa-star"></i> Overall Score: {overall_score:.1f}%
             </div>
         </div>
-        
+
         <div class="content">
             <div class="metrics-grid">
                 <div class="metric-card">
@@ -764,19 +765,19 @@ def generate_enhanced_html_report(radar_chart_data, scoring_results, template):
                     <div class="metric-label">DevOps</div>
                 </div>
             </div>
-            
+
             <div class="chart-container">
                 <h3><i class="fas fa-chart-pie"></i> Radar Chart Analysis</h3>
                 <canvas id="radarChart" width="400" height="400"></canvas>
             </div>
-            
+
             <div class="report-section">
                 <h3><i class="fas fa-file-alt"></i> Detailed Analysis</h3>
                 <div class="report-content">
                     <pre style="white-space: pre-wrap; font-family: inherit;">{scoring_results or "No detailed analysis available."}</pre>
                 </div>
             </div>
-            
+
             <div class="report-section">
                 <h3><i class="fas fa-info-circle"></i> Analysis Information</h3>
                 <div class="report-content">
@@ -786,14 +787,14 @@ def generate_enhanced_html_report(radar_chart_data, scoring_results, template):
                     <p><strong>Categories Evaluated:</strong> Security, Performance, Code Quality, Architecture, DevOps</p>
                 </div>
             </div>
-            
+
             <div class="footer">
                 <p><i class="fas fa-copyright"></i> 2025 AutoDevCore - The core of intelligent development</p>
                 <p class="timestamp">Report generated on {datetime.now().strftime('%Y-%m-%d at %H:%M:%S')}</p>
             </div>
         </div>
     </div>
-    
+
     <script>
         // Initialize Chart.js
         const ctx = document.getElementById('radarChart').getContext('2d');
@@ -832,7 +833,7 @@ def generate_enhanced_html_report(radar_chart_data, scoring_results, template):
                 }}
             }}
         }});
-        
+
         // Initialize Mermaid
         mermaid.initialize({{ startOnLoad: true }});
     </script>
@@ -841,7 +842,6 @@ def generate_enhanced_html_report(radar_chart_data, scoring_results, template):
     """
 
     return html_content
-
 
 def generate_app_from_description(description, output_dir="output/generated_app"):
     """Actually generate an app using the CLI"""
@@ -876,7 +876,6 @@ def generate_app_from_description(description, output_dir="output/generated_app"
     except Exception as e:
         return False, "", str(e)
 
-
 def execute_python_code(code):
     """Execute Python code and return results"""
     try:
@@ -898,7 +897,6 @@ def execute_python_code(code):
     except Exception as e:
         return False, "", str(e)
 
-
 def main_header():
     """Main application header"""
     st.markdown(
@@ -910,7 +908,6 @@ def main_header():
     """,
         unsafe_allow_html=True,
     )
-
 
 def sidebar_navigation():
     """Sidebar navigation and user controls"""
@@ -1084,7 +1081,6 @@ def sidebar_navigation():
 
         return page
 
-
 def dashboard_page():
     """Main dashboard with role-based views"""
     st.markdown("## 📊 Dashboard")
@@ -1102,7 +1098,6 @@ def dashboard_page():
         stakeholder_dashboard()
     elif st.session_state.user_role == "admin":
         admin_dashboard()
-
 
 def user_management_page():
     """User Management & SSO Console"""
@@ -1364,7 +1359,6 @@ def user_management_page():
 
         if st.button("🔍 View All Alerts"):
             st.info("Opening security alerts dashboard...")
-
 
 def admin_dashboard():
     """Dashboard view for administrators - Security, Health, & Auditing"""
@@ -1782,6 +1776,7 @@ def admin_dashboard():
     with col2:
         if st.button("🔒 Security Scan"):
             with st.spinner("Running security scan..."):
+
                 import time
 
                 time.sleep(2)
@@ -1790,6 +1785,7 @@ def admin_dashboard():
     with col3:
         if st.button("📊 System Backup"):
             with st.spinner("Creating system backup..."):
+
                 import time
 
                 time.sleep(3)
@@ -1799,7 +1795,6 @@ def admin_dashboard():
         if st.button("🔄 System Restart"):
             if st.button("⚠️ Confirm Restart"):
                 st.warning("🔄 System restart initiated - Please wait 5 minutes")
-
 
 def project_manager_dashboard():
     """Dashboard view for project managers"""
@@ -2472,7 +2467,6 @@ def project_manager_dashboard():
                 "⚠️ Review high-risk projects and implement mitigation strategies"
             )
 
-
 def developer_dashboard():
     """Dashboard view for developers"""
     col1, col2 = st.columns([2, 1])
@@ -2925,7 +2919,6 @@ def developer_dashboard():
             elif send_button and not user_input.strip():
                 st.warning("Please enter a message")
 
-
 def devops_dashboard():
     """Dashboard view for DevOps engineers"""
     col1, col2, col3 = st.columns(3)
@@ -3006,7 +2999,6 @@ def devops_dashboard():
             """,
                 unsafe_allow_html=True,
             )
-
 
 def new_developer_dashboard():
     """Dashboard view for new developers"""
@@ -3218,7 +3210,6 @@ def new_developer_dashboard():
                     }
                 ]
                 st.rerun()
-
 
 def stakeholder_dashboard():
     """Dashboard view for stakeholders - Interactive Business Intelligence & Real-time Analytics"""
@@ -3796,12 +3787,12 @@ def stakeholder_dashboard():
         st.markdown(
             """
         **🚀 AutoDevCore Business Impact Report**
-        
+
         **Executive Summary:**
-        AutoDevCore has delivered exceptional ROI and business value, achieving 58.3% return on investment 
-        with significant cost savings and revenue generation. The platform has enabled faster project delivery, 
+        AutoDevCore has delivered exceptional ROI and business value, achieving 58.3% return on investment
+        with significant cost savings and revenue generation. The platform has enabled faster project delivery,
         reduced development costs, and improved team collaboration.
-        
+
         **Key Achievements:**
         • **$87,500** in cost savings
         • **12 projects** completed successfully
@@ -3819,7 +3810,7 @@ def stakeholder_dashboard():
         st.markdown(
             """
         **💰 Financial Performance Analysis**
-        
+
         **Financial Performance:**
         • Total Investment: $150,000
         • Total Savings: $87,500
@@ -3838,13 +3829,13 @@ def stakeholder_dashboard():
         st.markdown(
             """
         **🔮 Strategic Outlook & Projections**
-        
+
         **Strategic Recommendations:**
         1. **Expand Team:** Increase capacity by 50% for 3x project growth
         2. **AI Enhancement:** Invest in advanced AI for 200% ROI
         3. **Market Expansion:** Enter 3 new segments for 40% revenue growth
         4. **Infrastructure Upgrade:** Improve reliability and performance
-        
+
         **Projected Growth:**
         • Q1 2025: 25% revenue increase
         • Q2 2025: 40% market expansion
@@ -3863,12 +3854,12 @@ def stakeholder_dashboard():
         st.markdown(
             """
         **🛡️ Risk Assessment & Mitigation**
-        
+
         **Risk Assessment:**
         • **Low Risk:** Strong financial position and proven track record
         • **Medium Risk:** Market competition and technology evolution
         • **Mitigation:** Continuous innovation and customer focus
-        
+
         **Risk Factors:**
         • Market Competition: 15% (Low)
         • Technology Obsolescence: 25% (Medium)
@@ -4054,7 +4045,6 @@ def stakeholder_dashboard():
         st.markdown("• **Team Retention:** Low (8%)")
         st.markdown("• **Economic Downturn:** Medium (20%)")
         st.markdown("• **Overall Risk Level:** Low (13%)")
-
 
 def projects_page():
     """Projects management page"""
@@ -4338,7 +4328,6 @@ def projects_page():
                                 )
                         except Exception as e:
                             st.error(f"❌ Deployment failed: {e}")
-
 
 def ai_lab_page():
     """AI Lab page for AI model management and testing - Enhanced with Real Functionality"""
@@ -4967,6 +4956,7 @@ def ai_lab_page():
         # Performance testing
         if st.button("⚡ Run Performance Test"):
             with st.spinner("Running performance test..."):
+
                 import time
 
                 time.sleep(2)
@@ -4979,6 +4969,7 @@ def ai_lab_page():
         # System health check
         if st.button("🏥 System Health Check"):
             with st.spinner("Checking system health..."):
+
                 import time
 
                 time.sleep(1)
@@ -4988,6 +4979,7 @@ def ai_lab_page():
         # Connection test
         if st.button("🔗 Test All Connections"):
             with st.spinner("Testing connections..."):
+
                 import time
 
                 time.sleep(2)
@@ -5138,7 +5130,6 @@ def ai_lab_page():
             "⚠️ AutoDevCore modules not available - cannot access GPT-OSS configuration"
         )
 
-
 def team_page():
     """Team collaboration page"""
     st.markdown("## 👥 Team Collaboration")
@@ -5210,7 +5201,6 @@ def team_page():
             if new_message:
                 st.success("Message sent!")
                 st.rerun()
-
 
 def deploy_page():
     """Deployment and DevOps page"""
@@ -5324,7 +5314,6 @@ def deploy_page():
                 """,
                     unsafe_allow_html=True,
                 )
-
 
 def settings_page():
     """Settings and configuration page"""
@@ -5665,7 +5654,7 @@ def settings_page():
         - ✅ Use environment variables in production
         - ✅ Rotate keys regularly
         - ✅ Monitor usage for unusual activity
-        
+
         **Best Practices:**
         - ✅ Start with GPT-OSS (free, local)
         - ✅ Use appropriate models for your tasks
@@ -5676,7 +5665,6 @@ def settings_page():
 
     if st.button("🔧 Configure APIs"):
         st.info("Opening API configuration panel...")
-
 
 def analytics_page():
     """Analytics and reporting page - Real Business Intelligence"""
@@ -6001,7 +5989,6 @@ def analytics_page():
             st.success("✅ Trend analysis report generated!")
             st.info("📄 Saved to: /reports/analytics/trend_analysis.pdf")
 
-
 def scoring_page():
     """Dedicated scoring page with advanced code analysis"""
     st.markdown("# 📊 Code Quality Scoring & Analysis")
@@ -6086,17 +6073,17 @@ def scoring_page():
     # Validate input
     if not user_data.get('email'):
         raise ValueError("Email is required")
-    
+
     # Create user object
     user = User(
         email=user_data['email'],
         name=user_data.get('name', ''),
         role=user_data.get('role', 'user')
     )
-    
+
     # Save to database
     user.save()
-    
+
     return user
 
 def authenticate_user(email, password):
@@ -6104,16 +6091,16 @@ def authenticate_user(email, password):
     # Input validation
     if not email or not password:
         return None
-    
+
     # Find user
     user = User.find_by_email(email)
     if not user:
         return None
-    
+
     # Verify password
     if user.verify_password(password):
         return user
-    
+
     return None'''
             st.session_state.sample_code = sample_code
             st.success("✅ Sample code loaded")
@@ -6134,11 +6121,11 @@ def authenticate_user(email, password):
                 st.markdown(
                     """
                 **Radar Chart Interpretation:**
-                
+
                 - **🟢 Green (High Score)**: Excellent performance in this category
                 - **🟡 Yellow (Medium Score)**: Good performance with room for improvement
                 - **🔴 Red (Low Score)**: Needs significant improvement
-                
+
                 **Categories Explained:**
                 - **Security**: Authentication, input validation, data protection
                 - **Performance**: Code efficiency, optimization, resource usage
@@ -6167,7 +6154,6 @@ def authenticate_user(email, password):
                 if st.button("📊 Export Radar Chart"):
                     st.success("✅ Radar chart exported!")
                     st.info("📊 Saved to: /reports/scoring/radar_chart.png")
-
 
 def reports_page():
     """Reports page for viewing and managing scoring reports"""
@@ -6322,7 +6308,6 @@ def reports_page():
             st.info(f"📁 Reports folder: {reports_dir.absolute()}")
             st.code(f"open {reports_dir.absolute()}")
 
-
 def main():
     """Main application function"""
     # Initialize session state
@@ -6363,7 +6348,6 @@ def main():
         else:
             st.error("API Configuration panel is not available")
             st.info("Please ensure all required modules are installed")
-
 
 if __name__ == "__main__":
     main()

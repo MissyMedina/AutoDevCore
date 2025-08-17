@@ -21,7 +21,6 @@ from collaboration_platform import collaboration_platform
 from team_manager import Permission, TeamRole, team_manager
 from websocket_server import collaboration_manager, run_websocket_server
 
-
 class CollaborationIntegrationTest:
     """Real integration test for collaboration platform."""
 
@@ -285,7 +284,6 @@ class CollaborationIntegrationTest:
             print("⚠️  SOME TESTS FAILED. Check errors above.")
         print("=" * 60)
 
-
 async def main():
     """Main test runner."""
     test = CollaborationIntegrationTest()
@@ -298,7 +296,6 @@ async def main():
     print(f"\n📄 Test results saved to: collaboration_integration_test_results.json")
 
     return results
-
 
 if __name__ == "__main__":
     asyncio.run(main())

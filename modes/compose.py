@@ -14,7 +14,6 @@ from agents.readme_writer import READMEWriterAgent
 
 from .base import BaseMode
 
-
 class ComposeMode(BaseMode):
     """Mode for composing complete applications from ideas."""
 
@@ -104,6 +103,7 @@ class ComposeMode(BaseMode):
 
         # Save app plan as JSON
         plan_file = self.output_dir / "app_plan.json"
+
         import json
 
         with open(plan_file, "w") as f:

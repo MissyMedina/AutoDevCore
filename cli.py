@@ -18,7 +18,6 @@ from modes.plugin import PluginMode
 from modes.score import ScoreMode
 from splash import show_splash
 
-
 def main():
     """Main CLI entry point for AutoDevCore."""
 
@@ -135,11 +134,11 @@ Examples:
     except Exception as e:
         print(f"Error: {e}")
         if args.verbose:
+
             import traceback
 
             traceback.print_exc()
         sys.exit(1)
-
 
 if __name__ == "__main__":
     main()

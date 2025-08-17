@@ -7,7 +7,6 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Any, Callable, Dict, List, Optional
 
-
 class TaskType(Enum):
     """Task types for AI model selection."""
 
@@ -17,7 +16,6 @@ class TaskType(Enum):
     SECURITY_AUDIT = "security_audit"
     DOCUMENTATION = "documentation"
 
-
 class Priority(Enum):
     """Priority levels for tasks."""
 
@@ -25,7 +23,6 @@ class Priority(Enum):
     NORMAL = "normal"
     HIGH = "high"
     CRITICAL = "critical"
-
 
 @dataclass
 class ModelConfig:
@@ -36,7 +33,6 @@ class ModelConfig:
     max_tokens: int
     temperature: float
     cost_per_token: float
-
 
 class ComplexityOptimizer:
     """Utilities to reduce cyclomatic complexity."""
@@ -73,7 +69,6 @@ class ComplexityOptimizer:
             return conditions[-1]["default"]
 
         return simplified_logic
-
 
 class ModelSelector:
     """Simplified model selection logic."""
@@ -119,7 +114,6 @@ class ModelSelector:
 
         return base_config
 
-
 class ErrorHandler:
     """Centralized error handling to reduce complexity."""
 
@@ -161,7 +155,6 @@ class ErrorHandler:
             "success": False,
         }
 
-
 class CacheManager:
     """Simplified caching logic."""
 
@@ -183,7 +176,6 @@ class CacheManager:
     def _is_valid(self, key: str) -> bool:
         """Check if cache entry is still valid."""
         return key in self.ttl and self.ttl[key] > 0
-
 
 # Global instances for easy access
 complexity_optimizer = ComplexityOptimizer()

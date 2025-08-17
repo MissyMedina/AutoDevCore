@@ -521,7 +521,7 @@ python cli.py --mode blueprint --idea "Template structure" --output custom_templ
 class SecurityScannerPlugin:
     def __init__(self, config):
         self.config = config
-    
+
     def execute(self, target_path):
         # Plugin implementation
         return {

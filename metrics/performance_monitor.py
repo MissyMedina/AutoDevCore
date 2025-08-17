@@ -13,7 +13,6 @@ from typing import Any, Dict, List, Optional
 
 import psutil
 
-
 class PerformanceMonitor:
     """Monitor and track performance metrics for AutoDevCore."""
 
@@ -316,10 +315,8 @@ Generated: {stats['timestamp']}
         for op_name, success_rate in stats["success_rates"].items():
             print(f"  {op_name}: {success_rate:.1f}%")
 
-
 # Global performance monitor instance
 performance_monitor = PerformanceMonitor()
-
 
 def track_operation(operation_name: str):
     """Decorator to track operation performance."""

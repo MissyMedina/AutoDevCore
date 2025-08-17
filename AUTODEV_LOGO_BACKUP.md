@@ -5,7 +5,7 @@
 This is the beautiful redesigned AutoDevCore logo created by the user. **PLEASE PRESERVE THIS DESIGN!**
 
 ```
-|=============================================================================================================================|    
+|=============================================================================================================================|
 |       .o.                       .             oooooooooo.                           .oooooo.                                |
 |      .888.                    .o8             `888'   `Y8b                         d8P'  `Y8b                               |
 |     .8"888.     oooo  oooo  .o888oo  .ooooo.   888      888  .ooooo.  oooo    ooo 888           .ooooo.  oooo d8b  .ooooo.  |
@@ -42,6 +42,6 @@ python cli.py --mode compose --idea "your idea"
 
 ---
 
-**Created**: 2025-08-10  
-**Designer**: User (Missy)  
+**Created**: 2025-08-10
+**Designer**: User (Missy)
 **Status**: ✅ PRESERVED

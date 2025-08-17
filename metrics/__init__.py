@@ -12,6 +12,7 @@ from .monitoring_dashboard import (
     HealthCheck,
     MetricPoint,
 )
+
 from .performance_optimizer import PerformanceOptimizer as PluginPerformanceOptimizer
 from .api import (
     MetricsAPI,
@@ -20,6 +21,7 @@ from .api import (
     get_system_metrics,
     record_metric,
 )
+
 from .storage import MetricsStorage, get_storage
 
 # from .performance_integration import PerformanceIntegration  # Temporarily disabled due to import issues
@@ -56,21 +58,20 @@ __description__ = (
     "Enterprise-grade monitoring and performance analytics for AutoDevCore"
 )
 
-
 # Legacy functions (kept for backward compatibility)
 def get_default_dashboard():
     """Get the default monitoring dashboard instance."""
+
     from .monitoring_dashboard import MonitoringDashboard
 
     return MonitoringDashboard()
 
-
 def get_performance_monitor():
     """Get the default performance monitor instance."""
+
     from .performance import PerformanceMonitor
 
     return PerformanceMonitor()
-
 
 def start_monitoring_legacy():
     """Start comprehensive monitoring across all systems (legacy)."""

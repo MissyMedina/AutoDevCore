@@ -13,7 +13,6 @@ from typing import Dict, List, Tuple, Any
 from dataclasses import dataclass
 from datetime import datetime
 
-
 @dataclass
 class EvaluationResult:
     """Results of the application evaluation."""
@@ -29,7 +28,6 @@ class EvaluationResult:
     complexity_metrics: Dict[str, Any]
     recommendations: List[str]
     timestamp: datetime
-
 
 class ApplicationClaimsEvaluator:
     """Comprehensive evaluation framework for AI-driven web applications."""
@@ -496,7 +494,6 @@ class ApplicationClaimsEvaluator:
         """Check if a directory exists in the project."""
         return (self.project_path / dir_path).is_dir()
 
-
 def evaluate_application(project_path: str) -> str:
     """Main evaluation function."""
     evaluator = ApplicationClaimsEvaluator(project_path)
@@ -570,7 +567,6 @@ This evaluation confirms that AutoDevCore is {'an exceptional hackathon submissi
 """
 
     return report
-
 
 if __name__ == "__main__":
     # Run evaluation on current directory

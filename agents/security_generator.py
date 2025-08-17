@@ -5,7 +5,6 @@ Security Generator Agent - Adds security features to generated applications
 from pathlib import Path
 from typing import Any, Dict, List
 
-
 class SecurityGeneratorAgent:
     """Agent responsible for adding security features to generated applications."""
 
@@ -120,7 +119,7 @@ class UserCreate(BaseModel):
     username: str
     email: EmailStr
     password: str
-    
+
     @validator('username')
     def validate_username(cls, v):
         if len(v) < 3:
@@ -128,7 +127,7 @@ class UserCreate(BaseModel):
         if len(v) > 50:
             raise ValueError('Username must be less than 50 characters')
         return v
-    
+
     @validator('password')
     def validate_password(cls, v):
         if len(v) < 8:
@@ -158,7 +157,7 @@ class UserResponse(BaseModel):
     email: str
     is_active: bool
     created_at: datetime
-    
+
     class Config:
         from_attributes = True
 '''
@@ -183,7 +182,7 @@ logger = logging.getLogger(__name__)
 
 class SecurityMiddleware(BaseHTTPMiddleware):
     """Custom security middleware."""
-    
+
     async def dispatch(self, request: Request, call_next):
         # Add security headers
         response = await call_next(request)
@@ -196,12 +195,12 @@ class SecurityMiddleware(BaseHTTPMiddleware):
 
 def setup_security_middleware(app):
     """Setup all security middleware."""
-    
+
     # Rate limiting
     limiter = Limiter(key_func=get_remote_address)
     app.state.limiter = limiter
     app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
-    
+
     # CORS with proper configuration from environment
     from config.security import settings
     app.add_middleware(
@@ -211,13 +210,13 @@ def setup_security_middleware(app):
         allow_methods=["GET", "POST", "PUT", "DELETE"],
         allow_headers=["*"],
     )
-    
+
     # Trusted hosts from environment
     app.add_middleware(
         TrustedHostMiddleware,
         allowed_hosts=settings.ALLOWED_HOSTS
     )
-    
+
     # Custom security middleware
     app.add_middleware(SecurityMiddleware)
 '''
@@ -234,29 +233,29 @@ import secrets
 
 class SecuritySettings(BaseSettings):
     """Security settings."""
-    
+
     # JWT Settings
     SECRET_KEY: str = secrets.token_urlsafe(32)
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
-    
+
     # Database Settings
     DATABASE_URL: str = "sqlite:///./app.db"
-    
+
     # Security Settings
     ALLOWED_HOSTS: List[str] = ["localhost", "127.0.0.1"]
     CORS_ORIGINS: List[str] = ["http://localhost:3000"]
-    
+
     # Rate Limiting
     RATE_LIMIT_PER_MINUTE: int = 60
-    
+
     # Password Settings
     MIN_PASSWORD_LENGTH: int = 8
     REQUIRE_UPPERCASE: bool = True
     REQUIRE_LOWERCASE: bool = True
     REQUIRE_NUMBERS: bool = True
     REQUIRE_SPECIAL_CHARS: bool = False
-    
+
     class Config:
         env_file = ".env"
 
@@ -281,19 +280,19 @@ def validate_email(email: str) -> bool:
 def validate_password_strength(password: str) -> Dict[str, Any]:
     """Validate password strength."""
     errors = []
-    
+
     if len(password) < 8:
         errors.append("Password must be at least 8 characters long")
-    
+
     if not re.search(r'[A-Z]', password):
         errors.append("Password must contain at least one uppercase letter")
-    
+
     if not re.search(r'[a-z]', password):
         errors.append("Password must contain at least one lowercase letter")
-    
+
     if not re.search(r'\d', password):
         errors.append("Password must contain at least one number")
-    
+
     return {
         "is_valid": len(errors) == 0,
         "errors": errors

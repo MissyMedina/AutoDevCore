@@ -8,14 +8,12 @@ import os
 import sys
 from pathlib import Path
 
-
 def print_section(title, content):
     """Print a formatted section"""
     print(f"\n{'='*60}")
     print(f"  {title}")
     print(f"{'='*60}")
     print(content)
-
 
 def show_cli_help():
     """Display comprehensive CLI help documentation"""
@@ -204,7 +202,6 @@ Exit Codes:
     print("🌐 Run: python run_gui.py and click the Help button")
     print(f"{'='*60}")
 
-
 def main():
     """Main function"""
     if len(sys.argv) > 1:
@@ -318,7 +315,6 @@ Recovery Operations:
             print("Use --help for full documentation")
     else:
         show_cli_help()
-
 
 if __name__ == "__main__":
     main()

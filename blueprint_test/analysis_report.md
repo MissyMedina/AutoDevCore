@@ -45,4 +45,3 @@
 - `@router.get("/users/{user_id}")`
 
 ## 🎯 Code Patterns
-

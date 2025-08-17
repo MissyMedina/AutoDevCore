@@ -1,7 +1,7 @@
 # AutoDevCore Comprehensive Evaluation Report 🚀
 
-**Generated:** 2025-08-10  
-**Framework:** AI-Driven Web Application Evaluation Framework  
+**Generated:** 2025-08-10
+**Framework:** AI-Driven Web Application Evaluation Framework
 **Project:** AutoDevCore - Modular AI agents that build smarter, score deeper
 
 ---

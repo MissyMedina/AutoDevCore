@@ -13,7 +13,6 @@ import re
 from pathlib import Path
 from typing import Any, Dict, List
 
-
 def run(context: Dict[str, Any]) -> Dict[str, Any]:
     """
     Scan code for security vulnerabilities.
