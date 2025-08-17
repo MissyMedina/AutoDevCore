@@ -28,22 +28,27 @@ class AutoDevCoreAPI:
     def setup_middleware(self):
         """Setup CORS middleware"""
 
-        @self.app.middleware
+        @web.middleware
         async def cors_middleware(request, handler):
             # Handle preflight requests
             if request.method == "OPTIONS":
                 response = web.Response()
-                cors_manager.middleware.add_cors_headers(
-                    response.headers, request.headers.get("Origin")
-                )
+                # Add basic CORS headers
+                response.headers['Access-Control-Allow-Origin'] = '*'
+                response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
+                response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
                 return response
 
             # Handle regular requests
             response = await handler(request)
-            cors_manager.middleware.add_cors_headers(
-                response.headers, request.headers.get("Origin")
-            )
+            # Add basic CORS headers
+            response.headers['Access-Control-Allow-Origin'] = '*'
+            response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
+            response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
             return response
+
+        # Add middleware to the app
+        self.app.middlewares.append(cors_middleware)
 
     def setup_routes(self):
         """Setup API routes"""

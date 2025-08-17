@@ -14,6 +14,7 @@ from flask import Flask, jsonify, render_template_string, request
 # Import AI integration
 try:
     from integrations.gpt_oss import GPTOSSClient
+
     gpt_client = GPTOSSClient()
     AI_AVAILABLE = True
 except ImportError as e:
@@ -1093,45 +1094,62 @@ def create_project():
 def chat():
     """Handle AI chat requests"""
     if not AI_AVAILABLE or not gpt_client:
-        return jsonify({
-            "success": False,
-            "error": "AI service not available",
-            "message": "Please check that Ollama is running and the gpt-oss model is loaded."
-        }), 503
-    
+        return (
+            jsonify(
+                {
+                    "success": False,
+                    "error": "AI service not available",
+                    "message": "Please check that Ollama is running and the gpt-oss model is loaded.",
+                }
+            ),
+            503,
+        )
+
     try:
         data = request.json
         user_message = data.get("message", "").strip()
-        
+
         if not user_message:
-            return jsonify({
-                "success": False,
-                "error": "Empty message",
-                "message": "Please provide a message to send to the AI."
-            }), 400
-        
+            return (
+                jsonify(
+                    {
+                        "success": False,
+                        "error": "Empty message",
+                        "message": "Please provide a message to send to the AI.",
+                    }
+                ),
+                400,
+            )
+
         print(f"🤖 AI Chat Request: {user_message[:50]}...")
-        
+
         # Generate AI response
         response = gpt_client.generate(user_message)
-        
+
         ai_message = response.get("response", "Sorry, I couldn't generate a response.")
-        
+
         print(f"✅ AI Response: {ai_message[:50]}...")
-        
-        return jsonify({
-            "success": True,
-            "message": ai_message,
-            "timestamp": datetime.now().isoformat()
-        })
-        
+
+        return jsonify(
+            {
+                "success": True,
+                "message": ai_message,
+                "timestamp": datetime.now().isoformat(),
+            }
+        )
+
     except Exception as e:
         print(f"❌ AI Chat Error: {e}")
-        return jsonify({
-            "success": False,
-            "error": str(e),
-            "message": "An error occurred while processing your request."
-        }), 500
+        return (
+            jsonify(
+                {
+                    "success": False,
+                    "error": str(e),
+                    "message": "An error occurred while processing your request.",
+                }
+            ),
+            500,
+        )
 
 
 @app.route("/api/settings", methods=["GET", "POST"])
@@ -1141,10 +1159,10 @@ def handle_settings():
         # Save settings to file or database
         settings_file = Path("data/settings.json")
         settings_file.parent.mkdir(exist_ok=True)
-        
+
         with open(settings_file, "w") as f:
             json.dump(data, f, indent=2)
-        
+
         return jsonify({"success": True, "message": "Settings saved successfully"})
     else:
         # Load settings from file
@@ -1157,9 +1175,9 @@ def handle_settings():
                 "aiProvider": "openai",
                 "defaultPort": "8501",
                 "theme": "light",
-                "projectDir": str(Path.home() / "AutoDevCore" / "projects")
+                "projectDir": str(Path.home() / "AutoDevCore" / "projects"),
             }
-        
+
         return jsonify(settings)
 
 

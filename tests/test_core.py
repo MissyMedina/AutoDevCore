@@ -110,14 +110,11 @@ class TestComposeMode:
         mock_readme.return_value.generate_readme.return_value = "Test README content"
 
         # Mock the compose mode to use our mocked agents
-        with patch.object(
-            self.compose_mode, "composer", mock_composer.return_value
-        ), patch.object(
-            self.compose_mode, "prd_writer", mock_prd.return_value
-        ), patch.object(
-            self.compose_mode, "code_generator", mock_code.return_value
-        ), patch.object(
-            self.compose_mode, "readme_writer", mock_readme.return_value
+        with (
+            patch.object(self.compose_mode, "composer", mock_composer.return_value),
+            patch.object(self.compose_mode, "prd_writer", mock_prd.return_value),
+            patch.object(self.compose_mode, "code_generator", mock_code.return_value),
+            patch.object(self.compose_mode, "readme_writer", mock_readme.return_value),
         ):
 
             # Execute the mode

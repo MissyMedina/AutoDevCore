@@ -229,5 +229,93 @@
     "expires_at": "2025-08-17T17:19:06.467832",
     "is_accepted": false,
     "accepted_at": null
+  },
+  "1952b2dd-c827-4c7d-8798-c7751ef0fe54": {
+    "id": "1952b2dd-c827-4c7d-8798-c7751ef0fe54",
+    "team_id": "e0b169b3-628f-44f0-99ba-591ffa89ec5f",
+    "email": "member@test.com",
+    "role": "editor",
+    "invited_by": "test_owner",
+    "invited_at": "2025-08-15T22:45:47.371176",
+    "expires_at": "2025-08-22T22:45:47.371180",
+    "is_accepted": false,
+    "accepted_at": null
+  },
+  "8d7222c2-fbcd-4b94-90fe-492be5a58e85": {
+    "id": "8d7222c2-fbcd-4b94-90fe-492be5a58e85",
+    "team_id": "760f824e-ab39-4778-b6fc-bbf823e68852",
+    "email": "developer@test.com",
+    "role": "editor",
+    "invited_by": "test_owner",
+    "invited_at": "2025-08-15T22:45:47.408050",
+    "expires_at": "2025-08-22T22:45:47.408053",
+    "is_accepted": false,
+    "accepted_at": null
+  },
+  "28cea1d4-015b-46dc-bef6-6cdbf81146b7": {
+    "id": "28cea1d4-015b-46dc-bef6-6cdbf81146b7",
+    "team_id": "e3bf669a-4124-4e9d-aa66-a00117ae8519",
+    "email": "member@test.com",
+    "role": "editor",
+    "invited_by": "test_owner",
+    "invited_at": "2025-08-15T22:48:09.555750",
+    "expires_at": "2025-08-22T22:48:09.555753",
+    "is_accepted": false,
+    "accepted_at": null
+  },
+  "8168e66e-71f5-4bb3-8cf7-3075705d28dd": {
+    "id": "8168e66e-71f5-4bb3-8cf7-3075705d28dd",
+    "team_id": "17d53855-f21d-48be-b0e7-4916f65daf62",
+    "email": "developer@test.com",
+    "role": "editor",
+    "invited_by": "test_owner",
+    "invited_at": "2025-08-15T22:48:09.592804",
+    "expires_at": "2025-08-22T22:48:09.592809",
+    "is_accepted": false,
+    "accepted_at": null
+  },
+  "b61b735c-2cf1-4dbf-9484-62613b224488": {
+    "id": "b61b735c-2cf1-4dbf-9484-62613b224488",
+    "team_id": "3cbba7f6-b18f-45f3-b6a4-e62d2213f3f8",
+    "email": "member@test.com",
+    "role": "editor",
+    "invited_by": "test_owner",
+    "invited_at": "2025-08-15T22:49:45.370920",
+    "expires_at": "2025-08-22T22:49:45.370925",
+    "is_accepted": false,
+    "accepted_at": null
+  },
+  "e1eed8c7-5731-4851-b703-0704fe209500": {
+    "id": "e1eed8c7-5731-4851-b703-0704fe209500",
+    "team_id": "f275dede-bcdc-4d25-bb0b-b38da5a4239f",
+    "email": "developer@test.com",
+    "role": "editor",
+    "invited_by": "test_owner",
+    "invited_at": "2025-08-15T22:49:45.553977",
+    "expires_at": "2025-08-22T22:49:45.553982",
+    "is_accepted": false,
+    "accepted_at": null
+  },
+  "f84996b5-9d51-4a14-aca0-ed546f8d8d0e": {
+    "id": "f84996b5-9d51-4a14-aca0-ed546f8d8d0e",
+    "team_id": "a1b6aa9e-3c9e-4a50-b80a-a986458f3e47",
+    "email": "member@test.com",
+    "role": "editor",
+    "invited_by": "test_owner",
+    "invited_at": "2025-08-15T23:08:41.701854",
+    "expires_at": "2025-08-22T23:08:41.701860",
+    "is_accepted": false,
+    "accepted_at": null
+  },
+  "9926ff08-458e-4bdf-ae11-2fa4d50f45ef": {
+    "id": "9926ff08-458e-4bdf-ae11-2fa4d50f45ef",
+    "team_id": "592d4f37-3020-4cec-a8dc-a8d378b88e1e",
+    "email": "developer@test.com",
+    "role": "editor",
+    "invited_by": "test_owner",
+    "invited_at": "2025-08-15T23:08:41.740396",
+    "expires_at": "2025-08-22T23:08:41.740399",
+    "is_accepted": false,
+    "accepted_at": null
   }
 }

@@ -1,387 +1,323 @@
-# 🎨 AutoDevCore GUI - Visual Development Hub
+# 🎨 AutoDevCore GUI Documentation
 
-## 🚀 **Overview**
+**Comprehensive guide to AutoDevCore's dual GUI architecture**
 
-The AutoDevCore GUI is a professional, role-based interface that bridges the gap between technical complexity and business simplicity. It provides a visual development hub where project managers, developers, DevOps engineers, and stakeholders can collaborate effectively.
+AutoDevCore provides two powerful GUI interfaces designed for different use cases and user preferences. Both interfaces offer full access to AutoDevCore's AI-powered development capabilities with role-based dashboards and enterprise features.
 
-## 🎯 **Key Features**
+## 🚀 Quick Start
 
-### **Role-Based Interfaces**
-- **Project Managers** - High-level project tracking and team management
-- **Developers** - AI-assisted code generation and development tools
-- **DevOps Engineers** - Deployment pipelines and system monitoring
-- **New Developers** - Guided tutorials and learning paths
-- **Stakeholders** - Business metrics and ROI analysis
-
-### **Core Capabilities**
-- **Visual Project Management** - Interactive project timelines and progress tracking
-- **AI Model Orchestration** - Real-time AI model status and performance monitoring
-- **Real-Time Collaboration** - Live chat, team presence, and shared workspaces
-- **Deployment Management** - CI/CD pipeline visualization and environment management
-- **Analytics & Reporting** - Comprehensive metrics and business intelligence
-
-## 🏗️ **Architecture**
-
-### **Technology Stack**
-- **Frontend:** Streamlit (Python-based web framework)
-- **Backend:** FastAPI (existing AutoDevCore backend)
-- **Real-time:** WebSocket integration
-- **Database:** SQLite (local), PostgreSQL (production)
-- **Styling:** Custom CSS with modern design system
-
-### **Design Philosophy**
-- **Microsoft-inspired professionalism** with modern flair
-- **Progressive disclosure** - Simple interface that reveals complexity when needed
-- **Visual storytelling** - Show development progress and team collaboration
-- **Guided workflows** - Step-by-step processes for newcomers
-
-## 🚀 **Quick Start**
-
-### **1. Install Dependencies**
+### Streamlit GUI (Primary Interface)
 ```bash
-# Install GUI dependencies
-pip install -r gui/requirements.txt
-```
-
-### **2. Launch the GUI**
-```bash
-# Option 1: Use the launcher script
+# Launch the comprehensive Streamlit GUI
 python run_gui.py
 
-# Option 2: Run directly with Streamlit
-streamlit run gui/main.py
+# Or directly with Streamlit
+streamlit run gui/main.py --server.port 8501
+
+# Access at: http://localhost:8501
 ```
 
-### **3. Access the Interface**
-- **URL:** http://localhost:8501
-- **Default Role:** Developer
-- **Navigation:** Use the sidebar to switch between roles and sections
-
-## 📊 **Interface Overview**
-
-### **Main Navigation**
-```
-┌─────────────────────────────────────────────────────────────┐
-│ 🚀 AutoDevCore - Visual Development Hub                    │
-├─────────────────────────────────────────────────────────────┤
-│ [Dashboard] [Projects] [AI Lab] [Team] [Deploy] [Analytics]│
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ┌─────────────┐  ┌─────────────────────────────────────┐   │
-│  │ Quick Start │  │ Main Content Area                   │   │
-│  │             │  │                                     │   │
-│  │ • New App   │  │ • Project Overview                 │   │
-│  │ • Templates │  │ • Real-time Collaboration          │   │
-│  │ • Examples  │  │ • AI Model Status                  │   │
-│  │ • Help      │  │ • Performance Metrics              │   │
-│  └─────────────┘  └─────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────┘
-```
-
-## 🎯 **Role-Based Features**
-
-### **For Project Managers**
-- **Visual Project Timeline** - Gantt chart-style progress tracking
-- **Team Activity Feed** - Real-time updates on who's doing what
-- **Budget & Time Tracking** - Cost savings and time estimates
-- **Stakeholder Reports** - Executive summaries and progress updates
-- **Resource Allocation** - Team member assignment and workload
-
-### **For Developers**
-- **AI Code Generation** - Real-time AI-assisted coding
-- **Code Editor** - Integrated development environment
-- **Development Tools** - Debugging, testing, and profiling
-- **AI Assistant** - Context-aware help and suggestions
-- **Performance Profiling** - Code optimization insights
-
-### **For DevOps Engineers**
-- **Deployment Pipeline** - Visual CI/CD workflow
-- **Infrastructure Monitoring** - Real-time system health
-- **Security Dashboard** - Vulnerability scanning and compliance
-- **Performance Metrics** - Load testing and optimization tools
-- **Environment Management** - Staging, production, and rollback controls
-
-### **For New Developers**
-- **Guided Tutorials** - Step-by-step learning paths
-- **Code Templates** - Pre-built components and patterns
-- **AI Code Assistant** - Real-time help and suggestions
-- **Visual Debugging** - See code execution flow
-- **Learning Progress** - Track skills and achievements
-
-### **For Stakeholders**
-- **Business Overview** - High-level metrics and KPIs
-- **ROI Analysis** - Cost savings and time efficiency
-- **Executive Summary** - Impact reports and achievements
-- **Progress Tracking** - Project completion and milestones
-- **Team Performance** - Productivity and collaboration metrics
-
-## 🔧 **Configuration**
-
-### **Environment Variables**
+### Flask GUI (Alternative Interface)
 ```bash
-# GUI Configuration
-STREAMLIT_SERVER_PORT=8501
-STREAMLIT_SERVER_ADDRESS=localhost
-STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
+# Launch the Flask-based GUI
+python simple_gui.py
 
-# AutoDevCore Integration
-AUTODEV_BACKEND_URL=http://localhost:8000
-AUTODEV_API_KEY=your_api_key_here
+# Access at: http://localhost:8502
 ```
 
-### **Customization**
-The GUI can be customized through:
-- **CSS Styling** - Modify `gui/main.py` CSS section
-- **Role Permissions** - Adjust feature access per role
-- **Theme Colors** - Update the color palette
-- **Layout Options** - Modify component arrangements
+## 🎯 GUI Comparison
 
-## 📱 **Usage Examples**
+| Feature | Streamlit GUI | Flask GUI |
+|---------|---------------|-----------|
+| **Interface Type** | Web-based dashboard | Web-based with modals |
+| **Port** | 8501 | 8502 |
+| **Best For** | Full-featured development | Quick access and simple tasks |
+| **Role-Based Dashboards** | ✅ Complete | ✅ Basic |
+| **AI Integration** | ✅ Multi-provider | ✅ GPT-OSS |
+| **Project Management** | ✅ Comprehensive | ✅ Basic |
+| **Reports** | ✅ Enhanced HTML | ✅ Basic |
+| **User Management** | ✅ Full SSO | ❌ Limited |
+| **Analytics** | ✅ Business Intelligence | ❌ Basic |
 
-### **Creating a New Project**
-1. Select "Projects" from the sidebar
-2. Click "🆕 Create New Project"
-3. Fill in project details:
-   - Project Name
-   - Description
-   - Framework (FastAPI, Django, etc.)
-   - Complexity Level
-4. Click "🚀 Create Project"
+## 🌟 Streamlit GUI Features
 
-### **Using AI Code Generation**
-1. Select "AI Lab" from the sidebar
-2. Choose your preferred AI model
-3. Enter your coding prompt
-4. Click "🤖 Generate"
-5. Review and use the generated code
+### 🎯 Role-Based Dashboards
 
-### **Team Collaboration**
-1. Select "Team" from the sidebar
-2. View team member status and activity
-3. Use the live chat for real-time communication
-4. Share files and resources
-5. Track project progress together
+#### **Developer Dashboard**
+- **Code Editor**: Syntax-highlighted code editing with AI assistance
+- **AI Code Generation**: Multi-provider AI for code creation and optimization
+- **Debug Analysis**: Syntax validation, code quality assessment, security scanning
+- **File Management**: Upload/download capabilities for code files and folders
+- **Real-time Chat**: AI assistant for development guidance
 
-### **Deployment Management**
-1. Select "Deploy" from the sidebar
-2. Monitor CI/CD pipeline status
-3. Check environment health
-4. Run security scans
-5. Manage deployments across environments
+#### **Project Manager Dashboard**
+- **Project Templates**: 5 pre-configured templates (Web App, Mobile App, API, Data Analytics, E-commerce)
+- **Comprehensive Tracking**: Progress, budget, team allocation, risk assessment
+- **Milestone Management**: Key milestone tracking with automated status updates
+- **Team Management**: Workload distribution and resource allocation
+- **Budget Control**: Real-time budget tracking with alerts and forecasting
+- **Project Analytics**: Performance metrics and trend analysis
 
-## 🎨 **Design System**
+#### **DevOps Engineer Dashboard**
+- **System Monitoring**: Real-time infrastructure health monitoring
+- **Deployment Management**: Simulated deployment with status tracking
+- **Security Scanning**: Automated vulnerability assessment and security analysis
+- **Performance Metrics**: System performance and application metrics
+- **Infrastructure Health**: CPU, memory, disk, and network usage monitoring
 
-### **Color Palette**
-```
-Primary: #2563eb (Professional Blue)
-Secondary: #7c3aed (Modern Purple)
-Success: #059669 (Emerald Green)
-Warning: #d97706 (Amber Orange)
-Error: #dc2626 (Red)
-Background: #f8fafc (Light Gray)
-Surface: #ffffff (White)
-Text: #1e293b (Dark Gray)
-```
+#### **Stakeholder Dashboard**
+- **Business Intelligence**: Real-time analytics and business metrics
+- **ROI Analysis**: Investment tracking, cost savings, revenue generation
+- **Performance Monitoring**: Project performance and business impact
+- **Strategic Insights**: Executive-level reporting and decision support
+- **Competitive Analysis**: Market positioning and benchmark comparisons
 
-### **Typography**
-- **Headers:** Inter (Modern, readable)
-- **Body:** Inter (Clean, professional)
-- **Code:** JetBrains Mono (Developer-friendly)
+#### **Admin Dashboard**
+- **User Management**: Multi-user system with role-based access control
+- **SSO Configuration**: Azure AD, AWS IAM, Google Workspace, Okta, OneLogin, Auth0
+- **Security Policies**: Access control, data protection, and compliance settings
+- **System Administration**: Infrastructure health, auditing, and reporting
+- **Compliance Management**: SOC 2, GDPR, HIPAA, ISO 27001 compliance tracking
 
-### **Components**
-- **Metric Cards** - Clean, professional data display
-- **Status Indicators** - Color-coded status dots
-- **Progress Bars** - Gradient progress visualization
-- **Interactive Charts** - Plotly-based data visualization
-- **Responsive Layout** - Adapts to different screen sizes
+#### **New Developer Dashboard**
+- **Learning Resources**: Onboarding guides and development tutorials
+- **Quick Start Tools**: Simplified interface for new team members
+- **AI Assistant**: Guided development with AI-powered suggestions
+- **Project Templates**: Pre-built templates for common development tasks
+- **Progress Tracking**: Learning progress and skill development metrics
 
-## 🔒 **Security Features**
+### 📊 Enhanced HTML Reports
+
+#### **Report Generation**
+- **Automatic Creation**: Reports generated after each scoring analysis
+- **Professional Styling**: Modern gradient design with Font Awesome icons
+- **Interactive Charts**: Chart.js radar charts with hover effects
+- **Responsive Design**: Works on desktop and mobile devices
+- **Real-time Data**: Extracts actual scoring values from analysis
+
+#### **Report Access**
+- **Current Report**: Immediately available after scoring analysis
+- **Previous Reports**: Browse all historical reports with timestamps
+- **New Window Opening**: Reports open in full-screen browser windows
+- **Direct Links**: Shareable URLs for team collaboration
+- **Export Options**: Save reports for documentation and sharing
+
+#### **Report Features**
+- **Overall Score**: Prominent display of code quality score
+- **Metrics Grid**: 5 cards showing Security, Performance, Code Quality, Architecture, DevOps
+- **Interactive Radar Chart**: Visual representation of quality dimensions
+- **Detailed Analysis**: Comprehensive scoring report with recommendations
+- **Information Section**: Template used, analysis date, method details
+
+### 🤖 AI Integration
+
+#### **Multi-Provider AI**
+- **7 AI Providers**: OpenAI, Anthropic, Google AI, Cohere, Mistral, Perplexity, GPT-OSS
+- **Intelligent Fallback**: Automatic provider switching on failure
+- **Cost Optimization**: Smart provider selection based on task requirements
+- **Health Monitoring**: Real-time availability checking for all providers
+- **Performance Tracking**: Response times, success rates, and cost analysis
+
+#### **AI Lab**
+- **Model Testing**: Test and compare different AI models
+- **Prompt Engineering**: Advanced prompt template selection and customization
+- **Performance Analysis**: Response time, cost, and quality metrics
+- **Provider Comparison**: Side-by-side comparison of AI providers
+- **Custom Parameters**: Temperature, max tokens, top_p, frequency penalty
+
+### 👥 User Management & SSO
+
+#### **Multi-User System**
+- **Role-Based Access**: Developer, Project Manager, DevOps, Stakeholder, Admin
+- **Permission Management**: Fine-grained access control and permissions
+- **User Profiles**: Personal settings and preferences
+- **Team Organization**: Group management and team hierarchies
+- **Activity Tracking**: User activity and engagement metrics
+
+#### **SSO Integration**
+- **Multi-Provider SSO**: Azure AD, AWS IAM, Google Workspace, Okta, OneLogin, Auth0
+- **Configuration Management**: Easy setup and configuration of SSO providers
+- **Security Policies**: Password policies, MFA, session management
+- **Compliance Support**: SOC 2, GDPR, HIPAA compliance tracking
+- **Audit Logging**: Comprehensive activity tracking and reporting
+
+### 📈 Business Intelligence
+
+#### **Real-time Analytics**
+- **Project Metrics**: Progress tracking, budget utilization, team performance
+- **AI Performance**: Response times, success rates, cost analysis
+- **User Activity**: Engagement metrics, feature usage, adoption rates
+- **System Health**: Infrastructure monitoring, service status, performance metrics
+
+#### **Advanced Analytics**
+- **ROI Analysis**: Investment tracking, cost savings, revenue generation
+- **Trend Analysis**: Performance trends, usage patterns, market positioning
+- **Predictive Analytics**: 30-day forecasting, risk assessment, trend predictions
+- **Competitive Analysis**: Benchmark comparisons, industry standards, best practices
+
+## 🎨 Flask GUI Features
+
+### **Lightweight Interface**
+- **Modal Dialogs**: Clean, focused interface with popup dialogs
+- **Quick Actions**: Fast access to common development tasks
+- **AI Chat Integration**: Real-time AI assistant for development guidance
+- **File Management**: Upload and manage code files and folders
+- **Project Creation**: Simple project creation and management
+
+### **Core Functionality**
+- **Code Generation**: AI-powered code creation with best practices
+- **Debug Analysis**: Syntax validation and code quality assessment
+- **Deployment Simulation**: Simulated deployment with status tracking
+- **Settings Management**: Configuration and customization options
+- **Status Monitoring**: System health and AI service status
+
+## 🔧 Configuration
+
+### **API Keys Setup**
+1. Navigate to **Settings** → **API Configuration**
+2. Configure keys for your preferred AI providers:
+   - OpenAI API Key
+   - Anthropic API Key
+   - Google AI API Key
+   - Cohere API Key
+   - Mistral API Key
+   - Perplexity API Key
+   - Local GPT-OSS Configuration
+
+### **User Management**
+1. Access **User Management** from the sidebar
+2. Configure SSO providers (Azure AD, AWS IAM, etc.)
+3. Create user groups and assign roles
+4. Set up security policies and access controls
+
+### **Theme and Appearance**
+- **Dark/Light Mode**: Toggle between dark and light themes
+- **Custom Styling**: Professional color schemes and typography
+- **Responsive Design**: Optimized for desktop and mobile devices
+- **Accessibility**: High contrast and keyboard navigation support
+
+## 📊 Reports Management
+
+### **Current Report**
+- **Immediate Access**: View the most recent scoring report
+- **Enhanced HTML**: Professional-grade report with interactive charts
+- **New Window Opening**: Full-screen viewing experience
+- **Direct Links**: Shareable URLs for team collaboration
+
+### **Previous Reports**
+- **Historical Access**: Browse all previous scoring reports
+- **Timestamp Information**: Creation date and time for each report
+- **File Size**: Report size and metadata information
+- **Management Tools**: Clear, refresh, and organize reports
+
+### **Report Features**
+- **Interactive Charts**: Chart.js radar charts with hover effects
+- **Metrics Visualization**: Visual representation of code quality scores
+- **Detailed Analysis**: Comprehensive scoring breakdown and recommendations
+- **Professional Styling**: Modern design with Font Awesome icons
+- **Export Options**: Save and share reports for documentation
+
+## 🛠️ Development Tools
+
+### **Code Generation**
+- **AI-Powered**: Multi-provider AI for intelligent code creation
+- **Template-Based**: Industry-specific templates and best practices
+- **Context-Aware**: Understanding of project requirements and constraints
+- **Quality Assurance**: Built-in code quality and security checks
+
+### **Debug Analysis**
+- **Syntax Validation**: Automatic detection of syntax errors
+- **Code Quality**: Assessment of readability and maintainability
+- **Security Scanning**: Vulnerability detection and security analysis
+- **Performance Analysis**: Code efficiency and optimization suggestions
+
+### **File Management**
+- **Upload Capabilities**: Support for code files and folders
+- **Version Control**: Git integration for project management
+- **Collaboration**: Real-time collaboration and sharing
+- **Backup and Recovery**: Automatic backup and version management
+
+## 🔒 Security Features
 
 ### **Authentication & Authorization**
-- Role-based access control
-- Session management
-- Secure API communication
-- Input validation and sanitization
+- **Multi-Factor Authentication**: Enhanced security with MFA
+- **Role-Based Access Control**: Fine-grained permissions and access
+- **Session Management**: Secure session handling and timeout
+- **Password Policies**: Strong password requirements and policies
 
 ### **Data Protection**
-- Encrypted data transmission
-- Secure file handling
-- Privacy-compliant analytics
-- Audit logging
+- **Encryption**: Data encryption at rest and in transit
+- **Privacy Controls**: User data protection and privacy settings
+- **Audit Logging**: Comprehensive activity tracking and reporting
+- **Compliance**: SOC 2, GDPR, HIPAA compliance support
 
-## 📊 **Performance Metrics**
+## 📈 Performance & Monitoring
 
-### **Target Performance**
-- **Load Time:** <3 seconds for initial page load
-- **Real-time Updates:** <500ms latency for collaboration features
-- **AI Response:** <5 seconds for code generation
-- **Uptime:** 99.9% availability
+### **System Health**
+- **Real-time Monitoring**: CPU, memory, disk, and network usage
+- **Performance Metrics**: Response times, throughput, and error rates
+- **Health Checks**: Service status and availability monitoring
+- **Alerting**: Proactive notification of issues and problems
 
-### **Scalability**
-- **Concurrent Users:** 100+ simultaneous users
-- **Projects:** 1000+ concurrent projects
-- **AI Requests:** 10,000+ requests per hour
-- **Data Storage:** TB-scale project data
+### **Analytics Dashboard**
+- **Usage Statistics**: User activity and feature adoption metrics
+- **Performance Trends**: Historical performance data and analysis
+- **Cost Analysis**: AI usage costs and optimization opportunities
+- **ROI Tracking**: Business impact and value generation metrics
 
-## 🚀 **Deployment**
+## 🚀 Deployment
 
 ### **Local Development**
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd AutoDevCore
-
-# Install dependencies
-pip install -r requirements.txt
-pip install -r gui/requirements.txt
-
-# Launch GUI
+# Start Streamlit GUI
 python run_gui.py
+
+# Start Flask GUI
+python simple_gui.py
+
+# Access interfaces
+# Streamlit: http://localhost:8501
+# Flask: http://localhost:8502
 ```
 
 ### **Production Deployment**
 ```bash
-# Using Docker
-docker build -t autodevcore-gui .
-docker run -p 8501:8501 autodevcore-gui
+# Docker deployment
+docker-compose up -d
 
-# Using Docker Compose
-docker-compose up -d gui
+# Environment variables
+export AUTODEV_API_KEYS_PATH=/path/to/api_keys.json
+export AUTODEV_LOG_LEVEL=INFO
+export AUTODEV_ENVIRONMENT=production
 ```
 
-### **Cloud Deployment**
-- **AWS:** Deploy to EC2 or ECS
-- **Azure:** Deploy to App Service
-- **GCP:** Deploy to Cloud Run
-- **Heroku:** Deploy as web app
+## 📚 Documentation
 
-## 🔧 **Troubleshooting**
+### **User Guides**
+- **User Guide**: `docs/USER_GUIDE.md` - Comprehensive user manual
+- **Interactive Tutorial**: `docs/INTERACTIVE_TUTORIAL.md` - Step-by-step learning
+- **Judge Reference**: `docs/JUDGE_QUICK_REFERENCE.md` - Evaluation guide
+
+### **Technical Documentation**
+- **API Reference**: `docs/API_REFERENCE.md` - Technical API documentation
+- **CLI Help**: `docs/CLI_HELP.md` - Command-line interface guide
+- **Role Hierarchy**: `docs/ROLE_HIERARCHY.md` - User role definitions
+
+## 🆘 Support
 
 ### **Common Issues**
+1. **Port Conflicts**: Check if ports 8501/8502 are available
+2. **API Keys**: Configure API keys for AI providers
+3. **Dependencies**: Ensure all requirements are installed
+4. **Browser Compatibility**: Use modern browsers for best experience
 
-#### **GUI Won't Start**
-```bash
-# Check Streamlit installation
-pip install streamlit
-
-# Verify dependencies
-pip install -r gui/requirements.txt
-
-# Check port availability
-lsof -i :8501
-```
-
-#### **Import Errors**
-```bash
-# Ensure project root is in Python path
-export PYTHONPATH="${PYTHONPATH}:/path/to/autodevcore"
-
-# Check module availability
-python -c "import streamlit; print('Streamlit OK')"
-```
-
-#### **Performance Issues**
-- Clear browser cache
-- Restart the Streamlit server
-- Check system resources
-- Optimize data queries
-
-### **Debug Mode**
-```bash
-# Run with debug logging
-streamlit run gui/main.py --logger.level=debug
-```
-
-## 📚 **API Integration**
-
-### **Backend Communication**
-The GUI integrates with the AutoDevCore backend through:
-- **REST API** - Standard HTTP requests
-- **WebSocket** - Real-time communication
-- **File System** - Local project storage
-- **Database** - Persistent data storage
-
-### **Custom Integrations**
-```python
-# Example: Custom AI model integration
-from plugins.ai_orchestrator import AIOrchestrator
-
-orchestrator = AIOrchestrator()
-response = orchestrator.generate_response(
-    prompt="Create a user authentication system",
-    task_type="code_generation"
-)
-```
-
-## 🎯 **Future Enhancements**
-
-### **Planned Features**
-- **Advanced Code Editor** - Syntax highlighting and autocomplete
-- **Visual Database Designer** - Drag-and-drop schema creation
-- **Real-time Code Review** - Live collaboration on code changes
-- **Advanced Analytics** - Machine learning insights
-- **Mobile App** - Native mobile interface
-
-### **Integration Roadmap**
-- **GitHub Integration** - Direct repository management
-- **Slack Integration** - Team communication
-- **Jira Integration** - Project management
-- **AWS/Azure Integration** - Cloud deployment
-- **Monitoring Integration** - APM and logging
-
-## 🤝 **Contributing**
-
-### **Development Setup**
-```bash
-# Fork the repository
-git clone <your-fork-url>
-cd AutoDevCore
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install development dependencies
-pip install -r requirements.txt
-pip install -r gui/requirements.txt
-pip install -r requirements-dev.txt
-
-# Run tests
-pytest tests/
-pytest gui/tests/
-
-# Start development server
-python run_gui.py
-```
-
-### **Code Style**
-- Follow PEP 8 for Python code
-- Use meaningful variable and function names
-- Add comprehensive docstrings
-- Write unit tests for new features
-- Update documentation for changes
-
-## 📄 **License**
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🆘 **Support**
-
-### **Documentation**
-- **User Guide:** `docs/USER_GUIDE.md`
-- **API Reference:** `docs/API_REFERENCE.md`
-- **Interactive Tutorial:** `docs/INTERACTIVE_TUTORIAL.md`
-
-### **Community**
-- **GitHub Issues:** Report bugs and feature requests
-- **Discord:** Join our community for discussions
-- **Email:** Contact the development team
-
-### **Professional Support**
-- **Enterprise Support:** Available for business customers
-- **Training:** Custom training sessions available
-- **Consulting:** Implementation and customization services
+### **Getting Help**
+- **Documentation**: Check the `docs/` directory for comprehensive guides
+- **Issues**: Report bugs and feature requests via GitHub issues
+- **Discussions**: Join community discussions for questions and ideas
 
 ---
 
-**🎨 The AutoDevCore GUI transforms complex development processes into intuitive, visual experiences that empower teams to build better software faster!**
+**AutoDevCore GUI** - Professional interfaces for intelligent development 🎨
+
+*Choose the interface that best fits your workflow and team needs*

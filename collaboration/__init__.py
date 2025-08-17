@@ -8,12 +8,12 @@ from .team_manager import team_manager, TeamRole, Permission
 from .websocket_server import collaboration_manager, run_websocket_server
 
 __all__ = [
-    'CollaborationPlatform',
-    'team_manager',
-    'TeamRole', 
-    'Permission',
-    'collaboration_manager',
-    'run_websocket_server'
+    "CollaborationPlatform",
+    "team_manager",
+    "TeamRole",
+    "Permission",
+    "collaboration_manager",
+    "run_websocket_server",
 ]
 
 # Version info

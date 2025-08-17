@@ -556,14 +556,22 @@ class MultiProviderAI:
     ) -> Dict[str, Any]:
         """Synchronous wrapper for generate_response."""
         try:
-            # Run the async method in a new event loop
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            result = loop.run_until_complete(
-                self.generate_response(prompt, task_type, provider, model, **kwargs)
-            )
-            loop.close()
-            return result
+            # Use existing event loop if available, otherwise create one
+            try:
+                loop = asyncio.get_running_loop()
+                # If we're in an async context, use thread executor
+                import concurrent.futures
+                with concurrent.futures.ThreadPoolExecutor() as executor:
+                    future = executor.submit(
+                        self._run_async_in_thread,
+                        prompt, task_type, provider, model, **kwargs
+                    )
+                    return future.result(timeout=kwargs.get('timeout', 30))
+            except RuntimeError:
+                # No event loop running, safe to use asyncio.run
+                return asyncio.run(
+                    self.generate_response(prompt, task_type, provider, model, **kwargs)
+                )
         except Exception as e:
             return {
                 "success": False,
@@ -573,6 +581,15 @@ class MultiProviderAI:
                 "model": model or "unknown",
                 "response_time": 0.0,
             }
+
+    def _run_async_in_thread(
+        self, prompt: str, task_type: str, provider: Optional[str],
+        model: Optional[str], **kwargs
+    ) -> Dict[str, Any]:
+        """Run async operation in a new event loop (for thread execution)."""
+        return asyncio.run(
+            self.generate_response(prompt, task_type, provider, model, **kwargs)
+        )
 
 
 # Global instance for easy access

@@ -103,9 +103,7 @@ def test_collaboration_final():
                 print(f"   ✅ Project status: {status_result['team']['name']}")
 
             # Test user dashboard
-            dashboard_result = cp.get_user_dashboard(
-                "final_test_owner"
-            )
+            dashboard_result = cp.get_user_dashboard("final_test_owner")
 
             if dashboard_result["success"]:
                 print(f"   ✅ User dashboard: {len(dashboard_result['teams'])} teams")

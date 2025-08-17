@@ -4,6 +4,34 @@
 
 This document provides detailed technical information about AutoDevCore's APIs, integrations, and development interfaces.
 
+## 🌐 **Active API Services** (Updated 2025-08-15)
+
+### **Base URL & Endpoints**
+- **REST API**: `http://localhost:8080`
+- **WebSocket**: `ws://localhost:8765`
+- **Health Check**: `http://localhost:8080/health`
+- **API Version**: v1.0.0
+
+### **Service Status**
+- ✅ **REST API Server**: Active on port 8080
+- ✅ **WebSocket Server**: Active on port 8765
+- ✅ **Authentication**: JWT-based with CORS support
+- ✅ **Rate Limiting**: Implemented with security headers
+
+### **Quick Start**
+```bash
+# Start API Server
+python3 integrations/web_api.py
+
+# Test Health Endpoint
+curl http://localhost:8080/health
+
+# Login (Default Credentials)
+curl -X POST http://localhost:8080/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username": "admin", "password": "admin123"}'
+```
+
 ## 🚀 **Quick Reference**
 
 ### **Core Components**

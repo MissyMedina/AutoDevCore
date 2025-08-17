@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoDevCore - Enhanced Scoring Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px 20px 0 0;
+            text-align: center;
+            margin-bottom: 0;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .score-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-top: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        .content {
+            background: white;
+            border-radius: 0 0 20px 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .metric-label {
+            font-size: 1.1em;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .chart-container {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .chart-container h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.5em;
+        }
+        
+        .report-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .report-section h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .report-content {
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            color: #666;
+        }
+        
+        .timestamp {
+            font-size: 0.9em;
+            color: #999;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-chart-line"></i> AutoDevCore</h1>
+            <p>Enhanced Code Quality Analysis Report</p>
+            <div class="score-badge">
+                <i class="fas fa-star"></i> Overall Score: 75.0%
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">75.0%</div>
+                    <div class="metric-label">Security</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">80.0%</div>
+                    <div class="metric-label">Performance</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">85.0%</div>
+                    <div class="metric-label">Code Quality</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">70.0%</div>
+                    <div class="metric-label">Architecture</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">75.0%</div>
+                    <div class="metric-label">DevOps</div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <h3><i class="fas fa-chart-pie"></i> Radar Chart Analysis</h3>
+                <canvas id="radarChart" width="400" height="400"></canvas>
+            </div>
+            
+            <div class="report-section">
+                <h3><i class="fas fa-file-alt"></i> Detailed Analysis</h3>
+                <div class="report-content">
+                    <pre style="white-space: pre-wrap; font-family: inherit;">
+# Code Quality Analysis Report
+
+## Overall Score: 77.0%
+
+### Analysis Summary
+This code has been analyzed using a fallback scoring method due to AI model connection issues.
+
+### Detailed Breakdown
+
+#### Security (75%)
+- Basic security practices implemented
+- Input validation present
+- Error handling adequate
+
+#### Performance (80%)
+- Code structure is efficient
+- No obvious performance bottlenecks
+- Good use of standard libraries
+
+#### Code Quality (85%)
+- Code is readable and well-structured
+- Follows Python conventions
+- Good documentation practices
+
+#### Architecture (70%)
+- Basic architectural patterns used
+- Could benefit from more modular design
+- Scalability considerations present
+
+#### DevOps (75%)
+- Code is deployment-ready
+- Basic testing structure in place
+- Documentation available
+
+### Recommendations
+1. Consider implementing more comprehensive error handling
+2. Add unit tests for better code coverage
+3. Implement logging for better debugging
+4. Consider using type hints for better code documentation
+
+### Generated on: 2025-08-15 12:18:13
+</pre>
+                </div>
+            </div>
+            
+            <div class="report-section">
+                <h3><i class="fas fa-info-circle"></i> Analysis Information</h3>
+                <div class="report-content">
+                    <p><strong>Template Used:</strong> Fintech</p>
+                    <p><strong>Analysis Date:</strong> 2025-08-15 12:18:13</p>
+                    <p><strong>Analysis Method:</strong> AI-Powered Code Quality Assessment</p>
+                    <p><strong>Categories Evaluated:</strong> Security, Performance, Code Quality, Architecture, DevOps</p>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <p><i class="fas fa-copyright"></i> 2025 AutoDevCore - The core of intelligent development</p>
+                <p class="timestamp">Report generated on 2025-08-15 at 12:18:13</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize Chart.js
+        const ctx = document.getElementById('radarChart').getContext('2d');
+        const radarChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Security', 'Performance', 'Code Quality', 'Architecture', 'DevOps'],
+                datasets: [{
+                    label: 'Code Quality Score',
+                    data: [75.0, 80.0, 85.0, 70.0, 75.0],
+                    backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                    borderColor: 'rgba(102, 126, 234, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(102, 126, 234, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(102, 126, 234, 1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 20
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        
+        // Initialize Mermaid
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</body>
+</html>
+    

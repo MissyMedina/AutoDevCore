@@ -291,21 +291,50 @@ class CPUOptimizer:
         return analysis
 
     def optimize_cpu(self) -> Dict[str, Any]:
-        """Perform CPU optimization"""
+        """Perform CPU optimization with intelligent thread pool sizing"""
         optimizations = {
             "thread_pool_created": False,
             "async_operations": False,
             "cpu_intensive_tasks_cached": False,
+            "optimal_workers": 0,
         }
 
-        # Create thread pool if needed
+        # Create thread pool if needed with optimal worker count
         if not self.thread_pool:
             import concurrent.futures
+            import os
 
-            self.thread_pool = concurrent.futures.ThreadPoolExecutor(max_workers=4)
+            # Calculate optimal worker count based on CPU cores and workload
+            cpu_count = os.cpu_count() or 4
+            # For I/O bound tasks: 2-4x CPU cores
+            # For CPU bound tasks: 1x CPU cores
+            optimal_workers = min(cpu_count * 2, 16)  # Cap at 16 workers
+
+            self.thread_pool = concurrent.futures.ThreadPoolExecutor(
+                max_workers=optimal_workers,
+                thread_name_prefix="cpu_optimizer"
+            )
             optimizations["thread_pool_created"] = True
+            optimizations["optimal_workers"] = optimal_workers
 
         return optimizations
+
+    def parallel_process(self, tasks: list, func, max_workers: int = None) -> list:
+        """Process tasks in parallel using thread pool."""
+        if not self.thread_pool:
+            self.optimize_cpu()
+
+        import concurrent.futures
+
+        if max_workers:
+            # Use custom thread pool for this operation
+            with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+                futures = [executor.submit(func, task) for task in tasks]
+                return [future.result() for future in concurrent.futures.as_completed(futures)]
+        else:
+            # Use existing thread pool
+            futures = [self.thread_pool.submit(func, task) for task in tasks]
+            return [future.result() for future in concurrent.futures.as_completed(futures)]
 
 
 class PerformanceOptimizer:

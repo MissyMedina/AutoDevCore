@@ -5,11 +5,7 @@ Test page for input field visibility and functionality
 
 import streamlit as st
 
-st.set_page_config(
-    page_title="Input Test - AutoDevCore",
-    page_icon="🧪",
-    layout="wide"
-)
+st.set_page_config(page_title="Input Test - AutoDevCore", page_icon="🧪", layout="wide")
 
 # Custom CSS for input visibility
 st.markdown(
@@ -50,7 +46,7 @@ st.markdown(
     }
 </style>
 """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
 
 st.title("🧪 Input Field Test")
@@ -63,7 +59,9 @@ if text_input:
     st.success(f"You entered: {text_input}")
 
 st.header("Text Area Test")
-text_area = st.text_area("Enter a longer text:", placeholder="Type a longer message here...")
+text_area = st.text_area(
+    "Enter a longer text:", placeholder="Type a longer message here..."
+)
 if text_area:
     st.success(f"You entered: {text_area}")
 
@@ -77,7 +75,7 @@ number = st.number_input("Enter a number:", min_value=0, max_value=100, value=50
 st.success(f"You entered: {number}")
 
 st.header("File Upload Test")
-uploaded_file = st.file_uploader("Choose a file:", type=['txt', 'py', 'md'])
+uploaded_file = st.file_uploader("Choose a file:", type=["txt", "py", "md"])
 if uploaded_file:
     st.success(f"File uploaded: {uploaded_file.name}")
 
@@ -102,4 +100,6 @@ st.success(f"Slider value: {slider}")
 # Status
 st.header("✅ Test Status")
 st.success("All input fields should be visible and functional!")
-st.info("If you can see and interact with all the fields above, the GUI is working correctly.")
+st.info(
+    "If you can see and interact with all the fields above, the GUI is working correctly."
+)
