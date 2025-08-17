@@ -15,7 +15,6 @@ from utils.complexity_optimizer import (
     Priority,
     TaskType,
 )
-
 from utils.interface_abstraction import (
     ComponentBase,
     DependencyInjector,
@@ -23,7 +22,6 @@ from utils.interface_abstraction import (
     MessageQueue,
     ServiceLocator,
 )
-
 from utils.type_enhancer import (
     LogLevel,
     Result,

@@ -5,17 +5,17 @@ Tests all optimization improvements and measures performance gains.
 """
 
 import asyncio
-import time
 import json
-from pathlib import Path
-from typing import Dict, Any, List
-import tempfile
 import shutil
+import tempfile
+import time
+from pathlib import Path
+from typing import Any, Dict, List
 
 # Import optimization modules
 try:
 
-    from utils.memory_optimizer import memory_optimizer, get_memory_stats
+    from utils.memory_optimizer import get_memory_stats, memory_optimizer
 except ImportError:
     print("⚠️ Memory optimizer not available, using fallback")
     memory_optimizer = None

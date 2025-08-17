@@ -5,14 +5,15 @@ Implements async file operations, batch processing, and efficient serialization.
 """
 
 import asyncio
+import gzip
 import json
 import pickle
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
+
 import aiofiles
 import aiofiles.os
-from concurrent.futures import ThreadPoolExecutor
-import gzip
 import lz4.frame
 
 

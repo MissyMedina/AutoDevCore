@@ -3,7 +3,7 @@
 Metrics Configuration - Monitoring settings and alert thresholds
 """
 
-from typing import Dict, Any
+from typing import Any, Dict
 
 # Default monitoring configuration
 DEFAULT_METRICS_CONFIG = {

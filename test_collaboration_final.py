@@ -11,8 +11,7 @@ from pathlib import Path
 # Add plugins directory to path
 sys.path.append(str(Path(__file__).parent / "plugins"))
 
-from collaboration import CollaborationPlatform
-from collaboration import team_manager, TeamRole, Permission
+from collaboration import CollaborationPlatform, Permission, TeamRole, team_manager
 
 
 def test_collaboration_final():

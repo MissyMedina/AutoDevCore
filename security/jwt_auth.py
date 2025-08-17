@@ -4,14 +4,15 @@ JWT Authentication System for AutoDevCore
 Comprehensive JWT token management and authentication
 """
 
-import jwt
 import hashlib
 import secrets
 import time
-from datetime import datetime, timedelta
-from typing import Dict, Optional, Any
 from dataclasses import dataclass
+from datetime import datetime, timedelta
 from enum import Enum
+from typing import Any, Dict, Optional
+
+import jwt
 
 
 class UserRole(Enum):

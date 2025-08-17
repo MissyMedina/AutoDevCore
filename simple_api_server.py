@@ -4,10 +4,11 @@ Simple API Server for AutoDevCore
 A lightweight API server without complex dependencies
 """
 
-import json
 import asyncio
-from aiohttp import web, ClientSession
+import json
+
 import aiohttp_cors
+from aiohttp import ClientSession, web
 
 
 class SimpleAutoDevAPI:

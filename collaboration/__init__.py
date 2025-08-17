@@ -4,7 +4,7 @@ Collaboration Package - Real-time team collaboration features
 """
 
 from .collaboration_platform import CollaborationPlatform
-from .team_manager import team_manager, TeamRole, Permission
+from .team_manager import Permission, TeamRole, team_manager
 from .websocket_server import collaboration_manager, run_websocket_server
 
 __all__ = [
