@@ -7,6 +7,7 @@ from typing import Any, Dict
 
 from .security_generator import SecurityGeneratorAgent
 
+
 class CodeGeneratorAgent:
     """Agent responsible for generating the application codebase."""
 

@@ -15,6 +15,7 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+
 class SecurityAuditor:
     """Comprehensive security auditor for AutoDevCore."""
 
@@ -746,6 +747,7 @@ class SecurityAuditor:
 
         self.audit_results["recommendations"] = recommendations
 
+
 def main():
     """Run security audit."""
     auditor = SecurityAuditor()
@@ -769,6 +771,7 @@ def main():
         print("❌ Security Status: CRITICAL - IMMEDIATE ACTION REQUIRED")
 
     return results
+
 
 if __name__ == "__main__":
     main()

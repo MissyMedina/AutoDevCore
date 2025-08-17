@@ -58,6 +58,7 @@ __description__ = (
     "Enterprise-grade monitoring and performance analytics for AutoDevCore"
 )
 
+
 # Legacy functions (kept for backward compatibility)
 def get_default_dashboard():
     """Get the default monitoring dashboard instance."""
@@ -66,12 +67,14 @@ def get_default_dashboard():
 
     return MonitoringDashboard()
 
+
 def get_performance_monitor():
     """Get the default performance monitor instance."""
 
     from .performance import PerformanceMonitor
 
     return PerformanceMonitor()
+
 
 def start_monitoring_legacy():
     """Start comprehensive monitoring across all systems (legacy)."""

@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional
 
 from .base import BaseMode
 
+
 class PluginMode(BaseMode):
     """Enhanced plugin mode with discovery, management, and sandboxing capabilities."""
 

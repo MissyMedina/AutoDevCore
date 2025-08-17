@@ -11,6 +11,7 @@ from integrations import gpt_oss_client
 
 from .base import BaseMode
 
+
 class BlueprintMode(BaseMode):
     """Blueprint mode for analyzing legacy codebases with GPT-OSS integration."""
 

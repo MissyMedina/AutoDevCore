@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Any, Dict, List, Optional, Protocol
 
+
 class AIProvider(Protocol):
     """Protocol for AI providers to reduce coupling."""
 
@@ -18,6 +19,7 @@ class AIProvider(Protocol):
     def get_status(self) -> Dict[str, Any]:
         """Get provider status."""
         ...
+
 
 class CacheProvider(Protocol):
     """Protocol for cache providers."""
@@ -30,6 +32,7 @@ class CacheProvider(Protocol):
         """Set value in cache."""
         ...
 
+
 class DatabaseProvider(Protocol):
     """Protocol for database providers."""
 
@@ -40,6 +43,7 @@ class DatabaseProvider(Protocol):
     def query(self, sql: str, params: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Execute database query."""
         ...
+
 
 class EventBus(Protocol):
     """Protocol for event bus to decouple components."""
@@ -52,6 +56,7 @@ class EventBus(Protocol):
         """Subscribe to event."""
         ...
 
+
 class ConfigProvider(Protocol):
     """Protocol for configuration providers."""
 
@@ -63,6 +68,7 @@ class ConfigProvider(Protocol):
         """Set configuration value."""
         ...
 
+
 @dataclass
 class ServiceConfig:
     """Configuration for service dependencies."""
@@ -72,6 +78,7 @@ class ServiceConfig:
     database_provider: DatabaseProvider
     event_bus: EventBus
     config_provider: ConfigProvider
+
 
 class ServiceLocator:
     """Service locator pattern to reduce direct dependencies."""
@@ -92,6 +99,7 @@ class ServiceLocator:
     def has(self, name: str) -> bool:
         """Check if service exists."""
         return name in self._services
+
 
 class EventManager:
     """Event manager to decouple components."""
@@ -118,6 +126,7 @@ class EventManager:
         """Unsubscribe from an event."""
         if event in self._handlers and handler in self._handlers[event]:
             self._handlers[event].remove(handler)
+
 
 class DependencyInjector:
     """Dependency injector to manage component dependencies."""
@@ -148,6 +157,7 @@ class DependencyInjector:
         for name, value in kwargs.items():
             if hasattr(target, name):
                 setattr(target, name, value)
+
 
 class MessageQueue:
     """Simple message queue to decouple components."""
@@ -180,6 +190,7 @@ class MessageQueue:
         """Get all messages from queue."""
         return self._queues.get(queue, [])
 
+
 class InterfaceRegistry:
     """Registry for interface implementations."""
 
@@ -200,12 +211,14 @@ class InterfaceRegistry:
         """List all registered interfaces."""
         return list(self._interfaces.keys())
 
+
 # Global instances for dependency injection
 service_locator = ServiceLocator()
 event_manager = EventManager()
 dependency_injector = DependencyInjector()
 message_queue = MessageQueue()
 interface_registry = InterfaceRegistry()
+
 
 class ComponentBase:
     """Base class for components to use dependency injection."""

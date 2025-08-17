@@ -9,6 +9,7 @@ from pathlib import Path
 
 import streamlit as st
 
+
 class HelpDocumentation:
     """Comprehensive help documentation system for AutoDevCore GUI"""
 
@@ -1474,6 +1475,7 @@ class HelpDocumentation:
             - Use CLI commands for automation and scripting
             """
             )
+
 
 def show_help_documentation():
     """Main function to display help documentation"""

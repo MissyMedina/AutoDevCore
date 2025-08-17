@@ -12,6 +12,7 @@ from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
 
+
 class Permission(Enum):
     """Available permissions for team members."""
 
@@ -26,6 +27,7 @@ class Permission(Enum):
     GENERATE_AI = "generate_ai"
     EXPORT_PROJECT = "export_project"
 
+
 class TeamRole(Enum):
     """Team roles with associated permissions."""
 
@@ -34,6 +36,7 @@ class TeamRole(Enum):
     EDITOR = "editor"
     VIEWER = "viewer"
     GUEST = "guest"
+
 
 @dataclass
 class TeamMember:
@@ -48,6 +51,7 @@ class TeamMember:
     permissions: Set[Permission] = field(default_factory=set)
     avatar_url: Optional[str] = None
     is_active: bool = True
+
 
 @dataclass
 class Team:
@@ -64,6 +68,7 @@ class Team:
     is_public: bool = False
     max_members: int = 50
 
+
 @dataclass
 class TeamInvitation:
     """Team invitation."""
@@ -77,6 +82,7 @@ class TeamInvitation:
     expires_at: datetime
     is_accepted: bool = False
     accepted_at: Optional[datetime] = None
+
 
 class TeamManager:
     """Manages teams, members, and permissions."""
@@ -581,8 +587,10 @@ class TeamManager:
             "last_updated": team.updated_at.isoformat(),
         }
 
+
 # Global team manager instance
 team_manager = TeamManager()
+
 
 def run(context=None):
     """Plugin entry point for testing the team manager."""

@@ -11,6 +11,7 @@ from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+
 class IndustryType(Enum):
     """Industry types for project templates."""
 
@@ -25,12 +26,14 @@ class IndustryType(Enum):
     ANALYTICS = "analytics"
     SECURITY = "security"
 
+
 class ComplexityLevel(Enum):
     """Complexity levels for project templates."""
 
     STARTER = "starter"
     PROFESSIONAL = "professional"
     ENTERPRISE = "enterprise"
+
 
 @dataclass
 class ProjectTemplate:
@@ -53,6 +56,7 @@ class ProjectTemplate:
     cost_estimate: str = ""
     risk_factors: List[str] = field(default_factory=list)
     success_metrics: List[str] = field(default_factory=list)
+
 
 class ProjectTemplateManager:
     """Manages project templates with bulletproof configurations."""
@@ -690,6 +694,7 @@ class ProjectTemplateManager:
             return yaml.dump(template.__dict__, default_flow_style=False)
         else:
             return str(template.__dict__)
+
 
 # Global instance for easy access
 template_manager = ProjectTemplateManager()

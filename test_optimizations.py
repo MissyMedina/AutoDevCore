@@ -35,6 +35,7 @@ except ImportError:
     print("⚠️ Multi-model AI not available, using fallback")
     multi_model_ai = None
 
+
 class PerformanceTestSuite:
     """Comprehensive performance test suite."""
 
@@ -311,6 +312,7 @@ class PerformanceTestSuite:
                 f"✅ Optimization Status: {'SUCCESS' if summary['optimization_successful'] else 'NEEDS WORK'}"
             )
 
+
 async def main():
     """Main test runner."""
     test_suite = PerformanceTestSuite()
@@ -323,6 +325,7 @@ async def main():
         json.dump(results, f, indent=2, default=str)
 
     print(f"\n💾 Results saved to: {results_file}")
+
 
 if __name__ == "__main__":
     asyncio.run(main())

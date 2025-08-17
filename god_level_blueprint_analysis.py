@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Dict, List, Any
 from datetime import datetime
 
+
 class GodLevelBlueprintAnalyzer:
     """Analyze AutoDevCore against the God-Level Blueprint framework."""
 
@@ -350,6 +351,7 @@ class GodLevelBlueprintAnalyzer:
         except Exception:
             return ""
 
+
 def generate_god_level_blueprint_report(project_path: str) -> str:
     """Generate comprehensive God-Level Blueprint report."""
     analyzer = GodLevelBlueprintAnalyzer(project_path)
@@ -509,6 +511,7 @@ This God-Level Blueprint analysis confirms that AutoDevCore is {'a world-class h
 """
 
     return report
+
 
 if __name__ == "__main__":
     # Generate and print the report

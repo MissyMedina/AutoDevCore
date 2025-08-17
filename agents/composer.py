@@ -9,6 +9,7 @@ from pathlib import Path
 
 from integrations import gpt_oss_client
 
+
 class ComposerAgent:
     """Agent responsible for analyzing app ideas and creating development plans."""
 

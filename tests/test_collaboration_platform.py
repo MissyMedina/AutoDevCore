@@ -17,6 +17,7 @@ sys.path.append(str(Path(__file__).parent.parent))
 from plugins.collaboration_platform import collaboration_platform
 from plugins.team_manager import Permission, TeamRole, team_manager
 
+
 class TestTeamManager:
     """Test team management functionality."""
 
@@ -113,6 +114,7 @@ class TestTeamManager:
         assert analytics["activity_rate"] == 100.0
         assert "owner" in analytics["role_distribution"]
 
+
 class TestCollaborationPlatform:
     """Test collaboration platform functionality."""
 
@@ -207,6 +209,7 @@ class TestCollaborationPlatform:
         assert len(dashboard_result["teams"]) >= 1
         assert "stats" in dashboard_result
 
+
 class TestIntegration:
     """Integration tests."""
 
@@ -275,6 +278,7 @@ class TestIntegration:
             assert team_manager.has_permission(
                 project_result["team_id"], "test_owner", Permission.EDIT_PROJECT
             )
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

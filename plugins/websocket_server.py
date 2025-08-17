@@ -28,6 +28,7 @@ except ImportError:
 import threading
 import time
 
+
 class MessageType(Enum):
     """Types of real-time messages."""
 
@@ -45,6 +46,7 @@ class MessageType(Enum):
     ERROR = "error"
     HEARTBEAT = "heartbeat"
 
+
 class UserRole(Enum):
     """User roles in collaboration."""
 
@@ -52,6 +54,7 @@ class UserRole(Enum):
     ADMIN = "admin"
     EDITOR = "editor"
     VIEWER = "viewer"
+
 
 @dataclass
 class User:
@@ -64,6 +67,7 @@ class User:
     last_active: datetime
     cursor_position: Optional[Dict[str, Any]] = None
     avatar_url: Optional[str] = None
+
 
 @dataclass
 class Workspace:
@@ -80,6 +84,7 @@ class Workspace:
     settings: Dict[str, Any] = field(default_factory=dict)
     is_public: bool = False
 
+
 @dataclass
 class CollaborationMessage:
     """Real-time collaboration message."""
@@ -91,6 +96,7 @@ class CollaborationMessage:
     data: Dict[str, Any]
     timestamp: datetime
     metadata: Dict[str, Any] = field(default_factory=dict)
+
 
 class CollaborationManager:
     """Manages real-time collaboration state."""
@@ -537,8 +543,10 @@ class CollaborationManager:
                 workspaces.append(workspace_info)
         return workspaces
 
+
 # Global collaboration manager instance
 collaboration_manager = CollaborationManager()
+
 
 async def start_websocket_server(host: str = "localhost", port: int = 8765):
     """Start the WebSocket server."""
@@ -590,6 +598,7 @@ async def start_websocket_server(host: str = "localhost", port: int = 8765):
         else:
             raise
 
+
 def run_websocket_server(host: str = "localhost", port: int = 8765):
     """Run the WebSocket server in a separate thread."""
 
@@ -599,6 +608,7 @@ def run_websocket_server(host: str = "localhost", port: int = 8765):
     server_thread = threading.Thread(target=run_server, daemon=True)
     server_thread.start()
     return server_thread
+
 
 def run(context=None):
     """Plugin entry point for testing the WebSocket server."""

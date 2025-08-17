@@ -15,6 +15,7 @@ from concurrent.futures import ThreadPoolExecutor
 import gzip
 import lz4.frame
 
+
 class AsyncFileManager:
     """Async file operations manager with optimization."""
 
@@ -193,6 +194,7 @@ class AsyncFileManager:
             / (1024 * 1024),
         }
 
+
 class BatchProcessor:
     """Batch processing for efficient I/O operations."""
 
@@ -244,6 +246,7 @@ class BatchProcessor:
             gc.collect()
 
         return results
+
 
 class EfficientSerializer:
     """Efficient serialization with compression options."""
@@ -299,23 +302,28 @@ class EfficientSerializer:
         file_manager = AsyncFileManager()
         await file_manager.write_binary(file_path, compressed_data)
 
+
 # Global instances
 async_file_manager = AsyncFileManager()
 batch_processor = BatchProcessor()
 efficient_serializer = EfficientSerializer()
+
 
 # Convenience functions
 async def read_file_async(file_path: Union[str, Path]) -> str:
     """Convenience function for async file reading."""
     return await async_file_manager.read_file(file_path)
 
+
 async def write_file_async(file_path: Union[str, Path], content: str) -> None:
     """Convenience function for async file writing."""
     await async_file_manager.write_file(file_path, content)
 
+
 async def read_json_async(file_path: Union[str, Path]) -> Dict[str, Any]:
     """Convenience function for async JSON reading."""
     return await async_file_manager.read_json(file_path)
+
 
 async def write_json_async(file_path: Union[str, Path], data: Dict[str, Any]) -> None:
     """Convenience function for async JSON writing."""

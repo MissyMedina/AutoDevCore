@@ -9,6 +9,7 @@ import re
 import sys
 from pathlib import Path
 
+
 class CodeFormatter:
     """Fixes common code formatting issues."""
 
@@ -237,6 +238,7 @@ class CodeFormatter:
 
         print(f"📝 Fixed {md_fixed} Markdown files")
 
+
 def main():
     """Main function."""
     formatter = CodeFormatter()
@@ -249,6 +251,7 @@ def main():
 
     print("\n🎯 Formatting complete! Ready for git commit.")
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())

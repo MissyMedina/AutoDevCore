@@ -14,6 +14,7 @@ from agents.readme_writer import READMEWriterAgent
 
 from .base import BaseMode
 
+
 class ComposeMode(BaseMode):
     """Mode for composing complete applications from ideas."""
 

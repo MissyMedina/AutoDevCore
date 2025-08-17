@@ -34,6 +34,7 @@ from utils.type_enhancer import (
     ValidationResult,
 )
 
+
 class TestComplexityOptimizer(unittest.TestCase):
     """Test complexity optimization utilities."""
 
@@ -125,6 +126,7 @@ class TestComplexityOptimizer(unittest.TestCase):
         self.assertEqual(result["field"], "username")
         self.assertEqual(result["expected_type"], "string")
 
+
 class TestInterfaceAbstraction(unittest.TestCase):
     """Test interface abstraction utilities."""
 
@@ -190,6 +192,7 @@ class TestInterfaceAbstraction(unittest.TestCase):
         messages = self.message_queue.get_messages("test_queue")
         self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0], "test_message")
+
 
 class TestTypeEnhancer(unittest.TestCase):
     """Test type enhancement utilities."""
@@ -267,6 +270,7 @@ class TestTypeEnhancer(unittest.TestCase):
         self.assertFalse(result.is_valid)
         self.assertEqual(len(result.errors), 1)
 
+
 class TestComponentBase(unittest.TestCase):
     """Test component base class."""
 
@@ -299,6 +303,7 @@ class TestComponentBase(unittest.TestCase):
 
         self.assertEqual(len(messages_received), 1)
         self.assertEqual(messages_received[0], "test_message")
+
 
 if __name__ == "__main__":
     unittest.main()

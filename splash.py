@@ -4,6 +4,7 @@ Splash screen and help display for AutoDevCore.
 
 from datetime import datetime
 
+
 def show_splash():
     """Display the AutoDevCore splash banner."""
     splash = """
@@ -27,6 +28,7 @@ o88o     o8888o  `V88V"V8P'   "888" `Y8bod8P' o888bood8P'   `Y8bod8P'
     print(f"🚀 AutoDevCore v1.0.0 | {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 80)
     print()
+
 
 def show_help():
     """Display help information."""

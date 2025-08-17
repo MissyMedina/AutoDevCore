@@ -13,6 +13,7 @@ from typing import Any, Dict, Optional
 import requests
 import streamlit as st
 
+
 class APIConfigPanel:
     """Professional API configuration panel for AI providers"""
 
@@ -541,6 +542,7 @@ class APIConfigPanel:
                             st.error("❌ Failed to import configuration")
                 except Exception as e:
                     st.error(f"❌ Invalid configuration file: {e}")
+
 
 def show_api_config_panel():
     """Main function to display the API configuration panel"""

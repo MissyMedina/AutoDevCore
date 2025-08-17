@@ -15,6 +15,7 @@ from typing import Any, Dict, List, Optional, Union
 import aiohttp
 import requests
 
+
 class MultiProviderAI:
     """Multi-provider AI integration with intelligent model selection - BULLETPROOF"""
 
@@ -598,6 +599,7 @@ class MultiProviderAI:
         return asyncio.run(
             self.generate_response(prompt, task_type, provider, model, **kwargs)
         )
+
 
 # Global instance for easy access
 multi_provider_ai = MultiProviderAI()

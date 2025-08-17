@@ -12,6 +12,7 @@ from typing import Any, Dict, List, Optional, Union
 
 import psutil
 
+
 class MetricsStorage:
     """Unified storage manager for all metrics data."""
 
@@ -471,8 +472,10 @@ class MetricsStorage:
         except Exception as e:
             return {"error": str(e)}
 
+
 # Global storage instance
 metrics_storage = MetricsStorage()
+
 
 def get_storage() -> MetricsStorage:
     """Get the global metrics storage instance."""

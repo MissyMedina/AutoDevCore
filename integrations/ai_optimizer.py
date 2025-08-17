@@ -11,12 +11,14 @@ from enum import Enum
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional
 
+
 class ModelType(Enum):
     """Available AI model types."""
 
     GPT_OSS_20B = "gpt-oss:20b"
     GPT_OSS_120B = "gpt-oss:120b"
     FALLBACK = "fallback"
+
 
 @dataclass
 class ModelConfig:
@@ -31,6 +33,7 @@ class ModelConfig:
     priority: int
     cost_per_token: float
     reliability_score: float
+
 
 class AIOptimizer:
     """Advanced AI optimizer with smart fallbacks and model selection."""
@@ -228,8 +231,10 @@ Provide a concise JSON response with:
             },
         }
 
+
 # Global AI optimizer instance
 ai_optimizer = AIOptimizer()
+
 
 def optimize_ai_request(task_type: str, complexity: str = "medium"):
     """Decorator to optimize AI requests with smart fallbacks."""

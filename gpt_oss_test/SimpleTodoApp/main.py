@@ -28,15 +28,18 @@ app.add_middleware(
 # Include API routes
 app.include_router(router, prefix="/api/v1")
 
+
 @app.get("/")
 async def root():
     """Root endpoint."""
     return {"message": "Welcome to AutoDevApp", "description": "simple todo app"}
 
+
 @app.get("/health")
 async def health_check():
     """Health check endpoint."""
     return {"status": "healthy", "service": "AutoDevApp"}
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -18,6 +18,7 @@ from modes.compose import ComposeMode
 from modes.score import ScoreMode
 from utils.performance import PerformanceMonitor, PerformanceOptimizer
 
+
 class TestBaseMode:
     """Test the base mode functionality."""
 
@@ -76,6 +77,7 @@ class TestBaseMode:
         assert "Agent1" in content
         assert "Agent2" in content
 
+
 class TestComposeMode:
     """Test the compose mode functionality."""
 
@@ -123,6 +125,7 @@ class TestComposeMode:
             mock_prd.return_value.generate_prd.assert_called_once()
             mock_code.return_value.generate_codebase.assert_called_once()
             mock_readme.return_value.generate_readme.assert_called_once()
+
 
 class TestScoreMode:
     """Test the score mode functionality."""
@@ -176,6 +179,7 @@ class TestScoreMode:
         result = self.score_mode._evaluate_app_intelligent(template, {})
         assert "overall_score" in result
         assert "categories" in result
+
 
 class TestGPTOSSClient:
     """Test the GPT-OSS client functionality."""
@@ -239,6 +243,7 @@ class TestGPTOSSClient:
             assert "Error" in result["response"]
             assert result["done"] is True
 
+
 class TestPerformanceMonitor:
     """Test the performance monitor functionality."""
 
@@ -299,6 +304,7 @@ class TestPerformanceMonitor:
         assert summary["slowest_operation"] == "test_op"
         assert summary["fastest_operation"] == "test_op"
 
+
 class TestPerformanceOptimizer:
     """Test the performance optimizer functionality."""
 
@@ -324,6 +330,7 @@ class TestPerformanceOptimizer:
 
         assert len(suggestions) == 1
         assert "Error" in suggestions[0]
+
 
 # Integration tests
 class TestIntegration:
@@ -360,6 +367,7 @@ class TestIntegration:
         assert score_mode.template == "profiles/fintech.yaml"
 
         shutil.rmtree(app_dir, ignore_errors=True)
+
 
 # Performance tests
 class TestPerformance:
@@ -408,6 +416,7 @@ class TestPerformance:
         assert duration < 1.0
 
         shutil.rmtree(temp_dir, ignore_errors=True)
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

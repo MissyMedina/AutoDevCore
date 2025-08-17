@@ -4,6 +4,7 @@ PRD Writer Agent - Generates Product Requirements Documents
 
 from typing import Any, Dict
 
+
 class PRDWriterAgent:
     """Agent responsible for generating Product Requirements Documents."""
 

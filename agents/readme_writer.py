@@ -4,6 +4,7 @@ README Writer Agent - Generates comprehensive README files
 
 from typing import Any, Dict
 
+
 class READMEWriterAgent:
     """Agent responsible for generating comprehensive README files."""
 

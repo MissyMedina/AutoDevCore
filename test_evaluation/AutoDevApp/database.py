@@ -59,6 +59,7 @@ AsyncSessionLocal = async_sessionmaker(
     async_engine, class_=AsyncSession, expire_on_commit=False
 )
 
+
 # SQLite performance optimizations
 @event.listens_for(engine, "connect")
 def set_sqlite_pragma(dbapi_connection, connection_record):
@@ -77,6 +78,7 @@ def set_sqlite_pragma(dbapi_connection, connection_record):
         cursor.execute("PRAGMA temp_store=MEMORY")
         cursor.close()
 
+
 @contextmanager
 def get_db() -> Generator[SessionLocal, None, None]:
     """Get database session with proper cleanup."""
@@ -90,6 +92,7 @@ def get_db() -> Generator[SessionLocal, None, None]:
     finally:
         db.close()
 
+
 @asynccontextmanager
 async def get_async_db() -> AsyncGenerator[AsyncSession, None]:
     """Get async database session with proper cleanup."""
@@ -100,6 +103,7 @@ async def get_async_db() -> AsyncGenerator[AsyncSession, None]:
         except Exception:
             await session.rollback()
             raise
+
 
 # Legacy compatibility function
 def get_db_legacy():

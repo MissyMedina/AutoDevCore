@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional
 from .team_manager import Permission, TeamRole, team_manager
 from .websocket_server import collaboration_manager, run_websocket_server
 
+
 class CollaborationPlatform:
     """Main collaboration platform integrating all features."""
 
@@ -351,8 +352,10 @@ class CollaborationPlatform:
             logging.error(f"Error getting platform status: {e}")
             return {"success": False, "error": str(e)}
 
+
 # Global collaboration platform instance
 collaboration_platform = CollaborationPlatform()
+
 
 def run(context=None):
     """Plugin entry point for testing the collaboration platform."""

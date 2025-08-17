@@ -6,6 +6,7 @@ import os
 
 from pydantic_settings import BaseSettings
 
+
 class Settings(BaseSettings):
     """Application settings."""
 
@@ -16,5 +17,6 @@ class Settings(BaseSettings):
 
     class Config:
         env_file = ".env"
+
 
 settings = Settings()

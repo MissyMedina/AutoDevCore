@@ -15,6 +15,7 @@ from typing import Any, Dict, List, Optional, Union
 
 import aiohttp
 
+
 class ModelProvider(Enum):
     """Supported AI model providers."""
 
@@ -22,6 +23,7 @@ class ModelProvider(Enum):
     ANTHROPIC = "anthropic"
     GPT_OSS = "gpt-oss"
     FALLBACK = "fallback"
+
 
 class TaskType(Enum):
     """Types of AI tasks for model selection."""
@@ -31,6 +33,7 @@ class TaskType(Enum):
     ANALYSIS = "analysis"
     SCORING = "scoring"
     DOCUMENTATION = "documentation"
+
 
 @dataclass
 class ModelConfig:
@@ -53,6 +56,7 @@ class ModelConfig:
     success_rate: float = 0.0
     avg_response_time: float = 0.0
 
+
 @dataclass
 class AIRequest:
     """AI request configuration."""
@@ -64,6 +68,7 @@ class AIRequest:
     timeout: Optional[int] = None
     priority: str = "normal"  # low, normal, high
     fallback_required: bool = True
+
 
 @dataclass
 class AIResponse:
@@ -78,6 +83,7 @@ class AIResponse:
     success: bool
     error_message: Optional[str] = None
     metadata: Dict[str, Any] = field(default_factory=dict)
+
 
 class ModelHealthChecker:
     """Check health and availability of AI models."""
@@ -163,6 +169,7 @@ class ModelHealthChecker:
             return False
         except:
             return False
+
 
 class ModelSelector:
     """Intelligent model selection based on task and performance."""
@@ -301,6 +308,7 @@ class ModelSelector:
         history["avg_response_time"] = (
             history["total_response_time"] / history["total_requests"]
         )
+
 
 class MultiModelAI:
     """Multi-model AI integration with intelligent selection and fallback."""
@@ -674,8 +682,10 @@ class MultiModelAI:
         async with self:
             return await self.generate(request)
 
+
 # Global instance for easy access
 multi_model_ai = MultiModelAI()
+
 
 async def generate_ai_response(
     prompt: str, task_type: TaskType, **kwargs
@@ -685,6 +695,7 @@ async def generate_ai_response(
 
     async with multi_model_ai as ai:
         return await ai.generate(request)
+
 
 def run(context=None):
     """Plugin entry point for testing."""

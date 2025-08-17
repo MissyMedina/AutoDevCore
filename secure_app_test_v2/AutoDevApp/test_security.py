@@ -7,6 +7,7 @@ from api.routes import UserCreate
 from config.security import settings
 from pydantic import ValidationError
 
+
 def test_security_settings():
     """Test security configuration."""
     print("🔒 Security Settings Test")
@@ -17,6 +18,7 @@ def test_security_settings():
     print(f"  JWT Algorithm: {settings.ALGORITHM}")
     print(f"  Token Expiry: {settings.ACCESS_TOKEN_EXPIRE_MINUTES} minutes")
     print("✅ Security settings configured correctly")
+
 
 def test_input_validation():
     """Test input validation."""
@@ -51,6 +53,7 @@ def test_input_validation():
         print("✅ Valid input accepted")
     except ValidationError as e:
         print(f"❌ Valid input rejected: {e.errors()}")
+
 
 if __name__ == "__main__":
     test_security_settings()

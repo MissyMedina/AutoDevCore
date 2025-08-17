@@ -9,6 +9,7 @@ import subprocess
 import sys
 from pathlib import Path
 
+
 def main():
     """Launch the AutoDevCore GUI"""
     print("🚀 Launching AutoDevCore Visual Development Hub...")
@@ -73,6 +74,7 @@ def main():
         return 1
 
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())

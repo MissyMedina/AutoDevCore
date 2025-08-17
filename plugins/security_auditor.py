@@ -16,12 +16,14 @@ from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+
 class Severity(Enum):
     CRITICAL = "CRITICAL"
     HIGH = "HIGH"
     MEDIUM = "MEDIUM"
     LOW = "LOW"
     INFO = "INFO"
+
 
 @dataclass
 class SecurityIssue:
@@ -34,6 +36,7 @@ class SecurityIssue:
     recommendation: str = ""
     cwe_id: Optional[str] = None
 
+
 @dataclass
 class AuditResults:
     overall_score: int
@@ -43,6 +46,7 @@ class AuditResults:
     low_issues: List[SecurityIssue]
     info_issues: List[SecurityIssue]
     summary: Dict[str, Any]
+
 
 class SecurityAuditor:
     """Comprehensive security auditor for AutoDevCore"""
@@ -828,6 +832,7 @@ class SecurityAuditor:
                 report.append("")
 
         return "\n".join(report)
+
 
 # Global instance for easy access
 security_auditor = SecurityAuditor()

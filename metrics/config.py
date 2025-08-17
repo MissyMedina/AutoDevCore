@@ -78,6 +78,7 @@ DASHBOARD_CONFIG = {
     "export_formats": ["json", "csv", "pdf"],
 }
 
+
 def get_config() -> Dict[str, Any]:
     """Get the complete metrics configuration."""
     return {
@@ -89,13 +90,16 @@ def get_config() -> Dict[str, Any]:
         "dashboard": DASHBOARD_CONFIG,
     }
 
+
 def get_thresholds() -> Dict[str, Any]:
     """Get performance thresholds."""
     return PERFORMANCE_THRESHOLDS
 
+
 def get_alerts() -> list:
     """Get default alert configurations."""
     return DEFAULT_ALERTS
+
 
 def get_health_checks() -> Dict[str, Any]:
     """Get health check configurations."""

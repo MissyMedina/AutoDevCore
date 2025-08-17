@@ -317,6 +317,7 @@ if "radar_chart_data" not in st.session_state:
 if "scoring_in_progress" not in st.session_state:
     st.session_state.scoring_in_progress = False
 
+
 def test_gpt_oss_connection():
     """Test GPT-OSS connection and return status"""
     try:
@@ -331,6 +332,7 @@ def test_gpt_oss_connection():
     except Exception as e:
         st.session_state.gpt_oss_status = "error"
         return False, str(e)
+
 
 def run_cli_command(command):
     """Actually run CLI commands and return results"""
@@ -366,6 +368,7 @@ def run_cli_command(command):
     except Exception as e:
         print(f"DEBUG: Exception occurred: {str(e)}")
         return False, "", str(e)
+
 
 def run_code_scoring(code_content, template="profiles/fintech.yaml"):
     """Run code scoring using AutoDevCore scoring mode"""
@@ -540,6 +543,7 @@ This code has been analyzed using a fallback scoring method due to AI model conn
             import shutil
 
             shutil.rmtree(temp_dir, ignore_errors=True)
+
 
 def generate_enhanced_html_report(radar_chart_data, scoring_results, template):
     """Generate an enhanced HTML report with beautiful styling"""
@@ -843,6 +847,7 @@ def generate_enhanced_html_report(radar_chart_data, scoring_results, template):
 
     return html_content
 
+
 def generate_app_from_description(description, output_dir="output/generated_app"):
     """Actually generate an app using the CLI"""
     try:
@@ -876,6 +881,7 @@ def generate_app_from_description(description, output_dir="output/generated_app"
     except Exception as e:
         return False, "", str(e)
 
+
 def execute_python_code(code):
     """Execute Python code and return results"""
     try:
@@ -897,6 +903,7 @@ def execute_python_code(code):
     except Exception as e:
         return False, "", str(e)
 
+
 def main_header():
     """Main application header"""
     st.markdown(
@@ -908,6 +915,7 @@ def main_header():
     """,
         unsafe_allow_html=True,
     )
+
 
 def sidebar_navigation():
     """Sidebar navigation and user controls"""
@@ -1081,6 +1089,7 @@ def sidebar_navigation():
 
         return page
 
+
 def dashboard_page():
     """Main dashboard with role-based views"""
     st.markdown("## 📊 Dashboard")
@@ -1098,6 +1107,7 @@ def dashboard_page():
         stakeholder_dashboard()
     elif st.session_state.user_role == "admin":
         admin_dashboard()
+
 
 def user_management_page():
     """User Management & SSO Console"""
@@ -1359,6 +1369,7 @@ def user_management_page():
 
         if st.button("🔍 View All Alerts"):
             st.info("Opening security alerts dashboard...")
+
 
 def admin_dashboard():
     """Dashboard view for administrators - Security, Health, & Auditing"""
@@ -1795,6 +1806,7 @@ def admin_dashboard():
         if st.button("🔄 System Restart"):
             if st.button("⚠️ Confirm Restart"):
                 st.warning("🔄 System restart initiated - Please wait 5 minutes")
+
 
 def project_manager_dashboard():
     """Dashboard view for project managers"""
@@ -2467,6 +2479,7 @@ def project_manager_dashboard():
                 "⚠️ Review high-risk projects and implement mitigation strategies"
             )
 
+
 def developer_dashboard():
     """Dashboard view for developers"""
     col1, col2 = st.columns([2, 1])
@@ -2919,6 +2932,7 @@ def developer_dashboard():
             elif send_button and not user_input.strip():
                 st.warning("Please enter a message")
 
+
 def devops_dashboard():
     """Dashboard view for DevOps engineers"""
     col1, col2, col3 = st.columns(3)
@@ -2999,6 +3013,7 @@ def devops_dashboard():
             """,
                 unsafe_allow_html=True,
             )
+
 
 def new_developer_dashboard():
     """Dashboard view for new developers"""
@@ -3210,6 +3225,7 @@ def new_developer_dashboard():
                     }
                 ]
                 st.rerun()
+
 
 def stakeholder_dashboard():
     """Dashboard view for stakeholders - Interactive Business Intelligence & Real-time Analytics"""
@@ -4046,6 +4062,7 @@ def stakeholder_dashboard():
         st.markdown("• **Economic Downturn:** Medium (20%)")
         st.markdown("• **Overall Risk Level:** Low (13%)")
 
+
 def projects_page():
     """Projects management page"""
     st.markdown("## 🎯 Projects")
@@ -4328,6 +4345,7 @@ def projects_page():
                                 )
                         except Exception as e:
                             st.error(f"❌ Deployment failed: {e}")
+
 
 def ai_lab_page():
     """AI Lab page for AI model management and testing - Enhanced with Real Functionality"""
@@ -5130,6 +5148,7 @@ def ai_lab_page():
             "⚠️ AutoDevCore modules not available - cannot access GPT-OSS configuration"
         )
 
+
 def team_page():
     """Team collaboration page"""
     st.markdown("## 👥 Team Collaboration")
@@ -5201,6 +5220,7 @@ def team_page():
             if new_message:
                 st.success("Message sent!")
                 st.rerun()
+
 
 def deploy_page():
     """Deployment and DevOps page"""
@@ -5314,6 +5334,7 @@ def deploy_page():
                 """,
                     unsafe_allow_html=True,
                 )
+
 
 def settings_page():
     """Settings and configuration page"""
@@ -5666,6 +5687,7 @@ def settings_page():
     if st.button("🔧 Configure APIs"):
         st.info("Opening API configuration panel...")
 
+
 def analytics_page():
     """Analytics and reporting page - Real Business Intelligence"""
     st.markdown("## 📊 Analytics & Business Intelligence")
@@ -5989,6 +6011,7 @@ def analytics_page():
             st.success("✅ Trend analysis report generated!")
             st.info("📄 Saved to: /reports/analytics/trend_analysis.pdf")
 
+
 def scoring_page():
     """Dedicated scoring page with advanced code analysis"""
     st.markdown("# 📊 Code Quality Scoring & Analysis")
@@ -6155,6 +6178,7 @@ def authenticate_user(email, password):
                     st.success("✅ Radar chart exported!")
                     st.info("📊 Saved to: /reports/scoring/radar_chart.png")
 
+
 def reports_page():
     """Reports page for viewing and managing scoring reports"""
     st.markdown("# 📊 Reports & Analytics")
@@ -6308,6 +6332,7 @@ def reports_page():
             st.info(f"📁 Reports folder: {reports_dir.absolute()}")
             st.code(f"open {reports_dir.absolute()}")
 
+
 def main():
     """Main application function"""
     # Initialize session state
@@ -6348,6 +6373,7 @@ def main():
         else:
             st.error("API Configuration panel is not available")
             st.info("Please ensure all required modules are installed")
+
 
 if __name__ == "__main__":
     main()

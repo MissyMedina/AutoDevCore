@@ -17,6 +17,7 @@ import psutil
 
 T = TypeVar("T")
 
+
 @dataclass
 class MemoryStats:
     """Memory usage statistics."""
@@ -27,6 +28,7 @@ class MemoryStats:
     percent_used: float
     python_objects: int
     gc_collections: int
+
 
 class ObjectPool:
     """Generic object pool for memory optimization."""
@@ -76,6 +78,7 @@ class ObjectPool:
             "efficiency": self._reused_count
             / max(1, self._created_count + self._reused_count),
         }
+
 
 class MemoryLeakDetector:
     """Detect potential memory leaks."""
@@ -157,6 +160,7 @@ class MemoryLeakDetector:
         weak_ref = weakref.ref(obj, cleanup_callback)
         self._weak_refs.add(weak_ref)
 
+
 class EfficientDataStructures:
     """Optimized data structures for common use cases."""
 
@@ -183,6 +187,7 @@ class EfficientDataStructures:
         """Process items in batches to reduce memory usage."""
         for i in range(0, len(items), batch_size):
             yield items[i : i + batch_size]
+
 
 class MemoryOptimizer:
     """Main memory optimization coordinator."""
@@ -259,6 +264,7 @@ class MemoryOptimizer:
         """Stop memory monitoring."""
         self._monitoring = False
 
+
 # Global memory optimizer instance
 memory_optimizer = MemoryOptimizer()
 
@@ -267,9 +273,11 @@ string_pool = memory_optimizer.create_pool("strings", lambda: [], max_size=50)
 dict_pool = memory_optimizer.create_pool("dicts", dict, max_size=100)
 list_pool = memory_optimizer.create_pool("lists", list, max_size=100)
 
+
 def optimize_memory():
     """Convenience function for memory optimization."""
     return memory_optimizer.optimize_memory()
+
 
 def get_memory_stats():
     """Convenience function for memory stats."""

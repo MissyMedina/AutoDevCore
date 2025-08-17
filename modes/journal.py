@@ -11,6 +11,7 @@ from integrations import gpt_oss_client
 
 from .base import BaseMode
 
+
 class JournalMode(BaseMode):
     """Journal mode for intelligent codebase analysis and insights with GPT-OSS integration."""
 

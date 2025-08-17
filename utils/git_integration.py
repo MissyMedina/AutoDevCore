@@ -13,6 +13,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
+
 class GitIntegration:
     """Bulletproof Git integration for AutoDevCore projects."""
 
@@ -558,6 +559,7 @@ Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
                 "error": str(e),
                 "message": "Failed to create project with Git integration",
             }
+
 
 # Global instance for easy access
 git_integration = GitIntegration()

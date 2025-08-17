@@ -12,6 +12,7 @@ import subprocess
 import threading
 from pathlib import Path
 
+
 class ServiceLauncher:
     """Manages AutoDevCore service startup with port conflict resolution."""
 
@@ -336,6 +337,7 @@ if __name__ == "__main__":
 
         print("👋 All services stopped")
 
+
 def main():
     """Main launcher function."""
     launcher = ServiceLauncher()
@@ -358,6 +360,7 @@ def main():
         return 1
 
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())

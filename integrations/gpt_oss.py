@@ -11,6 +11,7 @@ from typing import Any, Dict, List, Optional
 
 import requests
 
+
 class GPTOSSClient:
     """Client for interacting with GPT-OSS models via Ollama."""
 
@@ -333,6 +334,7 @@ class GPTOSSClient:
         except Exception:
             return {"error": "Could not get cache stats"}
 
+
 class HarmonyFormat:
     """Utilities for Harmony format (GPT-OSS chat format)."""
 
@@ -358,6 +360,7 @@ class HarmonyFormat:
             elif msg["role"] == "system":
                 formatted.append(f"<|system|>\n{msg['content']}<|end|>")
         return "\n".join(formatted)
+
 
 # Global client instance
 gpt_oss_client = GPTOSSClient()

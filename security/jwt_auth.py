@@ -13,6 +13,7 @@ from typing import Dict, Optional, Any
 from dataclasses import dataclass
 from enum import Enum
 
+
 class UserRole(Enum):
     """User roles for access control."""
 
@@ -28,6 +29,7 @@ class UserRole(Enum):
     USER = "user"
     GUEST = "guest"
 
+
 @dataclass
 class User:
     """User data model."""
@@ -38,6 +40,7 @@ class User:
     role: UserRole
     created_at: datetime
     last_login: Optional[datetime] = None
+
 
 class JWTAuthManager:
     """Comprehensive JWT authentication manager."""
@@ -134,6 +137,7 @@ class JWTAuthManager:
         }
         return role_hierarchy.get(user_role, 0) >= role_hierarchy.get(required_role, 0)
 
+
 class AuthMiddleware:
     """Authentication middleware for web applications."""
 
@@ -162,8 +166,10 @@ class AuthMiddleware:
 
         return decorator
 
+
 # Global auth manager instance
 auth_manager = JWTAuthManager()
+
 
 def create_user(
     username: str, email: str, password: str, role: UserRole = UserRole.ENTRYLVL_DEV
@@ -182,6 +188,7 @@ def create_user(
 
     # In a real implementation, save to database
     return user
+
 
 def authenticate_user(username: str, password: str) -> Optional[Dict[str, Any]]:
     """Authenticate user and return tokens."""
@@ -207,9 +214,11 @@ def authenticate_user(username: str, password: str) -> Optional[Dict[str, Any]]:
 
     return None
 
+
 def verify_user_token(token: str) -> Optional[Dict[str, Any]]:
     """Verify user token and return user info."""
     return auth_manager.verify_token(token)
+
 
 # Example usage and testing
 if __name__ == "__main__":

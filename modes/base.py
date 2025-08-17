@@ -10,6 +10,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List
 
+
 class BaseMode(ABC):
     """Base class for all AutoDevCore modes with advanced thought trail visualization."""
 

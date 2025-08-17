@@ -12,6 +12,7 @@ from sqlalchemy.orm import Session
 
 from utils.validation import validate_password_strength
 
+
 # Pydantic models for input validation
 class UserCreate(BaseModel):
     username: str = Field(
@@ -37,6 +38,7 @@ class UserCreate(BaseModel):
             raise ValueError("Password does not meet security requirements")
         return v
 
+
 class UserUpdate(BaseModel):
     username: str = Field(None, min_length=3, max_length=50)
     email: str = Field(None)
@@ -52,7 +54,9 @@ class UserUpdate(BaseModel):
                 raise ValueError("Invalid email format")
         return v
 
+
 router = APIRouter()
+
 
 @router.post("/users/", status_code=status.HTTP_201_CREATED)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
@@ -81,6 +85,7 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
 
     return {"message": "User created successfully", "user_id": new_user.id}
 
+
 @router.get("/users/", response_model=List[dict])
 def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     """Get all users."""
@@ -95,6 +100,7 @@ def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
         }
         for user in users
     ]
+
 
 @router.get("/users/{user_id}")
 def get_user(user_id: int, db: Session = Depends(get_db)):

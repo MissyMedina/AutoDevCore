@@ -28,6 +28,7 @@ T = TypeVar("T")
 K = TypeVar("K")
 V = TypeVar("V")
 
+
 class Status(Enum):
     """Status enumeration for various operations."""
 
@@ -38,6 +39,7 @@ class Status(Enum):
     COMPLETED = "completed"
     ERROR = "error"
 
+
 class LogLevel(Enum):
     """Log level enumeration."""
 
@@ -46,6 +48,7 @@ class LogLevel(Enum):
     WARNING = "warning"
     ERROR = "error"
     CRITICAL = "critical"
+
 
 @dataclass
 class Result(Generic[T]):
@@ -67,6 +70,7 @@ class Result(Generic[T]):
             raise ValueError(f"Operation failed: {self.error}")
         return self.data
 
+
 @dataclass
 class PerformanceMetrics:
     """Performance metrics for operations."""
@@ -86,6 +90,7 @@ class PerformanceMetrics:
         self.duration = (self.end_time - self.start_time).total_seconds()
         self.success = success
         self.error_count = error_count
+
 
 @dataclass
 class CacheEntry(Generic[T]):
@@ -109,6 +114,7 @@ class CacheEntry(Generic[T]):
         self.access_count += 1
         self.last_accessed = datetime.now()
 
+
 @dataclass
 class ValidationResult:
     """Result of validation operations."""
@@ -131,6 +137,7 @@ class ValidationResult:
         """Add validation warning."""
         self.warnings.append(warning)
 
+
 @runtime_checkable
 class Validatable(Protocol):
     """Protocol for objects that can be validated."""
@@ -138,6 +145,7 @@ class Validatable(Protocol):
     def validate(self) -> ValidationResult:
         """Validate the object."""
         ...
+
 
 @runtime_checkable
 class Cacheable(Protocol):
@@ -151,6 +159,7 @@ class Cacheable(Protocol):
         """Get cache TTL in seconds."""
         ...
 
+
 @runtime_checkable
 class Loggable(Protocol):
     """Protocol for objects that can be logged."""
@@ -162,6 +171,7 @@ class Loggable(Protocol):
     def get_log_level(self) -> LogLevel:
         """Get log level for the object."""
         ...
+
 
 class TypeSafeCache:
     """Type-safe cache implementation."""
@@ -217,6 +227,7 @@ class TypeSafeCache:
             ),
         }
 
+
 class TypeSafeLogger:
     """Type-safe logger implementation."""
 
@@ -262,6 +273,7 @@ class TypeSafeLogger:
         if level is None:
             return self.logs
         return [log for log in self.logs if log["level"] == level.value]
+
 
 class TypeSafeValidator:
     """Type-safe validator implementation."""
@@ -322,6 +334,7 @@ class TypeSafeValidator:
             result.add_error(f"List too long: {len(value)} > {max_length}")
 
         return result
+
 
 # Global instances
 type_safe_cache = TypeSafeCache()

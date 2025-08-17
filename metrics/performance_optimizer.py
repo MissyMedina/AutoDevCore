@@ -20,6 +20,7 @@ from typing import Any, Dict, List, Optional, Union
 import psutil
 import redis
 
+
 class CacheStrategy(Enum):
     """Cache strategy types"""
 
@@ -27,6 +28,7 @@ class CacheStrategy(Enum):
     TTL = "ttl"
     WRITE_THROUGH = "write_through"
     WRITE_BEHIND = "write_behind"
+
 
 class OptimizationType(Enum):
     """Performance optimization types"""
@@ -36,6 +38,7 @@ class OptimizationType(Enum):
     MEMORY = "memory"
     CPU = "cpu"
     NETWORK = "network"
+
 
 @dataclass
 class PerformanceMetrics:
@@ -50,6 +53,7 @@ class PerformanceMetrics:
     database_queries: int = 0
     timestamp: float = field(default_factory=time.time)
 
+
 @dataclass
 class CacheConfig:
     """Cache configuration"""
@@ -59,6 +63,7 @@ class CacheConfig:
     max_size: int = 1000
     enable_compression: bool = True
     enable_stats: bool = True
+
 
 class RedisCache:
     """Redis-based caching system"""
@@ -122,6 +127,7 @@ class RedisCache:
             + self.stats["sets"]
             + self.stats["deletes"],
         }
+
 
 class DatabaseOptimizer:
     """Database performance optimization"""
@@ -193,6 +199,7 @@ class DatabaseOptimizer:
         """Get database query statistics"""
         return self.query_stats
 
+
 class MemoryOptimizer:
     """Memory usage optimization"""
 
@@ -252,6 +259,7 @@ class MemoryOptimizer:
 
         return optimizations
 
+
 class CPUOptimizer:
     """CPU usage optimization"""
 
@@ -299,6 +307,7 @@ class CPUOptimizer:
             optimizations["thread_pool_created"] = True
 
         return optimizations
+
 
 class PerformanceOptimizer:
     """Main performance optimization orchestrator"""
@@ -523,17 +532,21 @@ class PerformanceOptimizer:
 
         return recommendations
 
+
 # Global performance optimizer instance
 performance_optimizer = PerformanceOptimizer()
+
 
 # Example usage decorators
 def cache_result(ttl: int = 3600):
     """Cache function result for specified TTL"""
     return performance_optimizer.cache_decorator(ttl)
 
+
 def monitor_performance(operation: str):
     """Monitor function performance"""
     return performance_optimizer.monitor_performance(operation)
+
 
 if __name__ == "__main__":
     # Example usage

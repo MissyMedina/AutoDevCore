@@ -6,6 +6,7 @@ A simple plugin that generates ASCII weather art
 import random
 from datetime import datetime
 
+
 def run(input_text: str) -> str:
     """
     Run the ASCII weather plugin.
@@ -43,6 +44,7 @@ def run(input_text: str) -> str:
     """
 
     return ascii_art
+
 
 def _get_weather_ascii(weather: str) -> str:
     """Get ASCII art for the weather condition."""

@@ -14,6 +14,7 @@ sys.path.append(str(Path(__file__).parent / "plugins"))
 from collaboration import CollaborationPlatform
 from collaboration import team_manager, TeamRole, Permission
 
+
 def test_collaboration_final():
     """Final test that proves collaboration platform works."""
     print("🧪 FINAL COLLABORATION PLATFORM TEST")
@@ -180,6 +181,7 @@ def test_collaboration_final():
     except Exception as e:
         print(f"❌ Final test failed: {e}")
         return {"success": False, "error": str(e)}
+
 
 if __name__ == "__main__":
     results = test_collaboration_final()

@@ -9,6 +9,7 @@ import asyncio
 from aiohttp import web, ClientSession
 import aiohttp_cors
 
+
 class SimpleAutoDevAPI:
     """Simple API server for AutoDevCore."""
 
@@ -139,6 +140,7 @@ class SimpleAutoDevAPI:
         """Stop the API server."""
         await runner.cleanup()
 
+
 async def main():
     """Main function to run the API server."""
     api = SimpleAutoDevAPI()
@@ -151,6 +153,7 @@ async def main():
     except KeyboardInterrupt:
         print("\n🛑 Stopping API server...")
         await api.stop(runner)
+
 
 if __name__ == "__main__":
     try:

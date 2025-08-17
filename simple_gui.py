@@ -1057,9 +1057,11 @@ HTML_TEMPLATE = """
 </html>
 """
 
+
 @app.route("/")
 def index():
     return render_template_string(HTML_TEMPLATE)
+
 
 @app.route("/api/status")
 def status():
@@ -1077,6 +1079,7 @@ def status():
         }
     )
 
+
 @app.route("/api/create-project", methods=["POST"])
 def create_project():
     data = request.json
@@ -1087,6 +1090,7 @@ def create_project():
             "message": f'Project "{data.get("name", "New Project")}" created successfully!',
         }
     )
+
 
 @app.route("/api/chat", methods=["POST"])
 def chat():
@@ -1149,6 +1153,7 @@ def chat():
             500,
         )
 
+
 @app.route("/api/settings", methods=["GET", "POST"])
 def handle_settings():
     if request.method == "POST":
@@ -1176,6 +1181,7 @@ def handle_settings():
             }
 
         return jsonify(settings)
+
 
 if __name__ == "__main__":
     print("🚀 Starting AutoDevCore Simple GUI...")

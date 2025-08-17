@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 
 router = APIRouter()
 
+
 @router.get("/users/", response_model=List[dict])
 def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     """Get all users."""
@@ -25,6 +26,7 @@ def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
         }
         for user in users
     ]
+
 
 @router.get("/users/{user_id}")
 def get_user(user_id: int, db: Session = Depends(get_db)):

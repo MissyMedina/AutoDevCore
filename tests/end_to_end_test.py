@@ -11,6 +11,7 @@ import time
 from pathlib import Path
 import pytest
 
+
 # Test environment setup/teardown fixtures
 @pytest.fixture(scope="session", name="environment")
 def setup_environment():
@@ -39,6 +40,7 @@ def setup_environment():
     except Exception:
         print("Warning: Failed to clean up test environment")
 
+
 @pytest.fixture(scope="function", name="output_dir")
 def setup_output_dir():
     """Create a clean output directory for each test"""
@@ -50,6 +52,7 @@ def setup_output_dir():
     except Exception:
         print("Warning: Failed to clean up test output directory")
 
+
 # Pytest test functions
 # Minimal pytest-compatible smoke test
 def test_end_to_end_smoke(environment):
@@ -57,6 +60,7 @@ def test_end_to_end_smoke(environment):
     assert environment["temp_dir"] is not None
     assert environment["test_app_dir"] is not None
     assert environment["project_root"] is not None
+
 
 def test_ai_model_integration(environment):
     """Test AI model integration and basic operations"""
@@ -87,6 +91,7 @@ def test_ai_model_integration(environment):
     except Exception as e:
         pytest.fail(f"AI model integration test failed: {e}")
 
+
 def test_plugin_system(environment):
     """Test plugin system functionality"""
     try:
@@ -113,6 +118,7 @@ def test_plugin_system(environment):
         pytest.skip(f"Plugin system test skipped: {e}")
     except Exception as e:
         pytest.fail(f"Plugin system test failed: {e}")
+
 
 def test_collaboration_platform(environment):
     """Test collaboration platform functionality"""
@@ -142,6 +148,7 @@ def test_collaboration_platform(environment):
         pytest.skip(f"Collaboration platform test skipped: {e}")
     except Exception as e:
         pytest.fail(f"Collaboration platform test failed: {e}")
+
 
 def test_performance_optimization(environment, output_dir):
     """Test performance optimization system"""
@@ -174,6 +181,7 @@ def test_performance_optimization(environment, output_dir):
     except Exception as e:
         pytest.fail(f"Performance optimization test failed: {e}")
 
+
 def test_security_auditing(environment):
     """Test security auditing system"""
     try:
@@ -200,6 +208,7 @@ def test_security_auditing(environment):
     except Exception as e:
         pytest.fail(f"Security auditing test failed: {e}")
 
+
 def test_monitoring_dashboard(environment):
     """Test monitoring dashboard functionality"""
     try:
@@ -222,6 +231,7 @@ def test_monitoring_dashboard(environment):
         pytest.skip(f"Monitoring dashboard test skipped: {e}")
     except Exception as e:
         pytest.fail(f"Monitoring dashboard test failed: {e}")
+
 
 def test_code_generation(environment):
     """Test code generation functionality"""
@@ -256,6 +266,7 @@ def test_code_generation(environment):
     except Exception as e:
         pytest.fail(f"Code generation test failed: {e}")
 
+
 def test_security_generation(environment):
     """Test security feature generation"""
     try:
@@ -281,6 +292,7 @@ def test_security_generation(environment):
         pytest.skip(f"Security generation test skipped: {e}")
     except Exception as e:
         pytest.fail(f"Security generation test failed: {e}")
+
 
 def test_system_health():
     """Test system health functionality"""
@@ -315,6 +327,7 @@ def test_system_health():
     except Exception as e:
         pytest.fail(f"System health check failed: {e}")
 
+
 def test_documentation():
     """Test documentation files"""
     required_docs = [
@@ -330,6 +343,7 @@ def test_documentation():
 
     if missing_docs:
         pytest.fail(f"Missing documentation files: {missing_docs}")
+
 
 @pytest.mark.integration
 def test_configuration():
@@ -357,6 +371,7 @@ def test_configuration():
     assert os.path.exists(".env") or os.path.exists(
         ".env.example"
     ), "Missing environment configuration (.env or .env.example)"
+
 
 if __name__ == "__main__":
     sys.exit(pytest.main([__file__]))

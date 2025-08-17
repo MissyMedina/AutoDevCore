@@ -12,6 +12,7 @@ from integrations import gpt_oss_client
 
 from .base import BaseMode
 
+
 class ScoreMode(BaseMode):
     """Score mode for evaluating apps against industry templates with GPT-OSS."""
 

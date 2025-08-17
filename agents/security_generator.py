@@ -5,6 +5,7 @@ Security Generator Agent - Adds security features to generated applications
 from pathlib import Path
 from typing import Any, Dict, List
 
+
 class SecurityGeneratorAgent:
     """Agent responsible for adding security features to generated applications."""
 

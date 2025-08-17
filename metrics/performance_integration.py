@@ -22,6 +22,7 @@ from .performance_optimizer import (
     monitor_performance,
 )
 
+
 class PerformanceIntegration:
     """Integrates performance optimization with AutoDevCore systems"""
 
@@ -416,6 +417,7 @@ class PerformanceIntegration:
             report.append("")
 
         return "\n".join(report)
+
 
 # Global performance integration instance
 performance_integration = PerformanceIntegration()

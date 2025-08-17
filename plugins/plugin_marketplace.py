@@ -11,6 +11,7 @@ from typing import Any, Dict, List, Optional
 
 import requests
 
+
 class PluginMarketplace:
     """Plugin marketplace for discovering, installing, and managing plugins."""
 
@@ -279,6 +280,7 @@ class PluginMarketplace:
             categories.update(plugin.get("categories", []))
 
         return sorted(list(categories))
+
 
 def run(context=None):
     """Plugin marketplace entry point."""

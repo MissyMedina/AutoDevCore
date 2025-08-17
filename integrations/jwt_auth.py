@@ -14,6 +14,7 @@ from typing import Any, Dict, Optional, Union
 
 import jwt
 
+
 class JWTAuthManager:
     """JWT Authentication Manager for AutoDevCore"""
 
@@ -256,6 +257,7 @@ class JWTAuthManager:
             )
             print("✅ Default admin user created: admin/admin123")
             print("⚠️  Please change the default password in production!")
+
 
 # Global instance
 jwt_auth = JWTAuthManager()
